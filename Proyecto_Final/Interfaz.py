@@ -11,6 +11,7 @@ from kivy.properties import ObjectProperty,StringProperty,NumericProperty
 from kivy.uix.popup import Popup
 from Ecuaciones_no_lineales.Busqueda_incremental import Busqueda_incremental
 from Ecuaciones_no_lineales.Biseccion import Biseccion
+from Ecuaciones_no_lineales.PuntoFijo import PuntoFijo
 from Ecuaciones_no_lineales.Regla_falsa import Regla_falsa
 from Verificar import Verificar
 from Funciones import Funciones
@@ -31,7 +32,7 @@ class Sistemas_de_ecuaciones(Screen):
 class Interpolacion(Screen):
     pass
 class Diferenciacion_numerica(Screen):
-    pass   
+    pass
 class Ecuaciones_no_lineales_busqueda(Screen):
     posicion_inicial=ObjectProperty(None)
     incremento=ObjectProperty(None)
@@ -130,35 +131,35 @@ class Ecuaciones_no_lineales_regla_falsa(Screen):
         self.tipo_error=tipo
 class Ecuaciones_no_lineales_punto_fijo(Screen):
     xi=ObjectProperty(None)
-    xs=ObjectProperty(None)
     iteraciones=ObjectProperty(None)
     tolerancia=ObjectProperty(None)
     raiz=ObjectProperty(None)
     funciones=ObjectProperty(None)
-
+    gfunciones=ObjectProperty(None)
     def buscar(self):
-        regla_falsa=Regla_falsa()
+        puntoFijo = PuntoFijo()
         tabla=Tabla()
         verificar=Verificar()
-        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iteraciones.text,self.tolerancia.text)
+        error=verificar.verificar_punto_fijo(self.funciones.text,self.gfunciones.text, self.xi.text,self.iteraciones.text,self.tolerancia.text)
         if(error==""):
             Funcion=Funciones(self.funciones.text)
-            regla_falsa.algorimo_regla_falsa(float(self.xi.text),float(self.xs.text),Funcion,float(self.tolerancia.text),float(self.iteraciones.text),self.tipo_error)
-            self.raiz.text=regla_falsa.get_raiz()
-            columnas=['Iteracion','Xi','Xu','Xm','F(xm)','Error']
-            tabla.dibujar(regla_falsa.tabla_valores(),columnas)
+            GFuncion=Funciones(self.gfunciones.text)
+            puntoFijo.algorimo_puntoFijo(float(self.xi.text),Funcion,GFuncion,float(self.iteraciones.text),float(self.tolerancia.text),self.tipo_error)
+            self.raiz.text=puntoFijo.get_raiz()
+            columnas=['Iteracion','Xi','F(xm)','Error']
+            tabla.dibujar(puntoFijo.tabla_valores(),columnas)
+
         else:
-            show_popup("Error Regla_falsa",error)
+            show_popup("Error Biseccion",error)
 
     def graficar(self):
         grafica=Graficar()
         verificar=Verificar()
-        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iteraciones.text,self.tolerancia.text)
+        error=verificar.verificar_punto_fijo(self.funciones.text,self.gfunciones.text, self.xi.text,self.iteraciones.text,self.tolerancia.text)
         if(error==""):
-            grafica.dibujar_funciones(self.funciones.text,float(self.xi.text),float(self.xs.text),float(self.tolerancia.text))
+            grafica.dibujar_funciones(self.funciones.text, self.gfunciones.text)
         else:
-            show_popup("Error Graficar Regla Falsa",error)
-
+            show_popup("Error Graficar Punto Fijo",error)
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
 class Ecuaciones_no_lineales_secantes(Screen):
@@ -196,10 +197,7 @@ def show_popup(titulo,contenido):
     popup.open()
     show.boton.on_press=popup.dismiss
 
-
-
 class Interfaz(App):
-    
     def build(self):
         kv=Builder.load_file("interfaz.kv")
         return kv

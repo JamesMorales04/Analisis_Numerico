@@ -12,14 +12,14 @@ class Regla_falsa:
             self.raiz="Valores ingresados invalidos"
         if(Funcion.evaluar(xi)==0):
                 self.raiz="xi es una raiz"
-        else:        
+        else:
             contador=1
             xm=xi-(Funcion.evaluar(xi)*(xi-xu))/(Funcion.evaluar(xi)-Funcion.evaluar(xu))
             xm_anterior=0
             error=tolerancia+10
             self.valores.append([contador,xi,xu,xm,Funcion.evaluar(xm),error])
-            while (error>tolerancia and Funcion.evaluar(xm)!=0 and iteraciones>contador):                
-                valor=Funcion.evaluar(xm)                    
+            while (error>tolerancia and Funcion.evaluar(xm)!=0 and iteraciones>contador):
+                valor=Funcion.evaluar(xm)
                 if((Funcion.evaluar(xm)*Funcion.evaluar(xi))>0):
                     xi=xm
                 else:
@@ -39,7 +39,6 @@ class Regla_falsa:
                     self.raiz=f"[{xm} es una raiz aproximada]"
                 else:
                     self.raiz=f"Fracaso en la iteraciones"
-           
 
     def tabla_valores(self):
         return self.valores

@@ -24,8 +24,8 @@ WindowManager:
     Interpolacion_splines:
     Diferenciacion_numerica_diferenciacion:
 
-#:set color_background "#03A9F4"
-#:set color_button "#00FF7F"
+#:set color_background "#248091"
+#:set color_button "#8ac6d1"
 
 <Menu_Inicial>
     name: "Menu_Inicial"
@@ -42,35 +42,31 @@ WindowManager:
                 size: self.size
         Label:
             text: "Capitulos"
+            bold: True
             font_size:"30sp"
-            color: 1,1,1,1 
+            color: 1,1,1,1
 
-
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Ecuaciones no lineales"
-            font_size:"17sp"   
+            font_size:"17sp"
             on_press:
-                app.root.current="Ecuaciones_no_lineales"     
+                app.root.current="Ecuaciones_no_lineales"
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Sistemas de ecuaciones"
-            font_size:"17sp"  
+            font_size:"17sp"
             on_press:
-                app.root.current="Sistemas_de_ecuaciones"     
+                app.root.current="Sistemas_de_ecuaciones"
                 root.manager.transition.direction="left"
 
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Interpolacion"
             font_size:"17sp"  
             on_press:
                 app.root.current="Interpolacion"
                 root.manager.transition.direction="left"     
 
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Diferenciacion e Integracion Numerica"
             font_size:"17sp"  
             on_press:
@@ -94,62 +90,55 @@ WindowManager:
         Label:
             text: "Metodos"
             font_size:"30sp"
-            color: 1,1,1,1 
+            color: 1,1,1,1
+            bold: True 
 
 
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Busqueda Incremental"
             font_size:"17sp"   
             on_press:
                 app.root.current="Ecuaciones_no_lineales_busqueda"     
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Biseccion"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales_biseccion"     
                 root.manager.transition.direction="left"
 
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Regla Falsa"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales_regla_falsa"  
                 root.manager.transition.direction="left"   
 
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Punto Fijo"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales_punto_fijo"
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Newton"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales_newton"
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Secantes"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales_secantes"
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Raices Multiples"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales_raices_multiples"
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -174,44 +163,39 @@ WindowManager:
             text: "Metodos"
             font_size:"30sp"
             color: 1,1,1,1 
-        Button:
-            background_color: hex(color_button)
+            bold: True
+        SmoothButton:
             text: "Eliminacion Gussiana Simple"
             font_size:"17sp"   
             on_press:
                 app.root.current="Sistemas_de_ecuaciones_eliminacion_gaussiana"     
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Pivoteo"
             font_size:"17sp"  
             on_press:
                 app.root.current="Sistemas_de_ecuaciones_pivoteo"     
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Factorizacion Lu"
             font_size:"17sp"  
             on_press:
                 app.root.current="Sistemas_de_ecuaciones_Factorizacion_lu"     
                 root.manager.transition.direction="left"
 
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Factorizacion directa de matrices"
             font_size:"17sp"  
             on_press:
                 app.root.current="Sistemas_de_ecuaciones_Factorizacion_matrices"
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Metodos iterativos"
             font_size:"17sp"  
             on_press:
                 app.root.current="Sistemas_de_ecuaciones_iterativos"
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -236,29 +220,26 @@ WindowManager:
             text: "Metodos"
             font_size:"30sp"
             color: 1,1,1,1 
-        Button:
-            background_color: hex(color_button)
+            bold: True
+        SmoothButton:
             text: "Newton"
             font_size:"17sp"   
             on_press:
                 app.root.current="Interpolacion_newton"    
                 root.manager.transition.direction="left" 
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Lagrange"
             font_size:"17sp"  
             on_press:
                 app.root.current="Interpolacion_lagrange"   
                 root.manager.transition.direction="left"  
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Splines"
             font_size:"17sp"  
             on_press:
                 app.root.current="Interpolacion_splines"     
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -283,15 +264,14 @@ WindowManager:
             text: "Metodos"
             font_size:"30sp"
             color: 1,1,1,1 
-        Button:
-            background_color: hex(color_button)
+            bold: True
+        SmoothButton:
             text: "Diferenciacion_numerica"
             font_size:"17sp"   
             on_press:
                 app.root.current="Diferenciacion_numerica_diferenciacion"     
                 root.manager.transition.direction="left"
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -326,6 +306,7 @@ WindowManager:
                 text: "Funcion f(x)"
                 font_size:"25sp"
                 color: 1,1,1,1 
+                bold: True
             TextInput:
                 id:funciones
                 text:root.manager.funcion_global
@@ -339,6 +320,7 @@ WindowManager:
                 text: "Posicion Inicial"
                 font_size:"15sp"
                 color: 1,1,1,1 
+                bold: True
             TextInput:
                 id:posicion_inicial
                 multiline:False
@@ -346,6 +328,7 @@ WindowManager:
                 text: "Incremento"
                 font_size:"15sp"
                 color: 1,1,1,1 
+                bold: True
             TextInput:
                 id:incremento
                 multiline:False
@@ -353,6 +336,7 @@ WindowManager:
                 text: "Iteraciones"
                 font_size:"15sp"
                 color: 1,1,1,1 
+                bold: True
             TextInput:
                 id:iteraciones
                 multiline:False
@@ -364,22 +348,20 @@ WindowManager:
                 text: "Raiz"
                 font_size:"20sp"
                 color: 1,1,1,1 
+                bold: True
             TextInput:
                 id:raiz
                 multiline:False
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Buscar"
             font_size:"17sp"  
             on_press:root.buscar()
             
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Graficar"
             font_size:"17sp"  
             on_press:root.graficar()
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -413,7 +395,8 @@ WindowManager:
             Label:
                 text: "Funcion f(x)"
                 font_size:"25sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:funciones
                 text:root.manager.funcion_global
@@ -427,28 +410,32 @@ WindowManager:
             Label:
                 text: "Xi"
                 font_size:"15sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:xi
                 multiline:False
             Label:
                 text: "Xs"
                 font_size:"15sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:xs
                 multiline:False
             Label:
                 text: "Iteraciones"
                 font_size:"15sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:iteraciones
                 multiline:False
             Label:
                 text: "Tolerancia"
                 font_size:"15sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:tolerancia
                 multiline:False
@@ -462,7 +449,8 @@ WindowManager:
                 text: "Raiz"
                 width:10
                 font_size:"20sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 size_hint_x:1
                 id:raiz
@@ -470,6 +458,7 @@ WindowManager:
             Label:
                 size_hint_x:0.2
                 text: ""
+                bold: True
             GridLayout:
                 spacing: '2dp'
                 cols: 2
@@ -478,7 +467,8 @@ WindowManager:
                 Label:
                     size_hint_x:0.9
                     text: " Error Absoluto"
-                    color: 1,1,1,1 
+                    color: 1,1,1,1
+                    bold: True
                 CheckBox:
                     group: "tipo_de_error"
                     color:  0,0,0,1 
@@ -487,24 +477,22 @@ WindowManager:
                 Label:
                     size_hint_x:0.8
                     text: "Error Relativo"
-                    color: 1,1,1,1 
+                    color: 1,1,1,1
+                    bold: True
                 CheckBox:
                     group: "tipo_de_error"
                     color:  0,0,0,1 
                     on_active: root.tipo_de_error(False)
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Buscar"
             font_size:"17sp"  
             on_press:root.buscar()
             
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Graficar"
             font_size:"17sp"  
             on_press:root.graficar()
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -538,7 +526,8 @@ WindowManager:
             Label:
                 text: "Funcion f(x)"
                 font_size:"25sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:funciones
                 text:root.manager.funcion_global
@@ -552,28 +541,32 @@ WindowManager:
             Label:
                 text: "Xi"
                 font_size:"15sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:xi
                 multiline:False
             Label:
                 text: "Xs"
                 font_size:"15sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:xs
                 multiline:False
             Label:
                 text: "Iteraciones"
                 font_size:"15sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:iteraciones
                 multiline:False
             Label:
                 text: "Tolerancia"
                 font_size:"15sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:tolerancia
                 multiline:False
@@ -587,7 +580,8 @@ WindowManager:
                 text: "Raiz"
                 width:10
                 font_size:"20sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 size_hint_x:1
                 id:raiz
@@ -595,6 +589,7 @@ WindowManager:
             Label:
                 size_hint_x:0.2
                 text: ""
+                bold: True
             GridLayout:
                 spacing: '2dp'
                 cols: 2
@@ -603,7 +598,8 @@ WindowManager:
                 Label:
                     size_hint_x:0.9
                     text: " Error Absoluto"
-                    color: 1,1,1,1 
+                    color: 1,1,1,1
+                    bold: True
                 CheckBox:
                     group: "tipo_de_error"
                     color:  0,0,0,1 
@@ -612,24 +608,22 @@ WindowManager:
                 Label:
                     size_hint_x:0.8
                     text: "Error Relativo"
-                    color: 1,1,1,1 
+                    color: 1,1,1,1
+                    bold: True
                 CheckBox:
                     group: "tipo_de_error"
                     color:  0,0,0,1 
                     on_active: root.tipo_de_error(False)
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Buscar"
             font_size:"17sp"  
             on_press:root.buscar()
             
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Graficar"
             font_size:"17sp"  
             on_press:root.graficar()
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -637,11 +631,12 @@ WindowManager:
                 app.root.current="Ecuaciones_no_lineales"  
                 root.manager.transition.direction="right"
 
+
 <Ecuaciones_no_lineales_punto_fijo>
     name:"Ecuaciones_no_lineales_punto_fijo"
     funciones:funciones
+    gfunciones:gfunciones
     xi:xi
-    xs:xs
     iteraciones:iteraciones
     tolerancia:tolerancia
     raiz:raiz
@@ -657,48 +652,58 @@ WindowManager:
                 pos: self.pos
                 size: self.size
         GridLayout:
-            cols: 3
+            cols: 2
             row_default_height:30
             row_force_default:True
             Label:
                 text: "Funcion f(x)"
                 font_size:"25sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:funciones
                 text:root.manager.funcion_global
                 multiline:False
-            
-                    
         GridLayout:
-            cols: 8
+            cols: 2
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Funcion g(x)"
+                font_size:"25sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:gfunciones
+                text:root.manager.funcion_global
+                multiline:False
+
+
+        GridLayout:
+            cols: 6
             row_default_height:30
             row_force_default:True
             Label:
                 text: "Xi"
                 font_size:"15sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:xi
                 multiline:False
             Label:
-                text: "Xs"
-                font_size:"15sp"
-                color: 1,1,1,1 
-            TextInput:
-                id:xs
-                multiline:False
-            Label:
                 text: "Iteraciones"
                 font_size:"15sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:iteraciones
                 multiline:False
             Label:
                 text: "Tolerancia"
                 font_size:"15sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 id:tolerancia
                 multiline:False
@@ -712,7 +717,8 @@ WindowManager:
                 text: "Raiz"
                 width:10
                 font_size:"20sp"
-                color: 1,1,1,1 
+                color: 1,1,1,1
+                bold: True
             TextInput:
                 size_hint_x:1
                 id:raiz
@@ -720,6 +726,7 @@ WindowManager:
             Label:
                 size_hint_x:0.2
                 text: ""
+                bold: True
             GridLayout:
                 spacing: '2dp'
                 cols: 2
@@ -728,46 +735,44 @@ WindowManager:
                 Label:
                     size_hint_x:0.9
                     text: " Error Absoluto"
-                    color: 1,1,1,1 
+                    color: 1,1,1,1
+                    bold: True
                 CheckBox:
                     group: "tipo_de_error"
-                    color:  0,0,0,1 
+                    color:  0,0,0,1
                     active:True
                     on_active: root.tipo_de_error(True)
                 Label:
                     size_hint_x:0.8
                     text: "Error Relativo"
-                    color: 1,1,1,1 
+                    color: 1,1,1,1
+                    bold: True
                 CheckBox:
                     group: "tipo_de_error"
-                    color:  0,0,0,1 
+                    color:  0,0,0,1
                     on_active: root.tipo_de_error(False)
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Buscar"
-            font_size:"17sp"  
+            border: 10,10,10,10
+            font_size:"17sp"
             on_press:root.buscar()
-            
-        Button:
-            background_color: hex(color_button)
+
+        SmoothButton:
             text: "Graficar"
-            font_size:"17sp"  
+            font_size:"17sp"
             on_press:root.graficar()
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
-            font_size:"17sp"  
+            font_size:"17sp"
             on_press:
                 root.manager.funcion_global=root.funciones.text
-                app.root.current="Ecuaciones_no_lineales"  
+                app.root.current="Ecuaciones_no_lineales"
                 root.manager.transition.direction="right"
-
 
 <Ecuaciones_no_lineales_newton>
     name:"Ecuaciones_no_lineales_newton"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -777,8 +782,7 @@ WindowManager:
 <Ecuaciones_no_lineales_secantes>
     name:"Ecuaciones_no_lineales_secantes"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -789,8 +793,7 @@ WindowManager:
 <Ecuaciones_no_lineales_raices_multiples>
     name:"Ecuaciones_no_lineales_raices_multiples"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -800,8 +803,7 @@ WindowManager:
 <Sistemas_de_ecuaciones_eliminacion_gaussiana>
     name:"Sistemas_de_ecuaciones_eliminacion_gaussiana"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -812,8 +814,7 @@ WindowManager:
 <Sistemas_de_ecuaciones_pivoteo>
     name:"Sistemas_de_ecuaciones_pivoteo"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -824,8 +825,7 @@ WindowManager:
 <Sistemas_de_ecuaciones_Factorizacion_lu>
     name:"Sistemas_de_ecuaciones_Factorizacion_lu"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -836,8 +836,7 @@ WindowManager:
 <Sistemas_de_ecuaciones_Factorizacion_matrices>
     name:"Sistemas_de_ecuaciones_Factorizacion_matrices"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -848,8 +847,7 @@ WindowManager:
 <Sistemas_de_ecuaciones_iterativos>
     name:"Sistemas_de_ecuaciones_iterativos"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -860,8 +858,7 @@ WindowManager:
 <Interpolacion_newton>
     name:"Interpolacion_newton"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -872,8 +869,7 @@ WindowManager:
 <Interpolacion_lagrange>
     name:"Interpolacion_lagrange"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -884,8 +880,7 @@ WindowManager:
 <Interpolacion_splines>
     name:"Interpolacion_splines"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -898,8 +893,7 @@ WindowManager:
 
     name:"Diferenciacion_numerica_diferenciacion"
     GridLayout:
-        Button:
-            background_color: hex(color_button)
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -913,9 +907,22 @@ WindowManager:
         id: contenido
         size_hint: 0.6, 0.7
         pos_hint: {"x":0.2,"top":1}
-    
+        bold: True
+
     Button:
         id: boton
         text: "Aceptar"
         size_hint:0.8,0.2
         pos_hint:{"x":0.1,"y":0.1}
+
+<SmoothButton@Button>
+    background_color: 0,0,0,0
+    background_normal: ''
+    back_color: 1,0,1,1
+    border_radius: [25]
+    canvas.before:
+        Color:
+            rgba: hex("#304448")
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
