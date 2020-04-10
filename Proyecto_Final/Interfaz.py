@@ -17,12 +17,15 @@ from Verificar import Verificar
 from Funciones import Funciones
 from Graficar import Graficar
 from Tabla import Tabla
-
-funcion=StringProperty('x')
+from Ayudas import Ayudas
+funcion=StringProperty('')
 
 class WindowManager(ScreenManager):
     global funcion
     funcion_global=funcion
+class Ayudasw(Screen):
+    ayuda=ObjectProperty(None)
+    ayudaf=ObjectProperty(None)
 class Menu_Inicial(Screen):
     pass
 class Ecuaciones_no_lineales(Screen):
@@ -63,6 +66,11 @@ class Ecuaciones_no_lineales_busqueda(Screen):
             grafica.dibujar_funciones(self.funciones.text,float(self.posicion_inicial.text),math.fabs(float(self.posicion_inicial.text))+(float(self.incremento.text)*float(self.iteraciones.text)),float(self.incremento.text))
         else:
             show_popup("Error Graficar Busqueda Incremental",error)
+    
+    def ayuda(self):
+        ayudar=Ayudas()
+        print(ayudar.ayudas_busqueda())
+        show_popup("Ayudas Busqueda Incremental",ayudar.ayudas_busqueda())
 class Ecuaciones_no_lineales_biseccion(Screen):
     xi=ObjectProperty(None)
     xs=ObjectProperty(None)
@@ -93,6 +101,10 @@ class Ecuaciones_no_lineales_biseccion(Screen):
             grafica.dibujar_funciones(self.funciones.text,float(self.xi.text),float(self.xs.text),float(self.tolerancia.text))
         else:
             show_popup("Error Graficar Biseccion",error)
+    
+    def ayuda(self):
+        ayudar=Ayudas()
+        show_popup("Ayudas Biseccion",ayudar.ayudas_biseccion())
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -127,6 +139,10 @@ class Ecuaciones_no_lineales_regla_falsa(Screen):
         else:
             show_popup("Error Graficar Regla Falsa",error)
 
+    def ayuda(self):
+        ayudar=Ayudas()
+        show_popup("Ayudas Regla Falsa",ayudar.ayudas_regla_falsa())
+
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
 class Ecuaciones_no_lineales_punto_fijo(Screen):
@@ -160,6 +176,11 @@ class Ecuaciones_no_lineales_punto_fijo(Screen):
             grafica.dibujar_funciones(self.funciones.text, self.gfunciones.text)
         else:
             show_popup("Error Graficar Punto Fijo",error)
+
+    def ayuda(self):
+        ayudar=Ayudas()
+        show_popup("Ayudas Punto Fijo",ayudar.ayudas_punto_fijo())
+
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
 class Ecuaciones_no_lineales_secantes(Screen):
@@ -193,7 +214,7 @@ class Ventana_emergente(FloatLayout):
 def show_popup(titulo,contenido):
     show=Ventana_emergente()
     show.contenido.text=contenido
-    popup = Popup(title=titulo, content=show,auto_dismiss=False,size_hint=(None, None), size=(400, 400))
+    popup = Popup(title=titulo, content=show,auto_dismiss=False,size_hint=(None, None), size=(600, 600))
     popup.open()
     show.boton.on_press=popup.dismiss
 

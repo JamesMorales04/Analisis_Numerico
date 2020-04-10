@@ -362,6 +362,10 @@ WindowManager:
             font_size:"17sp"  
             on_press:root.graficar()
         SmoothButton:
+            text: "Ayuda"
+            font_size:"17sp"  
+            on_press:root.ayuda()
+        SmoothButton:
             text: "Volver"
             font_size:"17sp"  
             on_press:
@@ -486,12 +490,15 @@ WindowManager:
         SmoothButton:
             text: "Buscar"
             font_size:"17sp"  
-            on_press:root.buscar()
-            
+            on_press:root.buscar()    
         SmoothButton:
             text: "Graficar"
             font_size:"17sp"  
             on_press:root.graficar()
+        SmoothButton:
+            text: "Ayuda"
+            font_size:"17sp"  
+            on_press:root.ayuda()
         SmoothButton:
             text: "Volver"
             font_size:"17sp"  
@@ -618,11 +625,14 @@ WindowManager:
             text: "Buscar"
             font_size:"17sp"  
             on_press:root.buscar()
-            
         SmoothButton:
             text: "Graficar"
             font_size:"17sp"  
             on_press:root.graficar()
+        SmoothButton:
+            text: "Ayuda"
+            font_size:"17sp"  
+            on_press:root.ayuda()
         SmoothButton:
             text: "Volver"
             font_size:"17sp"  
@@ -756,11 +766,14 @@ WindowManager:
             border: 10,10,10,10
             font_size:"17sp"
             on_press:root.buscar()
-
         SmoothButton:
             text: "Graficar"
             font_size:"17sp"
             on_press:root.graficar()
+        SmoothButton:
+            text: "Ayuda"
+            font_size:"17sp"  
+            on_press:root.ayuda()
         SmoothButton:
             text: "Volver"
             font_size:"17sp"
@@ -903,17 +916,26 @@ WindowManager:
 <Ventana_emergente>
     contenido:contenido
     boton:boton
-    Label: 
-        id: contenido
-        size_hint: 0.6, 0.7
-        pos_hint: {"x":0.2,"top":1}
-        bold: True
+    ScrollView:
+        size_hint: 0.9, 0.7
+        pos_hint: {"x":0.1,"top":1}
+        Label:
+            size_hint_y: None
+            id: contenido
+            height: self.texture_size[1]
+            text_size: (self.width-20), None
+            line_height: 1.5
+            valign: "top"
 
     Button:
-        id: boton
-        text: "Aceptar"
-        size_hint:0.8,0.2
+        id:boton
+        text:"Aceptar"
+        size_hint:0.8,None
         pos_hint:{"x":0.1,"y":0.1}
+        height: "40dp"
+        height: "40dp"
+            
+
 
 <SmoothButton@Button>
     background_color: 0,0,0,0

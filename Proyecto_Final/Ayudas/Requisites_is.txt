@@ -1,0 +1,5 @@
+Prerequisites for incremental search:
+First of all we have to make sure that the function is continuous and also we have to take a look at the graph of the equation, because intuitively we would see if the function is continuous and between which numbers the function cuts the x axis.
+So, it needs three parameters: An arbitrary initial number, a delta (which is the distance that the initial number is going to increment) and a quantity of iterations that indicates failure.
+The idea of this method is finding a number in the function that evaluated (multiplied) with the initial value in the function generates a negative number, because that means that there is a root in the function that intercepts in the X axis (where f(x)=0).
+And when that change is found, it returns an interval from the previous number calculated in the iteration to the number where the evaluation became a negative number and a root exists.

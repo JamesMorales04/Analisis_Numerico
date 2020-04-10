@@ -22,7 +22,7 @@ class Busqueda_incremental:
                         self.valores.append([valor_nuevo,Funciones.evaluar(valor_nuevo)]) 
                         valor_evaluado_nuevo=Funciones.evaluar(valor_nuevo)
                         
-                        if(self.valores[contador][1]*valor_evaluado_nuevo<=0):
+                        if((self.valores[contador][1]*valor_evaluado_nuevo)<=0):
                             break
                         
                         valor_nuevo+=incremento
