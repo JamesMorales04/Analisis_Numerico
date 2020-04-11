@@ -5,14 +5,14 @@ class PuntoFijo:
         self.valores=[]
         self.raiz=""
 
-    def algorimo_puntoFijo(self, xi, Funcion, GFuncion, iteraciones, tolerancia, tipo_de_error):
+    def algoritmo_puntoFijo(self, xi, Funcion, GFuncion, iteraciones, tolerancia, tipo_de_error):
         print(tipo_de_error)
         if (Funcion.evaluar(xi) == 0):
             self.raiz=f"{xi} es una raiz"
         elif (iteraciones <= 0):
             self.raiz="Numero de iteraciones innalidas"
         elif (tolerancia < 0):
-            self.raiz="Tolerancia innalida"
+            self.raiz="Tolerancia invalida"
         else:
             xi_1 = xi
             contador = 1

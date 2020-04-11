@@ -5,7 +5,7 @@ class Biseccion:
         self.valores=[]
         self.raiz=""
 
-    def algorimo_biseccion(self,xi,xu,Funcion,tolerancia,iteraciones,tipo_de_error):
+    def algoritmo_biseccion(self,xi,xu,Funcion,tolerancia,iteraciones,tipo_de_error):
         print(tipo_de_error)
         if((Funcion.evaluar(xi))*(Funcion.evaluar(xu))>0 or tolerancia<0):
             self.raiz="Valores ingresados invalidos"

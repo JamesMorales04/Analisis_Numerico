@@ -17,6 +17,7 @@ from Ecuaciones_no_lineales.Busqueda_incremental import Busqueda_incremental
 from Ecuaciones_no_lineales.Biseccion import Biseccion
 from Ecuaciones_no_lineales.PuntoFijo import PuntoFijo
 from Ecuaciones_no_lineales.Regla_falsa import Regla_falsa
+from Ecuaciones_no_lineales.Newton import Newton
 from Verificar import Verificar
 from Funciones import Funciones
 from Graficar import Graficar
@@ -170,7 +171,7 @@ class Ecuaciones_no_lineales_punto_fijo(Screen):
             tabla.dibujar(puntoFijo.tabla_valores(),columnas)
 
         else:
-            show_popup("Error Biseccion",error)
+            show_popup("Error punto fijo",error)
 
     def graficar(self):
         grafica=Graficar()
@@ -190,6 +191,27 @@ class Ecuaciones_no_lineales_punto_fijo(Screen):
 class Ecuaciones_no_lineales_secantes(Screen):
     pass
 class Ecuaciones_no_lineales_newton(Screen):
+    xi=ObjectProperty(None)
+    iteraciones=ObjectProperty(None)
+    tolerancia=ObjectProperty(None)
+    raiz=ObjectProperty(None)
+    funciones=ObjectProperty(None)
+    gfunciones=ObjectProperty(None)
+    def buscar(self):
+        Newton = Newton()
+        tabla=Tabla()
+        verificar=Verificar()
+        error=verificar.verificar_newton(self.funciones.text,self.gfunciones.text, self.xi.text,self.iteraciones.text,self.tolerancia.text)
+        if(error==""):
+            Funcion=Funciones(self.funciones.text)
+            GFuncion=Funciones(self.gfunciones.text)
+            puntoFijo.algorimo_puntoFijo(float(self.xi.text),Funcion,GFuncion,float(self.iteraciones.text),float(self.tolerancia.text),self.tipo_error)
+            self.raiz.text=puntoFijo.get_raiz()
+            columnas=['Iteracion','Xi','F(xm)','Error']
+            tabla.dibujar(puntoFijo.tabla_valores(),columnas)
+
+        else:
+            show_popup("Error punto fijo",error)
     pass
 class Ecuaciones_no_lineales_raices_multiples(Screen):
     pass
