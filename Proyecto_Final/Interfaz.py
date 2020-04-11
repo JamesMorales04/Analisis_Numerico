@@ -1,3 +1,7 @@
+from kivy import Config
+Config.set('graphics','multisamples','0')
+import os
+os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
 import kivy
 import math
 from kivy.app import App
