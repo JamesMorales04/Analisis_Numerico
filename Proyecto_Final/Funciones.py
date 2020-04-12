@@ -12,14 +12,21 @@ class Funciones:
             return valores
         else:
             return True
-    def derivar(self,entrada):
+
+    def evaluar_derivada(self,valor):
+        valores=self.derivada.evalf(subs=dict(x=valor))
+        aux=float(valores)
+        if(isinstance(aux, float)):
+            return valores
+        else:
+            return True
+
+    def derivar(self):
     	x = sp.Symbol('x')
-    	derivada = sp.diff(self.funcion,x)
-    	return derivada
-    def parse(self,entrada):
-    	function=parse_expr(entrada)
-    	return function	
+    	self.derivada = sp.diff(self.funcion,x)
 
 
-
+cosa= Funciones("x**2")
+cosa.derivar()
+cosa.evaluar(2)
 
