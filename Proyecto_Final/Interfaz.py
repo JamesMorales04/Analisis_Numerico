@@ -31,7 +31,7 @@ class WindowManager(ScreenManager):
 class Ayudasw(Screen):
     ayuda=ObjectProperty(None)
     ayudaf=ObjectProperty(None)
-class Menu_Inicial(Screen):
+class Menu_Initial(Screen):
     pass
 class Ecuaciones_no_lineales(Screen):
     pass
@@ -42,22 +42,22 @@ class Interpolacion(Screen):
 class Diferenciacion_numerica(Screen):
     pass
 class Ecuaciones_no_lineales_busqueda(Screen):
-    posicion_inicial=ObjectProperty(None)
-    incremento=ObjectProperty(None)
-    iteraciones=ObjectProperty(None)
-    posicion_inicial=ObjectProperty(None)
-    raiz=ObjectProperty(None)
+    initial_position=ObjectProperty(None)
+    increment=ObjectProperty(None)
+    iterations=ObjectProperty(None)
+    initial_position=ObjectProperty(None)
+    sol=ObjectProperty(None)
     funciones=ObjectProperty(None)
 
     def buscar(self):
         busqueda=Busqueda_incremental()
         tabla=Tabla()
         verificar=Verificar()
-        error=verificar.verificar_busqueda(self.funciones.text,self.posicion_inicial.text,self.incremento.text,self.iteraciones.text)
+        error=verificar.verificar_busqueda(self.funciones.text,self.initial_position.text,self.increment.text,self.iterations.text)
         if(error==""):
             Funcion=Funciones(self.funciones.text)
-            busqueda.Operacion(float(self.posicion_inicial.text),float(self.incremento.text),float(self.iteraciones.text),Funcion)
-            self.raiz.text=busqueda.get_raiz()
+            busqueda.Operacion(float(self.initial_position.text),float(self.increment.text),float(self.iterations.text),Funcion)
+            self.sol.text=busqueda.get_sol()
             columnas=['Posicion','Valor']
             tabla.dibujar(busqueda.tabla_valores(),columnas)
         else:
@@ -66,9 +66,9 @@ class Ecuaciones_no_lineales_busqueda(Screen):
     def graficar(self):
         grafica=Graficar()
         verificar=Verificar()
-        error=verificar.verificar_busqueda(self.funciones.text,self.posicion_inicial.text,self.incremento.text,self.iteraciones.text)
+        error=verificar.verificar_busqueda(self.funciones.text,self.initial_position.text,self.increment.text,self.iterations.text)
         if(error==""):
-            grafica.dibujar_funciones(self.funciones.text,float(self.posicion_inicial.text),math.fabs(float(self.posicion_inicial.text))+(float(self.incremento.text)*float(self.iteraciones.text)),float(self.incremento.text))
+            grafica.dibujar_funciones(self.funciones.text,float(self.initial_position.text),math.fabs(float(self.initial_position.text))+(float(self.increment.text)*float(self.iterations.text)),float(self.increment.text))
         else:
             show_popup("Error Graficar Busqueda Incremental",error)
     
@@ -79,20 +79,20 @@ class Ecuaciones_no_lineales_busqueda(Screen):
 class Ecuaciones_no_lineales_biseccion(Screen):
     xi=ObjectProperty(None)
     xs=ObjectProperty(None)
-    iteraciones=ObjectProperty(None)
-    tolerancia=ObjectProperty(None)
-    raiz=ObjectProperty(None)
+    iterations=ObjectProperty(None)
+    tolerance=ObjectProperty(None)
+    sol=ObjectProperty(None)
     funciones=ObjectProperty(None)
 
     def buscar(self):
         biseccion=Biseccion()
         tabla=Tabla()
         verificar=Verificar()
-        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iteraciones.text,self.tolerancia.text)
+        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iterations.text,self.tolerance.text)
         if(error==""):
             Funcion=Funciones(self.funciones.text)
-            biseccion.algorimo_biseccion(float(self.xi.text),float(self.xs.text),Funcion,float(self.tolerancia.text),float(self.iteraciones.text),self.tipo_error)
-            self.raiz.text=biseccion.get_raiz()
+            biseccion.algoritmo_biseccion(float(self.xi.text),float(self.xs.text),Funcion,float(self.tolerance.text),float(self.iterations.text),self.tipo_error)
+            self.sol.text=biseccion.get_sol()
             columnas=['Iteracion','Xi','Xu','Xm','F(xm)','Error']
             tabla.dibujar(biseccion.tabla_valores(),columnas)
         else:
@@ -101,9 +101,9 @@ class Ecuaciones_no_lineales_biseccion(Screen):
     def graficar(self):
         grafica=Graficar()
         verificar=Verificar()
-        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iteraciones.text,self.tolerancia.text)
+        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iterations.text,self.tolerance.text)
         if(error==""):
-            grafica.dibujar_funciones(self.funciones.text,float(self.xi.text),float(self.xs.text),float(self.tolerancia.text))
+            grafica.dibujar_funciones(self.funciones.text,float(self.xi.text),float(self.xs.text),float(self.tolerance.text))
         else:
             show_popup("Error Graficar Biseccion",error)
     
@@ -116,20 +116,20 @@ class Ecuaciones_no_lineales_biseccion(Screen):
 class Ecuaciones_no_lineales_regla_falsa(Screen):
     xi=ObjectProperty(None)
     xs=ObjectProperty(None)
-    iteraciones=ObjectProperty(None)
-    tolerancia=ObjectProperty(None)
-    raiz=ObjectProperty(None)
+    iterations=ObjectProperty(None)
+    tolerance=ObjectProperty(None)
+    sol=ObjectProperty(None)
     funciones=ObjectProperty(None)
 
     def buscar(self):
         regla_falsa=Regla_falsa()
         tabla=Tabla()
         verificar=Verificar()
-        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iteraciones.text,self.tolerancia.text)
+        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iterations.text,self.tolerance.text)
         if(error==""):
             Funcion=Funciones(self.funciones.text)
-            regla_falsa.algorimo_regla_falsa(float(self.xi.text),float(self.xs.text),Funcion,float(self.tolerancia.text),float(self.iteraciones.text),self.tipo_error)
-            self.raiz.text=regla_falsa.get_raiz()
+            regla_falsa.algoritmo_regla_falsa(float(self.xi.text),float(self.xs.text),Funcion,float(self.tolerance.text),float(self.iterations.text),self.tipo_error)
+            self.sol.text=regla_falsa.get_sol()
             columnas=['Iteracion','Xi','Xu','Xm','F(xm)','Error']
             tabla.dibujar(regla_falsa.tabla_valores(),columnas)
         else:
@@ -138,9 +138,9 @@ class Ecuaciones_no_lineales_regla_falsa(Screen):
     def graficar(self):
         grafica=Graficar()
         verificar=Verificar()
-        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iteraciones.text,self.tolerancia.text)
+        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iterations.text,self.tolerance.text)
         if(error==""):
-            grafica.dibujar_funciones(self.funciones.text,float(self.xi.text),float(self.xs.text),float(self.tolerancia.text))
+            grafica.dibujar_funciones(self.funciones.text,float(self.xi.text),float(self.xs.text),float(self.tolerance.text))
         else:
             show_popup("Error Graficar Regla Falsa",error)
 
@@ -152,21 +152,21 @@ class Ecuaciones_no_lineales_regla_falsa(Screen):
         self.tipo_error=tipo
 class Ecuaciones_no_lineales_punto_fijo(Screen):
     xi=ObjectProperty(None)
-    iteraciones=ObjectProperty(None)
-    tolerancia=ObjectProperty(None)
-    raiz=ObjectProperty(None)
+    iterations=ObjectProperty(None)
+    tolerance=ObjectProperty(None)
+    sol=ObjectProperty(None)
     funciones=ObjectProperty(None)
     gfunciones=ObjectProperty(None)
     def buscar(self):
         puntoFijo = PuntoFijo()
         tabla=Tabla()
         verificar=Verificar()
-        error=verificar.verificar_punto_fijo(self.funciones.text,self.gfunciones.text, self.xi.text,self.iteraciones.text,self.tolerancia.text)
+        error=verificar.verificar_punto_fijo(self.funciones.text,self.gfunciones.text, self.xi.text,self.iterations.text,self.tolerance.text)
         if(error==""):
             Funcion=Funciones(self.funciones.text)
             GFuncion=Funciones(self.gfunciones.text)
-            puntoFijo.algorimo_puntoFijo(float(self.xi.text),Funcion,GFuncion,float(self.iteraciones.text),float(self.tolerancia.text),self.tipo_error)
-            self.raiz.text=puntoFijo.get_raiz()
+            puntoFijo.algoritmo_puntoFijo(float(self.xi.text),Funcion,GFuncion,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
+            self.sol.text=puntoFijo.get_sol()
             columnas=['Iteracion','Xi','F(xm)','Error']
             tabla.dibujar(puntoFijo.tabla_valores(),columnas)
 
@@ -176,7 +176,7 @@ class Ecuaciones_no_lineales_punto_fijo(Screen):
     def graficar(self):
         grafica=Graficar()
         verificar=Verificar()
-        error=verificar.verificar_punto_fijo(self.funciones.text,self.gfunciones.text, self.xi.text,self.iteraciones.text,self.tolerancia.text)
+        error=verificar.verificar_punto_fijo(self.funciones.text,self.gfunciones.text, self.xi.text,self.iterations.text,self.tolerance.text)
         if(error==""):
             grafica.dibujar_funciones(self.funciones.text, self.gfunciones.text)
         else:
@@ -192,27 +192,45 @@ class Ecuaciones_no_lineales_secantes(Screen):
     pass
 class Ecuaciones_no_lineales_newton(Screen):
     xi=ObjectProperty(None)
-    iteraciones=ObjectProperty(None)
-    tolerancia=ObjectProperty(None)
-    raiz=ObjectProperty(None)
+    iterations=ObjectProperty(None)
+    tolerance=ObjectProperty(None)
+    sol=ObjectProperty(None)
     funciones=ObjectProperty(None)
-    gfunciones=ObjectProperty(None)
     def buscar(self):
-        Newton = Newton()
+        newton = Newton()
         tabla=Tabla()
         verificar=Verificar()
-        error=verificar.verificar_newton(self.funciones.text,self.gfunciones.text, self.xi.text,self.iteraciones.text,self.tolerancia.text)
+        print("aquì debe llegar y luego muere?")
+        error=verificar.verificar_newton(self.funciones.text, self.xi.text,self.iterations.text,self.tolerance.text)
+        print("que pvtas es error"+str(error))
+        error=""
         if(error==""):
+            print("aqui no entra.")
             Funcion=Funciones(self.funciones.text)
-            GFuncion=Funciones(self.gfunciones.text)
-            puntoFijo.algorimo_puntoFijo(float(self.xi.text),Funcion,GFuncion,float(self.iteraciones.text),float(self.tolerancia.text),self.tipo_error)
-            self.raiz.text=puntoFijo.get_raiz()
+            newton.algoritmo_newton(float(self.xi.text),Funcion,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
+            self.sol.text=newton.get_sol()
             columnas=['Iteracion','Xi','F(xm)','Error']
-            tabla.dibujar(puntoFijo.tabla_valores(),columnas)
+            tabla.dibujar(newton.tabla_valores(),columnas)
 
         else:
-            show_popup("Error punto fijo",error)
-    pass
+            show_popup("Error newton",error)
+
+    def graficar(self):
+        grafica=Graficar()
+        verificar=Verificar()
+        error=verificar.verificar_newton(self.funciones.text, self.xi.text,self.iterations.text,self.tolerance.text)
+        if(error==""):
+            grafica.dibujar_funciones(self.funciones.text)
+        else:
+            show_popup("Error Graficar newton",error)
+
+    def ayuda(self):
+        ayudar=Ayudas()
+        show_popup("help newton",ayudar.ayudas_newton())
+
+    def tipo_de_error(self,tipo):
+        self.tipo_error=tipo
+
 class Ecuaciones_no_lineales_raices_multiples(Screen):
     pass
 class Sistemas_de_ecuaciones_eliminacion_gaussiana(Screen):
