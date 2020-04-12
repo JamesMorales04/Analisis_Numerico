@@ -4,6 +4,7 @@ from sympy.parsing.sympy_parser import parse_expr
 class Funciones:
     def __init__(self,entrada):
         self.funcion=parse_expr(entrada)
+
     def evaluar(self,valor):
         valores=self.funcion.evalf(subs=dict(x=valor))
         aux=float(valores)
@@ -13,8 +14,11 @@ class Funciones:
             return True
     def derivar(self,entrada):
     	x = sp.Symbol('x')
-    	entrada = entrada.diff(x)
-    	return entrada
+    	derivada = sp.diff(self.funcion,x)
+    	return derivada
+    def parse(self,entrada):
+    	function=parse_expr(entrada)
+    	return function	
 
 
 

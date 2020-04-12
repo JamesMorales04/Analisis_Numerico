@@ -10,8 +10,10 @@ class Newton:
         xi_1 = xi
         contador = 1
         error = tolerancia+1
-        GFuncion= Funciones.derivar(self,Funcion)
+        GFuncion = Funcion.derivar(Funcion)
+        print("derivada es "+GFuncion)
         fx=Funcion.evaluar(xi)
+        GFuncion= Funcion #Aqui deberia hacer el parse 
         dfx=GFuncion.evaluar(xi)
         self.valores.append([contador, xi, fx,dfx, error])
         while ((error > tolerancia) and (fx != 0) and (dfx!=0) and (contador < iteraciones)):

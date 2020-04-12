@@ -10,7 +10,7 @@ class PuntoFijo:
         if (Funcion.evaluar(xi) == 0):
             self.raiz=f"{xi} es una raiz"
         elif (iteraciones <= 0):
-            self.raiz="Numero de iteraciones innalidas"
+            self.raiz="Numero de iteraciones invalidas"
         elif (tolerancia < 0):
             self.raiz="Tolerancia invalida"
         else:
