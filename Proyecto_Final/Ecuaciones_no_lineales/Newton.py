@@ -39,10 +39,5 @@ class Newton:
 
     def tabla_valores(self):
         return self.valores
-<<<<<<< HEAD
     def get_sol(self):
         return str(self.raiz)
-=======
-    def get_raiz(self):
-        return str(self.raiz)
->>>>>>> 3ed10765609651989e49ce9cbff6678e5aa0eb49
