@@ -19,7 +19,7 @@ class Newton:
             fx=Funcion.evaluar(xi_1)
             dfx=GFuncion.evaluar(xi_1)
             if(tipo_de_error):
-                error = math.fabs((xi - xi_1)/ xi)zr
+                error = math.fabs((xi - xi_1)/ xi)
             else:
                 error = math.fabs(xi - xi_1)
             xi = xi_1
