@@ -1,16 +1,16 @@
-from Funciones import Funciones
+from Funciones import *
 import math
-
 class Newton:
     def __init__(self):
         self.valores=[]
         self.raiz=""
+
     def algoritmo_newton(self, xi, Funcion,iteraciones, tolerancia, tipo_de_error):
         print(tipo_de_error)
         xi_1 = xi
         contador = 1
         error = tolerancia+1
-        GFuncion= derivar(Funcion)
+        GFuncion= Funciones.derivar(self,Funcion)
         fx=Funcion.evaluar(xi)
         dfx=GFuncion.evaluar(xi)
         self.valores.append([contador, xi, fx,dfx, error])
@@ -19,7 +19,7 @@ class Newton:
             fx=Funcion.evaluar(xi_1)
             dfx=GFuncion.evaluar(xi_1)
             if(tipo_de_error):
-                error = math.fabs((xi - xi_1)/ xi)zr
+                error = math.fabs((xi - xi_1)/ xi)
             else:
                 error = math.fabs(xi - xi_1)
             xi = xi_1
@@ -39,5 +39,5 @@ class Newton:
 
     def tabla_valores(self):
         return self.valores
-    def get_raiz(self):
+    def get_sol(self):
         return str(self.raiz)

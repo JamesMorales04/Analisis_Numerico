@@ -20,11 +20,11 @@ class Verificar:
         try:
             print(float(incremento),float(iteraciones),float(valor_inicial))
             if(self.verificar_funcion(funcion,float(valor_inicial))):
-                error+="La funcion es invalida,\nPotencia: (x**n)\nRaiz: sqrt(n)\nExponencia: exp(n)\nPi: pi()\nIdentidades: sin(n),cos(n),tan(n),sec(n)\nLogaritmo natural: log(n)"
+                error+=self.invalidFunction()
             if(float(incremento)==0):
                 error+="\nEl incremento ingresado es invalido "
             if(float(iteraciones)<=1):
-                error+="\nLas iteraciones ingresadas son invalidas "
+                error+=self.invalidIterations()
         except:
             error="Uno de los campos esta vacio"
         return error
@@ -33,15 +33,15 @@ class Verificar:
         error=""
         try:
             if(self.verificar_funcion(funcion,float(valor_inicial))):
-                error+="La funcion es invalida,\nPotencia: (x**n)\nRaiz: sqrt(n)\nExponencia: exp(n)\nPi: pi()\nIdentidades: sin(n),cos(n),tan(n),sec(n)\nLogaritmo natural: log(n)"
+                error+=self.invalidFunction()
             else:
                 raiz=Funciones(funcion)
                 if((raiz.evaluar(float(valor_inicial))*raiz.evaluar(float(valor_final)))>0):
                     error+="\nEl intervalo no contiene raiz"
             if(float(tolerancia)<=0):
-                error+="\nLa tolerancia es invalida "
+                error+=self.invalidTolerance()
             if(float(iteraciones)<=1):
-                error+="\nLas iteraciones ingresadas son invalidas "
+                error+=self.invalidIterations()
         except:
             error="Uno de los campos esta vacio"
         return error
@@ -50,11 +50,35 @@ class Verificar:
         error=""
         try:
             if(self.verificar_funcion(funcion,float(valor_inicial)) and self.verificar_funcion(gfuncion,float(valor_inicial))):
-                error+="La funcion es invalida,\nPotencia: (x**n)\nRaiz: sqrt(n)\nExponencia: exp(n)\nPi: pi()\nIdentidades: sin(n),cos(n),tan(n),sec(n)\nLogaritmo natural: log(n)"
+                error+=self.invalidFunction()
             if(float(tolerancia)<=0):
-                error+="\nLa tolerancia es invalida "
+                error+=self.invalidTolerance()
             if(float(iteraciones)<=1):
-                error+="\nLas iteraciones ingresadas son invalidas "
+                error+=self.invalidIterations()
         except:
+            print("entra al except???? de pj")
             error="Uno de los campos esta vacio"
         return error
+
+    def verificar_newton(self,function,xi,iterations,tolerance):
+        error=""
+        try:
+            if(self.verificar_funcion(function,float(xi))):
+                print("function "+function)
+                print("olakase")
+                error+=self.invalidFunction()
+            if(float(tolerancia)<=0):
+                error+=self.invalidTolerance()
+            if(float(iteraciones)<=1):
+                error+=self.invalidIterations()
+        except:
+            print("entra al except???? de newton")
+            error="Uno de los campos esta vacio"
+        return error
+
+    def invalidFunction(self):
+        return "The function is invalid, \nSquare: (x**n)\nRoot: sqrt(n)\neuler: exp(n)\nPi: pi()\nIdentities: sin(n),cos(n),tan(n),sec(n)\nnatural logarithm: log(n)"                
+    def invalidTolerance(self):
+        return "\nThe tolerance is invalid"
+    def invalidIterations(self):
+        return "\nThe iterations are not valid"

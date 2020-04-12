@@ -2,7 +2,7 @@
 #:import Clipboard kivy.core.clipboard.Clipboard
 
 WindowManager:
-    Menu_Inicial:
+    Menu_Initial:
     Ecuaciones_no_lineales:
     Sistemas_de_ecuaciones:
     Interpolacion:
@@ -27,8 +27,8 @@ WindowManager:
 #:set color_background "#248091"
 #:set color_button "#8ac6d1"
 
-<Menu_Inicial>
-    name: "Menu_Inicial"
+<Menu_Initial>
+    name: "Menu_Initial"
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -41,33 +41,33 @@ WindowManager:
                 pos: self.pos
                 size: self.size
         Label:
-            text: "Capitulos"
+            text: "Chapters"
             bold: True
             font_size:"30sp"
             color: 1,1,1,1
 
         SmoothButton:
-            text: "Ecuaciones no lineales"
+            text: "Non-linear equations"
             font_size:"17sp"
             on_press:
                 app.root.current="Ecuaciones_no_lineales"
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Sistemas de ecuaciones"
+            text: "Equations systems"
             font_size:"17sp"
             on_press:
                 app.root.current="Sistemas_de_ecuaciones"
                 root.manager.transition.direction="left"
 
         SmoothButton:
-            text: "Interpolacion"
+            text: "Interpolation"
             font_size:"17sp"  
             on_press:
                 app.root.current="Interpolacion"
                 root.manager.transition.direction="left"     
 
         SmoothButton:
-            text: "Diferenciacion e Integracion Numerica"
+            text: "Differentiation and Numeric integration"
             font_size:"17sp"  
             on_press:
                 app.root.current="Diferenciacion_numerica"
@@ -88,34 +88,34 @@ WindowManager:
                 pos: self.pos
                 size: self.size
         Label:
-            text: "Metodos"
+            text: "Methods"
             font_size:"30sp"
             color: 1,1,1,1
             bold: True 
 
 
         SmoothButton:
-            text: "Busqueda Incremental"
+            text: "Incremental search"
             font_size:"17sp"   
             on_press:
                 app.root.current="Ecuaciones_no_lineales_busqueda"     
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Biseccion"
+            text: "Bisection"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales_biseccion"     
                 root.manager.transition.direction="left"
 
         SmoothButton:
-            text: "Regla Falsa"
+            text: "Reguli false"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales_regla_falsa"  
                 root.manager.transition.direction="left"   
 
         SmoothButton:
-            text: "Punto Fijo"
+            text: "Fixed point"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales_punto_fijo"
@@ -127,22 +127,22 @@ WindowManager:
                 app.root.current="Ecuaciones_no_lineales_newton"
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Secantes"
+            text: "Secants"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales_secantes"
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Raices Multiples"
+            text: "Multiple root"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales_raices_multiples"
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -160,46 +160,46 @@ WindowManager:
                 pos: self.pos
                 size: self.size
         Label:
-            text: "Metodos"
+            text: "Methods"
             font_size:"30sp"
             color: 1,1,1,1 
             bold: True
         SmoothButton:
-            text: "Eliminacion Gussiana Simple"
+            text: "Simple gusianna's elimination"
             font_size:"17sp"   
             on_press:
                 app.root.current="Sistemas_de_ecuaciones_eliminacion_gaussiana"     
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Pivoteo"
+            text: "Pivot"
             font_size:"17sp"  
             on_press:
                 app.root.current="Sistemas_de_ecuaciones_pivoteo"     
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Factorizacion Lu"
+            text: "Lu's factorization"
             font_size:"17sp"  
             on_press:
                 app.root.current="Sistemas_de_ecuaciones_Factorizacion_lu"     
                 root.manager.transition.direction="left"
 
         SmoothButton:
-            text: "Factorizacion directa de matrices"
+            text: "Direct matrix factorization"
             font_size:"17sp"  
             on_press:
                 app.root.current="Sistemas_de_ecuaciones_Factorizacion_matrices"
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Metodos iterativos"
+            text: "Iterative methods"
             font_size:"17sp"  
             on_press:
                 app.root.current="Sistemas_de_ecuaciones_iterativos"
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -217,7 +217,7 @@ WindowManager:
                 pos: self.pos
                 size: self.size
         Label:
-            text: "Metodos"
+            text: "Methods"
             font_size:"30sp"
             color: 1,1,1,1 
             bold: True
@@ -240,10 +240,10 @@ WindowManager:
                 app.root.current="Interpolacion_splines"     
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -261,21 +261,21 @@ WindowManager:
                 pos: self.pos
                 size: self.size
         Label:
-            text: "Metodos"
+            text: "Methods"
             font_size:"30sp"
             color: 1,1,1,1 
             bold: True
         SmoothButton:
-            text: "Diferenciacion_numerica"
+            text: "Numeric differentiation"
             font_size:"17sp"   
             on_press:
                 app.root.current="Diferenciacion_numerica_diferenciacion"     
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -283,10 +283,10 @@ WindowManager:
 <Ecuaciones_no_lineales_busqueda>
     name:"Ecuaciones_no_lineales_busqueda"
     funciones:funciones
-    posicion_inicial:posicion_inicial
-    incremento:incremento
-    iteraciones:iteraciones
-    raiz:raiz
+    initial_position:initial_position
+    increment:increment
+    iterations:iterations
+    sol:sol
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -303,7 +303,7 @@ WindowManager:
             row_default_height:30
             row_force_default:True
             Label:
-                text: "Funcion f(x)"
+                text: "Function f(x)"
                 font_size:"25sp"
                 color: 1,1,1,1 
                 bold: True
@@ -317,43 +317,43 @@ WindowManager:
             row_default_height:30
             row_force_default:True
             Label:
-                text: "Posicion Inicial"
+                text: "Initial position"
                 font_size:"15sp"
                 color: 1,1,1,1 
                 bold: True
             TextInput:
-                id:posicion_inicial
+                id:initial_position
                 multiline:False
             Label:
-                text: "Incremento"
+                text: "increment"
                 font_size:"15sp"
                 color: 1,1,1,1 
                 bold: True
             TextInput:
-                id:incremento
+                id:increment
                 multiline:False
             Label:
-                text: "Iteraciones"
+                text: "iterations"
                 font_size:"15sp"
                 color: 1,1,1,1 
                 bold: True
             TextInput:
-                id:iteraciones
+                id:iterations
                 multiline:False
         GridLayout:
             cols: 2
             row_default_height:30
             row_force_default:True
             Label:
-                text: "Raiz"
+                text: "sol"
                 font_size:"20sp"
                 color: 1,1,1,1 
                 bold: True
             TextInput:
-                id:raiz
+                id:sol
                 multiline:False
         SmoothButton:
-            text: "Buscar"
+            text: "Find"
             font_size:"17sp"  
             on_press:root.buscar()
             
@@ -362,11 +362,11 @@ WindowManager:
             font_size:"17sp"  
             on_press:root.graficar()
         SmoothButton:
-            text: "Ayuda"
+            text: "help"
             font_size:"17sp"  
-            on_press:root.ayuda()
+            on_press:root.help()
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
                 root.manager.funcion_global=root.funciones.text
@@ -378,9 +378,9 @@ WindowManager:
     funciones:funciones
     xi:xi
     xs:xs
-    iteraciones:iteraciones
-    tolerancia:tolerancia
-    raiz:raiz
+    iterations:iterations
+    tolerance:tolerance
+    sol:sol
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -428,20 +428,20 @@ WindowManager:
                 id:xs
                 multiline:False
             Label:
-                text: "Iteraciones"
+                text: "iterations"
                 font_size:"15sp"
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:iteraciones
+                id:iterations
                 multiline:False
             Label:
-                text: "Tolerancia"
+                text: "tolerance"
                 font_size:"15sp"
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:tolerancia
+                id:tolerance
                 multiline:False
         GridLayout:
             spacing: '10dp'
@@ -450,14 +450,14 @@ WindowManager:
             row_force_default:True
             Label:
                 size_hint_x:0.4
-                text: "Raiz"
+                text: "sol"
                 width:10
                 font_size:"20sp"
                 color: 1,1,1,1
                 bold: True
             TextInput:
                 size_hint_x:1
-                id:raiz
+                id:sol
                 multiline:False
             Label:
                 size_hint_x:0.2
@@ -496,11 +496,11 @@ WindowManager:
             font_size:"17sp"  
             on_press:root.graficar()
         SmoothButton:
-            text: "Ayuda"
+            text: "help"
             font_size:"17sp"  
-            on_press:root.ayuda()
+            on_press:root.help()
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
                 root.manager.funcion_global=root.funciones.text
@@ -512,9 +512,9 @@ WindowManager:
     funciones:funciones
     xi:xi
     xs:xs
-    iteraciones:iteraciones
-    tolerancia:tolerancia
-    raiz:raiz
+    iterations:iterations
+    tolerance:tolerance
+    sol:sol
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -562,20 +562,20 @@ WindowManager:
                 id:xs
                 multiline:False
             Label:
-                text: "Iteraciones"
+                text: "iterations"
                 font_size:"15sp"
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:iteraciones
+                id:iterations
                 multiline:False
             Label:
-                text: "Tolerancia"
+                text: "tolerance"
                 font_size:"15sp"
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:tolerancia
+                id:tolerance
                 multiline:False
         GridLayout:
             spacing: '10dp'
@@ -584,14 +584,14 @@ WindowManager:
             row_force_default:True
             Label:
                 size_hint_x:0.4
-                text: "Raiz"
+                text: "sol"
                 width:10
                 font_size:"20sp"
                 color: 1,1,1,1
                 bold: True
             TextInput:
                 size_hint_x:1
-                id:raiz
+                id:sol
                 multiline:False
             Label:
                 size_hint_x:0.2
@@ -630,11 +630,11 @@ WindowManager:
             font_size:"17sp"  
             on_press:root.graficar()
         SmoothButton:
-            text: "Ayuda"
+            text: "help"
             font_size:"17sp"  
-            on_press:root.ayuda()
+            on_press:root.help()
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
                 root.manager.funcion_global=root.funciones.text
@@ -647,9 +647,9 @@ WindowManager:
     funciones:funciones
     gfunciones:gfunciones
     xi:xi
-    iteraciones:iteraciones
-    tolerancia:tolerancia
-    raiz:raiz
+    iterations:iterations
+    tolerance:tolerance
+    sol:sol
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -666,7 +666,7 @@ WindowManager:
             row_default_height:30
             row_force_default:True
             Label:
-                text: "Funcion f(x)"
+                text: "Function f(x)"
                 font_size:"25sp"
                 color: 1,1,1,1
                 bold: True
@@ -679,7 +679,7 @@ WindowManager:
             row_default_height:30
             row_force_default:True
             Label:
-                text: "Funcion g(x)"
+                text: "Function g(x)"
                 font_size:"25sp"
                 color: 1,1,1,1
                 bold: True
@@ -702,20 +702,20 @@ WindowManager:
                 id:xi
                 multiline:False
             Label:
-                text: "Iteraciones"
+                text: "iterations"
                 font_size:"15sp"
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:iteraciones
+                id:iterations
                 multiline:False
             Label:
-                text: "Tolerancia"
+                text: "tolerance"
                 font_size:"15sp"
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:tolerancia
+                id:tolerance
                 multiline:False
         GridLayout:
             spacing: '10dp'
@@ -724,14 +724,14 @@ WindowManager:
             row_force_default:True
             Label:
                 size_hint_x:0.4
-                text: "Raiz"
+                text: "sol"
                 width:10
                 font_size:"20sp"
                 color: 1,1,1,1
                 bold: True
             TextInput:
                 size_hint_x:1
-                id:raiz
+                id:sol
                 multiline:False
             Label:
                 size_hint_x:0.2
@@ -771,11 +771,11 @@ WindowManager:
             font_size:"17sp"
             on_press:root.graficar()
         SmoothButton:
-            text: "Ayuda"
+            text: "help"
             font_size:"17sp"  
-            on_press:root.ayuda()
+            on_press:root.help()
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"
             on_press:
                 root.manager.funcion_global=root.funciones.text
@@ -783,10 +783,125 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 <Ecuaciones_no_lineales_newton>
+
     name:"Ecuaciones_no_lineales_newton"
+    funciones:funciones
+    xi:xi
+    iterations:iterations
+    tolerance:tolerance
+    sol:sol
     GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 2
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Function f(x)"
+                font_size:"25sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:funciones
+                text:root.manager.funcion_global
+                multiline:False
+
+        GridLayout:
+            cols: 6
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Xi"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:xi
+                multiline:False
+            Label:
+                text: "iterations"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:iterations
+                multiline:False
+            Label:
+                text: "tolerance"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:tolerance
+                multiline:False
+        GridLayout:
+            spacing: '10dp'
+            cols: 4
+            row_default_height:30
+            row_force_default:True
+            Label:
+                size_hint_x:0.4
+                text: "sol"
+                width:10
+                font_size:"20sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                size_hint_x:1
+                id:sol
+                multiline:False
+            Label:
+                size_hint_x:0.2
+                text: ""
+                bold: True
+            GridLayout:
+                spacing: '2dp'
+                cols: 2
+                row_default_height:30
+                row_force_default:True
+                Label:
+                    size_hint_x:0.9
+                    text: " Error Absoluto"
+                    color: 1,1,1,1
+                    bold: True
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1
+                    active:True
+                    on_active: root.tipo_de_error(True)                    
+                Label:
+                    size_hint_x:0.8
+                    text: "Error Relativo"
+                    color: 1,1,1,1
+                    bold: True
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1
+                    on_active: root.tipo_de_error(False)
         SmoothButton:
-            text: "Volver"
+            text: "Buscar"
+            border: 10,10,10,10
+            font_size:"17sp"
+            on_press:root.buscar()
+        SmoothButton:
+            text: "Graficar"
+            font_size:"17sp"
+            on_press:root.graficar()
+        SmoothButton:
+            text: "help"
+            font_size:"17sp"  
+            on_press:root.help()
+        SmoothButton:
+            text: "Back"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales"  
@@ -796,7 +911,7 @@ WindowManager:
     name:"Ecuaciones_no_lineales_secantes"
     GridLayout:
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales"  
@@ -807,7 +922,7 @@ WindowManager:
     name:"Ecuaciones_no_lineales_raices_multiples"
     GridLayout:
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
                 app.root.current="Ecuaciones_no_lineales"  
@@ -817,10 +932,10 @@ WindowManager:
     name:"Sistemas_de_ecuaciones_eliminacion_gaussiana"
     GridLayout:
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -828,10 +943,10 @@ WindowManager:
     name:"Sistemas_de_ecuaciones_pivoteo"
     GridLayout:
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -839,10 +954,10 @@ WindowManager:
     name:"Sistemas_de_ecuaciones_Factorizacion_lu"
     GridLayout:
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -850,10 +965,10 @@ WindowManager:
     name:"Sistemas_de_ecuaciones_Factorizacion_matrices"
     GridLayout:
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -861,10 +976,10 @@ WindowManager:
     name:"Sistemas_de_ecuaciones_iterativos"
     GridLayout:
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -872,10 +987,10 @@ WindowManager:
     name:"Interpolacion_newton"
     GridLayout:
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -883,10 +998,10 @@ WindowManager:
     name:"Interpolacion_lagrange"
     GridLayout:
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -894,10 +1009,10 @@ WindowManager:
     name:"Interpolacion_splines"
     GridLayout:
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
@@ -907,10 +1022,10 @@ WindowManager:
     name:"Diferenciacion_numerica_diferenciacion"
     GridLayout:
         SmoothButton:
-            text: "Volver"
+            text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Inicial"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 <Ventana_emergente>

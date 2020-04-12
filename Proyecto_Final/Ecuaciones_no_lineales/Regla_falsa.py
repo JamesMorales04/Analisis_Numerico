@@ -42,6 +42,6 @@ class Regla_falsa:
 
     def tabla_valores(self):
         return self.valores
-    def get_raiz(self):
+    def get_sol(self):
         return str(self.raiz)
 

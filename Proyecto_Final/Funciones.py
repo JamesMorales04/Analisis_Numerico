@@ -1,9 +1,8 @@
-import sympy
+import sympy as sp
 from sympy.parsing.sympy_parser import parse_expr
 
 class Funciones:
     def __init__(self,entrada):
-        #Que hace esto? o sea, que es lo que retorna
         self.funcion=parse_expr(entrada)
     def evaluar(self,valor):
         valores=self.funcion.evalf(subs=dict(x=valor))
@@ -13,8 +12,9 @@ class Funciones:
         else:
             return True
     def derivar(self,entrada):
-    	entrada.diff(x)
-
+    	x = sp.Symbol('x')
+    	entrada = entrada.diff(x)
+    	return entrada
 
 
 
