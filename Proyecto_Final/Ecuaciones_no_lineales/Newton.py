@@ -10,16 +10,14 @@ class Newton:
         xi_1 = xi
         contador = 1
         error = tolerancia+1
-        GFuncion = Funcion.derivar(Funcion)
-        print("derivada es "+GFuncion)
         fx=Funcion.evaluar(xi)
-        GFuncion= Funcion #Aqui deberia hacer el parse 
-        dfx=GFuncion.evaluar(xi)
+        dfx=Funcion.evaluar_derivada(xi)
+        #Aqui deberia hacer el parse 
         self.valores.append([contador, xi, fx,dfx, error])
         while ((error > tolerancia) and (fx != 0) and (dfx!=0) and (contador < iteraciones)):
-            xi_1 = xi_1-(Funcion.evaluar(xi)/GFuncion.evaluar(xi))
+            xi_1 = xi_1-(Funcion.evaluar(xi)/Funcion.evaluar_derivada(xi))
             fx=Funcion.evaluar(xi_1)
-            dfx=GFuncion.evaluar(xi_1)
+            dfx=Funcion.evaluar_derivada(xi)
             if(tipo_de_error):
                 error = math.fabs((xi - xi_1)/ xi)
             else:
