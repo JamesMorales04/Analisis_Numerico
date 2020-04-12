@@ -79,7 +79,6 @@ class Ecuaciones_no_lineales_busqueda(Screen):
         ayudar=Ayudas()
         print(ayudar.ayudas_busqueda())
         show_popup("Ayudas Busqueda Incremental",ayudar.ayudas_busqueda())
-        
 class Ecuaciones_no_lineales_biseccion(Screen):
     xi=ObjectProperty(None)
     xs=ObjectProperty(None)
@@ -117,7 +116,6 @@ class Ecuaciones_no_lineales_biseccion(Screen):
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
-        
 class Ecuaciones_no_lineales_regla_falsa(Screen):
     xi=ObjectProperty(None)
     xs=ObjectProperty(None)
