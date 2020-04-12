@@ -24,6 +24,3 @@ class Funciones:
     def derivar(self,entrada):
     	x = sp.Symbol('x')
     	self.derivada = sp.diff(entrada,x)
-
-
-

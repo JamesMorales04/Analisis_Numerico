@@ -24,10 +24,13 @@ from Graficar import Graficar
 from Tabla import Tabla
 from Ayudas import Ayudas
 funcion=StringProperty('')
+gfuncion=StringProperty('')
 
 class WindowManager(ScreenManager):
     global funcion
+    global gfuncion
     funcion_global=funcion
+    gfuncion_global=gfuncion
 class Ayudasw(Screen):
     ayuda=ObjectProperty(None)
     ayudaf=ObjectProperty(None)
