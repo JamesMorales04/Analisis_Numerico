@@ -24,10 +24,13 @@ from Graficar import Graficar
 from Tabla import Tabla
 from Ayudas import Ayudas
 funcion=StringProperty('')
+gfuncion=StringProperty('')
 
 class WindowManager(ScreenManager):
     global funcion
+    global gfuncion
     funcion_global=funcion
+    gfuncion_global=gfuncion
 class Ayudasw(Screen):
     ayuda=ObjectProperty(None)
     ayudaf=ObjectProperty(None)
@@ -76,6 +79,7 @@ class Ecuaciones_no_lineales_busqueda(Screen):
         ayudar=Ayudas()
         print(ayudar.ayudas_busqueda())
         show_popup("Ayudas Busqueda Incremental",ayudar.ayudas_busqueda())
+        
 class Ecuaciones_no_lineales_biseccion(Screen):
     xi=ObjectProperty(None)
     xs=ObjectProperty(None)
@@ -113,6 +117,7 @@ class Ecuaciones_no_lineales_biseccion(Screen):
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
+        
 class Ecuaciones_no_lineales_regla_falsa(Screen):
     xi=ObjectProperty(None)
     xs=ObjectProperty(None)
