@@ -2,44 +2,39 @@ from Funciones import *
 import math
 class Newton:
     def __init__(self):
-        self.valores=[]
+        self.values=[]
         self.raiz=""
 
-    def algoritmo_newton(self, xi, Funcion,iteraciones, tolerancia, tipo_de_error):
-        print(tipo_de_error)
+    def algoritmo_newton(self, xi, Funcion,iterations, tolerance, err_type):
+        print(err_type)
         xi_1 = xi
-        contador = 1
-        error = tolerancia+1
-        GFuncion = Funcion.derivar(Funcion)
-        print("derivada es "+GFuncion)
+        counter = 1
+        error = tolerance+1
         fx=Funcion.evaluar(xi)
-        GFuncion= Funcion #Aqui deberia hacer el parse 
-        dfx=GFuncion.evaluar(xi)
-        self.valores.append([contador, xi, fx,dfx, error])
-        while ((error > tolerancia) and (fx != 0) and (dfx!=0) and (contador < iteraciones)):
-            xi_1 = xi_1-(Funcion.evaluar(xi)/GFuncion.evaluar(xi))
+        dfx=Funcion.evaluar_derivada(xi)
+        self.values.append([counter, xi, fx,dfx, error])
+        while ((error > tolerance) and (fx != 0) and (dfx!=0) and (counter < iterations)):
+            xi_1 = xi_1-(Funcion.evaluar(xi)/Funcion.evaluar_derivada(xi))
             fx=Funcion.evaluar(xi_1)
-            dfx=GFuncion.evaluar(xi_1)
-            if(tipo_de_error):
+            dfx=Funcion.evaluar_derivada(xi)
+            if(err_type):
                 error = math.fabs((xi - xi_1)/ xi)
             else:
                 error = math.fabs(xi - xi_1)
             xi = xi_1
-            contador+=1
-            self.valores.append([contador, xi, fx,dfx, error])
+            counter+=1
+            self.values.append([counter, xi, fx,dfx, error])
 
         if(fx == 0):
             self.raiz=f"[{xi} is a root]"
-        elif (error<tolerancia):
+        elif (error<tolerance):
             self.raiz=f"[{xi} is an approximated root]"
         elif(dfx == 0):
             self.raiz=f"[{xi} is possibly a multiple root]"
         else:
             self.raiz=f"Exceeded iterations"
 
-
-
     def tabla_valores(self):
-        return self.valores
+        return self.values
     def get_sol(self):
         return str(self.raiz)

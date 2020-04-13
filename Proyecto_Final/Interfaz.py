@@ -24,10 +24,13 @@ from Graficar import Graficar
 from Tabla import Tabla
 from Ayudas import Ayudas
 funcion=StringProperty('')
+gfuncion=StringProperty('')
 
 class WindowManager(ScreenManager):
     global funcion
+    global gfuncion
     funcion_global=funcion
+    gfuncion_global=gfuncion
 class Ayudasw(Screen):
     ayuda=ObjectProperty(None)
     ayudaf=ObjectProperty(None)
@@ -200,16 +203,12 @@ class Ecuaciones_no_lineales_newton(Screen):
         newton = Newton()
         tabla=Tabla()
         verificar=Verificar()
-        print("aquì debe llegar y luego muere?")
         error=verificar.verificar_newton(self.funciones.text, self.xi.text,self.iterations.text,self.tolerance.text)
-        print("que pvtas es error"+str(error))
-        error=""
         if(error==""):
-            print("aqui no entra.")
             Funcion=Funciones(self.funciones.text)
             newton.algoritmo_newton(float(self.xi.text),Funcion,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
             self.sol.text=newton.get_sol()
-            columnas=['Iteracion','Xi','F(xm)','Error']
+            columnas=['Iteracion','Xi','F(xm)',"f'(x)",'Error']
             tabla.dibujar(newton.tabla_valores(),columnas)
 
         else:

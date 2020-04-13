@@ -21,9 +21,11 @@ class PuntoFijo:
             while ((error > tolerancia) and (Funcion.evaluar(xi) != 0) and (contador < iteraciones)):
                 xi = GFuncion.evaluar(xi)
                 if(tipo_de_error):
-                    error = math.fabs((xi - xi_1)/ xi)
+                    print("error absoluto")
+                    error = abs(xi - xi_1)
                 else:
-                    error = math.fabs(xi - xi_1)
+                    print("error relativo")
+                    error = abs((xi - xi_1)/ xi)
                 xi_1 = xi
                 contador+=1
                 self.valores.append([contador, xi, Funcion.evaluar(xi), error])
@@ -31,7 +33,7 @@ class PuntoFijo:
                 self.raiz=f"[{xi} es una raiz]"
             else:
                 if(error<tolerancia):
-                    self.raiz=f"[{xi} es una raiz aproximada]"
+                    self.raiz=f"{xi}"
                 else:
                     self.raiz=f"Fracaso en la iteraciones"
 
