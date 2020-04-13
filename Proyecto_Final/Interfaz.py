@@ -204,7 +204,6 @@ class Ecuaciones_no_lineales_newton(Screen):
         tabla=Tabla()
         verificar=Verificar()
         error=verificar.verificar_newton(self.funciones.text, self.xi.text,self.iterations.text,self.tolerance.text)
-        error=""
         if(error==""):
             Funcion=Funciones(self.funciones.text)
             newton.algoritmo_newton(float(self.xi.text),Funcion,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
