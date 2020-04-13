@@ -24,9 +24,3 @@ class Funciones:
     def derivar(self):
     	x = sp.Symbol('x')
     	self.derivada = sp.diff(self.funcion,x)
-
-
-cosa= Funciones("x**2")
-cosa.derivar()
-cosa.evaluar(2)
-
