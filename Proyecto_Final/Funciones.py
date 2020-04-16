@@ -8,11 +8,14 @@ class Funciones:
 
     def evaluar(self,valor):
         valores=self.funcion.evalf(subs=dict(x=valor))
-        aux=float(valores)
-        if(isinstance(aux, float)):
-            return valores
-        else:
-            return True
+        try:
+            aux=float(valores)
+            if(isinstance(aux, float)):
+                return valores
+            else:
+                return True
+        except:
+            return "Final"
     def evaluar_derivada(self,valor):
         valores=self.derivada.evalf(subs=dict(x=valor))
         aux=float(valores)

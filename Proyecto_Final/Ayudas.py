@@ -18,7 +18,6 @@ class Ayudas:
 
     def ayudas_newton(self):
         data=open("Ayudas\Requisites_newton.txt", "r")
-        pass
 
     def ayudas_secante(self):
         data=open("Ayudas\Requisites_secant.txt", "r")

@@ -20,6 +20,8 @@ class PuntoFijo:
             self.valores.append([contador, xi, Funcion.evaluar(xi), error])
             while ((error > tolerancia) and (Funcion.evaluar(xi) != 0) and (contador < iteraciones)):
                 xi = GFuncion.evaluar(xi)
+                if(xi=="Final"):
+                    break
                 if(tipo_de_error):
                     print("error absoluto")
                     error = abs(xi - xi_1)
@@ -29,6 +31,7 @@ class PuntoFijo:
                 xi_1 = xi
                 contador+=1
                 self.valores.append([contador, xi, Funcion.evaluar(xi), error])
+                
             if(Funcion.evaluar(xi) == 0):
                 self.raiz=f"[{xi} es una raiz]"
             else:
