@@ -5,7 +5,7 @@ class Tabla:
     def dibujar(self,busqueda,columnas):
         ventana =tkinter.Tk()
         tabla= tkinter.Frame(ventana)
-        ventana.wm_title("Tabla de valores")
+        ventana.wm_title("Values Table")
         df = pd.DataFrame(busqueda,columns=columnas)
         table = pt = Table(tabla, dataframe=df,showtoolbar=True, showstatusbar=True)
         tabla.pack(fill='both',expand=True)

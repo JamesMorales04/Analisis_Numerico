@@ -10,14 +10,14 @@ class PuntoFijo:
         if (Funcion.evaluar(xi) == 0):
             self.raiz=f"{xi} es una raiz"
         elif (iteraciones <= 0):
-            self.raiz="Numero de iteraciones invalidas"
+            self.raiz="Wrong Iterations"
         elif (tolerancia < 0):
-            self.raiz="Tolerancia invalida"
+            self.raiz="Wrong Tolerance"
         else:
             xi_1 = xi
             contador = 1
             error = tolerancia+1
-            self.valores.append([contador, xi, Funcion.evaluar(xi), error])
+            self.valores.append([contador, xi, '%E' %Funcion.evaluar(xi), '%E' %error])
             while ((error > tolerancia) and (Funcion.evaluar(xi) != 0) and (contador < iteraciones)):
                 xi = GFuncion.evaluar(xi)
                 if(xi=="Final"):
@@ -30,15 +30,15 @@ class PuntoFijo:
                     error = abs((xi - xi_1)/ xi)
                 xi_1 = xi
                 contador+=1
-                self.valores.append([contador, xi, Funcion.evaluar(xi), error])
+                self.valores.append([contador, xi, '%E' %Funcion.evaluar(xi), '%E' %error])
                 
             if(Funcion.evaluar(xi) == 0):
-                self.raiz=f"[{xi} es una raiz]"
+                self.raiz=f"[{xi} is a root]"
             else:
                 if(error<tolerancia):
-                    self.raiz=f"{xi}"
+                    self.raiz=f"{xi} is a root"
                 else:
-                    self.raiz=f"Fracaso en la iteraciones"
+                    self.raiz=f"Exceeded iterations"
 
     def tabla_valores(self):
         return self.valores

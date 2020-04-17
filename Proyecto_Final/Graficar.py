@@ -2,7 +2,7 @@ import numpy
 from matplotlib import pyplot
 from Funciones import Funciones
 class Graficar:
-    def dibujar_funciones(self,funcion,posicion_inicial=-100,posicion_final=100,incremento=1):
+    def dibujar_funciones(self,funcion,posicion_inicial,posicion_final,incremento=1):
         Funcion=Funciones(funcion)
         x = numpy.arange(posicion_inicial, posicion_final,incremento)
         pyplot.plot(x, [Funcion.evaluar(i) for i in x])

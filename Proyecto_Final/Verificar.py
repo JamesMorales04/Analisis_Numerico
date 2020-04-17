@@ -22,11 +22,11 @@ class Verificar:
             if(self.verificar_funcion(funcion,float(xi))):
                 error+=self.invalidFunction()
             if(float(incremento)==0):
-                error+="\nEl incremento ingresado es invalido "
+                error+=self.invalid_increment()
             if(float(iteraciones)<=1):
                 error+=self.invalidIterations()
         except:
-            error="Uno de los campos esta vacio"
+            error=self.empty_field()
         return error
 
     def verificar_biseccion(self,funcion,xi,valor_final,iteraciones,tolerancia):
@@ -43,7 +43,7 @@ class Verificar:
             if(float(iteraciones)<=1):
                 error+=self.invalidIterations()
         except:
-            error="Uno de los campos esta vacio"
+            error=self.empty_field()
         return error
 
     def verificar_punto_fijo(self,funcion,gfuncion,xi,iteraciones,tolerancia):
@@ -57,7 +57,7 @@ class Verificar:
                 error+=self.invalidIterations()
         except:
             print("entra al except???? de pj")
-            error="Uno de los campos esta vacio"
+            error=self.empty_field()
         return error
 
     def verificar_newton(self,function,xi,iterations,tolerance):
@@ -73,7 +73,7 @@ class Verificar:
                 error+=self.invalidIterations()
         except:
             print("entra al except???? de newton")
-            error="Uno de los campos esta vacio"
+            error=self.empty_field()
         return error
 
     def invalidFunction(self):
@@ -82,3 +82,7 @@ class Verificar:
         return "\nThe tolerance is invalid"
     def invalidIterations(self):
         return "\nThe iterations are not valid"
+    def invalid_increment(self):
+        return "\nThe entered increment is invalid"
+    def empty_field(self):
+        return "\nOne of the fields is empty"

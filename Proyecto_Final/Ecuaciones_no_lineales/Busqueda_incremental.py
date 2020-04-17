@@ -11,10 +11,10 @@ class Busqueda_incremental:
             self.raiz=f"{self.valores[0][0]}"
         else:
             if incremento == 0:
-                print("El valor asignado al incremento es incorrecto")
+                print("Wrong increment")
             else:
                 if item<=0:
-                    print("El valor del iterador es incorrecto")
+                    print("Wrong iterator value")
                 else:
                     contador=0
                     valor_nuevo=valor_inicial+incremento
@@ -29,15 +29,15 @@ class Busqueda_incremental:
                         contador+=1
                         
                     if self.valores[contador][1]*valor_evaluado_nuevo<0:
-                        self.raiz=f"[{round(self.valores[contador][0],2)},{round(valor_nuevo,2)}]"
+                        self.raiz=f"[{round(self.valores[contador][0],2)},{round(valor_nuevo,2)} is an approximated root]"
                     else:
                         if self.valores[contador][1]==0:
-                            self.raiz=round(self.valores[contador][0],2)
+                            self.raiz=f"[{round(self.valores[contador][0],2)} is a root]"
                         else:
                             if(valor_evaluado_nuevo==0):
-                                self.raiz=round(valor_nuevo,2)
+                                self.raiz="[{valor_nuevo} is a root]"
                             else:
-                                self.raiz="fracaso en las iteraciones"
+                                self.raiz="Exceeded iterations"
     
     def tabla_valores(self):
         return self.valores

@@ -9,17 +9,18 @@ class Regla_falsa:
     def algoritmo_regla_falsa(self,xi,xu,Funcion,tolerancia,iteraciones,tipo_de_error):
         print(tipo_de_error)
         if((Funcion.evaluar(xi))*(Funcion.evaluar(xu))>0 or tolerancia<0):
-            self.raiz="Valores ingresados invalidos"
+            self.raiz="Wrong values"
         if(Funcion.evaluar(xi)==0):
-                self.raiz="xi es una raiz"
+                self.raiz="xi is a root"
         else:
             contador=1
             xm=xi-(Funcion.evaluar(xi)*(xi-xu))/(Funcion.evaluar(xi)-Funcion.evaluar(xu))
             xm_anterior=0
             error=tolerancia+10
-            self.valores.append([contador,xi,xu,xm,Funcion.evaluar(xm),error])
+            
             while (error>tolerancia and Funcion.evaluar(xm)!=0 and iteraciones>contador):
                 valor=Funcion.evaluar(xm)
+                self.valores.append([contador,xi,xu,xm,'%E' %valor,'%E' %error])
                 if((Funcion.evaluar(xm)*Funcion.evaluar(xi))>0):
                     xi=xm
                 else:
@@ -31,14 +32,14 @@ class Regla_falsa:
                 else:
                     error=math.fabs(xm-xm_anterior)/xm
                 contador+=1
-                self.valores.append([contador,xi,xu,xm,valor,error])
+            self.valores.append([contador,xi,xu,xm,'%E' %Funcion.evaluar(xm),'%E' %error])
             if(Funcion.evaluar(xm)==0):
-                self.raiz=f"[{xm} es una raiz]"
+                self.raiz=f"[{xm} is a root]"
             else:
                 if(error<tolerancia):
-                    self.raiz=f"[{xm} es una raiz aproximada]"
+                    self.raiz=f"[{xm} is an approximated root]"
                 else:
-                    self.raiz=f"Fracaso en la iteraciones"
+                    self.raiz=f"Exceeded iterations"
 
     def tabla_valores(self):
         return self.valores

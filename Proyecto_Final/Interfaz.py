@@ -64,7 +64,7 @@ class Ecuaciones_no_lineales_busqueda(Screen):
             columnas=['Posicion','Valor']
             tabla.dibujar(busqueda.tabla_valores(),columnas)
         else:
-            show_popup("Error Busqueda Incremental",error)
+            show_popup("Error Incremental Search",error)
 
     def graficar(self):
         grafica=Graficar()
@@ -73,12 +73,12 @@ class Ecuaciones_no_lineales_busqueda(Screen):
         if(error==""):
             grafica.dibujar_funciones(self.funciones.text,float(self.initial_position.text),math.fabs(float(self.initial_position.text))+(float(self.increment.text)*float(self.iterations.text)),float(self.increment.text))
         else:
-            show_popup("Error Graficar Busqueda Incremental",error)
+            show_popup("Error Graph Incremental Search",error)
     
     def ayuda(self):
         ayudar=Ayudas()
         print(ayudar.ayudas_busqueda())
-        show_popup("Ayudas Busqueda Incremental",ayudar.ayudas_busqueda())
+        show_popup("Incremental Search Aids",ayudar.ayudas_busqueda())
 class Ecuaciones_no_lineales_biseccion(Screen):
     xi=ObjectProperty(None)
     xs=ObjectProperty(None)
@@ -99,7 +99,7 @@ class Ecuaciones_no_lineales_biseccion(Screen):
             columnas=['Iteracion','Xi','Xu','Xm','F(xm)','Error']
             tabla.dibujar(biseccion.tabla_valores(),columnas)
         else:
-            show_popup("Error Biseccion",error)
+            show_popup("Error Bisection",error)
 
     def graficar(self):
         grafica=Graficar()
@@ -108,16 +108,16 @@ class Ecuaciones_no_lineales_biseccion(Screen):
         if(error==""):
             grafica.dibujar_funciones(self.funciones.text,float(self.xi.text),float(self.xs.text),float(self.tolerance.text))
         else:
-            show_popup("Error Graficar Biseccion",error)
+            show_popup("Error Graph Bisection",error)
     
     def ayuda(self):
         ayudar=Ayudas()
-        show_popup("Ayudas Biseccion",ayudar.ayudas_biseccion())
+        show_popup("Bisection Aids",ayudar.ayudas_biseccion())
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
 class Ecuaciones_no_lineales_regla_falsa(Screen):
-    xi=ObjectProperty(None)
+    xi=ObjectProperty(None) 
     xs=ObjectProperty(None)
     iterations=ObjectProperty(None)
     tolerance=ObjectProperty(None)
@@ -136,7 +136,7 @@ class Ecuaciones_no_lineales_regla_falsa(Screen):
             columnas=['Iteracion','Xi','Xu','Xm','F(xm)','Error']
             tabla.dibujar(regla_falsa.tabla_valores(),columnas)
         else:
-            show_popup("Error Regla_falsa",error)
+            show_popup("Error Reguli false",error)
 
     def graficar(self):
         grafica=Graficar()
@@ -145,11 +145,11 @@ class Ecuaciones_no_lineales_regla_falsa(Screen):
         if(error==""):
             grafica.dibujar_funciones(self.funciones.text,float(self.xi.text),float(self.xs.text),float(self.tolerance.text))
         else:
-            show_popup("Error Graficar Regla Falsa",error)
+            show_popup("Error Graph Reguli false",error)
 
     def ayuda(self):
         ayudar=Ayudas()
-        show_popup("Ayudas Regla Falsa",ayudar.ayudas_regla_falsa())
+        show_popup("Reguli false Aids",ayudar.ayudas_regla_falsa())
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -174,7 +174,7 @@ class Ecuaciones_no_lineales_punto_fijo(Screen):
             tabla.dibujar(puntoFijo.tabla_valores(),columnas)
 
         else:
-            show_popup("Error punto fijo",error)
+            show_popup("Error Fixed Point",error)
 
     def graficar(self):
         grafica=Graficar()
@@ -183,11 +183,11 @@ class Ecuaciones_no_lineales_punto_fijo(Screen):
         if(error==""):
             grafica.dibujar_funciones(self.funciones.text, self.gfunciones.text)
         else:
-            show_popup("Error Graficar Punto Fijo",error)
+            show_popup("Error Graph Fixed Point",error)
 
     def ayuda(self):
         ayudar=Ayudas()
-        show_popup("Ayudas Punto Fijo",ayudar.ayudas_punto_fijo())
+        show_popup("Fixed Point Aids",ayudar.ayudas_punto_fijo())
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -221,11 +221,11 @@ class Ecuaciones_no_lineales_newton(Screen):
         if(error==""):
             grafica.dibujar_funciones(self.funciones.text)
         else:
-            show_popup("Error Graficar newton",error)
+            show_popup("Error Graph newton",error)
 
     def ayuda(self):
         ayudar=Ayudas()
-        show_popup("help newton",ayudar.ayudas_newton())
+        show_popup("Newton Aids",ayudar.ayudas_newton())
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo

@@ -12,7 +12,6 @@ class Newton:
         error = tolerance+1
         fx=Funcion.evaluar(xi)
         dfx=Funcion.evaluar_derivada(xi)
-        self.values.append([counter, xi, fx,dfx, error])
         while ((error > tolerance) and (fx != 0) and (dfx!=0) and (counter < iterations)):
             xi_1 = xi_1-(Funcion.evaluar(xi)/Funcion.evaluar_derivada(xi))
             fx=Funcion.evaluar(xi_1)
