@@ -30,7 +30,7 @@ class Biseccion:
                 if(tipo_de_error):
                     error=math.fabs(xm-xm_anterior)
                 else:
-                    error=math.fabs(xm-xm_anterior)/xm
+                    error=Decimal(math.fabs(xm-xm_anterior))/Decimal(xm)
                 contador+=1
             self.valores.append([contador,xi,xu,xm,'%E' %Funcion.evaluar(xm),error])  
             if(Funcion.evaluar(xm)==0):

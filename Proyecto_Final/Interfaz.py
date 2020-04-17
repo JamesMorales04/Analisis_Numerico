@@ -71,7 +71,7 @@ class Ecuaciones_no_lineales_busqueda(Screen):
         verificar=Verificar()
         error=verificar.verificar_busqueda(self.funciones.text,self.initial_position.text,self.increment.text,self.iterations.text)
         if(error==""):
-            grafica.dibujar_funciones(self.funciones.text,float(self.initial_position.text),math.fabs(float(self.initial_position.text))+(float(self.increment.text)*float(self.iterations.text)),float(self.increment.text))
+            grafica.dibujar_funcionesa(self.funciones.text,float(self.initial_position.text),math.fabs(float(self.initial_position.text))+(float(self.iterations.text)))
         else:
             show_popup("Error Graph Incremental Search",error)
     
@@ -106,7 +106,7 @@ class Ecuaciones_no_lineales_biseccion(Screen):
         verificar=Verificar()
         error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iterations.text,self.tolerance.text)
         if(error==""):
-            grafica.dibujar_funciones(self.funciones.text,float(self.xi.text),float(self.xs.text),float(self.tolerance.text))
+            grafica.dibujar_funcionesa(self.funciones.text,float(self.xi.text),math.fabs(float(self.xi.text))+(float(self.iterations.text)))
         else:
             show_popup("Error Graph Bisection",error)
     
@@ -143,7 +143,7 @@ class Ecuaciones_no_lineales_regla_falsa(Screen):
         verificar=Verificar()
         error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iterations.text,self.tolerance.text)
         if(error==""):
-            grafica.dibujar_funciones(self.funciones.text,float(self.xi.text),float(self.xs.text),float(self.tolerance.text))
+            grafica.dibujar_funcionesa(self.funciones.text,float(self.xi.text),math.fabs(float(self.xi.text))+(float(self.iterations.text)))
         else:
             show_popup("Error Graph Reguli false",error)
 
@@ -181,7 +181,7 @@ class Ecuaciones_no_lineales_punto_fijo(Screen):
         verificar=Verificar()
         error=verificar.verificar_punto_fijo(self.funciones.text,self.gfunciones.text, self.xi.text,self.iterations.text,self.tolerance.text)
         if(error==""):
-            grafica.dibujar_funciones(self.funciones.text, self.gfunciones.text)
+            grafica.dibujar_funcionesb(self.funciones.text,self.gfunciones.text,float(self.xi.text),math.fabs(float(self.xi.text))+(float(self.iterations.text)))
         else:
             show_popup("Error Graph Fixed Point",error)
 
@@ -219,7 +219,7 @@ class Ecuaciones_no_lineales_newton(Screen):
         verificar=Verificar()
         error=verificar.verificar_newton(self.funciones.text, self.xi.text,self.iterations.text,self.tolerance.text)
         if(error==""):
-            grafica.dibujar_funciones(self.funciones.text)
+            grafica.dibujar_funcionesc(self.funciones.text,float(self.xi.text),math.fabs(float(self.xi.text))+(float(self.iterations.text)))
         else:
             show_popup("Error Graph newton",error)
 

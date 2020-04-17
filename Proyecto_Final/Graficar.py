@@ -1,30 +1,36 @@
-import numpy
 from matplotlib import pyplot
 from Funciones import Funciones
 class Graficar:
-    def dibujar_funciones(self,funcion,posicion_inicial,posicion_final,incremento=1):
+    def dibujar_funcionesa(self,funcion,posicion_inicial,posicion_final):
         Funcion=Funciones(funcion)
-        x = numpy.arange(posicion_inicial, posicion_final,incremento)
+        x= range(int(posicion_inicial), int(posicion_final))
         pyplot.plot(x, [Funcion.evaluar(i) for i in x])
 
         pyplot.axhline(0, color="black")
         pyplot.axvline(0, color="black")
 
-
         pyplot.show()
 
-    def dibujar_funciones(self,funcion,gfuncion):
-        posicion_inicial=-100
-        posicion_final=100
-        incremento=1
+    def dibujar_funcionesb(self,funcion,gfuncion,posicion_inicial,posicion_final):
         Funcion=Funciones(funcion)
-        gfuncion=Funcion(gfuncion)
-        x = numpy.arange(posicion_inicial, posicion_final,incremento)
-        pyplot.plot(x, [Funcion.evaluar(i) for i in x],color=tab.red)
-        pyplot.plot(x, [gfuncion.evaluar(i) for i in x],color=tab.blue)
+        Gfuncion=Funciones(gfuncion)
+        
+        x= range(int(posicion_inicial), int(posicion_final))
+
+        pyplot.plot(x, [Funcion.evaluar(i) for i in x])
+        pyplot.plot(x, [Gfuncion.evaluar(i) for i in x])
 
         pyplot.axhline(0, color="black")
         pyplot.axvline(0, color="black")
+        pyplot.show()
 
+    def dibujar_funcionesc(self,funcion,posicion_inicial,posicion_final):
+        Funcion=Funciones(funcion)
+        x= range(int(posicion_inicial), int(posicion_final))
+        pyplot.plot(x, [Funcion.evaluar(i) for i in x])
+        pyplot.plot(x, [Funcion.evaluar_derivada(i) for i in x])
+
+        pyplot.axhline(0, color="black")
+        pyplot.axvline(0, color="black")
 
         pyplot.show()

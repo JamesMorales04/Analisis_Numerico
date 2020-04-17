@@ -17,12 +17,13 @@ class Ayudas:
         return data.read()
 
     def ayudas_newton(self):
-        data=open("Ayudas\Requisites_newton.txt", "r")
+        data=open("Ayudas\\NewtonMethodExplanation.txt", "r")
+        return data.read()
 
     def ayudas_secante(self):
         data=open("Ayudas\Requisites_secant.txt", "r")
         pass  
     def ayudas_raices_multiples(self):
-        data=open("Ayudas\Requisites_multipleroot.txt", "r")
+        data=open("Ayudas\\Requisites_multipleroot.txt", "r")
         pass  
       
