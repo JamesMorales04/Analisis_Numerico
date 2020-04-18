@@ -20,7 +20,7 @@ class Biseccion:
             error=tolerancia+10
             while (error>tolerancia and Funcion.evaluar(xm)!=0 and iteraciones>contador):
                 valor=Funcion.evaluar(xm)
-                self.valores.append([contador,xi,xu,xm,'%E' %valor,error])
+                self.valores.append([contador,xi,xu,xm,'%E' %valor,'%E' %error])
                 if((Funcion.evaluar(xm)*Funcion.evaluar(xi))>0):
                     xi=Decimal(xm)
                 else:
@@ -28,11 +28,11 @@ class Biseccion:
                 xm_anterior=Decimal(xm)
                 xm=(Decimal(xi)+Decimal(xu))/2
                 if(tipo_de_error):
-                    error=math.fabs(xm-xm_anterior)
+                    error=Decimal(math.fabs(xm-xm_anterior))
                 else:
-                    error=Decimal(math.fabs(xm-xm_anterior))/Decimal(xm)
+                    error=Decimal(math.fabs((xm-xm_anterior)/Decimal(xm)))
                 contador+=1
-            self.valores.append([contador,xi,xu,xm,'%E' %Funcion.evaluar(xm),error])  
+            self.valores.append([contador,xi,xu,xm,'%E' %Funcion.evaluar(xm),'%E' %error])  
             if(Funcion.evaluar(xm)==0):
                 self.raiz=f"[{xm} is a root]"
             else:

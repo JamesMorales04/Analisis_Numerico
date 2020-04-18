@@ -30,7 +30,7 @@ class Regla_falsa:
                 if(tipo_de_error):
                     error=math.fabs(xm-xm_anterior)
                 else:
-                    error=math.fabs(xm-xm_anterior)/xm
+                    error=math.fabs((xm-xm_anterior)/xm)
                 contador+=1
             self.valores.append([contador,xi,xu,xm,'%E' %Funcion.evaluar(xm),'%E' %error])
             if(Funcion.evaluar(xm)==0):
