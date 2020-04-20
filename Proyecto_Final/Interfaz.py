@@ -258,7 +258,7 @@ class Ecuaciones_no_lineales_secantes(Screen):
         verificar=Verificar()
         error=verificar.verificar_secante(self.x1.text,self.x0.text,self.funciones.text,self.iterations.text,self.tolerance.text)
         if(error==""):
-            grafica.dibujar_funcionesa(self.funciones.text,float(self.x0.text),float(self.x1.text))
+            grafica.dibujar_funcionesa(self.funciones.text,float(self.x0.text),math.fabs(float(self.x0.text))+(float(self.iterations.text)))
         else:
             show_popup("Error Graph Secant",error)
     
