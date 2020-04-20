@@ -76,6 +76,21 @@ class Verificar:
             error=self.empty_field()
         return error
 
+
+    def verificar_secante(self, xi_1 , xi_2, function, iter, tol):
+        error = ''
+        try:
+            if(self.verificar_funcion(function,float(xi_1)) or self.verificar_funcion(function, float(xi_2))):
+                error+=self.invalidFunction()
+            if(float(tol)<0):
+                error+=self.invalidTolerance()
+            if(float(iter)<=0):
+                error+=self.invalidIterations()
+        except Exception:
+            error = self.empty_field()
+        return error
+
+
     def invalidFunction(self):
         return "The function is invalid, \nSquare: (x**n)\nRoot: sqrt(n)\neuler: exp(n)\nPi: pi()\nIdentities: sin(n),cos(n),tan(n),sec(n)\nnatural logarithm: log(n)"                
     def invalidTolerance(self):

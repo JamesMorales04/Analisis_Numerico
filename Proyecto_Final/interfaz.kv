@@ -909,11 +909,135 @@ WindowManager:
 
 <Ecuaciones_no_lineales_secantes>
     name:"Ecuaciones_no_lineales_secantes"
+    funciones:funciones
+    x0:x0
+    x1:x1
+    iterations:iterations
+    tolerance:tolerance
+    sol:sol
     GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 3
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Function f(x)"
+                font_size:"25sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:funciones
+                text:root.manager.funcion_global
+                multiline:False
+            
+                    
+        GridLayout:
+            cols: 8
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "X0"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:x0
+                multiline:False
+            Label:
+                text: "X1"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:x1
+                multiline:False
+            Label:
+                text: "iterations"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:iterations
+                multiline:False
+            Label:
+                text: "tolerance"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:tolerance
+                multiline:False
+        GridLayout:
+            spacing: '10dp'
+            cols: 4
+            row_default_height:30
+            row_force_default:True
+            Label:
+                size_hint_x:0.4
+                text: "Solution"
+                width:10
+                font_size:"20sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                size_hint_x:1
+                id:sol
+                multiline:False
+            Label:
+                size_hint_x:0.2
+                text: ""
+                bold: True
+            GridLayout:
+                spacing: '2dp'
+                cols: 2
+                row_default_height:30
+                row_force_default:True
+                Label:
+                    size_hint_x:0.9
+                    text: "Absolute Error"
+                    color: 1,1,1,1
+                    bold: True
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    active:True
+                    on_active: root.tipo_de_error(True)
+                Label:
+                    size_hint_x:0.8
+                    text: "Relative Error"
+                    color: 1,1,1,1
+                    bold: True
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    on_active: root.tipo_de_error(False)
+        SmoothButton:
+            text: "Solve"
+            font_size:"17sp"  
+            on_press:root.buscar()    
+        SmoothButton:
+            text: "Graph"
+            font_size:"17sp"  
+            on_press:root.graficar()
+        SmoothButton:
+            text: "Help"
+            font_size:"17sp"  
+            on_press:root.ayuda()
         SmoothButton:
             text: "Back"
             font_size:"17sp"  
             on_press:
+                root.manager.funcion_global=root.funciones.text
                 app.root.current="Ecuaciones_no_lineales"  
                 root.manager.transition.direction="right"
 

@@ -25,5 +25,5 @@ class Ayudas:
         pass  
     def ayudas_raices_multiples(self):
         data=open("Ayudas\\Requisites_multipleroot.txt", "r")
-        pass  
+        pass
       

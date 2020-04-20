@@ -18,6 +18,7 @@ from Ecuaciones_no_lineales.Biseccion import Biseccion
 from Ecuaciones_no_lineales.PuntoFijo import PuntoFijo
 from Ecuaciones_no_lineales.Regla_falsa import Regla_falsa
 from Ecuaciones_no_lineales.Newton import Newton
+from Ecuaciones_no_lineales.Secante import Secante
 from Verificar import Verificar
 from Funciones import Funciones
 from Graficar import Graficar
@@ -191,8 +192,8 @@ class Ecuaciones_no_lineales_punto_fijo(Screen):
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
-class Ecuaciones_no_lineales_secantes(Screen):
-    pass
+
+
 class Ecuaciones_no_lineales_newton(Screen):
     xi=ObjectProperty(None)
     iterations=ObjectProperty(None)
@@ -229,6 +230,45 @@ class Ecuaciones_no_lineales_newton(Screen):
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
+
+class Ecuaciones_no_lineales_secantes(Screen):
+    x0=ObjectProperty(None)
+    x1=ObjectProperty(None)
+    iterations=ObjectProperty(None)
+    tolerance=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    funciones=ObjectProperty(None)
+
+    def buscar(self):
+        secante=Secante()
+        tabla=Tabla()
+        verificar=Verificar()
+        error=verificar.verificar_secante(self.x1.text,self.x0.text,self.funciones.text,self.iterations.text,self.tolerance.text)
+        if(error==""):
+            Funcion=Funciones(self.funciones.text)
+            secante.algoritmo_secante(float(self.x1.text),float(self.x0.text),Funcion,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
+            self.sol.text=secante.get_sol()
+            columnas=['Iteration','Xi','F(Xi)','F(xi)-F(Xi_1)','Error']
+            tabla.dibujar(secante.tabla_valores(),columnas)
+        else:
+            show_popup("Secant Error",error)
+
+    def graficar(self):
+        grafica=Graficar()
+        verificar=Verificar()
+        error=verificar.verificar_secante(self.x1.text,self.x0.text,self.funciones.text,self.iterations.text,self.tolerance.text)
+        if(error==""):
+            grafica.dibujar_funcionesa(self.funciones.text,float(self.x0.text),float(self.x1.text))
+        else:
+            show_popup("Error Graph Secant",error)
+    
+    def ayuda(self):
+        ayudar=Ayudas()
+        show_popup("Secant Aids",ayudar.ayudas_secante())
+
+    def tipo_de_error(self,tipo):
+        self.tipo_error=tipo
+
 
 class Ecuaciones_no_lineales_raices_multiples(Screen):
     pass
