@@ -19,9 +19,9 @@ class Newton:
             dfx=Funcion.evaluar_derivada(xi)
             self.values.append([counter, xi, fx,dfx, error])
             if(err_type):
-                error = Decimal(math.fabs(xi - xi_1))
+                error = math.fabs(xi - xi_1)
             else:
-                error = Decimal(th.fabs((xi - xi_1)/Decimal(xi)))
+                error = math.fabs((xi - xi_1)/xi)
             xi = xi_1
             counter+=1
         self.values.append([counter, xi, fx,dfx, error])
