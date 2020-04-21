@@ -31,10 +31,10 @@ class Secante:
 
                     #Absolute error
                     if(err_type):
-                        error = math.fabs((xi-xi_1)/xi)      #By using math.fabs(x) this code can generate an error whe x is complex
+                        error = math.fabs(xi-xi_1)           #By using math.fabs(x) this code can generate an error whe x is complex
                     #Relative error
                     else:
-                        error = math.fabs(xi-xi_1)           #By using math.fabs(x) this code can generate an error whe x is complex
+                        error = math.fabs((xi-xi_1)/xi)      #By using math.fabs(x) this code can generate an error whe x is complex
 
                     counter +=1
                     self.valores.append([counter, xi, '%E' %function.evaluar(xi), '%E' %difY, '%E' %error])

@@ -91,6 +91,23 @@ class Verificar:
         return error
 
 
+#Hereeeeee
+    def verificar_raices_mult(self,xi,function,iterations,tolerance):
+        error=""
+        try:
+            
+            if(self.verificar_funcion(function,float(xi))):
+                error+=self.invalidFunction()
+            
+            if(float(tolerance)<=0):
+                error+=self.invalidTolerance()
+            if(float(iterations)<1):
+                error+=self.invalidIterations()
+        except:
+            error=self.empty_field()
+        return error
+
+
     def invalidFunction(self):
         return "The function is invalid, \nSquare: (x**n)\nRoot: sqrt(n)\neuler: exp(n)\nPi: pi()\nIdentities: sin(n),cos(n),tan(n),sec(n)\nnatural logarithm: log(n)"                
     def invalidTolerance(self):

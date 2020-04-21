@@ -19,6 +19,7 @@ from Ecuaciones_no_lineales.PuntoFijo import PuntoFijo
 from Ecuaciones_no_lineales.Regla_falsa import Regla_falsa
 from Ecuaciones_no_lineales.Newton import Newton
 from Ecuaciones_no_lineales.Secante import Secante
+from Ecuaciones_no_lineales.Raices_Multiples import Raices_Multiples
 from Verificar import Verificar
 from Funciones import Funciones
 from Graficar import Graficar
@@ -271,7 +272,44 @@ class Ecuaciones_no_lineales_secantes(Screen):
 
 
 class Ecuaciones_no_lineales_raices_multiples(Screen):
-    pass
+
+    xi=ObjectProperty(None)
+    iterations=ObjectProperty(None)
+    tolerance=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    funciones=ObjectProperty(None)
+    def buscar(self):
+        raices_m = Raices_Multiples()
+        tabla=Tabla()
+        verificar=Verificar()
+        error=verificar.verificar_raices_mult(self.xi.text,self.funciones.text,self.iterations.text,self.tolerance.text)
+        if(error==""):
+            Funcion=Funciones(self.funciones.text)
+            raices_m.algoritmo_raices_mult(float(self.xi.text),Funcion,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
+            self.sol.text=raices_m.get_sol()
+            columnas=['Iteracion','Xi','F(xm)',"F'(x)","F''(X)",'Error']
+            tabla.dibujar(raices_m.tabla_valores(),columnas)
+
+        else:
+            show_popup("Error Multiple Roots",error)
+
+    def graficar(self):
+        grafica=Graficar()
+        verificar=Verificar()
+        error=verificar.verificar_raices_mult(self.xi.text,self.funciones.text,self.iterations.text,self.tolerance.text)
+        if(error==""):
+            grafica.dibujar_funcionesd(self.funciones.text,float(self.xi.text),math.fabs(float(self.xi.text))+(float(self.iterations.text)))
+        else:
+            show_popup("Error Graph Multiple Roots",error)
+
+    def ayuda(self):
+        ayudar=Ayudas()
+        show_popup("Multiple Roots Aids",ayudar.ayudas_secante())
+
+    def tipo_de_error(self,tipo):
+        self.tipo_error=tipo
+
+
 class Sistemas_de_ecuaciones_eliminacion_gaussiana(Screen):
     pass
 class Sistemas_de_ecuaciones_pivoteo(Screen):

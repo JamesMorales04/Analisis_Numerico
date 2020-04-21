@@ -16,6 +16,7 @@ class Funciones:
                 return True
         except:
             return "Final"
+
     def evaluar_derivada(self,valor):
         valores=self.derivada.evalf(subs=dict(x=valor))
         aux=float(valores)
@@ -27,3 +28,10 @@ class Funciones:
     def derivar(self,entrada):
     	x = sp.Symbol('x')
     	self.derivada = sp.diff(entrada,x)
+    
+    def derivarM(self,entrada, veces, valor):
+        x = sp.Symbol('x')
+        derivada = sp.diff(self.funcion,x,int(veces))
+        valores=derivada.evalf(subs=dict(x=valor))
+        return valores
+
