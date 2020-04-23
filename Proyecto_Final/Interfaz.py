@@ -247,7 +247,7 @@ class Ecuaciones_no_lineales_secantes(Screen):
         error=verificar.verificar_secante(self.x1.text,self.x0.text,self.funciones.text,self.iterations.text,self.tolerance.text)
         if(error==""):
             Funcion=Funciones(self.funciones.text)
-            secante.algoritmo_secante(float(self.x1.text),float(self.x0.text),Funcion,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
+            secante.algoritmo_secante(float(self.x1.text)-float(self.x1.text)*0.2,float(self.x0.text),Funcion,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
             self.sol.text=secante.get_sol()
             columnas=['Iteration','Xi','F(Xi)','F(xi)-F(Xi_1)','Error']
             tabla.dibujar(secante.tabla_valores(),columnas)
@@ -298,7 +298,7 @@ class Ecuaciones_no_lineales_raices_multiples(Screen):
         verificar=Verificar()
         error=verificar.verificar_raices_mult(self.xi.text,self.funciones.text,self.iterations.text,self.tolerance.text)
         if(error==""):
-            grafica.dibujar_funcionesd(self.funciones.text,float(self.xi.text),math.fabs(float(self.xi.text))+(float(self.iterations.text)))
+            grafica.dibujar_funcionesd(self.funciones.text,float(self.xi.text)-float(self.xi.text)*0.2,math.fabs(float(self.xi.text))+(float(self.iterations.text)))
         else:
             show_popup("Error Graph Multiple Roots",error)
 

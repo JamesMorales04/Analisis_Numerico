@@ -40,7 +40,7 @@ class Raices_Multiples:
                     d1F = function.derivarM(function,1,xi)
                     d2F = function.derivarM(function,2,xi)
                     counter+=1
-                    self.valores.append([counter, xi, '%E' %Yi, '%E' %d1F, '%E' %d2F, '%E' %error])
+                    self.valores.append([counter,'%f' %xi, '%E' %Yi, '%E' %d1F, '%E' %d2F, '%E' %error])
                     Yi_1 = Yi
                     xi_1 = xi
 
