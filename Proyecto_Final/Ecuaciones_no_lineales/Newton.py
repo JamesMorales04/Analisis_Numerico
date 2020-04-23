@@ -17,14 +17,14 @@ class Newton:
             xi_1 = xi_1-(Funcion.evaluar(xi)/Funcion.evaluar_derivada(xi))
             fx=Funcion.evaluar(xi_1)
             dfx=Funcion.evaluar_derivada(xi)
-            self.values.append([counter, xi, fx,dfx, error])
+            self.values.append([counter, xi, '%E'%fx,dfx, '%E'%error])
             if(err_type):
                 error = math.fabs(xi - xi_1)
             else:
                 error = math.fabs((xi - xi_1)/xi)
             xi = xi_1
             counter+=1
-        self.values.append([counter, xi, fx,dfx, error])
+        self.values.append([counter, xi, '%E'%fx,dfx, '%E'%error])
 
         if(fx == 0):
             self.raiz=f"[{xi} is a root]"
