@@ -304,7 +304,7 @@ class Ecuaciones_no_lineales_raices_multiples(Screen):
 
     def ayuda(self):
         ayudar=Ayudas()
-        show_popup("Multiple Roots Aids",ayudar.ayudas_secante())
+        show_popup("Multiple Roots Aids",ayudar.ayudas_raices_multiples())
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo

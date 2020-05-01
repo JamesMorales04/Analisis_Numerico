@@ -21,9 +21,9 @@ class Ayudas:
         return data.read()
 
     def ayudas_secante(self):
-        data=open("Ayudas\Requisites_secant.txt", "r")
-        pass  
+        data=open("Ayudas\\SecantMethodExplanation.txt", "r")
+        return data.read()
     def ayudas_raices_multiples(self):
-        data=open("Ayudas\\Requisites_multipleroot.txt", "r")
-        pass
+        data=open("Ayudas\\MultipleRootsMethodExplanation.txt", "r")
+        return data.read()
       
