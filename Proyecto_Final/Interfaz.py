@@ -298,7 +298,7 @@ class Ecuaciones_no_lineales_raices_multiples(Screen):
         verificar=Verificar()
         error=verificar.verificar_raices_mult(self.xi.text,self.funciones.text,self.iterations.text,self.tolerance.text)
         if(error==""):
-            grafica.dibujar_funcionesd(self.funciones.text,float(self.xi.text)-float(self.xi.text)*0.2,math.fabs(float(self.xi.text))+(float(self.iterations.text)))
+            grafica.dibujar_funcionesd(self.funciones.text,float(self.xi.text) - float(self.xi.text)*0.2,math.fabs(float(self.xi.text))+(float(self.iterations.text)))
         else:
             show_popup("Error Graph Multiple Roots",error)
 
