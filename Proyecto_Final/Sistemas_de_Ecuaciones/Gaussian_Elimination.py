@@ -1,11 +1,17 @@
 import copy
+from decimal import *
+
 class Gaussian_Elimination:
     def __init__(self):
         self.original=[]
         self.new=[]
+        self.total=[]
         self.result=[]
+        self.rows=[]
+        getcontext().prec = 25
 
-    def gaussian_elimination_algorithm(self,matrix):
+    def gaussian_elimination_algorithm(self,matrix,matrixb):
+        matrix=self.merge(matrix,matrixb)
         self.original=copy.deepcopy(matrix)
         column=0
         no_error=True
@@ -21,8 +27,13 @@ class Gaussian_Elimination:
 
         if(self.check_diagonal()):
             self.variable_resolution()
+            self.row_definition()
         else:
             self.result="No tiene solucion o posee infinitas soluciones"
+
+        for i in self.new:
+            print(i)
+        print(self.result)
 
     def check_diagonal(self):
         for i in range(0,len(self.new)):
@@ -51,10 +62,43 @@ class Gaussian_Elimination:
             
                 j-=1
         
-            i-=1        
+            i-=1     
+    def merge(self,matrix,matrixb):
+        for i in matrix:
+            print(i)
+        
+        for i in range(0,len(matrix)):
+
+            matrix[i].append(matrixb[0][i])
+        return matrix
+
+    def row_definition(self):
+        for i in range(1,len(self.result)+1):
+            self.rows.append(f"x{i}")
+        self.rows.append("b")
+        self.rows.append("///")
+        for i in range(1,len(self.result)+1):
+            self.rows.append(f"x{i}")
+        self.rows.append("b")
+
     def tabla_valores(self):
-        return self.valores
+        for i in range(0,len(self.new)):
+            self.total.append([])
+            for j in range(0,len(self.new[i])):
+                self.total[i].append(Decimal(self.original[i][j]))
+            self.total[i].append("///")
+            for j in range(0,len(self.new[i])):
+                self.total[i].append(Decimal(self.new[i][j]))
 
 
-cosa=Gaussian_Elimination()
-cosa.gaussian_elimination_algorithm([[2,-3,4,1,10],[-4,2,1,-2,-10],[1,3,-5,3,32],[-3,-1,1,-1,-21]])
+        return self.total
+
+    def get_results(self):
+        results=""
+        aux=1
+        for i in self.result:
+            results+=f"X{aux}: "+(str)(i)+"\n"
+            aux+=1
+        return results
+#cosa=Gaussian_Elimination()
+#cosa.gaussian_elimination_algorithm([[1/4,1/5,1/6,1/7],[1/3,1/4,1/5,1/6],[1,1/2,1/3,1/4],[1/2,1/3,1/4,1/5]],[60,70,106,84])

@@ -6,6 +6,8 @@ import kivy
 import math
 from kivy.app import App
 from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.widget import Widget
 from kivy.uix.floatlayout import FloatLayout
@@ -20,6 +22,7 @@ from Ecuaciones_no_lineales.Regla_falsa import Regla_falsa
 from Ecuaciones_no_lineales.Newton import Newton
 from Ecuaciones_no_lineales.Secante import Secante
 from Ecuaciones_no_lineales.Raices_Multiples import Raices_Multiples
+from Sistemas_de_Ecuaciones.Gaussian_Elimination import Gaussian_Elimination
 from Verificar import Verificar
 from Funciones import Funciones
 from Graficar import Graficar
@@ -27,12 +30,18 @@ from Tabla import Tabla
 from Ayudas import Ayudas
 funcion=StringProperty('')
 gfuncion=StringProperty('')
+matrix=StringProperty('')
+matrixb=StringProperty('')
 
 class WindowManager(ScreenManager):
     global funcion
     global gfuncion
+    global matrix
+    global matrixb
     funcion_global=funcion
     gfuncion_global=gfuncion
+    matrix_global=matrix
+    matrixb_global=matrixb
 class Ayudasw(Screen):
     ayuda=ObjectProperty(None)
     ayudaf=ObjectProperty(None)
@@ -294,6 +303,7 @@ class Ecuaciones_no_lineales_raices_multiples(Screen):
             show_popup("Error Multiple Roots",error)
 
     def graficar(self):
+        
         grafica=Graficar()
         verificar=Verificar()
         error=verificar.verificar_raices_mult(self.xi.text,self.funciones.text,self.iterations.text,self.tolerance.text)
@@ -311,7 +321,39 @@ class Ecuaciones_no_lineales_raices_multiples(Screen):
 
 
 class Sistemas_de_ecuaciones_eliminacion_gaussiana(Screen):
-    pass
+
+    matrix=ObjectProperty(None)
+    matrixb=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    def buscar(self):
+        matrix_method=Gaussian_Elimination()
+        tabla=Tabla()
+        verificar=Verificar()
+        #error=verificar.verificar_raices_mult(self.xi.text,self.funciones.text,self.iterations.text,self.tolerance.text)
+        error=""
+        if(error==""):
+            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            matrix_method.gaussian_elimination_algorithm(matrix_clean,matrixb_clean)
+            self.sol.text=matrix_method.get_results()
+            columnas=matrix_method.rows
+            tabla.dibujar(matrix_method.tabla_valores(),columnas)
+
+        else:
+            show_popup("Gaussian Elimination",error)
+    def ayuda(self):
+        ayudar=Ayudas()
+        show_popup("Gaussian Elimination",ayudar.ayudas_raices_multiples())
+    def clean(self, matrix):
+        for i in range(0,len(matrix)):
+            matrix[i]=(matrix[i].split(","))
+            for j in range(0,len(matrix[i])):
+                if(j==0):
+                    matrix[i][j]=matrix[i][j][1:]
+                if(j==len(matrix[i])-1):
+                    matrix[i][j]=matrix[i][j][0:-1] 
+                matrix[i][j]=eval(matrix[i][j])
+        return matrix
 class Sistemas_de_ecuaciones_pivoteo(Screen):
     pass
 class Sistemas_de_ecuaciones_Factorizacion_lu(Screen):

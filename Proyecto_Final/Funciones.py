@@ -34,4 +34,3 @@ class Funciones:
         derivada = sp.diff(self.funcion,x,int(veces))
         valores=derivada.evalf(subs=dict(x=valor))
         return valores
-
