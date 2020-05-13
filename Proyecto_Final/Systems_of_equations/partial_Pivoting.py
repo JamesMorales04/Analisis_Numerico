@@ -92,7 +92,7 @@ class partial_Pivoting:
             self.rows.append(f"x{i}")
         self.rows.append("b")
 
-    def tabla_valores(self):
+    def value_table(self):
         for i in range(0,len(self.new)):
             self.total.append([])
             for j in range(0,len(self.new[i])):
