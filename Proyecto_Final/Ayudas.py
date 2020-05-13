@@ -1,29 +1,35 @@
 class Ayudas:
 
-    def ayudas_busqueda(self):
+    def help_busqueda(self):
         data=open("Ayudas\Requisites_is.txt", "r")
         return data.read()
         
-    def ayudas_biseccion(self):
+    def help_biseccion(self):
         data=open("Ayudas\Requisites_bisection.txt", "r")
         return data.read()
 
-    def ayudas_regla_falsa(self):
+    def help_regla_falsa(self):
         data=open("Ayudas\Requisites_regulifalsi.txt", "r")
         return data.read()
 
-    def ayudas_punto_fijo(self):
+    def help_punto_fijo(self):
         data=open("Ayudas\ExplicacionPuntoFijo.txt", "r")
         return data.read()
 
-    def ayudas_newton(self):
+    def help_newton(self):
         data=open("Ayudas\\NewtonMethodExplanation.txt", "r")
         return data.read()
 
-    def ayudas_secante(self):
+    def help_secante(self):
         data=open("Ayudas\\SecantMethodExplanation.txt", "r")
         return data.read()
-    def ayudas_raices_multiples(self):
+
+    def help_raices_multiples(self):
         data=open("Ayudas\\MultipleRootsMethodExplanation.txt", "r")
         return data.read()
-      
+
+    def help_gaussian_elimination():
+        data=open("Ayudas\\NonLinearEq\\GaussianEliminationMethodExplanation.txt", "r")
+
+    def help_partial_pivot():
+        data=open("Ayudas\\NonLinearEq\\partialPivotMethodExplanation.txt", "r")      
