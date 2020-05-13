@@ -15,14 +15,15 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager,Screen
 from kivy.properties import ObjectProperty,StringProperty,NumericProperty
 from kivy.uix.popup import Popup
-from Ecuaciones_no_lineales.Busqueda_incremental import Busqueda_incremental
-from Ecuaciones_no_lineales.Biseccion import Biseccion
-from Ecuaciones_no_lineales.PuntoFijo import PuntoFijo
-from Ecuaciones_no_lineales.Regla_falsa import Regla_falsa
-from Ecuaciones_no_lineales.Newton import Newton
-from Ecuaciones_no_lineales.Secante import Secante
-from Ecuaciones_no_lineales.Raices_Multiples import Raices_Multiples
-from Sistemas_de_Ecuaciones.Gaussian_Elimination import Gaussian_Elimination
+from Non_linear_equations.Busqueda_incremental import Busqueda_incremental
+from Non_linear_equations.Biseccion import Biseccion
+from Non_linear_equations.PuntoFijo import PuntoFijo
+from Non_linear_equations.Regla_falsa import Regla_falsa
+from Non_linear_equations.Newton import Newton
+from Non_linear_equations.Secante import Secante
+from Non_linear_equations.Raices_Multiples import Raices_Multiples
+from Systems_of_equations.Gaussian_Elimination import Gaussian_Elimination
+from Systems_of_equations.partial_Pivoting import partial_Pivoting
 from Verificar import Verificar
 from Funciones import Funciones
 from Graficar import Graficar
@@ -42,20 +43,18 @@ class WindowManager(ScreenManager):
     gfuncion_global=gfuncion
     matrix_global=matrix
     matrixb_global=matrixb
-class Ayudasw(Screen):
-    ayuda=ObjectProperty(None)
-    ayudaf=ObjectProperty(None)
+
 class Menu_Initial(Screen):
     pass
-class Ecuaciones_no_lineales(Screen):
+class Non_linear_equations(Screen):
     pass
-class Sistemas_de_ecuaciones(Screen):
+class System_of_equations(Screen):
     pass
 class Interpolation(Screen):
     pass
 class Diferenciacion_numerica(Screen):
     pass
-class Ecuaciones_no_lineales_busqueda(Screen):
+class Non_linear_equations_busqueda(Screen):
     initial_position=ObjectProperty(None)
     increment=ObjectProperty(None)
     iterations=ObjectProperty(None)
@@ -87,10 +86,8 @@ class Ecuaciones_no_lineales_busqueda(Screen):
             show_popup("Error Graph Incremental Search",error)
     
     def ayuda(self):
-        ayudar=Ayudas()
-        print(ayudar.ayudas_busqueda())
-        show_popup("Incremental Search Aids",ayudar.ayudas_busqueda())
-class Ecuaciones_no_lineales_biseccion(Screen):
+        show_popup("Incremental Search Aids",Ayudas.help_busqueda(self))
+class Non_linear_equations_biseccion(Screen):
     xi=ObjectProperty(None)
     xs=ObjectProperty(None)
     iterations=ObjectProperty(None)
@@ -122,12 +119,11 @@ class Ecuaciones_no_lineales_biseccion(Screen):
             show_popup("Error Graph Bisection",error)
     
     def ayuda(self):
-        ayudar=Ayudas()
-        show_popup("Bisection Aids",ayudar.ayudas_biseccion())
+        show_popup("Bisection Aids",Ayudas.help_biseccion(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
-class Ecuaciones_no_lineales_regla_falsa(Screen):
+class Non_linear_equations_regla_falsa(Screen):
     xi=ObjectProperty(None) 
     xs=ObjectProperty(None)
     iterations=ObjectProperty(None)
@@ -159,12 +155,11 @@ class Ecuaciones_no_lineales_regla_falsa(Screen):
             show_popup("Error Graph Reguli false",error)
 
     def ayuda(self):
-        ayudar=Ayudas()
-        show_popup("Reguli false Aids",ayudar.ayudas_regla_falsa())
+        show_popup("Reguli false Aids",Ayudas.help_regla_falsa(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
-class Ecuaciones_no_lineales_punto_fijo(Screen):
+class Non_linear_equations_punto_fijo(Screen):
     xi=ObjectProperty(None)
     iterations=ObjectProperty(None)
     tolerance=ObjectProperty(None)
@@ -197,14 +192,13 @@ class Ecuaciones_no_lineales_punto_fijo(Screen):
             show_popup("Error Graph Fixed Point",error)
 
     def ayuda(self):
-        ayudar=Ayudas()
-        show_popup("Fixed Point Aids",ayudar.ayudas_punto_fijo())
+        show_popup("Fixed Point Aids",Ayudas.help_punto_fijo(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
 
 
-class Ecuaciones_no_lineales_newton(Screen):
+class Non_linear_equations_newton(Screen):
     xi=ObjectProperty(None)
     iterations=ObjectProperty(None)
     tolerance=ObjectProperty(None)
@@ -235,13 +229,12 @@ class Ecuaciones_no_lineales_newton(Screen):
             show_popup("Error Graph newton",error)
 
     def ayuda(self):
-        ayudar=Ayudas()
-        show_popup("Newton Aids",ayudar.ayudas_newton())
+        show_popup("Newton Aids",Ayudas.help_newton(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
 
-class Ecuaciones_no_lineales_secantes(Screen):
+class Non_linear_equations_secantes(Screen):
     x0=ObjectProperty(None)
     x1=ObjectProperty(None)
     iterations=ObjectProperty(None)
@@ -273,14 +266,13 @@ class Ecuaciones_no_lineales_secantes(Screen):
             show_popup("Error Graph Secant",error)
     
     def ayuda(self):
-        ayudar=Ayudas()
-        show_popup("Secant Aids",ayudar.ayudas_secante())
+        show_popup("Secant Aids",Ayudas.help_secante(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
 
 
-class Ecuaciones_no_lineales_raices_multiples(Screen):
+class Non_linear_equations_raices_multiples(Screen):
 
     xi=ObjectProperty(None)
     iterations=ObjectProperty(None)
@@ -313,14 +305,13 @@ class Ecuaciones_no_lineales_raices_multiples(Screen):
             show_popup("Error Graph Multiple Roots",error)
 
     def ayuda(self):
-        ayudar=Ayudas()
-        show_popup("Multiple Roots Aids",ayudar.ayudas_raices_multiples())
+        show_popup("Multiple Roots Aids",Ayudas.help_raices_multiples(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
 
 
-class Sistemas_de_ecuaciones_eliminacion_gaussiana(Screen):
+class System_of_equations_gaussian_elimination(Screen):
 
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
@@ -342,8 +333,7 @@ class Sistemas_de_ecuaciones_eliminacion_gaussiana(Screen):
         else:
             show_popup("Gaussian Elimination",error)
     def ayuda(self):
-        ayudar=Ayudas()
-        show_popup("Gaussian Elimination",ayudar.ayudas_raices_multiples())
+        show_popup("Gaussian elimination",Ayudas.help_gaussian_elimination(self))
     def clean(self, matrix):
         for i in range(0,len(matrix)):
             matrix[i]=(matrix[i].split(","))
@@ -355,7 +345,36 @@ class Sistemas_de_ecuaciones_eliminacion_gaussiana(Screen):
                 matrix[i][j]=eval(matrix[i][j])
         return matrix
 class System_of_equations_partial_pivot(Screen):
-    pass
+    matrix=ObjectProperty(None)
+    matrixb=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    def buscar(self):
+        matrix_method=partial_Pivoting()
+        tabla=Tabla()
+        verificar=Verificar()
+        error=""
+        if(error==""):
+            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            matrix_method.gaussian_elimination_algorithm(matrix_clean,matrixb_clean)
+            self.sol.text=matrix_method.get_results()
+            columnas=matrix_method.rows
+            tabla.dibujar(matrix_method.tabla_valores(),columnas)
+
+        else:
+            show_popup("Partial pivot ",error)
+    def ayuda(self):
+        show_popup("Partial pivoting",Ayudas.help_partial_pivot(self))
+    def clean(self, matrix):
+        for i in range(0,len(matrix)):
+            matrix[i]=(matrix[i].split(","))
+            for j in range(0,len(matrix[i])):
+                if(j==0):
+                    matrix[i][j]=matrix[i][j][1:]
+                if(j==len(matrix[i])-1):
+                    matrix[i][j]=matrix[i][j][0:-1] 
+                matrix[i][j]=eval(matrix[i][j])
+        return matrix
 class System_of_equations_total_pivot(Screen):
     pass
 class System_of_equations_lu_Factorization(Screen):
@@ -372,13 +391,13 @@ class Interpolation_splines(Screen):
     pass
 class Diferenciacion_numerica_diferenciacion(Screen):
     pass
-class Ventana_emergente(FloatLayout):
-    contenido=ObjectProperty(None)
+class PopUp(FloatLayout):
+    content=ObjectProperty(None)
     boton=ObjectProperty(None)
 
-def show_popup(titulo,contenido):
-    show=Ventana_emergente()
-    show.contenido.text=contenido
+def show_popup(titulo,content):
+    show=PopUp
+    show.content.text=content
     popup = Popup(title=titulo, content=show,auto_dismiss=False,size_hint=(None, None), size=(600, 600))
     popup.open()
     show.boton.on_press=popup.dismiss

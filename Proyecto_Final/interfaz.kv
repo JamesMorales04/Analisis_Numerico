@@ -4,18 +4,18 @@
 
 WindowManager:
     Menu_Initial:
-    Ecuaciones_no_lineales:
-    Sistemas_de_ecuaciones:
+    Non_linear_equations:
+    System_of_equations:
     Interpolation:
     Diferenciacion_numerica:
-    Ecuaciones_no_lineales_busqueda:
-    Ecuaciones_no_lineales_biseccion:
-    Ecuaciones_no_lineales_regla_falsa:
-    Ecuaciones_no_lineales_punto_fijo:
-    Ecuaciones_no_lineales_newton:
-    Ecuaciones_no_lineales_raices_multiples:
-    Ecuaciones_no_lineales_secantes:
-    Sistemas_de_ecuaciones_eliminacion_gaussiana:
+    Non_linear_equations_busqueda:
+    Non_linear_equations_biseccion:
+    Non_linear_equations_regla_falsa:
+    Non_linear_equations_punto_fijo:
+    Non_linear_equations_newton:
+    Non_linear_equations_raices_multiples:
+    Non_linear_equations_secantes:
+    System_of_equations_gaussian_elimination:
     System_of_equations_partial_pivot:
     System_of_equations_total_pivot
     System_of_equations_lu_Factorization:
@@ -52,13 +52,13 @@ WindowManager:
             text: "Non-linear equations"
             font_size:"17sp"
             on_press:
-                app.root.current="Ecuaciones_no_lineales"
+                app.root.current="Non_linear_equations"
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Equations systems"
             font_size:"17sp"
             on_press:
-                app.root.current="Sistemas_de_ecuaciones"
+                app.root.current="System_of_equations"
                 root.manager.transition.direction="left"
 
         SmoothButton:
@@ -76,8 +76,8 @@ WindowManager:
                 root.manager.transition.direction="left"
 
 
-<Ecuaciones_no_lineales>
-    name:"Ecuaciones_no_lineales"
+<Non_linear_equations>
+    name:"Non_linear_equations"
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -97,48 +97,48 @@ WindowManager:
 
 
         SmoothButton:
-            text: "Incremental search"
+            text: "Incremental Search"
             font_size:"17sp"   
             on_press:
-                app.root.current="Ecuaciones_no_lineales_busqueda"     
+                app.root.current="Non_linear_equations_busqueda"     
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Bisection"
             font_size:"17sp"  
             on_press:
-                app.root.current="Ecuaciones_no_lineales_biseccion"     
+                app.root.current="Non_linear_equations_biseccion"     
                 root.manager.transition.direction="left"
 
         SmoothButton:
             text: "Reguli false"
             font_size:"17sp"  
             on_press:
-                app.root.current="Ecuaciones_no_lineales_regla_falsa"  
+                app.root.current="Non_linear_equations_regla_falsa"  
                 root.manager.transition.direction="left"   
 
         SmoothButton:
             text: "Fixed point"
             font_size:"17sp"  
             on_press:
-                app.root.current="Ecuaciones_no_lineales_punto_fijo"
+                app.root.current="Non_linear_equations_punto_fijo"
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Newton"
             font_size:"17sp"  
             on_press:
-                app.root.current="Ecuaciones_no_lineales_newton"
+                app.root.current="Non_linear_equations_newton"
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Secants"
             font_size:"17sp"  
             on_press:
-                app.root.current="Ecuaciones_no_lineales_secantes"
+                app.root.current="Non_linear_equations_secantes"
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Multiple root"
             font_size:"17sp"  
             on_press:
-                app.root.current="Ecuaciones_no_lineales_raices_multiples"
+                app.root.current="Non_linear_equations_raices_multiples"
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Back"
@@ -148,8 +148,8 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 
-<Sistemas_de_ecuaciones>
-    name:"Sistemas_de_ecuaciones"
+<System_of_equations>
+    name:"System_of_equations"
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -167,10 +167,10 @@ WindowManager:
             color: 1,1,1,1 
             bold: True
         SmoothButton:
-            text: "Simple gusianna's elimination"
+            text: "Simple gausianna's elimination"
             font_size:"17sp"   
             on_press:
-                app.root.current="Sistemas_de_ecuaciones_eliminacion_gaussiana"     
+                app.root.current="System_of_equations_gaussian_elimination"     
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Partial pivot"
@@ -288,8 +288,8 @@ WindowManager:
 
 
 
-<Ecuaciones_no_lineales_busqueda>
-    name:"Ecuaciones_no_lineales_busqueda"
+<Non_linear_equations_busqueda>
+    name:"Non_linear_equations_busqueda"
     funciones:funciones
     initial_position:initial_position
     increment:increment
@@ -378,11 +378,11 @@ WindowManager:
             font_size:"17sp"  
             on_press:
                 root.manager.funcion_global=root.funciones.text
-                app.root.current="Ecuaciones_no_lineales"  
+                app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
-<Ecuaciones_no_lineales_biseccion>
-    name:"Ecuaciones_no_lineales_biseccion"
+<Non_linear_equations_biseccion>
+    name:"Non_linear_equations_biseccion"
     funciones:funciones
     xi:xi
     xs:xs
@@ -496,7 +496,7 @@ WindowManager:
                     color:  0,0,0,1 
                     on_active: root.tipo_de_error(False)
         SmoothButton:
-            text: "Serch"
+            text: "Search"
             font_size:"17sp"  
             on_press:root.buscar()    
         SmoothButton:
@@ -512,11 +512,11 @@ WindowManager:
             font_size:"17sp"  
             on_press:
                 root.manager.funcion_global=root.funciones.text
-                app.root.current="Ecuaciones_no_lineales"  
+                app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
-<Ecuaciones_no_lineales_regla_falsa>
-    name:"Ecuaciones_no_lineales_regla_falsa"
+<Non_linear_equations_regla_falsa>
+    name:"Non_linear_equations_regla_falsa"
     funciones:funciones
     xi:xi
     xs:xs
@@ -630,7 +630,7 @@ WindowManager:
                     color:  0,0,0,1 
                     on_active: root.tipo_de_error(False)
         SmoothButton:
-            text: "Serch"
+            text: "Search"
             font_size:"17sp"  
             on_press:root.buscar()
         SmoothButton:
@@ -646,12 +646,12 @@ WindowManager:
             font_size:"17sp"  
             on_press:
                 root.manager.funcion_global=root.funciones.text
-                app.root.current="Ecuaciones_no_lineales"  
+                app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
 
-<Ecuaciones_no_lineales_punto_fijo>
-    name:"Ecuaciones_no_lineales_punto_fijo"
+<Non_linear_equations_punto_fijo>
+    name:"Non_linear_equations_punto_fijo"
     funciones:funciones
     gfunciones:gfunciones
     xi:xi
@@ -770,7 +770,7 @@ WindowManager:
                     color:  0,0,0,1
                     on_active: root.tipo_de_error(False)
         SmoothButton:
-            text: "Serch"
+            text: "Search"
             border: 10,10,10,10
             font_size:"17sp"
             on_press:root.buscar()
@@ -787,12 +787,12 @@ WindowManager:
             font_size:"17sp"
             on_press:
                 root.manager.funcion_global=root.funciones.text
-                app.root.current="Ecuaciones_no_lineales"
+                app.root.current="Non_linear_equations"
                 root.manager.transition.direction="right"
 
-<Ecuaciones_no_lineales_newton>
+<Non_linear_equations_newton>
 
-    name:"Ecuaciones_no_lineales_newton"
+    name:"Non_linear_equations_newton"
     funciones:funciones
     xi:xi
     iterations:iterations
@@ -896,7 +896,7 @@ WindowManager:
                     color:  0,0,0,1
                     on_active: root.tipo_de_error(False)
         SmoothButton:
-            text: "Serch"
+            text: "Search"
             border: 10,10,10,10
             font_size:"17sp"
             on_press:root.buscar()
@@ -913,11 +913,11 @@ WindowManager:
             font_size:"17sp"  
             on_press:
                 root.manager.funcion_global=root.funciones.text
-                app.root.current="Ecuaciones_no_lineales"  
+                app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
-<Ecuaciones_no_lineales_secantes>
-    name:"Ecuaciones_no_lineales_secantes"
+<Non_linear_equations_secantes>
+    name:"Non_linear_equations_secantes"
     funciones:funciones
     x0:x0
     x1:x1
@@ -1047,12 +1047,12 @@ WindowManager:
             font_size:"17sp"  
             on_press:
                 root.manager.funcion_global=root.funciones.text
-                app.root.current="Ecuaciones_no_lineales"  
+                app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
 
-<Ecuaciones_no_lineales_raices_multiples>
-    name:"Ecuaciones_no_lineales_raices_multiples"
+<Non_linear_equations_raices_multiples>
+    name:"Non_linear_equations_raices_multiples"
     funciones:funciones
     xi:xi
     iterations:iterations
@@ -1173,12 +1173,12 @@ WindowManager:
             font_size:"17sp"  
             on_press:
                 root.manager.funcion_global=root.funciones.text
-                app.root.current="Ecuaciones_no_lineales"  
+                app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
 
-<Sistemas_de_ecuaciones_eliminacion_gaussiana>
-    name:"Sistemas_de_ecuaciones_eliminacion_gaussiana"
+<System_of_equations_gaussian_elimination>
+    name:"System_of_equations_gaussian_elimination"
     matrix:matrix
     matrixb:matrixb
     sol:sol
@@ -1233,13 +1233,9 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Serch"
+                text: "Search"
                 font_size:"17sp"  
                 on_press:root.buscar()    
-            SmoothButton:
-                text: "Graph"
-                font_size:"17sp"  
-                on_press:root.graficar()
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -1250,20 +1246,82 @@ WindowManager:
                 on_press:
                     root.manager.matrix_global=root.matrix.text
                     root.manager.matrixb_global=root.matrixb.text
-                    app.root.current="Sistemas_de_ecuaciones"  
+                    app.root.current="System_of_equations"  
                     root.manager.transition.direction="right"
 
 
 <System_of_equations_partial_pivot>
     name:"System_of_equations_partial_pivot"
+    matrix:matrix
+    matrixb:matrixb
+    sol:sol
     GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="Menu_Initial"  
-                root.manager.transition.direction="right"
-
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            GridLayout:
+                cols: 2
+                row_default_height:80
+                row_force_default:True
+                spacing: '10dp'
+                Label:
+                    text: "Matrix A(x)"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:matrix
+                    text:root.manager.matrix_global
+                    multiline:True
+                Label:
+                    text: "Matrix B"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:matrixb
+                    text:root.manager.matrixb_global
+                    multiline:True
+                Label:
+                    text: "Solution"
+                    font_size:"25sp"
+                    width: 20
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:sol
+                    width: 20
+                    multiline:True
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            SmoothButton:
+                text: "Search"
+                font_size:"17sp"  
+                on_press:root.buscar()    
+            SmoothButton:
+                text: "Help"
+                font_size:"17sp"  
+                on_press:root.ayuda()
+            SmoothButton:
+                text: "Back"
+                font_size:"17sp"  
+                on_press:
+                    root.manager.matrix_global=root.matrix.text
+                    root.manager.matrixb_global=root.matrixb.text
+                    app.root.current="System_of_equations"  
+                    root.manager.transition.direction="right"
+                    
 <System_of_equations_total_pivot>
     name:"System_of_equations_total_pivot"
     GridLayout:
@@ -1271,7 +1329,7 @@ WindowManager:
             text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Initial"  
+                app.root.current="System_of_equations"  
                 root.manager.transition.direction="right"
 
 
@@ -1353,15 +1411,15 @@ WindowManager:
                 app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
-<Ventana_emergente>
-    contenido:contenido
+<PopUp>
+    content:content
     boton:boton
     ScrollView:
         size_hint: 0.9, 0.7
         pos_hint: {"x":0.1,"top":1}
         Label:
             size_hint_y: None
-            id: contenido
+            id: content
             height: self.texture_size[1]
             text_size: (self.width-20), None
             line_height: 1.5
