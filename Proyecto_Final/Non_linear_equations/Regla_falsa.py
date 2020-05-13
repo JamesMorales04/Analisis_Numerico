@@ -41,7 +41,7 @@ class Regla_falsa:
                 else:
                     self.raiz=f"Exceeded iterations"
 
-    def tabla_valores(self):
+    def value_table(self):
         return self.valores
     def get_sol(self):
         return str(self.raiz)

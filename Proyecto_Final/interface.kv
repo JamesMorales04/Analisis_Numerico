@@ -7,7 +7,7 @@ WindowManager:
     Non_linear_equations:
     System_of_equations:
     Interpolation:
-    Diferenciacion_numerica:
+    Numeric_differentiation:
     Non_linear_equations_busqueda:
     Non_linear_equations_biseccion:
     Non_linear_equations_regla_falsa:
@@ -24,7 +24,7 @@ WindowManager:
     Interpolation_newton:
     Interpolation_lagrange:
     Interpolation_splines:
-    Diferenciacion_numerica_diferenciacion:
+    Numeric_differentiation_differentiation:
 
 #:set color_background "#248091"
 #:set color_button "#8ac6d1"
@@ -72,7 +72,7 @@ WindowManager:
             text: "Differentiation and Numeric integration"
             font_size:"17sp"  
             on_press:
-                app.root.current="Diferenciacion_numerica"
+                app.root.current="Numeric_differentiation"
                 root.manager.transition.direction="left"
 
 
@@ -255,8 +255,8 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 
-<Diferenciacion_numerica>
-    name:"Diferenciacion_numerica"
+<Numeric_differentiation>
+    name:"Numeric_differentiation"
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -277,7 +277,7 @@ WindowManager:
             text: "Numeric differentiation"
             font_size:"17sp"   
             on_press:
-                app.root.current="Diferenciacion_numerica_diferenciacion"     
+                app.root.current="Numeric_differentiation_differentiation"     
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Back"
@@ -372,7 +372,7 @@ WindowManager:
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
-            on_press:root.ayuda()
+            on_press:root.aid()
         SmoothButton:
             text: "Back"
             font_size:"17sp"  
@@ -506,7 +506,7 @@ WindowManager:
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
-            on_press:root.ayuda()
+            on_press:root.aid()
         SmoothButton:
             text: "Back"
             font_size:"17sp"  
@@ -640,7 +640,7 @@ WindowManager:
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
-            on_press:root.ayuda()
+            on_press:root.aid()
         SmoothButton:
             text: "Back"
             font_size:"17sp"  
@@ -781,7 +781,7 @@ WindowManager:
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
-            on_press:root.ayuda()
+            on_press:root.aid()
         SmoothButton:
             text: "Back"
             font_size:"17sp"
@@ -907,7 +907,7 @@ WindowManager:
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
-            on_press:root.ayuda()
+            on_press:root.aid()
         SmoothButton:
             text: "Back"
             font_size:"17sp"  
@@ -1041,7 +1041,7 @@ WindowManager:
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
-            on_press:root.ayuda()
+            on_press:root.aid()
         SmoothButton:
             text: "Back"
             font_size:"17sp"  
@@ -1167,7 +1167,7 @@ WindowManager:
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
-            on_press:root.ayuda()
+            on_press:root.aid()
         SmoothButton:
             text: "Back"
             font_size:"17sp"  
@@ -1239,7 +1239,7 @@ WindowManager:
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
-                on_press:root.ayuda()
+                on_press:root.aid()
             SmoothButton:
                 text: "Back"
                 font_size:"17sp"  
@@ -1312,7 +1312,7 @@ WindowManager:
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
-                on_press:root.ayuda()
+                on_press:root.aid()
             SmoothButton:
                 text: "Back"
                 font_size:"17sp"  
@@ -1399,10 +1399,10 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 
-<Diferenciacion_numerica_diferenciacion>
+<Numeric_differentiation_differentiation>
 
 
-    name:"Diferenciacion_numerica_diferenciacion"
+    name:"Numeric_differentiation_differentiation"
     GridLayout:
         SmoothButton:
             text: "Back"
@@ -1411,15 +1411,15 @@ WindowManager:
                 app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
-<PopUp>
-    content:content
+<PopWindow>
+    contained:contained
     boton:boton
     ScrollView:
         size_hint: 0.9, 0.7
         pos_hint: {"x":0.1,"top":1}
         Label:
             size_hint_y: None
-            id: content
+            id: contained
             height: self.texture_size[1]
             text_size: (self.width-20), None
             line_height: 1.5

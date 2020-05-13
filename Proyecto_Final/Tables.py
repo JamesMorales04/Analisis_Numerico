@@ -1,8 +1,8 @@
 import tkinter
 import pandas as pd
 from pandastable import Table, TableModel
-class Tabla:
-    def dibujar(self,busqueda,columnas):
+class Tables:
+    def draw(self,busqueda,columnas):
         ventana =tkinter.Tk()
         tabla= tkinter.Frame(ventana)
         ventana.wm_title("Values Table")

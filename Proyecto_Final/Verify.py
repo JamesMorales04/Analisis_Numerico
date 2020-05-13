@@ -1,7 +1,7 @@
 from Funciones import Funciones
-class Verificar:
+class Verify:
 
-    def verificar_funcion(self,funcion,xi):
+    def verify_funcion(self,funcion,xi):
         if(funcion==""):
             return True
         else:
@@ -15,11 +15,11 @@ class Verificar:
             except:
                 return True
 
-    def verificar_busqueda(self,funcion,xi,incremento,iteraciones):
+    def verify_busqueda(self,funcion,xi,incremento,iteraciones):
         error=""
         try:
             print(float(incremento),float(iteraciones),float(xi))
-            if(self.verificar_funcion(funcion,float(xi))):
+            if(self.verify_funcion(funcion,float(xi))):
                 error+=self.invalidFunction()
             if(float(incremento)==0):
                 error+=self.invalid_increment()
@@ -29,10 +29,10 @@ class Verificar:
             error=self.empty_field()
         return error
 
-    def verificar_biseccion(self,funcion,xi,valor_final,iteraciones,tolerancia):
+    def verify_biseccion(self,funcion,xi,valor_final,iteraciones,tolerancia):
         error=""
         try:
-            if(self.verificar_funcion(funcion,float(xi))):
+            if(self.verify_funcion(funcion,float(xi))):
                 error+=self.invalidFunction()
             else:
                 raiz=Funciones(funcion)
@@ -46,10 +46,10 @@ class Verificar:
             error=self.empty_field()
         return error
 
-    def verificar_punto_fijo(self,funcion,gfuncion,xi,iteraciones,tolerancia):
+    def verify_punto_fijo(self,funcion,gfuncion,xi,iteraciones,tolerancia):
         error=""
         try:
-            if(self.verificar_funcion(funcion,float(xi)) and self.verificar_funcion(gfuncion,float(xi))):
+            if(self.verify_funcion(funcion,float(xi)) and self.verify_funcion(gfuncion,float(xi))):
                 error+=self.invalidFunction()
             if(float(tolerancia)<=0):
                 error+=self.invalidTolerance()
@@ -60,11 +60,11 @@ class Verificar:
             error=self.empty_field()
         return error
 
-    def verificar_newton(self,function,xi,iterations,tolerance):
+    def verify_newton(self,function,xi,iterations,tolerance):
         error=""
         try:
             
-            if(self.verificar_funcion(function,float(xi))):
+            if(self.verify_funcion(function,float(xi))):
                 error+=self.invalidFunction()
             
             if(float(tolerance)<=0):
@@ -77,10 +77,10 @@ class Verificar:
         return error
 
 
-    def verificar_secante(self, xi_1 , xi_2, function, iter, tol):
+    def verify_secante(self, xi_1 , xi_2, function, iter, tol):
         error = ''
         try:
-            if(self.verificar_funcion(function,float(xi_1)) or self.verificar_funcion(function, float(xi_2))):
+            if(self.verify_funcion(function,float(xi_1)) or self.verify_funcion(function, float(xi_2))):
                 error+=self.invalidFunction()
             if(float(tol)<0):
                 error+=self.invalidTolerance()
@@ -90,13 +90,11 @@ class Verificar:
             error = self.empty_field()
         return error
 
-
-#Hereeeeee
-    def verificar_raices_mult(self,xi,function,iterations,tolerance):
+    def verify_raices_mult(self,xi,function,iterations,tolerance):
         error=""
         try:
             
-            if(self.verificar_funcion(function,float(xi))):
+            if(self.verify_funcion(function,float(xi))):
                 error+=self.invalidFunction()
             
             if(float(tolerance)<=0):

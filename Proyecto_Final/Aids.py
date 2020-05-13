@@ -28,8 +28,8 @@ class Aids:
         data=open("Aids\\MultipleRootsMethodExplanation.txt", "r")
         return data.read()
 
-    def help_gaussian_elimination():
+    def help_gaussian_elimination(self):
         data=open("Aids\\NonLinearEq\\GaussianEliminationMethodExplanation.txt", "r")
 
-    def help_partial_pivot():
+    def help_partial_pivot(self):
         data=open("Aids\\NonLinearEq\\partialPivotMethodExplanation.txt", "r")      

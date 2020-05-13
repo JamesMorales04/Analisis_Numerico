@@ -1,7 +1,7 @@
 from matplotlib import pyplot
 from Funciones import Funciones
-class Graficar:
-    def dibujar_funcionesa(self,funcion,posicion_inicial,posicion_final):
+class Graph:
+    def draw_funcionesa(self,funcion,posicion_inicial,posicion_final):
         Funcion=Funciones(funcion)
         x= range(int(posicion_inicial), int(posicion_final))
         pyplot.plot(x, [Funcion.evaluar(i) for i in x])
@@ -11,7 +11,7 @@ class Graficar:
 
         pyplot.show()
 
-    def dibujar_funcionesb(self,funcion,gfuncion,posicion_inicial,posicion_final):
+    def draw_funcionesb(self,funcion,gfuncion,posicion_inicial,posicion_final):
         Funcion=Funciones(funcion)
         Gfuncion=Funciones(gfuncion)
         
@@ -24,7 +24,7 @@ class Graficar:
         pyplot.axvline(0, color="black")
         pyplot.show()
 
-    def dibujar_funcionesc(self,funcion,posicion_inicial,posicion_final):
+    def draw_funcionesc(self,funcion,posicion_inicial,posicion_final):
         Funcion=Funciones(funcion)
         x= range(int(posicion_inicial), int(posicion_final))
         pyplot.plot(x, [Funcion.evaluar(i) for i in x])
@@ -35,7 +35,7 @@ class Graficar:
 
         pyplot.show()
     
-    def dibujar_funcionesd(self,funcion,posicion_inicial,posicion_final):
+    def draw_funcionesd(self,funcion,posicion_inicial,posicion_final):
         Funcion=Funciones(funcion)
         x= range(int(posicion_inicial), int(posicion_final))
         pyplot.plot(x, [Funcion.evaluar(i) for i in x])

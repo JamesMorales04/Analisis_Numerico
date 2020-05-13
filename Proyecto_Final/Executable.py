@@ -1,6 +1,6 @@
-from Interfaz import Interfaz
-class Ejecutable:
+from Interface import Interface
+class Executable:
     if __name__ == "__main__":
-        interface=Interfaz()
-        Interfaz().run()
+        interface=Interface()
+        Interface().run()
         
