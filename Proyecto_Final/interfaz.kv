@@ -6,7 +6,7 @@ WindowManager:
     Menu_Initial:
     Ecuaciones_no_lineales:
     Sistemas_de_ecuaciones:
-    Interpolacion:
+    Interpolation:
     Diferenciacion_numerica:
     Ecuaciones_no_lineales_busqueda:
     Ecuaciones_no_lineales_biseccion:
@@ -16,13 +16,14 @@ WindowManager:
     Ecuaciones_no_lineales_raices_multiples:
     Ecuaciones_no_lineales_secantes:
     Sistemas_de_ecuaciones_eliminacion_gaussiana:
-    Sistemas_de_ecuaciones_pivoteo:
-    Sistemas_de_ecuaciones_Factorizacion_lu:
-    Sistemas_de_ecuaciones_Factorizacion_matrices:
-    Sistemas_de_ecuaciones_iterativos:
-    Interpolacion_newton:
-    Interpolacion_lagrange:
-    Interpolacion_splines:
+    System_of_equations_partial_pivot:
+    System_of_equations_total_pivot
+    System_of_equations_lu_Factorization:
+    System_of_equations_matrix_Factorization:
+    Iteratives_System_of_equations:
+    Interpolation_newton:
+    Interpolation_lagrange:
+    Interpolation_splines:
     Diferenciacion_numerica_diferenciacion:
 
 #:set color_background "#248091"
@@ -64,7 +65,7 @@ WindowManager:
             text: "Interpolation"
             font_size:"17sp"  
             on_press:
-                app.root.current="Interpolacion"
+                app.root.current="Interpolation"
                 root.manager.transition.direction="left"     
 
         SmoothButton:
@@ -172,29 +173,35 @@ WindowManager:
                 app.root.current="Sistemas_de_ecuaciones_eliminacion_gaussiana"     
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Pivot"
+            text: "Partial pivot"
             font_size:"17sp"  
             on_press:
-                app.root.current="Sistemas_de_ecuaciones_pivoteo"     
+                app.root.current="System_of_equations_partial_pivot"     
+                root.manager.transition.direction="left"
+        SmoothButton:
+            text: "Total pivot"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="System_of_equations_total_pivot"     
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Lu's factorization"
             font_size:"17sp"  
             on_press:
-                app.root.current="Sistemas_de_ecuaciones_Factorizacion_lu"     
+                app.root.current="System_of_equations_lu_Factorization"     
                 root.manager.transition.direction="left"
 
         SmoothButton:
             text: "Direct matrix factorization"
             font_size:"17sp"  
             on_press:
-                app.root.current="Sistemas_de_ecuaciones_Factorizacion_matrices"
+                app.root.current="System_of_equations_matrix_Factorization"
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Iterative methods"
             font_size:"17sp"  
             on_press:
-                app.root.current="Sistemas_de_ecuaciones_iterativos"
+                app.root.current="Iteratives_System_of_equations"
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Back"
@@ -204,8 +211,8 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 
-<Interpolacion>
-    name:"Interpolacion"
+<Interpolation>
+    name:"Interpolation"
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -226,19 +233,19 @@ WindowManager:
             text: "Newton"
             font_size:"17sp"   
             on_press:
-                app.root.current="Interpolacion_newton"    
+                app.root.current="Interpolation_newton"    
                 root.manager.transition.direction="left" 
         SmoothButton:
             text: "Lagrange"
             font_size:"17sp"  
             on_press:
-                app.root.current="Interpolacion_lagrange"   
+                app.root.current="Interpolation_lagrange"   
                 root.manager.transition.direction="left"  
         SmoothButton:
             text: "Splines"
             font_size:"17sp"  
             on_press:
-                app.root.current="Interpolacion_splines"     
+                app.root.current="Interpolation_splines"     
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Back"
@@ -1247,8 +1254,18 @@ WindowManager:
                     root.manager.transition.direction="right"
 
 
-<Sistemas_de_ecuaciones_pivoteo>
-    name:"Sistemas_de_ecuaciones_pivoteo"
+<System_of_equations_partial_pivot>
+    name:"System_of_equations_partial_pivot"
+    GridLayout:
+        SmoothButton:
+            text: "Back"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Initial"  
+                root.manager.transition.direction="right"
+
+<System_of_equations_total_pivot>
+    name:"System_of_equations_total_pivot"
     GridLayout:
         SmoothButton:
             text: "Back"
@@ -1258,8 +1275,8 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 
-<Sistemas_de_ecuaciones_Factorizacion_lu>
-    name:"Sistemas_de_ecuaciones_Factorizacion_lu"
+<System_of_equations_lu_Factorization>
+    name:"System_of_equations_lu_Factorization"
     GridLayout:
         SmoothButton:
             text: "Back"
@@ -1269,8 +1286,8 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 
-<Sistemas_de_ecuaciones_Factorizacion_matrices>
-    name:"Sistemas_de_ecuaciones_Factorizacion_matrices"
+<System_of_equations_matrix_Factorization>
+    name:"System_of_equations_matrix_Factorization"
     GridLayout:
         SmoothButton:
             text: "Back"
@@ -1280,8 +1297,8 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 
-<Sistemas_de_ecuaciones_iterativos>
-    name:"Sistemas_de_ecuaciones_iterativos"
+<Iteratives_System_of_equations>
+    name:"Iteratives_System_of_equationss"
     GridLayout:
         SmoothButton:
             text: "Back"
@@ -1291,8 +1308,8 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 
-<Interpolacion_newton>
-    name:"Interpolacion_newton"
+<Interpolation_newton>
+    name:"Interpolation_newton"
     GridLayout:
         SmoothButton:
             text: "Back"
@@ -1302,8 +1319,8 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 
-<Interpolacion_lagrange>
-    name:"Interpolacion_lagrange"
+<Interpolation_lagrange>
+    name:"Interpolation_lagrange"
     GridLayout:
         SmoothButton:
             text: "Back"
@@ -1313,8 +1330,8 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 
-<Interpolacion_splines>
-    name:"Interpolacion_splines"
+<Interpolation_splines>
+    name:"Interpolation_splines"
     GridLayout:
         SmoothButton:
             text: "Back"

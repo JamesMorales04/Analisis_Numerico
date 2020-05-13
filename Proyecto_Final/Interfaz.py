@@ -51,7 +51,7 @@ class Ecuaciones_no_lineales(Screen):
     pass
 class Sistemas_de_ecuaciones(Screen):
     pass
-class Interpolacion(Screen):
+class Interpolation(Screen):
     pass
 class Diferenciacion_numerica(Screen):
     pass
@@ -354,19 +354,21 @@ class Sistemas_de_ecuaciones_eliminacion_gaussiana(Screen):
                     matrix[i][j]=matrix[i][j][0:-1] 
                 matrix[i][j]=eval(matrix[i][j])
         return matrix
-class Sistemas_de_ecuaciones_pivoteo(Screen):
+class System_of_equations_partial_pivot(Screen):
     pass
-class Sistemas_de_ecuaciones_Factorizacion_lu(Screen):
+class System_of_equations_total_pivot(Screen):
     pass
-class Sistemas_de_ecuaciones_Factorizacion_matrices(Screen):
+class System_of_equations_lu_Factorization(Screen):
     pass
-class Sistemas_de_ecuaciones_iterativos(Screen):
+class System_of_equations_matrix_Factorization(Screen):
     pass
-class Interpolacion_newton(Screen):
+class Iteratives_System_of_equations(Screen):
     pass
-class Interpolacion_lagrange(Screen):
+class Interpolation_newton(Screen):
     pass
-class Interpolacion_splines(Screen):
+class Interpolation_lagrange(Screen):
+    pass
+class Interpolation_splines(Screen):
     pass
 class Diferenciacion_numerica_diferenciacion(Screen):
     pass
