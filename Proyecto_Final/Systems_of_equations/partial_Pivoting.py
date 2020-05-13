@@ -5,6 +5,7 @@ class partial_Pivoting:
         self.original= []
         self.new = []
         self.total= []
+        self.result=[]
         self.rows = []
         getcontext().prec = 25
 
@@ -16,26 +17,34 @@ class partial_Pivoting:
         i=1
         lenght=len(matrix)
         n=0
-        while n < lenght: #Empieza en 0
-            pos=n  # También mirar en qué termina!! contiene la última?
+        while n < lenght: 
+            pos=n  
             bigger=matrix[n][n]
             for i in range (n+1,lenght):
                 if (abs(matrix[i][n]) > bigger):
                     bigger= matrix[i][n]
                     pos = i
-            temp=matrix[n] #matriz en fila n? o sea la primera en la que va
-            big=matrix[pos] #matriz en fila que contiene el mayor
+            temp=matrix[n]
+            big=matrix[pos] 
             matrix[n]=big
             matrix[pos]=temp #SWAP
             row=n+1
             for i in range (row,lenght):
-                multiplier=matrix[i][column]/matrix[row-1][column] #La división es constante!!
+                multiplier=matrix[i][column]/matrix[row-1][column] 
                 for j in range(column,len(matrix[i])):                      
                     matrix[i][j]=matrix[i][j]-matrix[row-1][j]*multiplier             
             n+=1
             column+=1
-        print("matriz final")
-        print(matrix)
+
+        if(self.check_diagonal()):
+            self.variable_resolution()
+            self.row_definition()
+        else:
+            self.result="No tiene solucion o posee infinitas soluciones"
+
+        for i in self.new:
+            print(i)
+        print(self.result)
         
     def check_diagonal(self):
         for i in range(0,len(self.new)):
@@ -46,6 +55,25 @@ class partial_Pivoting:
                         return False
         return True
 
+    def variable_resolution(self):
+        i=len(self.new)-1
+        while(i>=0):
+            j=len(self.new[i])-1
+            aux=0
+            while(j>=0):
+                if(j!=i):
+                    if(len(self.new[i])-1==j):
+                        self.result[i]=self.new[i][j]
+                    else:
+                        self.result[i]-=self.new[i][j]*self.result[j]
+                else:
+                    aux=self.new[i][j]
+                if(j==0):
+                    self.result[i]/=aux
+            
+                j-=1
+        
+            i-=1     
     def merge(self,matrix,matrixb):
         for i in matrix:
             print(i)
@@ -54,6 +82,15 @@ class partial_Pivoting:
 
             matrix[i].append(matrixb[0][i])
         return matrix
+
+    def row_definition(self):
+        for i in range(1,len(self.result)+1):
+            self.rows.append(f"x{i}")
+        self.rows.append("b")
+        self.rows.append("///")
+        for i in range(1,len(self.result)+1):
+            self.rows.append(f"x{i}")
+        self.rows.append("b")
 
     def tabla_valores(self):
         for i in range(0,len(self.new)):
