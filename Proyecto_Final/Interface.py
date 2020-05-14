@@ -370,7 +370,7 @@ class System_of_equations_partial_pivot(Screen):
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
-            matrix_method.gaussian_elimination_algorithm(matrix_clean,matrixb_clean)
+            matrix_method.partial_pivoting_algorithm(matrix_clean,matrixb_clean)
             self.sol.text=matrix_method.get_results()
             columnas=matrix_method.rows
             table.draw(matrix_method.value_table(),columnas)

@@ -1,5 +1,6 @@
 from decimal import *
 import copy
+from decimal import *
 class partial_Pivoting:
     def __init__(self):
         self.original= []
@@ -35,13 +36,13 @@ class partial_Pivoting:
                     matrix[i][j]=matrix[i][j]-matrix[row-1][j]*multiplier             
             n+=1
             column+=1
-
+        self.new= matrix
         if(self.check_diagonal()):
             self.variable_resolution()
             self.row_definition()
         else:
             self.result="No tiene solucion o posee infinitas soluciones"
-
+        print 
         for i in self.new:
             print(i)
         print(self.result)
