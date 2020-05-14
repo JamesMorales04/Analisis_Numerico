@@ -33,4 +33,4 @@ class Aids:
         return data.read()
 
     def help_partial_pivot(self):
-        data=open("Aids\\NonLinearEq\\partialPivotMethodExplanation.txt", "r")      
+        data=open("Aids\\NonLinearEq\\PartialPivotingExplanation.txt", "r")      
