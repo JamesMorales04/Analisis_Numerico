@@ -1,0 +1,34 @@
+
+
+This method consist of n-1 stages, where n is the number of rows of the given matrix. Each stage will consist of operations 
+over the matrix with the aim to make the current matrix a triangular superior matrix and reduce the propagation error by placing
+the greatest absolute value number of each column on the diagonal. To achive this goal, we use the following procedure for each stage:
+
+1) Find the greatest absolute value on the current column, starting by number in the diagonal, up to the last number of the current
+column. If the number is cero, then stop the process.
+
+2)Places the found number on the diagonal by switching the corresponding matrix rows. Steps 1 and 2 can expressed in the following 
+formula:
+        aii = max{|aki|}                      Where i<=k<=n
+
+3)Calculate the multipliers for each row by diving the each number below the diagonal on the current column by the number placed on
+the diagonal. This operation is done as follows:
+        Mi+1 = a(i+1)i/aii
+        Mi+2 = a(i+2)i/aii
+              .
+              .
+              .
+        Mi+k = a(i+k)i/aii                    Where i is current row and column index, i+k<=n and Mi+k stands for each row multiplier 
+
+4)Substract each row below the current one(stage row) by the product of the respective row multiplier and the current row (stage row).
+This operation is done as follows:
+        Fi+1 = Fi+1 - Mi+1*Fi
+        Fi+1 = Fi+1 - Mi+1*Fi
+                   .
+                   .
+                   .
+        Fi+k = Fi+k - Mi+k*Fi                  Where i is the current row index, i+k<=n and Fi+k stands for each row.
+
+5) Repeat steps 1,2,3 and 4 until stage n-1.
+
+6)Calculate each variables value from the bottom to the top by solving each equation and replacing it in the one at the top.
