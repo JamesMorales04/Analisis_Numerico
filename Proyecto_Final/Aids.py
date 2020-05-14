@@ -29,7 +29,8 @@ class Aids:
         return data.read()
 
     def help_gaussian_elimination(self):
-        data=open("Aids\\NonLinearEq\\GaussianEliminationMethodExplanation.txt", "r")
+        data=open("Aids\\NonLinearEq\\analyzeGaussianElimination.txt", "r")
+        return data.read()
 
     def help_partial_pivot(self):
         data=open("Aids\\NonLinearEq\\partialPivotMethodExplanation.txt", "r")      
