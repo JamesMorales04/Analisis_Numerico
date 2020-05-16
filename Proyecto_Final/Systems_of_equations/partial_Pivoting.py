@@ -1,4 +1,4 @@
-
+from decimal import *
 import copy
 from decimal import *
 class partial_Pivoting:
