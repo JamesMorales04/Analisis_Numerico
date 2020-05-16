@@ -392,6 +392,19 @@ class Interpolation_splines(Screen):
     pass
 class Numeric_differentiation_differentiation(Screen):
     pass
+class matrix_Factorization_based_gaussian_simple(Screen):
+    pass
+class matrix_Factorization_based_gaussian_pivoting(Screen):
+    pass
+class matrix_Factorization_direct_croult(Screen):
+    pass
+class matrix_Factorization_direct_doolitle(Screen):
+    pass
+class matrix_Factorization_direct_cholesky(Screen):
+    pass
+class matrix_Factorization_direct_diagonal_matrix(Screen):
+    pass
+
 class PopWindow(FloatLayout):
     contained=ObjectProperty(None)
     boton=ObjectProperty(None)

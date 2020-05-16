@@ -17,9 +17,15 @@ WindowManager:
     Non_linear_equations_secantes:
     System_of_equations_gaussian_elimination:
     System_of_equations_partial_pivot:
-    System_of_equations_total_pivot
+    System_of_equations_total_pivot:
     System_of_equations_lu_Factorization:
     System_of_equations_matrix_Factorization:
+    matrix_Factorization_based_gaussian_simple:
+    matrix_Factorization_based_gaussian_pivoting:
+    matrix_Factorization_direct_croult:
+    matrix_Factorization_direct_doolitle:
+    matrix_Factorization_direct_cholesky:
+    matrix_Factorization_direct_diagonal_matrix:
     Iteratives_System_of_equations:
     Interpolation_newton:
     Interpolation_lagrange:
@@ -1347,16 +1353,127 @@ WindowManager:
 <System_of_equations_matrix_Factorization>
     name:"System_of_equations_matrix_Factorization"
     GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Methods"
+            font_size:"30sp"
+            color: 1,1,1,1
+            bold: True 
+
+
+        SmoothButton:
+            text: "Gaussian simple"
+            font_size:"17sp"   
+            on_press:
+                app.root.current="matrix_Factorization_based_gaussian_simple"     
+                root.manager.transition.direction="left"
+        SmoothButton:
+            text: "Gaussian pivoting"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="matrix_Factorization_based_gaussian_pivoting"     
+                root.manager.transition.direction="left"
+
+        SmoothButton:
+            text: "Croult"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="matrix_Factorization_direct_croult"  
+                root.manager.transition.direction="left"   
+
+        SmoothButton:
+            text: "Doolitle"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="matrix_Factorization_direct_doolitle"
+                root.manager.transition.direction="left"
+        SmoothButton:
+            text: "Cholesky"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="matrix_Factorization_direct_cholesky"
+                root.manager.transition.direction="left"
+        SmoothButton:
+            text: "Diagonal matrix"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="matrix_Factorization_direct_diagonal_matrix"
+                root.manager.transition.direction="left"
         SmoothButton:
             text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Initial"  
+                app.root.current="System_of_equations"  
+                root.manager.transition.direction="right"
+
+<matrix_Factorization_based_gaussian_simple>
+    name:"matrix_Factorization_based_gaussian_simple"
+    GridLayout:
+        SmoothButton:
+            text: "Back"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="System_of_equations_matrix_Factorization"  
+                root.manager.transition.direction="right"
+<matrix_Factorization_based_gaussian_pivoting>
+    name:"matrix_Factorization_based_gaussian_pivoting"
+    GridLayout:
+        SmoothButton:
+            text: "Back"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="System_of_equations_matrix_Factorization"  
+                root.manager.transition.direction="right"
+<matrix_Factorization_direct_croult>
+    name:"matrix_Factorization_direct_croult"
+    GridLayout:
+        SmoothButton:
+            text: "Back"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="System_of_equations_matrix_Factorization"  
+                root.manager.transition.direction="right"
+<matrix_Factorization_direct_doolitle>
+    name:"matrix_Factorization_direct_doolitle"
+    GridLayout:
+        SmoothButton:
+            text: "Back"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="System_of_equations_matrix_Factorization"  
+                root.manager.transition.direction="right"
+<matrix_Factorization_direct_cholesky>
+    name:"matrix_Factorization_direct_cholesky"
+    GridLayout:
+        SmoothButton:
+            text: "Back"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="System_of_equations_matrix_Factorization"  
+                root.manager.transition.direction="right"
+
+<matrix_Factorization_direct_diagonal_matrix>
+    name:"matrix_Factorization_direct_diagonal_matrix"
+    GridLayout:
+        SmoothButton:
+            text: "Back"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="System_of_equations_matrix_Factorization"  
                 root.manager.transition.direction="right"
 
 
 <Iteratives_System_of_equations>
-    name:"Iteratives_System_of_equationss"
+    name:"Iteratives_System_of_equations"
     GridLayout:
         SmoothButton:
             text: "Back"
