@@ -380,15 +380,24 @@ class System_of_equations_partial_pivot(Screen):
     def aid(self):
         show_popWindow("Partial pivoting",Aids.help_partial_pivot(self))
     def clean(self, matrix):
-        for i in range(0,len(matrix)):
-            matrix[i]=(matrix[i].split(","))
-            for j in range(0,len(matrix[i])):
-                if(j==0):
-                    matrix[i][j]=matrix[i][j][1:]
-                if(j==len(matrix[i])-1):
-                    matrix[i][j]=matrix[i][j][0:-1] 
-                matrix[i][j]=eval(matrix[i][j])
-        return matrix
+        try:
+            for i in range(0,len(matrix)):
+                if(len(matrix[i])==0):
+                    matrix.pop(i)
+                else:
+                    matrix[i]=matrix[i].replace("\n","")
+                    matrix[i]=matrix[i].strip()
+                    print(matrix[i])
+                    matrix[i]=(matrix[i].split(","))
+                    for j in range(0,len(matrix[i])):
+                        if(j==0):
+                            matrix[i][j]=matrix[i][j][1:]
+                        if(j==len(matrix[i])-1):
+                            matrix[i][j]=matrix[i][j][0:-1] 
+                        matrix[i][j]=eval(matrix[i][j])
+            return matrix
+        except:
+            return []
 class System_of_equations_total_pivot(Screen):
     pass
 class System_of_equations_lu_Factorization(Screen):
