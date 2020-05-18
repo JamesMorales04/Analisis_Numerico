@@ -1,0 +1,12 @@
+Prerequisites for bisection:
+The parameters for this method are: 
+-Requires an interval (a,b) in which a root exists (most likely calculated in an incremental search)
+- The tolerance
+- A quantity of iterations that indicates failure.
+The idea of this method if finding the root of the interval (where f(x)=0). It does so validating first if the root is not on the edges because if so, the method ends, also validates if there is a difference in the signs evaluated in the edges in order to make sure parameters are correct. 
+First a medium point (Xm) is calculated (a+b)/2. Then the function is evaluated in that medium point and if f(Xm) = 0 or the relative error is less or equal to the tolerance, the method ends with success, else, the process is repeated as follows: 
+Depending on the result of f(Xm) it replaces the left  part of the interval  or the right part:
+When f(a)*f(Xm)>0 then a=Xm
+When f(a)*f(Xm)<0 then b=Xm
+when f(a)*f(Xm)=0 then the root is f(Xm).
+In each iteration the error and the distance to the root will be half of the previous one, and this is why this method always finds the root of the interval given enough quantity of iterations.
