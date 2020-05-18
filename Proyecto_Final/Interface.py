@@ -475,7 +475,6 @@ class matrix_Factorization_direct_doolitle(Screen):
         table=Tables()
         verify=Verify()
         error=""
-        print("agua pas´or xd")
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
