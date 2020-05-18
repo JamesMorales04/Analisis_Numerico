@@ -24,6 +24,7 @@ from Non_linear_equations.Secante import Secante
 from Non_linear_equations.Raices_Multiples import Raices_Multiples
 from Systems_of_equations.Gaussian_Elimination import Gaussian_Elimination
 from Systems_of_equations.partial_Pivoting import partial_Pivoting
+from Systems_of_equations.Croult import Croult
 from Verify import Verify
 from Funciones import Funciones
 from Graph import Graph
@@ -419,6 +420,50 @@ class matrix_Factorization_based_gaussian_simple(Screen):
 class matrix_Factorization_based_gaussian_pivoting(Screen):
     pass
 class matrix_Factorization_direct_croult(Screen):
+    matrix=ObjectProperty(None)
+    matrixb=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    def buscar(self):
+        matrix_method=Croult()
+        table=Tables()
+        verify=Verify()
+        #error=verify.verify_raices_mult(self.xi.text,self.funciones.text,self.iterations.text,self.tolerance.text)
+        error=""
+        if(error==""):
+            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            if(len(matrix_clean)==0 or len(matrixb_clean)==0 ):
+                error+="Wrong Matrix Input"
+                show_popWindow("Croult",error)
+            else:
+                matrix_method.croult_algorithm(matrix_clean,matrixb_clean)
+                self.sol.text=matrix_method.get_results()
+                columnas=matrix_method.rows
+                table.draw(matrix_method.value_table(),columnas)
+
+        else:
+            show_popWindow("Croult",error)
+    def aid(self):
+        show_popWindow("Croult",Aids.help_gaussian_elimination(self))
+    def clean(self, matrix):
+        try:
+            for i in range(0,len(matrix)):
+                if(len(matrix[i])==0):
+                    matrix.pop(i)
+                else:
+                    matrix[i]=matrix[i].replace("\n","")
+                    matrix[i]=matrix[i].strip()
+                    print(matrix[i])
+                    matrix[i]=(matrix[i].split(","))
+                    for j in range(0,len(matrix[i])):
+                        if(j==0):
+                            matrix[i][j]=matrix[i][j][1:]
+                        if(j==len(matrix[i])-1):
+                            matrix[i][j]=matrix[i][j][0:-1] 
+                        matrix[i][j]=eval(matrix[i][j])
+            return matrix
+        except:
+            return []
     pass
 class matrix_Factorization_direct_doolitle(Screen):
     pass
