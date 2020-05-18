@@ -33,14 +33,6 @@ class Aids:
         return data.read()
 
     def help_partial_pivot(self):
-<<<<<<< HEAD
-        data=open("Aids\\NonLinearEq\\PartialPivotingExplanation.txt", "r")
-        return data.read()
-
-    def help_total_pivot(self):
-        data=open("Aids\\NonLinearEq\\TotalPivotingExplanation.txt", "r")
-        return data.read()     
-=======
         data=open("Aids\\SystemOfEq\\PartialPivotingExplanation.txt", "r")
         return data.read()
   
@@ -51,4 +43,3 @@ class Aids:
     def help_doolittle(self):
         data=open("Aids\\SystemOfEq\\PartialPivotingExplanation.txt", "r")
         return data.read()
->>>>>>> 13e626c87c481c13872e1d8ec55e2252de686d1c

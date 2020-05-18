@@ -24,12 +24,9 @@ from Non_linear_equations.Secante import Secante
 from Non_linear_equations.Raices_Multiples import Raices_Multiples
 from Systems_of_equations.Gaussian_Elimination import Gaussian_Elimination
 from Systems_of_equations.partial_Pivoting import partial_Pivoting
-<<<<<<< HEAD
 from Systems_of_equations.Total_Pivoting import Total_Pivoting
-=======
 from Systems_of_equations.Croult import Croult
 from Systems_of_equations.Doolittle import Doolittle
->>>>>>> 13e626c87c481c13872e1d8ec55e2252de686d1c
 from Verify import Verify
 from Funciones import Funciones
 from Graph import Graph
