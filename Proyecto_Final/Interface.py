@@ -24,6 +24,7 @@ from Non_linear_equations.Secante import Secante
 from Non_linear_equations.Raices_Multiples import Raices_Multiples
 from Systems_of_equations.Gaussian_Elimination import Gaussian_Elimination
 from Systems_of_equations.partial_Pivoting import partial_Pivoting
+from Systems_of_equations.Total_Pivoting import Total_Pivoting
 from Verify import Verify
 from Funciones import Funciones
 from Graph import Graph
@@ -399,7 +400,47 @@ class System_of_equations_partial_pivot(Screen):
         except:
             return []
 class System_of_equations_total_pivot(Screen):
-    pass
+    matrix=ObjectProperty(None)
+    matrixb=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    def buscar(self):
+        matrix_method=Total_Pivoting()
+        table=Tables()
+        verify=Verify()
+        error=""
+        try:
+            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            matrix_method.total_pivoting_algorithm(matrix_clean,matrixb_clean)
+            self.sol.text=matrix_method.get_results()
+            columnas=matrix_method.rows
+            table.draw(matrix_method.value_table(),columnas)
+
+        except Exception as e:
+            print(e)
+            show_popWindow("Total pivot ",error)
+    def aid(self):
+        show_popWindow("Total pivoting",Aids.help_total_pivot(self))
+    def clean(self, matrix):
+        try:
+            for i in range(0,len(matrix)):
+                if(len(matrix[i])==0):
+                    matrix.pop(i)
+                else:
+                    matrix[i]=matrix[i].replace("\n","")
+                    matrix[i]=matrix[i].strip()
+                    print(matrix[i])
+                    matrix[i]=(matrix[i].split(","))
+                    for j in range(0,len(matrix[i])):
+                        if(j==0):
+                            matrix[i][j]=matrix[i][j][1:]
+                        if(j==len(matrix[i])-1):
+                            matrix[i][j]=matrix[i][j][0:-1] 
+                        matrix[i][j]=eval(matrix[i][j])
+            return matrix
+        except:
+            return []
+
 class System_of_equations_lu_Factorization(Screen):
     pass
 class System_of_equations_matrix_Factorization(Screen):

@@ -15,7 +15,7 @@ class Total_Pivoting:
     
     def total_pivoting_algorithm(self,matrixA = [],matrixB = []):
 
-        if(len(matrixA)==0 or len(matrixB)==0):
+        if(len(matrixA)==0 or len(matrixB[0])==0):
             return 'The required matrixes where not passed'
         if(len(matrixA)<len(matrixB)):
             return 'The number of equations doesnt match the number of variables'
@@ -52,6 +52,8 @@ class Total_Pivoting:
             print(self.rows)
             print(self.get_results())
             '''
+            print(self.result)
+            print(self.rows)
             print(self.get_results())
     
     def __getVarsValues(self):
@@ -120,8 +122,8 @@ class Total_Pivoting:
     def __merge(self,matrixA,matrixB):
 
         for row in range(len(matrixA)):
-            matrixA[row].append(matrixB[row])
-            
+            matrixA[row].append(matrixB[0][row])
+
         return matrixA
 
     def row_definition(self):
@@ -141,7 +143,7 @@ class Total_Pivoting:
             for j in range(0,len(self.matrixAB[i])):
                 self.total[i].append(Decimal(self.original[i][j]))
             self.total[i].append("///")
-            for j in range(0,len(self.new[i])):
+            for j in range(0,len(self.matrixAB[i])):
                 self.total[i].append(Decimal(self.matrixAB[i][j]))
 
 
@@ -159,5 +161,5 @@ class Total_Pivoting:
 if __name__ == "__main__":
     tp = Total_Pivoting()
     a = [[2,-3,4,1],[-4,2,1,-2],[1,3,-5,3],[-3,-1,1,-1]]
-    b = [10,-10,32,-21]
+    b = [[10,-10,32,-21]]
     tp.total_pivoting_algorithm(a,b)
