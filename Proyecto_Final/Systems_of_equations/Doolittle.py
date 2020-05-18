@@ -1,52 +1,56 @@
 from decimal import *
 import copy
 
-class partial_Pivoting:
+class Doolittle:
     def __init__(self):
+        self.l= []
         self.original= []
+        self.u= []
         self.new = []
         self.total= []
         self.result=[]
         self.rows = []
         getcontext().prec = 25
 
-    def partial_pivoting_algorithm(self,matrix,matrixb):
+    def doolittle_algorithm(self,matrix,matrixb):
         matrix=self.merge(matrix,matrixb)
-        self.original=copy.deepcopy(matrix)
-        column=0
-        no_error=True
-        i=1
-        lenght=len(matrix)
-        n=0
-        while n < lenght: 
-            pos=n  
-            bigger=matrix[n][n]
-            for i in range (n+1,lenght):
-                if (abs(matrix[i][n]) > bigger):
-                    bigger= matrix[i][n]
-                    pos = i
-            temp=matrix[n]
-            big=matrix[pos] 
-            matrix[n]=big
-            matrix[pos]=temp #SWAP
-            row=n+1
-            for i in range (row,lenght):
-                multiplier=matrix[i][n]/matrix[row-1][n] 
-                for j in range(n,len(matrix[i])):                      
-                    matrix[i][j]=matrix[i][j]-matrix[row-1][j]*multiplier             
-            n+=1
-            
-        self.new= matrix
+        self.original=matrix
+        length= len(matrix)
+        for i in range (length):
+            self.l.append([0] * length)
+            self.u.append([0] * length)
+            self.l[i][i] = 1
+        for k in range(length):
+            for j in range(k,length):
+                sum = 0
+                for p in range(k):
+                    sum += self.l[k][p]*self.u[p][j]
+                self.u[k][j] = (self.original[k][j] - sum)/self.l[k][k]
+            for i in range(k,length):
+                sum = 0
+                for p in range(k):
+                    sum += self.l[i][p]*self.u[p][k]
+                self.l[i][k] = (self.original[i][k] - sum)/self.u[k][k]
+        for i in range (0,length):
+            self.l[i][i] = 1        
+        print (self.l)
+
+        print("-------------")
+
+        print(self.u)
+        print("-------------")
+
+        print(self.original)
+
+        self.new = self.merge(self.u,matrixb)
+
         if(self.check_diagonal()):
             self.variable_resolution()
             self.row_definition()
         else:
             self.result="No tiene solucion o posee infinitas soluciones"
+        print(self.result)   
 
-        for i in self.new:
-            print(i)
-        print(self.result)
-        
     def check_diagonal(self):
         for i in range(0,len(self.new)):
             for j in range(0,len(self.new[i])):
@@ -73,7 +77,6 @@ class partial_Pivoting:
                     self.result[i]/=aux
             
                 j-=1
-        
             i-=1     
     def merge(self,matrix,matrixb):
         for i in range(0,len(matrix)):
@@ -83,23 +86,24 @@ class partial_Pivoting:
     def row_definition(self):
         for i in range(1,len(self.result)+1):
             self.rows.append(f"x{i}")
-        self.rows.append("b")
         self.rows.append("///")
         for i in range(1,len(self.result)+1):
             self.rows.append(f"x{i}")
-        self.rows.append("b")
-
+        self.rows.append("///")
+        for i in range(1,len(self.result)+1):
+            self.rows.append(f"x{i}")
 
     def value_table(self):
-        for i in range(0,len(self.new)):
+        for i in range(0,len(self.original)):
             self.total.append([])
-            for j in range(0,len(self.new[i])):
-                self.total[i].append(Decimal(self.original[i][j]))
+            for j in range(len(self.original)):
+                self.total[i].append(Decimal(self.l[i][j]))
             self.total[i].append("///")
-            for j in range(0,len(self.new[i])):
+            for j in range(len(self.new)):
                 self.total[i].append(Decimal(self.new[i][j]))
-
-
+            self.total[i].append("///")
+            for j in range(len(self.u)):
+                self.total[i].append(Decimal(self.original[i][j]))
         return self.total
 
     def get_results(self):
@@ -109,9 +113,5 @@ class partial_Pivoting:
             results+=f"X{aux}: "+(str)(i)+"\n"
             aux+=1
         return results
-#[2,1,1]
-#[4,-6,0]
-#[-2,7,2]
-#[5,-2,9]
-
-#cosa.partial_pivoting_algorithm([[1/4,1/5,1/6,1/7],[1/3,1/4,1/5,1/6],[1,1/2,1/3,1/4],[1/2,1/3,1/4,1/5]],[60,70,106,84])
+#n= Doolittle()
+#n.doolittle_algorithm([[45,-3,-4],[-12,36,7],[-6,4,57],[-3,-5,-10]],[8,-5,-8,78])

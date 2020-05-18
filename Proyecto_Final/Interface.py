@@ -24,7 +24,12 @@ from Non_linear_equations.Secante import Secante
 from Non_linear_equations.Raices_Multiples import Raices_Multiples
 from Systems_of_equations.Gaussian_Elimination import Gaussian_Elimination
 from Systems_of_equations.partial_Pivoting import partial_Pivoting
+<<<<<<< HEAD
 from Systems_of_equations.Total_Pivoting import Total_Pivoting
+=======
+from Systems_of_equations.Croult import Croult
+from Systems_of_equations.Doolittle import Doolittle
+>>>>>>> 13e626c87c481c13872e1d8ec55e2252de686d1c
 from Verify import Verify
 from Funciones import Funciones
 from Graph import Graph
@@ -87,7 +92,7 @@ class Non_linear_equations_busqueda(Screen):
             show_popWindow("Error Graph Incremental Search",error)
     
     def aid(self):
-        show_popWindow("Incremental Search Aids",Aids.help_busqueda(self))
+        show_popWindow("Incremental Search Aids",Aids.NonLinearEq.help_busqueda(self))
 
 class Non_linear_equations_biseccion(Screen):
     xi=ObjectProperty(None)
@@ -121,7 +126,7 @@ class Non_linear_equations_biseccion(Screen):
             show_popWindow("Error Graph Bisection",error)
     
     def aid(self):
-        show_popWindow("Bisection Aids",Aids.help_biseccion(self))
+        show_popWindow("Bisection Aids",Aids.NonLinearEq.help_biseccion(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -157,7 +162,7 @@ class Non_linear_equations_regla_falsa(Screen):
             show_popWindow("Error Graph Reguli false",error)
 
     def aid(self):
-        show_popWindow("Reguli false Aids",Aids.help_regla_falsa(self))
+        show_popWindow("Reguli false Aids",Aids.NonLinearEq.help_regla_falsa(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -194,7 +199,7 @@ class Non_linear_equations_punto_fijo(Screen):
             show_popWindow("Error Graph Fixed Point",error)
 
     def aid(self):
-        show_popWindow("Fixed Point Aids",Aids.help_punto_fijo(self))
+        show_popWindow("Fixed Point Aids",Aids.NonLinearEq.help_punto_fijo(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -231,7 +236,7 @@ class Non_linear_equations_newton(Screen):
             show_popWindow("Error Graph newton",error)
 
     def aid(self):
-        show_popWindow("Newton Aids",Aids.help_newton(self))
+        show_popWindow("Newton Aids",Aids.NonLinearEq.help_newton(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -268,7 +273,7 @@ class Non_linear_equations_secantes(Screen):
             show_popWindow("Error Graph Secant",error)
     
     def aid(self):
-        show_popWindow("Secant Aids",Aids.help_secante(self))
+        show_popWindow("Secant Aids",Aids.NonLinearEq.help_secante(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -307,7 +312,7 @@ class Non_linear_equations_raices_multiples(Screen):
             show_popWindow("Error Graph Multiple Roots",error)
 
     def aid(self):
-        show_popWindow("Multiple Roots Aids",Aids.help_raices_multiples(self))
+        show_popWindow("Multiple Roots Aids",Aids.NonLinearEq.help_raices_multiples(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -339,7 +344,7 @@ class System_of_equations_gaussian_elimination(Screen):
         else:
             show_popWindow("Gaussian Elimination",error)
     def aid(self):
-        show_popWindow("Gaussian elimination",Aids.help_gaussian_elimination(self))
+        show_popWindow("Gaussian elimination",Aids.SystemOfEq.help_gaussian_elimination(self))
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):
@@ -379,7 +384,7 @@ class System_of_equations_partial_pivot(Screen):
         else:
             show_popWindow("Partial pivot ",error)
     def aid(self):
-        show_popWindow("Partial pivoting",Aids.help_partial_pivot(self))
+        show_popWindow("Partial pivoting",Aids.SystemOfEq.help_partial_pivot(self))
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):
@@ -460,9 +465,91 @@ class matrix_Factorization_based_gaussian_simple(Screen):
 class matrix_Factorization_based_gaussian_pivoting(Screen):
     pass
 class matrix_Factorization_direct_croult(Screen):
+    matrix=ObjectProperty(None)
+    matrixb=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    def buscar(self):
+        matrix_method=Croult()
+        table=Tables()
+        verify=Verify()
+        #error=verify.verify_raices_mult(self.xi.text,self.funciones.text,self.iterations.text,self.tolerance.text)
+        error=""
+        if(error==""):
+            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            if(len(matrix_clean)==0 or len(matrixb_clean)==0 ):
+                error+="Wrong Matrix Input"
+                show_popWindow("Croult",error)
+            else:
+                matrix_method.croult_algorithm(matrix_clean,matrixb_clean)
+                self.sol.text=matrix_method.get_results()
+                columnas=matrix_method.rows
+                table.draw(matrix_method.value_table(),columnas)
+
+        else:
+            show_popWindow("Croult",error)
+    def aid(self):
+        show_popWindow("Croult",Aids.help_gaussian_elimination(self))
+    def clean(self, matrix):
+        try:
+            for i in range(0,len(matrix)):
+                if(len(matrix[i])==0):
+                    matrix.pop(i)
+                else:
+                    matrix[i]=matrix[i].replace("\n","")
+                    matrix[i]=matrix[i].strip()
+                    print(matrix[i])
+                    matrix[i]=(matrix[i].split(","))
+                    for j in range(0,len(matrix[i])):
+                        if(j==0):
+                            matrix[i][j]=matrix[i][j][1:]
+                        if(j==len(matrix[i])-1):
+                            matrix[i][j]=matrix[i][j][0:-1] 
+                        matrix[i][j]=eval(matrix[i][j])
+            return matrix
+        except:
+            return []
     pass
 class matrix_Factorization_direct_doolitle(Screen):
-    pass
+    matrix=ObjectProperty(None)
+    matrixb=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    def buscar(self):
+        matrix_method=Doolittle()
+        table=Tables()
+        verify=Verify()
+        error=""
+        if(error==""):
+            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            matrix_method.doolittle_algorithm(matrix_clean,matrixb_clean)
+            self.sol.text=matrix_method.get_results()
+            columnas=matrix_method.rows
+            table.draw(matrix_method.value_table(),columnas)
+
+        else:
+            show_popWindow("Doolittle ",error)
+    def aid(self):
+        show_popWindow("Doolittle",Aids.help_doolittle(self))
+    def clean(self, matrix):
+        try:
+            for i in range(0,len(matrix)):
+                if(len(matrix[i])==0):
+                    matrix.pop(i)
+                else:
+                    matrix[i]=matrix[i].replace("\n","")
+                    matrix[i]=matrix[i].strip()
+                    print(matrix[i])
+                    matrix[i]=(matrix[i].split(","))
+                    for j in range(0,len(matrix[i])):
+                        if(j==0):
+                            matrix[i][j]=matrix[i][j][1:]
+                        if(j==len(matrix[i])-1):
+                            matrix[i][j]=matrix[i][j][0:-1] 
+                        matrix[i][j]=eval(matrix[i][j])
+            return matrix
+        except:
+            return []
 class matrix_Factorization_direct_cholesky(Screen):
     pass
 class matrix_Factorization_direct_diagonal_matrix(Screen):
