@@ -1444,13 +1444,76 @@ WindowManager:
                 root.manager.transition.direction="right"
 <matrix_Factorization_direct_doolitle>
     name:"matrix_Factorization_direct_doolitle"
+    matrix:matrix
+    matrixb:matrixb
+    sol:sol
     GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="System_of_equations_matrix_Factorization"  
-                root.manager.transition.direction="right"
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            GridLayout:
+                cols: 2
+                row_default_height:80
+                row_force_default:True
+                spacing: '10dp'
+                Label:
+                    text: "Matrix A(x)"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:matrix
+                    text:root.manager.matrix_global
+                    multiline:True
+                Label:
+                    text: "Matrix B"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:matrixb
+                    text:root.manager.matrixb_global
+                    multiline:True
+                Label:
+                    text: "Solution"
+                    font_size:"25sp"
+                    width: 20
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:sol
+                    width: 20
+                    multiline:True
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            SmoothButton:
+                text: "Search"
+                font_size:"17sp"  
+                on_press:root.buscar()    
+            SmoothButton:
+                text: "Help"
+                font_size:"17sp"  
+                on_press:root.aid()
+            SmoothButton:
+                text: "Back"
+                font_size:"17sp"  
+                on_press:
+                    root.manager.matrix_global=root.matrix.text
+                    root.manager.matrixb_global=root.matrixb.text
+                    app.root.current="System_of_equations_matrix_Factorization"  
+                    root.manager.transition.direction="right"
+
 <matrix_Factorization_direct_cholesky>
     name:"matrix_Factorization_direct_cholesky"
     GridLayout:
