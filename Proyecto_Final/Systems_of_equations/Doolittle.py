@@ -112,9 +112,11 @@ class Doolittle:
     def get_results(self):
         results=""
         aux=1
+        num=0
         for i in self.xvalues:
-            results+=f"X{aux}: "+(str)(i)+"\n"
+            results+=f"X{aux}: "+(str)(i[num])+"\n"
             aux+=1
+            num+=1
         print(results) #Falta cambiar esto para la solución
         return results
 #n= Doolittle()
