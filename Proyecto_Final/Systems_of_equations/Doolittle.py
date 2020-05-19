@@ -10,16 +10,20 @@ class Doolittle:
         self.total= []
         self.result=[]
         self.rows = []
+        self.xvalues=[]
         getcontext().prec = 25
 
-    def doolittle_algorithm(self,matrix,matrixb):
-        matrix=self.merge(matrix,matrixb)
+    def doolittle_algorithm(self,matrr,matrixb):
+        matrix= []
+        for i in range(0,len(matrr)):
+            matrix.append(matrr[i])
         self.original=matrix
         length= len(matrix)
         for i in range (length):
             self.l.append([0] * length)
             self.u.append([0] * length)
             self.l[i][i] = 1
+            self.xvalues.append([0] * length)
         for k in range(length):
             for j in range(k,length):
                 sum = 0
@@ -33,85 +37,93 @@ class Doolittle:
                 self.l[i][k] = (self.original[i][k] - sum)/self.u[k][k]
         for i in range (0,length):
             self.l[i][i] = 1        
-        print (self.l)
+        
+        lsolution=self.progresiveL(matrixb)
+        self.new = self.merge(self.u,lsolution) #Hacemos merge de la u con la solución que creé yo para mandarlo al método de James que lo resuelve 
+        self.variable_resolution()
+        self.row_definition()            
 
-        print("-------------")
-
-        print(self.u)
-        print("-------------")
-
-        print(self.original)
-
-        self.new = self.merge(self.u,matrixb)
-
-        if(self.check_diagonal()):
-            self.variable_resolution()
-            self.row_definition()
-        else:
-            self.result="No tiene solucion o posee infinitas soluciones"
-        print(self.result)   
-
-    def check_diagonal(self):
-        for i in range(0,len(self.new)):
-            for j in range(0,len(self.new[i])):
-                if(j==i):
-                    self.result.append(0)
-                    if(self.new[i][j]==0):
-                        return False
-        return True
+    def progresiveL(self,matrixb):
+        answerZ=[] #Progresivo simple con matriz superior (ceros arriba)
+        answerZ.append(matrixb[0][0])
+        for i in range (1,len(matrixb[0])):
+            aux=matrixb[0][i]
+            j=0
+            while j!=i: #If it is not the diagonal, continue subbing
+                aux-=self.l[i][j]*answerZ[j]
+                j+=1
+            answerZ.append(aux)
+        return answerZ #It is perfect
 
     def variable_resolution(self):
-        i=len(self.new)-1
-        while(i>=0):
-            j=len(self.new[i])-1
-            aux=0
-            while(j>=0):
-                if(j!=i):
-                    if(len(self.new[i])-1==j):
-                        self.result[i]=self.new[i][j]
-                    else:
-                        self.result[i]-=self.new[i][j]*self.result[j]
-                else:
-                    aux=self.new[i][j]
-                if(j==0):
-                    self.result[i]/=aux
+        self.new.reverse()
+        for i in range (len(self.new)):
+            self.new[i].reverse()
+        answerX=[]
+        answerX.append(self.new[0][0]/self.new[0][1]) #Añadiendo x1...
+
+        for i in range (1,len(self.new)):
+            aux=self.new[i][0] #El resultado de la X (la igualación)
+            j=1
+            while (j!=(i+1)):
+                aux-=self.new[i][j]*answerX[j-1] #Aquí bien
+                j+=1
+            if j<=(len(self.new)):
+                aux/=self.new[i][j] #Aquí ya se realizó el j+1 
+                answerX.append(aux)
             
-                j-=1
-            i-=1     
+        #It is perfect
+        answerX.reverse() #Cambiar el orden para mostrarlo en pantalla en el orden que es
+        for i in range(len(self.xvalues)):
+            self.xvalues[i][i] = answerX[i] #Valores de x
+
     def merge(self,matrix,matrixb):
         for i in range(0,len(matrix)):
-            matrix[i].append(matrixb[0][i])
+            matrix[i].append(matrixb[i])
         return matrix
 
     def row_definition(self):
-        for i in range(1,len(self.result)+1):
+        for i in range(1,len(self.xvalues)+1):
             self.rows.append(f"x{i}")
         self.rows.append("///")
-        for i in range(1,len(self.result)+1):
+        for i in range(1,len(self.xvalues)+1):
             self.rows.append(f"x{i}")
+        self.rows.append("z")
         self.rows.append("///")
-        for i in range(1,len(self.result)+1):
+        for i in range(1,len(self.xvalues)+1):
             self.rows.append(f"x{i}")
 
     def value_table(self):
+        self.u.reverse()
+        for i in range (len(self.new)):
+            self.new[i].reverse() #Volver a reversarla 
         for i in range(0,len(self.original)):
             self.total.append([])
-            for j in range(len(self.original)):
+            for j in range(len(self.l[0])):
                 self.total[i].append(Decimal(self.l[i][j]))
             self.total[i].append("///")
-            for j in range(len(self.new)):
-                self.total[i].append(Decimal(self.new[i][j]))
+            for j in range(len(self.u[0])):
+                self.total[i].append(Decimal(self.u[i][j]))
             self.total[i].append("///")
-            for j in range(len(self.u)):
-                self.total[i].append(Decimal(self.original[i][j]))
+            for j in range(len(self.xvalues[0])):
+                self.total[i].append(Decimal(self.xvalues[i][j]))
         return self.total
 
     def get_results(self):
         results=""
         aux=1
-        for i in self.result:
+        for i in self.xvalues:
             results+=f"X{aux}: "+(str)(i)+"\n"
             aux+=1
+        print(results) #Falta cambiar esto para la solución
         return results
 #n= Doolittle()
 #n.doolittle_algorithm([[45,-3,-4],[-12,36,7],[-6,4,57],[-3,-5,-10]],[8,-5,-8,78])
+"""
+[45,-3,-7,8]
+[-12,36,9,-5]
+[-6,4,57,-8]
+[-3,-5,-10,78]
+
+[100,-50,300,53]
+"""
