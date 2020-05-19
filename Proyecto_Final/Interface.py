@@ -25,6 +25,7 @@ from Non_linear_equations.Raices_Multiples import Raices_Multiples
 from Systems_of_equations.Gaussian_Elimination import Gaussian_Elimination
 from Systems_of_equations.partial_Pivoting import partial_Pivoting
 from Systems_of_equations.Total_Pivoting import Total_Pivoting
+from Systems_of_equations.staggered_Pivoting import staggered_Pivoting
 from Systems_of_equations.Croult import Croult
 from Systems_of_equations.Cholesky import Cholesky
 from Systems_of_equations.Doolittle import Doolittle
