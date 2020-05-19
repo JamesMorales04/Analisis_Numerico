@@ -354,7 +354,6 @@ class System_of_equations_gaussian_elimination(Screen):
                 else:
                     matrix[i]=matrix[i].replace("\n","")
                     matrix[i]=matrix[i].strip()
-                    print(matrix[i])
                     matrix[i]=(matrix[i].split(","))
                     for j in range(0,len(matrix[i])):
                         if(j==0):
@@ -394,7 +393,6 @@ class System_of_equations_partial_pivot(Screen):
                 else:
                     matrix[i]=matrix[i].replace("\n","")
                     matrix[i]=matrix[i].strip()
-                    print(matrix[i])
                     matrix[i]=(matrix[i].split(","))
                     for j in range(0,len(matrix[i])):
                         if(j==0):
@@ -423,7 +421,6 @@ class System_of_equations_total_pivot(Screen):
             table.draw(matrix_method.value_table(),columnas)
 
         except Exception as e:
-            print(e)
             show_popWindow("Total pivot ",error)
     def aid(self):
         show_popWindow("Total pivoting",Aids.help_total_pivot(self))
@@ -435,7 +432,6 @@ class System_of_equations_total_pivot(Screen):
                 else:
                     matrix[i]=matrix[i].replace("\n","")
                     matrix[i]=matrix[i].strip()
-                    print(matrix[i])
                     matrix[i]=(matrix[i].split(","))
                     for j in range(0,len(matrix[i])):
                         if(j==0):
@@ -475,7 +471,6 @@ class System_of_equations_staggered_pivot(Screen):
                 else:
                     matrix[i]=matrix[i].replace("\n","")
                     matrix[i]=matrix[i].strip()
-                    print(matrix[i])
                     matrix[i]=(matrix[i].split(","))
                     for j in range(0,len(matrix[i])):
                         if(j==0):
@@ -496,6 +491,8 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
     initvals=ObjectProperty(None)
+    lamb=ObjectProperty(None)
+    tol=ObjectProperty(None)
     def buscar(self):
         matrix_method=Relaxed_gs()
         table=Tables()
@@ -510,9 +507,10 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
                 error+="Wrong Matrix Input"
                 show_popWindow("Gauss Seidel",error)
             else:
-                matrix_method.Relaxed_gs_algorithm(matrix_clean,matrixb_clean,initvals_clean,1.24)
+                matrix_method.Relaxed_gs_algorithm(matrix_clean,matrixb_clean,initvals_clean,float(self.lamb.text),float(self.tol.text))
                 columnas=matrix_method.rows
                 table.draw(matrix_method.value_table(),columnas)
+                self.sol.text=matrix_method.get_sol()
 
         else:
             show_popWindow("Gauss Seidel",error)
@@ -526,7 +524,6 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
                 else:
                     matrix[i]=matrix[i].replace("\n","")
                     matrix[i]=matrix[i].strip()
-                    print(matrix[i])
                     matrix[i]=(matrix[i].split(","))
                     for j in range(0,len(matrix[i])):
                         if(j==0):
@@ -542,6 +539,8 @@ class Iteratives_System_of_equations_jacobi(Screen):
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
     initvals=ObjectProperty(None)
+    lamb=ObjectProperty(None)
+    tol=ObjectProperty(None)
     def buscar(self):
         matrix_method=Relaxed_jacobi()
         table=Tables()
@@ -556,9 +555,10 @@ class Iteratives_System_of_equations_jacobi(Screen):
                 error+="Wrong Matrix Input"
                 show_popWindow("Jacobi",error)
             else:
-                matrix_method.Relaxed_jacobi_algorithm(matrix_clean,matrixb_clean,initvals_clean,1)
+                matrix_method.Relaxed_jacobi_algorithm(matrix_clean,matrixb_clean,initvals_clean,float(self.lamb.text),float(self.tol.text))
                 columnas=matrix_method.rows
                 table.draw(matrix_method.value_table(),columnas)
+                self.sol.text=matrix_method.get_sol()
 
         else:
             show_popWindow("Jacobi",error)
@@ -572,7 +572,6 @@ class Iteratives_System_of_equations_jacobi(Screen):
                 else:
                     matrix[i]=matrix[i].replace("\n","")
                     matrix[i]=matrix[i].strip()
-                    print(matrix[i])
                     matrix[i]=(matrix[i].split(","))
                     for j in range(0,len(matrix[i])):
                         if(j==0):
@@ -629,7 +628,6 @@ class matrix_Factorization_direct_croult(Screen):
                 else:
                     matrix[i]=matrix[i].replace("\n","")
                     matrix[i]=matrix[i].strip()
-                    print(matrix[i])
                     matrix[i]=(matrix[i].split(","))
                     for j in range(0,len(matrix[i])):
                         if(j==0):
@@ -653,9 +651,10 @@ class matrix_Factorization_direct_doolitle(Screen):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             matrix_method.doolittle_algorithm(matrix_clean,matrixb_clean)
-            self.sol.text=matrix_method.get_results()
             columnas=matrix_method.rows
             table.draw(matrix_method.value_table(),columnas)
+            self.sol.text=matrix_method.get_results()
+
 
         else:
             show_popWindow("Doolittle ",error)
@@ -669,7 +668,6 @@ class matrix_Factorization_direct_doolitle(Screen):
                 else:
                     matrix[i]=matrix[i].replace("\n","")
                     matrix[i]=matrix[i].strip()
-                    print(matrix[i])
                     matrix[i]=(matrix[i].split(","))
                     for j in range(0,len(matrix[i])):
                         if(j==0):
@@ -693,9 +691,9 @@ class matrix_Factorization_direct_cholesky(Screen):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             matrix_method.cholesky_algorithm(matrix_clean,matrixb_clean)
-            self.sol.text=matrix_method.get_results()
             columnas=matrix_method.rows
             table.draw(matrix_method.value_table(),columnas)
+            self.sol.text=matrix_method.get_results()
 
         else:
             show_popWindow("Cholesky ",error)
@@ -709,7 +707,6 @@ class matrix_Factorization_direct_cholesky(Screen):
                 else:
                     matrix[i]=matrix[i].replace("\n","")
                     matrix[i]=matrix[i].strip()
-                    print(matrix[i])
                     matrix[i]=(matrix[i].split(","))
                     for j in range(0,len(matrix[i])):
                         if(j==0):

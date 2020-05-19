@@ -1820,6 +1820,9 @@ WindowManager:
     matrixb:matrixb
     sol:sol
     initvals:initvals
+    lamb:lamb
+    tol:tol
+
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -1833,50 +1836,85 @@ WindowManager:
                 size: self.size
         GridLayout:
             cols: 1
-            spacing: '10dp'
+            spacing: '5dp'
             GridLayout:
-                cols: 2
+                cols: 1
                 row_default_height:60
                 row_force_default:True
                 spacing: '10dp'
-                Label:
-                    text: "Matrix A(x)"
-                    font_size:"25sp"
-                    color: 1,1,1,1
-                    bold: True
-                TextInput:
-                    id:matrix
-                    text:root.manager.matrix_global
-                    multiline:True
-                Label:
-                    text: "Matrix B"
-                    font_size:"25sp"
-                    color: 1,1,1,1
-                    bold: True
-                TextInput:
-                    id:matrixb
-                    text:root.manager.matrixb_global
-                    multiline:True
-                Label:
-                    text: "Initial Values"
-                    font_size:"25sp"
-                    width: 10
-                    color: 1,1,1,1
-                    bold: True
-                TextInput:
-                    id:initvals
-                    width: 20
-                    multiline:True
-                Label:
-                    text: "Solution"
-                    font_size:"25sp"
-                    width: 20
-                    color: 1,1,1,1
-                    bold: True
-                TextInput:
-                    id:sol
-                    width: 20
-                    multiline:True
+                GridLayout:
+                    cols: 2
+                    row_default_height:60
+                    row_force_default:True
+                    Label:
+                        text: "Matrix A(x)"
+                        font_size:"25sp"
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:matrix
+                        text:root.manager.matrix_global
+                        multiline:True
+                GridLayout:
+                    cols: 2
+                    row_default_height:60
+                    row_force_default:True
+                    Label:
+                        text: "Matrix b(x)"
+                        font_size:"25sp"
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:matrixb
+                        text:root.manager.matrix_global
+                        multiline:True
+                GridLayout:
+                    rows: 1
+                    spacing: '10dp'
+                    row_default_height:30
+                    row_force_default:True
+                    Label:
+                        text: "Initial Values"
+                        font_size:"20sp"
+                        width: 10
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:initvals
+                        width: 20
+                        multiline:True
+                    Label:
+                        text: "Lamda"
+                        font_size:"20sp"
+                        width: 10
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:lamb
+                        width: 20
+                        multiline:True
+                    Label:
+                        text: "Tolerance"
+                        font_size:"20sp"
+                        width: 10
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:tol
+                        width: 20
+                        multiline:True
+                GridLayout:
+                    cols: 2
+                    row_default_height:60
+                    row_force_default:True
+                    Label:
+                        text: "Solution"
+                        font_size:"25sp"
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:sol
+                        multiline:True
         GridLayout:
             cols: 1
             spacing: '10dp'
@@ -1903,6 +1941,9 @@ WindowManager:
     matrixb:matrixb
     sol:sol
     initvals:initvals
+    lamb:lamb
+    tol:tol
+
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -1916,50 +1957,85 @@ WindowManager:
                 size: self.size
         GridLayout:
             cols: 1
-            spacing: '10dp'
+            spacing: '5dp'
             GridLayout:
-                cols: 2
+                cols: 1
                 row_default_height:60
                 row_force_default:True
                 spacing: '10dp'
-                Label:
-                    text: "Matrix A(x)"
-                    font_size:"25sp"
-                    color: 1,1,1,1
-                    bold: True
-                TextInput:
-                    id:matrix
-                    text:root.manager.matrix_global
-                    multiline:True
-                Label:
-                    text: "Matrix B"
-                    font_size:"25sp"
-                    color: 1,1,1,1
-                    bold: True
-                TextInput:
-                    id:matrixb
-                    text:root.manager.matrixb_global
-                    multiline:True
-                Label:
-                    text: "Initial Values"
-                    font_size:"25sp"
-                    width: 10
-                    color: 1,1,1,1
-                    bold: True
-                TextInput:
-                    id:initvals
-                    width: 20
-                    multiline:True
-                Label:
-                    text: "Solution"
-                    font_size:"25sp"
-                    width: 20
-                    color: 1,1,1,1
-                    bold: True
-                TextInput:
-                    id:sol
-                    width: 20
-                    multiline:True
+                GridLayout:
+                    cols: 2
+                    row_default_height:60
+                    row_force_default:True
+                    Label:
+                        text: "Matrix A(x)"
+                        font_size:"25sp"
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:matrix
+                        text:root.manager.matrix_global
+                        multiline:True
+                GridLayout:
+                    cols: 2
+                    row_default_height:60
+                    row_force_default:True
+                    Label:
+                        text: "Matrix b(x)"
+                        font_size:"25sp"
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:matrixb
+                        text:root.manager.matrix_global
+                        multiline:True
+                GridLayout:
+                    rows: 1
+                    spacing: '10dp'
+                    row_default_height:30
+                    row_force_default:True
+                    Label:
+                        text: "Initial Values"
+                        font_size:"20sp"
+                        width: 10
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:initvals
+                        width: 20
+                        multiline:True
+                    Label:
+                        text: "Lamda"
+                        font_size:"20sp"
+                        width: 10
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:lamb
+                        width: 20
+                        multiline:True
+                    Label:
+                        text: "Tolerance"
+                        font_size:"20sp"
+                        width: 10
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:tol
+                        width: 20
+                        multiline:True
+                GridLayout:
+                    cols: 2
+                    row_default_height:60
+                    row_force_default:True
+                    Label:
+                        text: "Solution"
+                        font_size:"25sp"
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:sol
+                        multiline:True
         GridLayout:
             cols: 1
             spacing: '10dp'

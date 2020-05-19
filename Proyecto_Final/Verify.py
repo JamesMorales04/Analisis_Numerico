@@ -8,7 +8,6 @@ class Verify:
             try:
                 prueba_funcion=Funciones(funcion)
                 if ((prueba_funcion.evaluar(xi))==True) or prueba_funcion.evaluar(xi)=="" :
-                    print("buenas")
                     return True
                 else:
                     return False
@@ -18,7 +17,6 @@ class Verify:
     def verify_busqueda(self,funcion,xi,incremento,iteraciones):
         error=""
         try:
-            print(float(incremento),float(iteraciones),float(xi))
             if(self.verify_funcion(funcion,float(xi))):
                 error+=self.invalidFunction()
             if(float(incremento)==0):
@@ -56,7 +54,6 @@ class Verify:
             if(float(iteraciones)<=1):
                 error+=self.invalidIterations()
         except:
-            print("entra al except???? de pj")
             error=self.empty_field()
         return error
 
@@ -72,7 +69,6 @@ class Verify:
             if(float(iterations)<=1):
                 error+=self.invalidIterations()
         except:
-            print("entra al except???? de newton")
             error=self.empty_field()
         return error
 

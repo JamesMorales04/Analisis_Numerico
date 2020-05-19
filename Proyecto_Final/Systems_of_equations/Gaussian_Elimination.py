@@ -31,9 +31,6 @@ class Gaussian_Elimination:
         else:
             self.result="No solutions or infinite solutions"
 
-        for i in self.new:
-            print(i)
-        print(self.result)
 
     def check_diagonal(self):
         for i in range(0,len(self.new)):
@@ -64,9 +61,6 @@ class Gaussian_Elimination:
         
             i-=1     
     def merge(self,matrix,matrixb):
-        for i in matrix:
-            print(i)
-        
         for i in range(0,len(matrix)):
 
             matrix[i].append(matrixb[0][i])

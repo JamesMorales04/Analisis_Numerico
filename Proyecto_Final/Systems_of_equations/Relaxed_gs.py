@@ -12,10 +12,12 @@ class Relaxed_gs:
         self.final_result=[]
         getcontext().prec = 25
 
-    def Relaxed_gs_algorithm(self,matrix,matrixb,initvalues,lamb):
+    def Relaxed_gs_algorithm(self,matrix,matrixb,initvalues,lamb,tol):
         self.original=copy.deepcopy(matrix)
         self.result.append(initvalues[0])
-        for t in range(0,6):
+        error_total=20
+        t=0
+        while error_total>tol:    
             i=0
             valores=[]
             while i<len(matrix):
@@ -32,20 +34,16 @@ class Relaxed_gs:
                     else:
                         divider=matrix[i][j]
                     j+=1
-                print(total/divider)
                 valores.append(lamb*(total/divider)+(1-lamb)*self.result[t][i])
                 i+=1
             self.result.append(valores)
             if(t==0):
                 self.new.append([t,self.result[t],t])
             else:
-                self.new.append([t,self.result[t],self.error_calculator(self.result[t],self.result[t-1])])
+                error_total=self.error_calculator(self.result[t],self.result[t-1])
+                self.new.append([t,self.result[t],error_total])
+            t+=1
         self.row_definition()
-        for i in self.new:
-            print(i)
-
-        for i in self.total:
-            print(i)
 
     def error_calculator(self,now,previus):
         resultop=0
@@ -70,7 +68,18 @@ class Relaxed_gs:
                 self.total[x].append(Decimal(j))
             self.total[x].append(Decimal(i[2]))
             x+=1
+        self.final_result=copy.deepcopy(self.total[len(self.total)-1])
+        self.final_result.pop(0)
+        self.final_result.pop()
         return self.total
+
+    def get_sol(self):
+        results=""
+        aux=0
+        for i in self.final_result:
+            results+=f"X{aux}: "+(str)('%E'%i)+"\n"
+            aux+=1
+        return results
 """
 [13,-4,-5]
 [3,-7,2]
@@ -84,6 +93,9 @@ class Relaxed_gs:
 
 [-23,5,34]
 [1,1,1]
-"""
+
 cosa=Relaxed_gs()
 cosa.Relaxed_gs_algorithm([[13,-4,-9],[3,-7,4],[-4,15,-16]],[[-23,5,34]],[[-12.3,-11.7,-10.0]],1.24)
+"""
+cosa=Relaxed_gs()
+cosa.Relaxed_gs_algorithm([[13,-4,-9],[3,-7,4],[-4,15,-16]],[[-23,5,34]],[[-12.3,-11.7,-10.0]],1.24,0.000005)

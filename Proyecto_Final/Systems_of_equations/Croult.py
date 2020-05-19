@@ -47,8 +47,6 @@ class Croult:
         self.matrixU=self.merge(self.matrixU,self.resultsz)
         self.original=self.merge(self.original,matrixb)
 
-
-        print(self.rows)
     
     def sort_matrix(self,matrix):
         aux=[]
@@ -146,8 +144,6 @@ class Croult:
             for j in range(0,len(self.original[i])):
                 self.total[i].append(Decimal(self.matrixU[i][j]))
             self.total[i].append("///")
-        for i in self.total:
-            print(i)
         return self.total
 
     def get_results(self):
