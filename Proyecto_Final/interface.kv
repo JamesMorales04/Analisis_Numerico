@@ -26,7 +26,8 @@ WindowManager:
     matrix_Factorization_direct_doolitle:
     matrix_Factorization_direct_cholesky:
     matrix_Factorization_direct_diagonal_matrix:
-    Iteratives_System_of_equations:
+    Iteratives_System_of_equations_Gauss_Seidel:
+    Iteratives_System_of_equations_jacobi:
     Interpolation_newton:
     Interpolation_lagrange:
     Interpolation_splines:
@@ -210,10 +211,16 @@ WindowManager:
                 app.root.current="matrix_Factorization_direct_croult"
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Iterative methods"
+            text: "Gauss Seidel"
             font_size:"17sp"  
             on_press:
-                app.root.current="Iteratives_System_of_equations"
+                app.root.current="Iteratives_System_of_equations_Gauss_Seidel"
+                root.manager.transition.direction="left"
+        SmoothButton:
+            text: "Jacobi"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Iteratives_System_of_equations_jacobi"
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Back"
@@ -1727,15 +1734,171 @@ WindowManager:
                 root.manager.transition.direction="right"
 
 
-<Iteratives_System_of_equations>
-    name:"Iteratives_System_of_equations"
+<Iteratives_System_of_equations_Gauss_Seidel>
+    name:"Iteratives_System_of_equations_Gauss_Seidel"
+    matrix:matrix
+    matrixb:matrixb
+    sol:sol
+    initvals:initvals
     GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="Menu_Initial"  
-                root.manager.transition.direction="right"
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            GridLayout:
+                cols: 2
+                row_default_height:60
+                row_force_default:True
+                spacing: '10dp'
+                Label:
+                    text: "Matrix A(x)"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:matrix
+                    text:root.manager.matrix_global
+                    multiline:True
+                Label:
+                    text: "Matrix B"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:matrixb
+                    text:root.manager.matrixb_global
+                    multiline:True
+                Label:
+                    text: "Initial Values"
+                    font_size:"25sp"
+                    width: 10
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:initvals
+                    width: 20
+                    multiline:True
+                Label:
+                    text: "Solution"
+                    font_size:"25sp"
+                    width: 20
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:sol
+                    width: 20
+                    multiline:True
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            SmoothButton:
+                text: "Search"
+                font_size:"17sp"  
+                on_press:root.buscar()    
+            SmoothButton:
+                text: "Help"
+                font_size:"17sp"  
+                on_press:root.aid()
+            SmoothButton:
+                text: "Back"
+                font_size:"17sp"  
+                on_press:
+                    root.manager.matrix_global=root.matrix.text
+                    root.manager.matrixb_global=root.matrixb.text
+                    app.root.current="System_of_equations"  
+                    root.manager.transition.direction="right"
+
+<Iteratives_System_of_equations_jacobi>
+    name:"Iteratives_System_of_equations_jacobi"
+    matrix:matrix
+    matrixb:matrixb
+    sol:sol
+    initvals:initvals
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            GridLayout:
+                cols: 2
+                row_default_height:60
+                row_force_default:True
+                spacing: '10dp'
+                Label:
+                    text: "Matrix A(x)"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:matrix
+                    text:root.manager.matrix_global
+                    multiline:True
+                Label:
+                    text: "Matrix B"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:matrixb
+                    text:root.manager.matrixb_global
+                    multiline:True
+                Label:
+                    text: "Initial Values"
+                    font_size:"25sp"
+                    width: 10
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:initvals
+                    width: 20
+                    multiline:True
+                Label:
+                    text: "Solution"
+                    font_size:"25sp"
+                    width: 20
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:sol
+                    width: 20
+                    multiline:True
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            SmoothButton:
+                text: "Search"
+                font_size:"17sp"  
+                on_press:root.buscar()    
+            SmoothButton:
+                text: "Help"
+                font_size:"17sp"  
+                on_press:root.aid()
+            SmoothButton:
+                text: "Back"
+                font_size:"17sp"  
+                on_press:
+                    root.manager.matrix_global=root.matrix.text
+                    root.manager.matrixb_global=root.matrixb.text
+                    app.root.current="System_of_equations"  
+                    root.manager.transition.direction="right"
 
 
 <Interpolation_newton>
