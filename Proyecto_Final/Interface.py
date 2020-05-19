@@ -27,6 +27,8 @@ from Systems_of_equations.partial_Pivoting import partial_Pivoting
 from Systems_of_equations.Total_Pivoting import Total_Pivoting
 from Systems_of_equations.Croult import Croult
 from Systems_of_equations.Doolittle import Doolittle
+from Systems_of_equations.Relaxed_gs import Relaxed_gs
+from Systems_of_equations.Relaxed_jacobi import Relaxed_jacobi
 from Verify import Verify
 from Funciones import Funciones
 from Graph import Graph
@@ -447,8 +449,98 @@ class System_of_equations_lu_Factorization(Screen):
     pass
 class System_of_equations_matrix_Factorization(Screen):
     pass
-class Iteratives_System_of_equations(Screen):
-    pass
+class Iteratives_System_of_equations_Gauss_Seidel(Screen):
+    matrix=ObjectProperty(None)
+    matrixb=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    initvals=ObjectProperty(None)
+    def buscar(self):
+        matrix_method=Relaxed_gs()
+        table=Tables()
+        verify=Verify()
+        #error=verify.verify_raices_mult(self.xi.text,self.funciones.text,self.iterations.text,self.tolerance.text)
+        error=""
+        if(error==""):
+            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            initvals_clean=self.clean((self.initvals.text).split("\n"))
+            if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(initvals_clean)==0 ):
+                error+="Wrong Matrix Input"
+                show_popWindow("Gauss Seidel",error)
+            else:
+                matrix_method.Relaxed_gs_algorithm(matrix_clean,matrixb_clean,initvals_clean,1.24)
+                columnas=matrix_method.rows
+                table.draw(matrix_method.value_table(),columnas)
+
+        else:
+            show_popWindow("Gauss Seidel",error)
+    def aid(self):
+        show_popWindow("Gauss Seidel",Aids.help_gaussian_elimination(self))
+    def clean(self, matrix):
+        try:
+            for i in range(0,len(matrix)):
+                if(len(matrix[i])==0):
+                    matrix.pop(i)
+                else:
+                    matrix[i]=matrix[i].replace("\n","")
+                    matrix[i]=matrix[i].strip()
+                    print(matrix[i])
+                    matrix[i]=(matrix[i].split(","))
+                    for j in range(0,len(matrix[i])):
+                        if(j==0):
+                            matrix[i][j]=matrix[i][j][1:]
+                        if(j==len(matrix[i])-1):
+                            matrix[i][j]=matrix[i][j][0:-1] 
+                        matrix[i][j]=eval(matrix[i][j])
+            return matrix
+        except:
+            return []
+class Iteratives_System_of_equations_jacobi(Screen):
+    matrix=ObjectProperty(None)
+    matrixb=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    initvals=ObjectProperty(None)
+    def buscar(self):
+        matrix_method=Relaxed_jacobi()
+        table=Tables()
+        verify=Verify()
+        #error=verify.verify_raices_mult(self.xi.text,self.funciones.text,self.iterations.text,self.tolerance.text)
+        error=""
+        if(error==""):
+            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            initvals_clean=self.clean((self.initvals.text).split("\n"))
+            if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(initvals_clean)==0 ):
+                error+="Wrong Matrix Input"
+                show_popWindow("Jacobi",error)
+            else:
+                matrix_method.Relaxed_jacobi_algorithm(matrix_clean,matrixb_clean,initvals_clean,1)
+                columnas=matrix_method.rows
+                table.draw(matrix_method.value_table(),columnas)
+
+        else:
+            show_popWindow("Jacobi",error)
+    def aid(self):
+        show_popWindow("Jacobi",Aids.help_gaussian_elimination(self))
+    def clean(self, matrix):
+        try:
+            for i in range(0,len(matrix)):
+                if(len(matrix[i])==0):
+                    matrix.pop(i)
+                else:
+                    matrix[i]=matrix[i].replace("\n","")
+                    matrix[i]=matrix[i].strip()
+                    print(matrix[i])
+                    matrix[i]=(matrix[i].split(","))
+                    for j in range(0,len(matrix[i])):
+                        if(j==0):
+                            matrix[i][j]=matrix[i][j][1:]
+                        if(j==len(matrix[i])-1):
+                            matrix[i][j]=matrix[i][j][0:-1] 
+                        matrix[i][j]=eval(matrix[i][j])
+            return matrix
+        except:
+            return []
 class Interpolation_newton(Screen):
     pass
 class Interpolation_lagrange(Screen):
@@ -506,7 +598,6 @@ class matrix_Factorization_direct_croult(Screen):
             return matrix
         except:
             return []
-    pass
 class matrix_Factorization_direct_doolitle(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
