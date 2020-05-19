@@ -97,5 +97,3 @@ class Relaxed_gs:
 cosa=Relaxed_gs()
 cosa.Relaxed_gs_algorithm([[13,-4,-9],[3,-7,4],[-4,15,-16]],[[-23,5,34]],[[-12.3,-11.7,-10.0]],1.24)
 """
-cosa=Relaxed_gs()
-cosa.Relaxed_gs_algorithm([[13,-4,-9],[3,-7,4],[-4,15,-16]],[[-23,5,34]],[[-12.3,-11.7,-10.0]],1.24,0.000005)

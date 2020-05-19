@@ -155,9 +155,6 @@ class Croult:
         return results
 
 
-
-cosa=Croult()
-cosa.croult_algorithm([[20,-1,3,4],[6,23,4,3],[7,21,46,9],[-3,-9,12,38]],[[30,-10,20,-14]])
 """
 [20,-1,3,4]
 [6,23,4,3]
