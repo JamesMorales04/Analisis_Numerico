@@ -26,6 +26,7 @@ from Systems_of_equations.Gaussian_Elimination import Gaussian_Elimination
 from Systems_of_equations.partial_Pivoting import partial_Pivoting
 from Systems_of_equations.Total_Pivoting import Total_Pivoting
 from Systems_of_equations.Croult import Croult
+from Systems_of_equations.Cholesky import Cholesky
 from Systems_of_equations.Doolittle import Doolittle
 from Verify import Verify
 from Funciones import Funciones
@@ -548,7 +549,46 @@ class matrix_Factorization_direct_doolitle(Screen):
         except:
             return []
 class matrix_Factorization_direct_cholesky(Screen):
-    pass
+    matrix=ObjectProperty(None)
+    matrixb=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    def buscar(self):
+        matrix_method=Cholesky()
+        table=Tables()
+        verify=Verify()
+        error=""
+        if(error==""):
+            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            matrix_method.cholesky_algorithm(matrix_clean,matrixb_clean)
+            self.sol.text=matrix_method.get_results()
+            columnas=matrix_method.rows
+            table.draw(matrix_method.value_table(),columnas)
+
+        else:
+            show_popWindow("Cholesky ",error)
+    def aid(self):
+        show_popWindow("Cholesky",Aids.help_doolittle(self))
+    def clean(self, matrix):
+        try:
+            for i in range(0,len(matrix)):
+                if(len(matrix[i])==0):
+                    matrix.pop(i)
+                else:
+                    matrix[i]=matrix[i].replace("\n","")
+                    matrix[i]=matrix[i].strip()
+                    print(matrix[i])
+                    matrix[i]=(matrix[i].split(","))
+                    for j in range(0,len(matrix[i])):
+                        if(j==0):
+                            matrix[i][j]=matrix[i][j][1:]
+                        if(j==len(matrix[i])-1):
+                            matrix[i][j]=matrix[i][j][0:-1] 
+                        matrix[i][j]=eval(matrix[i][j])
+            return matrix
+        except:
+            return []
+
 class matrix_Factorization_direct_diagonal_matrix(Screen):
     pass
 
