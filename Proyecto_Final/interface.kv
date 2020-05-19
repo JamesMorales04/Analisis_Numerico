@@ -19,6 +19,7 @@ WindowManager:
     System_of_equations_partial_pivot:
     System_of_equations_total_pivot:
     System_of_equations_lu_Factorization:
+    System_of_equations_staggered_pivot:
     System_of_equations_matrix_Factorization:
     matrix_Factorization_based_gaussian_simple:
     matrix_Factorization_based_gaussian_pivoting:
@@ -189,6 +190,12 @@ WindowManager:
             font_size:"17sp"  
             on_press:
                 app.root.current="System_of_equations_total_pivot"     
+                root.manager.transition.direction="left"
+        SmoothButton:
+            text: "Staggered pivot"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="System_of_equations_staggered_pivot"     
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Lu's factorization"
@@ -1334,6 +1341,79 @@ WindowManager:
                     app.root.current="System_of_equations"  
                     root.manager.transition.direction="right"
                     
+<System_of_equations_staggered_pivot>
+    name:"System_of_equations_staggered_pivot"
+    matrix:matrix
+    matrixb:matrixb
+    sol:sol
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            GridLayout:
+                cols: 2
+                row_default_height:80
+                row_force_default:True
+                spacing: '10dp'
+                Label:
+                    text: "Matrix A(x)"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:matrix
+                    text:root.manager.matrix_global
+                    multiline:True
+                Label:
+                    text: "Matrix B"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:matrixb
+                    text:root.manager.matrixb_global
+                    multiline:True
+                Label:
+                    text: "Solution"
+                    font_size:"25sp"
+                    width: 20
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:sol
+                    width: 20
+                    multiline:True
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            SmoothButton:
+                text: "Search"
+                font_size:"17sp"  
+                on_press:root.buscar()    
+            SmoothButton:
+                text: "Help"
+                font_size:"17sp"  
+                on_press:root.aid()
+            SmoothButton:
+                text: "Back"
+                font_size:"17sp"  
+                on_press:
+                    root.manager.matrix_global=root.matrix.text
+                    root.manager.matrixb_global=root.matrixb.text
+                    app.root.current="System_of_equations"  
+                    root.manager.transition.direction="right"
+
+
 <System_of_equations_total_pivot>
     name:"System_of_equations_total_pivot"
     matrix:matrix
