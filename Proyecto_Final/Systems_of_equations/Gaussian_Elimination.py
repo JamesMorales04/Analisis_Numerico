@@ -29,7 +29,7 @@ class Gaussian_Elimination:
             self.variable_resolution()
             self.row_definition()
         else:
-            self.result="No tiene solucion o posee infinitas soluciones"
+            self.result="No solutions or infinite solutions"
 
         for i in self.new:
             print(i)
