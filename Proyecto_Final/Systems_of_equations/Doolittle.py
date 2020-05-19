@@ -117,7 +117,6 @@ class Doolittle:
             results+=f"X{aux}: "+(str)(i[num])+"\n"
             aux+=1
             num+=1
-        print(results) #Falta cambiar esto para la solución
         return results
 #n= Doolittle()
 #n.doolittle_algorithm([[45,-3,-4],[-12,36,7],[-6,4,57],[-3,-5,-10]],[8,-5,-8,78])
