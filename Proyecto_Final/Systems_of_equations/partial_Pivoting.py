@@ -23,7 +23,7 @@ class partial_Pivoting:
             bigger=matrix[n][n]
             for i in range (n+1,lenght):
                 if (abs(matrix[i][n]) > bigger):
-                    bigger= matrix[i][n]
+                    bigger= abs(matrix[i][n])
                     pos = i
             temp=matrix[n]
             big=matrix[pos] 
@@ -49,11 +49,7 @@ class partial_Pivoting:
                 if(j==i):
                     self.result.append(0)
                     if(self.new[i][j]==0):
-                        print("ress")
-                        print(self.result)
                         return False
-        print("ress2")
-        print(self.result)
         return True
 
     def variable_resolution(self):
@@ -71,9 +67,7 @@ class partial_Pivoting:
                     aux=self.new[i][j]
                 if(j==0):
                     self.result[i]/=aux
-            
                 j-=1
-        
             i-=1     
     def merge(self,matrix,matrixb):
         for i in range(0,len(matrix)):
@@ -98,10 +92,6 @@ class partial_Pivoting:
             self.total[i].append("///")
             for j in range(0,len(self.new[i])):
                 self.total[i].append(Decimal(self.new[i][j]))
-            print("value table pp")
-        print(self.total)
-
-
         return self.total
 
     def get_results(self):
@@ -110,13 +100,19 @@ class partial_Pivoting:
         for i in self.result:
             results+=f"X{aux}: "+(str)(i)+"\n"
             aux+=1
-        print("Que retiorna rs")
-        print(results)
         return results
 """
 [2,1,1]
 [4,-6,0]
 [-2,7,2]
 [5,-2,9]
+"""
+
+"""
+[2,-3,4,1]
+[-4,2,1,-2]
+[1,3,-5,3]
+[-3,-1,1,-1]
+[10,-10,32,-21]
 """
 #cosa.partial_pivoting_algorithm([[1/4,1/5,1/6,1/7],[1/3,1/4,1/5,1/6],[1,1/2,1/3,1/4],[1/2,1/3,1/4,1/5]],[60,70,106,84])
