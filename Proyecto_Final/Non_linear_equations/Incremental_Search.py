@@ -1,12 +1,12 @@
 import math
 
-class Busqueda_incremental:
+class Incremental_Search:
     def __init__(self):
         self.valores=[]
         self.raiz=""
 
-    def Operacion(self, valor_inicial,incremento,item,Funciones):
-        self.valores.append([valor_inicial,Funciones.evaluar(valor_inicial)])
+    def Operacion(self, valor_inicial,incremento,item,Functions):
+        self.valores.append([valor_inicial,Functions.evaluar(valor_inicial)])
         if self.valores[0][1]==0:
             self.raiz=f"{self.valores[0][0]}"
         else:
@@ -19,8 +19,8 @@ class Busqueda_incremental:
                     contador=0
                     valor_nuevo=valor_inicial+incremento
                     while (contador<item):
-                        self.valores.append([valor_nuevo,Funciones.evaluar(valor_nuevo)]) 
-                        valor_evaluado_nuevo=Funciones.evaluar(valor_nuevo)
+                        self.valores.append([valor_nuevo,Functions.evaluar(valor_nuevo)]) 
+                        valor_evaluado_nuevo=Functions.evaluar(valor_nuevo)
                         
                         if((self.valores[contador][1]*valor_evaluado_nuevo)<=0):
                             break

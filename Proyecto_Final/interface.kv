@@ -8,10 +8,10 @@ WindowManager:
     System_of_equations:
     Interpolation:
     Numeric_differentiation:
-    Non_linear_equations_busqueda:
-    Non_linear_equations_biseccion:
+    Non_linear_equations_search:
+    Non_linear_equations_bisection:
     Non_linear_equations_regla_falsa:
-    Non_linear_equations_punto_fijo:
+    Non_linear_equations_fixed_point:
     Non_linear_equations_newton:
     Non_linear_equations_raices_multiples:
     Non_linear_equations_secantes:
@@ -108,13 +108,13 @@ WindowManager:
             text: "Incremental Search"
             font_size:"17sp"   
             on_press:
-                app.root.current="Non_linear_equations_busqueda"     
+                app.root.current="Non_linear_equations_search"     
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Bisection"
             font_size:"17sp"  
             on_press:
-                app.root.current="Non_linear_equations_biseccion"     
+                app.root.current="Non_linear_equations_bisection"     
                 root.manager.transition.direction="left"
 
         SmoothButton:
@@ -128,7 +128,7 @@ WindowManager:
             text: "Fixed point"
             font_size:"17sp"  
             on_press:
-                app.root.current="Non_linear_equations_punto_fijo"
+                app.root.current="Non_linear_equations_fixed_point"
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Newton"
@@ -308,9 +308,9 @@ WindowManager:
 
 
 
-<Non_linear_equations_busqueda>
-    name:"Non_linear_equations_busqueda"
-    funciones:funciones
+<Non_linear_equations_search>
+    name:"Non_linear_equations_search"
+    functions:functions
     initial_position:initial_position
     increment:increment
     iterations:iterations
@@ -336,8 +336,8 @@ WindowManager:
                 color: 1,1,1,1 
                 bold: True
             TextInput:
-                id:funciones
-                text:root.manager.funcion_global
+                id:functions
+                text:root.manager.function_global
                 multiline:False
                 allow_copy: True
         GridLayout:
@@ -397,13 +397,13 @@ WindowManager:
             text: "Back"
             font_size:"17sp"  
             on_press:
-                root.manager.funcion_global=root.funciones.text
+                root.manager.function_global=root.functions.text
                 app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
-<Non_linear_equations_biseccion>
-    name:"Non_linear_equations_biseccion"
-    funciones:funciones
+<Non_linear_equations_bisection>
+    name:"Non_linear_equations_bisection"
+    functions:functions
     xi:xi
     xs:xs
     iterations:iterations
@@ -430,8 +430,8 @@ WindowManager:
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:funciones
-                text:root.manager.funcion_global
+                id:functions
+                text:root.manager.function_global
                 multiline:False
             
                     
@@ -531,13 +531,13 @@ WindowManager:
             text: "Back"
             font_size:"17sp"  
             on_press:
-                root.manager.funcion_global=root.funciones.text
+                root.manager.function_global=root.functions.text
                 app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
 <Non_linear_equations_regla_falsa>
     name:"Non_linear_equations_regla_falsa"
-    funciones:funciones
+    functions:functions
     xi:xi
     xs:xs
     iterations:iterations
@@ -559,13 +559,13 @@ WindowManager:
             row_default_height:30
             row_force_default:True
             Label:
-                text: "Funcion f(x)"
+                text: "Function f(x)"
                 font_size:"25sp"
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:funciones
-                text:root.manager.funcion_global
+                id:functions
+                text:root.manager.function_global
                 multiline:False
             
                     
@@ -665,15 +665,15 @@ WindowManager:
             text: "Back"
             font_size:"17sp"  
             on_press:
-                root.manager.funcion_global=root.funciones.text
+                root.manager.function_global=root.functions.text
                 app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
 
-<Non_linear_equations_punto_fijo>
-    name:"Non_linear_equations_punto_fijo"
-    funciones:funciones
-    gfunciones:gfunciones
+<Non_linear_equations_fixed_point>
+    name:"Non_linear_equations_fixed_point"
+    functions:functions
+    gfunctions:gfunctions
     xi:xi
     iterations:iterations
     tolerance:tolerance
@@ -699,8 +699,8 @@ WindowManager:
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:funciones
-                text:root.manager.funcion_global
+                id:functions
+                text:root.manager.function_global
                 multiline:False
         GridLayout:
             cols: 2
@@ -712,8 +712,8 @@ WindowManager:
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:gfunciones
-                text:root.manager.funcion_global
+                id:gfunctions
+                text:root.manager.function_global
                 multiline:False
 
 
@@ -806,14 +806,14 @@ WindowManager:
             text: "Back"
             font_size:"17sp"
             on_press:
-                root.manager.funcion_global=root.funciones.text
+                root.manager.function_global=root.functions.text
                 app.root.current="Non_linear_equations"
                 root.manager.transition.direction="right"
 
 <Non_linear_equations_newton>
 
     name:"Non_linear_equations_newton"
-    funciones:funciones
+    functions:functions
     xi:xi
     iterations:iterations
     tolerance:tolerance
@@ -839,8 +839,8 @@ WindowManager:
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:funciones
-                text:root.manager.funcion_global
+                id:functions
+                text:root.manager.function_global
                 multiline:False
 
         GridLayout:
@@ -932,13 +932,13 @@ WindowManager:
             text: "Back"
             font_size:"17sp"  
             on_press:
-                root.manager.funcion_global=root.funciones.text
+                root.manager.function_global=root.functions.text
                 app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
 <Non_linear_equations_secantes>
     name:"Non_linear_equations_secantes"
-    funciones:funciones
+    functions:functions
     x0:x0
     x1:x1
     iterations:iterations
@@ -965,8 +965,8 @@ WindowManager:
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:funciones
-                text:root.manager.funcion_global
+                id:functions
+                text:root.manager.function_global
                 multiline:False
             
                     
@@ -1066,14 +1066,14 @@ WindowManager:
             text: "Back"
             font_size:"17sp"  
             on_press:
-                root.manager.funcion_global=root.funciones.text
+                root.manager.function_global=root.functions.text
                 app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
 
 <Non_linear_equations_raices_multiples>
     name:"Non_linear_equations_raices_multiples"
-    funciones:funciones
+    functions:functions
     xi:xi
     iterations:iterations
     tolerance:tolerance
@@ -1099,8 +1099,8 @@ WindowManager:
                 color: 1,1,1,1
                 bold: True
             TextInput:
-                id:funciones
-                text:root.manager.funcion_global
+                id:functions
+                text:root.manager.function_global
                 multiline:False
 
         GridLayout:
@@ -1192,7 +1192,7 @@ WindowManager:
             text: "Back"
             font_size:"17sp"  
             on_press:
-                root.manager.funcion_global=root.funciones.text
+                root.manager.function_global=root.functions.text
                 app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
@@ -2053,6 +2053,33 @@ WindowManager:
 
 <Interpolation_newton>
     name:"Interpolation_newton"
+    functions:functions
+    tolerance:tolerance
+    sol:sol
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 3
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Function f(x)"
+                font_size:"25sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:functions
+                text:root.manager.function_global
+                multiline:False    
     GridLayout:
         SmoothButton:
             text: "Back"

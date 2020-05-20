@@ -1,10 +1,10 @@
 class Aids:
 
-    def help_busqueda(self):
+    def help_search(self):
         data=open("Aids\\NonLinearEq\\Requisites_is.txt", "r")
         return data.read()
         
-    def help_biseccion(self):
+    def help_bisection(self):
         data=open("Aids\\NonLinearEq\\Requisites_bisection.txt", "r")
         return data.read()
 
@@ -12,8 +12,8 @@ class Aids:
         data=open("Aids\\NonLinearEq\\Requisites_regulifalsi.txt", "r")
         return data.read()
 
-    def help_punto_fijo(self):
-        data=open("Aids\\NonLinearEq\\ExplicacionPuntoFijo.txt", "r")
+    def help_fixed_point(self):
+        data=open("Aids\\NonLinearEq\\ExplanationFixedPoint.txt", "r")
         return data.read()
 
     def help_newton(self):

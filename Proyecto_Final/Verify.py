@@ -1,23 +1,23 @@
-from Funciones import Funciones
+from Functions import Functions
 class Verify:
 
-    def verify_funcion(self,funcion,xi):
-        if(funcion==""):
+    def verify_function(self,function,xi):
+        if(function==""):
             return True
         else:
             try:
-                prueba_funcion=Funciones(funcion)
-                if ((prueba_funcion.evaluar(xi))==True) or prueba_funcion.evaluar(xi)=="" :
+                prueba_function=Functions(function)
+                if ((prueba_function.evaluar(xi))==True) or prueba_function.evaluar(xi)=="" :
                     return True
                 else:
                     return False
             except:
                 return True
 
-    def verify_busqueda(self,funcion,xi,incremento,iteraciones):
+    def verify_search(self,function,xi,incremento,iteraciones):
         error=""
         try:
-            if(self.verify_funcion(funcion,float(xi))):
+            if(self.verify_function(function,float(xi))):
                 error+=self.invalidFunction()
             if(float(incremento)==0):
                 error+=self.invalid_increment()
@@ -27,13 +27,13 @@ class Verify:
             error=self.empty_field()
         return error
 
-    def verify_biseccion(self,funcion,xi,valor_final,iteraciones,tolerancia):
+    def verify_bisection(self,function,xi,valor_final,iteraciones,tolerancia):
         error=""
         try:
-            if(self.verify_funcion(funcion,float(xi))):
+            if(self.verify_function(function,float(xi))):
                 error+=self.invalidFunction()
             else:
-                raiz=Funciones(funcion)
+                raiz=Functions(function)
                 if((raiz.evaluar(float(xi))*raiz.evaluar(float(valor_final)))>0):
                     error+="\nEl intervalo no contiene raiz"
             if(float(tolerancia)<=0):
@@ -44,10 +44,10 @@ class Verify:
             error=self.empty_field()
         return error
 
-    def verify_punto_fijo(self,funcion,gfuncion,xi,iteraciones,tolerancia):
+    def verify_fixed_point(self,function,gfunction,xi,iteraciones,tolerancia):
         error=""
         try:
-            if(self.verify_funcion(funcion,float(xi)) and self.verify_funcion(gfuncion,float(xi))):
+            if(self.verify_function(function,float(xi)) and self.verify_function(gfunction,float(xi))):
                 error+=self.invalidFunction()
             if(float(tolerancia)<=0):
                 error+=self.invalidTolerance()
@@ -61,7 +61,7 @@ class Verify:
         error=""
         try:
             
-            if(self.verify_funcion(function,float(xi))):
+            if(self.verify_function(function,float(xi))):
                 error+=self.invalidFunction()
             
             if(float(tolerance)<=0):
@@ -76,7 +76,7 @@ class Verify:
     def verify_secante(self, xi_1 , xi_2, function, iter, tol):
         error = ''
         try:
-            if(self.verify_funcion(function,float(xi_1)) or self.verify_funcion(function, float(xi_2))):
+            if(self.verify_function(function,float(xi_1)) or self.verify_function(function, float(xi_2))):
                 error+=self.invalidFunction()
             if(float(tol)<0):
                 error+=self.invalidTolerance()
@@ -90,7 +90,7 @@ class Verify:
         error=""
         try:
             
-            if(self.verify_funcion(function,float(xi))):
+            if(self.verify_function(function,float(xi))):
                 error+=self.invalidFunction()
             
             if(float(tolerance)<=0):
