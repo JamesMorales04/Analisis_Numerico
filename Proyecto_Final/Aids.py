@@ -41,5 +41,5 @@ class Aids:
         return data.read()
 
     def help_doolittle(self):
-        data=open("Aids\\SystemOfEq\\PartialPivotingExplanation.txt", "r")
+        data=open("Aids\\SystemOfEq\\DoolittleExplanation.txt", "r")
         return data.read()
