@@ -12,6 +12,7 @@ class Croult:
         self.matrixL=[]
         self.matrixU=[]
         self.new=[]
+        self.no_error=True
         getcontext().prec = 25
 
     def croult_algorithm(self,matrix,matrixb):
@@ -32,22 +33,37 @@ class Croult:
                 if(i!=k):
                     self.matrixU[i][k]=self.multiply_lists(self.matrixL[i],aux,matrix[i][k])
             acumU+=1
+
         matrixb[0].reverse()
         self.oldb=copy.deepcopy(self.matrixL)
         self.new=self.sort_matrix(self.matrixL)
         self.new=self.merge(self.new,matrixb)
-        self.variable_resolution()
-        self.result.reverse()
-        self.resultsz=[copy.deepcopy(self.result)]
-        self.new=self.merge(self.matrixU,self.resultsz)
-        self.variable_resolution()
-        self.row_definition(3)
+        if(self.check_diagonal() and self.no_error):
+            self.variable_resolution()
+            self.result.reverse()
+            self.resultsz=[copy.deepcopy(self.result)]
+            self.new=self.merge(self.matrixU,self.resultsz)
 
-        self.matrixL=self.merge(self.oldb,matrixb)
-        self.matrixU=self.merge(self.matrixU,self.resultsz)
-        self.original=self.merge(self.original,matrixb)
+            if(self.check_diagonal() and self.no_error):
+                self.variable_resolution()
+                self.row_definition(3)
+                matrixb[0].reverse()
+                self.matrixL=self.merge(self.oldb,matrixb)
+                self.matrixU=self.merge(self.matrixU,self.resultsz)
+                self.original=self.merge(self.original,matrixb)
+            else:
+                self.no_error=False
+        else:
+            self.result="No solutions or infinite solutions or Div 0"
+            self.no_error=False
 
-    
+    def check_diagonal(self):
+        for i in range(0,len(self.new)):
+            for j in range(0,len(self.new[i])):
+                if(j==i):
+                    if(self.new[i][j]==0):
+                        return False
+        return True
     def sort_matrix(self,matrix):
         aux=[]
         j=len(matrix)-1
@@ -61,7 +77,7 @@ class Croult:
         i=len(self.new)-1
         while(i>=0):
             j=len(self.new[i])-1
-            aux=0
+            aux=1
             while(j>=0):
                 if(j!=i):
                     if(len(self.new[i])-1==j):
@@ -149,10 +165,17 @@ class Croult:
     def get_results(self):
         results=""
         aux=1
-        for i in self.result:
-            results+=f"X{aux}: "+(str)(i)+"\n"
-            aux+=1
+        if(self.no_error):
+            for i in self.result:
+                results+=f"X{aux}: "+(str)(i)+"\n"
+                aux+=1
+        else:
+            return self.result
         return results
+    
+    def get_noerror(self):
+        print(self.no_error)
+        return self.no_error
 
 
 """
@@ -160,4 +183,10 @@ class Croult:
 [6,23,4,3]
 [7,21,46,9]
 [-3,-9,12,38]
+
+
+[30,-10,20,-14]
+
+cosa=Croult()
+cosa.croult_algorithm([[0,1/5,1/6,1/7],[1/3,1/4,1/5,1/6],[1,1/2,1/3,1/4],[1/2,1/3,1/4,1/5]],[[60,70,106,84]])
 """
