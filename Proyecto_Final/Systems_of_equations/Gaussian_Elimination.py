@@ -8,28 +8,32 @@ class Gaussian_Elimination:
         self.total=[]
         self.result=[]
         self.rows=[]
+        self.no_error=True
         getcontext().prec = 25
 
     def gaussian_elimination_algorithm(self,matrix,matrixb):
         matrix=self.merge(matrix,matrixb)
         self.original=copy.deepcopy(matrix)
         column=0
-        no_error=True
         i=1
-        while i <= len(matrix) and no_error:
+        while i <= len(matrix) and self.no_error:
             for j in range(i,len(matrix)):
-                multiplier=matrix[j][column]/matrix[i-1][column]
+                if(matrix[i-1][column]!=0):
+                    multiplier=matrix[j][column]/matrix[i-1][column]
+                else:
+                    self.no_error=False
+                    break
                 for k in range(column,len(matrix[j])):
                     matrix[j][k]=matrix[j][k]-matrix[i-1][k]*multiplier            
             column+=1
             i+=1 
         self.new=matrix
 
-        if(self.check_diagonal()):
+        if(self.check_diagonal() and self.no_error):
             self.variable_resolution()
             self.row_definition()
         else:
-            self.result="No solutions or infinite solutions"
+            self.result="No solutions or infinite solutions or Div 0"
 
 
     def check_diagonal(self):
@@ -45,7 +49,7 @@ class Gaussian_Elimination:
         i=len(self.new)-1
         while(i>=0):
             j=len(self.new[i])-1
-            aux=0
+            aux=1
             while(j>=0):
                 if(j!=i):
                     if(len(self.new[i])-1==j):
@@ -90,9 +94,24 @@ class Gaussian_Elimination:
     def get_results(self):
         results=""
         aux=1
-        for i in self.result:
-            results+=f"X{aux}: "+(str)(i)+"\n"
-            aux+=1
+        if(self.no_error):
+            for i in self.result:
+                results+=f"X{aux}: "+(str)(i)+"\n"
+                aux+=1
+        else:
+            return self.result
         return results
-#cosa=Gaussian_Elimination()
-#cosa.gaussian_elimination_algorithm([[1/4,1/5,1/6,1/7],[1/3,1/4,1/5,1/6],[1,1/2,1/3,1/4],[1/2,1/3,1/4,1/5]],[60,70,106,84])
+    
+    def get_noerror(self):
+        print(self.no_error)
+        return self.no_error
+"""
+cosa=Gaussian_Elimination()
+cosa.gaussian_elimination_algorithm([[0,1/5,1/6,1/7],[1/3,1/4,1/5,1/6],[1,1/2,1/3,1/4],[1/2,1/3,1/4,1/5]],[[60,70,106,84]])
+[2,-3,4,1]
+[-4,2,1,-2]
+[1,3,-5,3]
+[-3,-1,1,-1]
+
+[10,-10,32,-21]
+"""

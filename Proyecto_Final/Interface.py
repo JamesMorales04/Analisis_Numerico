@@ -339,8 +339,9 @@ class System_of_equations_gaussian_elimination(Screen):
             else:
                 matrix_method.gaussian_elimination_algorithm(matrix_clean,matrixb_clean)
                 self.sol.text=matrix_method.get_results()
-                columnas=matrix_method.rows
-                table.draw(matrix_method.value_table(),columnas)
+                if(matrix_method.get_noerror()):
+                    columnas=matrix_method.rows
+                    table.draw(matrix_method.value_table(),columnas)
 
         else:
             show_popWindow("Gaussian Elimination",error)
@@ -613,8 +614,9 @@ class matrix_Factorization_direct_croult(Screen):
             else:
                 matrix_method.croult_algorithm(matrix_clean,matrixb_clean)
                 self.sol.text=matrix_method.get_results()
-                columnas=matrix_method.rows
-                table.draw(matrix_method.value_table(),columnas)
+                if(matrix_method.get_noerror):
+                    columnas=matrix_method.rows
+                    table.draw(matrix_method.value_table(),columnas)
 
         else:
             show_popWindow("Croult",error)
