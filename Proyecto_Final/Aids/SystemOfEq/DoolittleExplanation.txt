@@ -1,0 +1,31 @@
+
+
+The doolittle method is part of the matrix factorization methods family, what implies that this method consist in
+finding two triangular matrices one whith its values above the diagonal (upper triangular matrix) which we will call U and
+one with its values below the diagonal (Lower triangular matrix), the later receives the name L standing for "Lower". These
+matrices allow us to create two system equations which will help us solve for the values of x of the original system.
+   Ax=b
+   A=LU
+
+Every value in L's diagonal is a one.
+   lij = 1    where i=j
+
+Given that L's diagonal consist just of ones, by multiplying L's first row by U's first column we can solve for U's values
+and L's values. To obtain both U's and L's values we apply the following procedures in n-1 phases being n the number of rows:
+
+ 1)Find the U row of the given phase (i=phase)
+   uij = (Aij-sum(Lij*Uji))/Lij
+ 
+ 2)Find the L column of the given phase (i=phase)
+    lij = (Aij-sum(Lij*Uji))/uij
+
+ 3)Repeat steps 1 and 2 until phase n-1.
+
+ 4)Use gaussian elimination in the extended matrix LB to find the values z, which will be used in the next step.
+    Lz=b
+
+ 5)Use gaussian elimination in the extended matrix UZ to find the values x and solve the equation system.
+    Ux=z
+
+
+
