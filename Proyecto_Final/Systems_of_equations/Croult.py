@@ -11,18 +11,19 @@ class Croult:
         self.rows=[]
         self.matrixL=[]
         self.matrixU=[]
+        self.matrixU_aux=[]
+        self.matrixL_aux=[]
+        self.original_aux=[]
         self.new=[]
         self.no_error=True
         getcontext().prec = 25
 
-    def croult_algorithm(self,matrix,matrixb):
+    def croult_algorithm(self,matrix):
         self.make_matrixLU(matrix)
         self.original=copy.deepcopy(matrix)
         acumU=0
         acumL=1
         for i in range(0,len(matrix)):
-            self.result.append(0)
-            self.resultsz.append(0)
             if(i!=0):
                 for j in range(acumL,len(matrix[i])):
                     aux=self.get_column(self.matrixU,i)
@@ -33,36 +34,50 @@ class Croult:
                 if(i!=k):
                     self.matrixU[i][k]=self.multiply_lists(self.matrixL[i],aux,matrix[i][k])
             acumU+=1
+        
 
+    def runb(self,matrixb):
+        self.result=[]
+        self.resultsz=[]
+        self.total=[]
+        self.matrixL_aux=copy.deepcopy(self.matrixL)
+        self.matrixU_aux=copy.deepcopy(self.matrixU)
+        self.original_aux=copy.deepcopy(self.original)
         matrixb[0].reverse()
-        self.oldb=copy.deepcopy(self.matrixL)
-        self.new=self.sort_matrix(self.matrixL)
+        self.oldb=copy.deepcopy(self.matrixL_aux)
+        self.new=self.sort_matrix(self.matrixL_aux)
         self.new=self.merge(self.new,matrixb)
-        if(self.check_diagonal() and self.no_error):
+        if(self.check_diagonal(0) and self.no_error):
             self.variable_resolution()
             self.result.reverse()
             self.resultsz=[copy.deepcopy(self.result)]
-            self.new=self.merge(self.matrixU,self.resultsz)
+            print(self.resultsz)
+            self.new=self.merge(self.matrixU_aux,self.resultsz)
 
-            if(self.check_diagonal() and self.no_error):
+            if(self.check_diagonal(1) and self.no_error):
                 self.variable_resolution()
                 self.row_definition(3)
                 matrixb[0].reverse()
-                self.matrixL=self.merge(self.oldb,matrixb)
-                self.matrixU=self.merge(self.matrixU,self.resultsz)
-                self.original=self.merge(self.original,matrixb)
+                self.matrixL_aux=self.merge(self.oldb,matrixb)
+                print(self.resultsz)
+                self.matrixU_aux=self.merge(self.matrixU_aux,self.resultsz)
+                self.original_aux=self.merge(self.original_aux,matrixb)
+                self.value_table()
             else:
                 self.no_error=False
         else:
             self.result="No solutions or infinite solutions or Div 0"
             self.no_error=False
-
-    def check_diagonal(self):
+        
+    def check_diagonal(self,num):
         for i in range(0,len(self.new)):
             for j in range(0,len(self.new[i])):
                 if(j==i):
-                    if(self.new[i][j]==0):
-                        return False
+                    if num == 0:
+                        self.result.append(0)
+                        self.resultsz.append(0)
+                        if(self.new[i][j]==0):
+                            return False
         return True
     def sort_matrix(self,matrix):
         aux=[]
@@ -142,6 +157,7 @@ class Croult:
         return result
 
     def row_definition(self,tables):
+        self.rows=[]
         for i in range(0,tables):
             for i in range(1,len(self.result)+1):
                 self.rows.append(f"x{i}")
@@ -149,18 +165,18 @@ class Croult:
             self.rows.append("///")
 
     def value_table(self):
-        for i in range(0,len(self.original)):
+        self.total=[]
+        for i in range(0,len(self.original_aux)):
             self.total.append([])
-            for j in range(0,len(self.original[i])):
-                self.total[i].append(Decimal(self.original[i][j]))
+            for j in range(0,len(self.original_aux[i])):
+                self.total[i].append(Decimal(self.original_aux[i][j]))
             self.total[i].append("///")
-            for j in range(0,len(self.original[i])):
-                self.total[i].append(Decimal(self.matrixL[i][j]))
+            for j in range(0,len(self.original_aux[i])):
+                self.total[i].append(Decimal(self.matrixL_aux[i][j]))
             self.total[i].append("///")    
-            for j in range(0,len(self.original[i])):
-                self.total[i].append(Decimal(self.matrixU[i][j]))
+            for j in range(0,len(self.original_aux[i])):
+                self.total[i].append(Decimal(self.matrixU_aux[i][j]))
             self.total[i].append("///")
-        return self.total
 
     def get_results(self):
         results=""
@@ -177,6 +193,8 @@ class Croult:
         print(self.no_error)
         return self.no_error
 
+    def get_total(self):
+        return self.total
 
 """
 [20,-1,3,4]
