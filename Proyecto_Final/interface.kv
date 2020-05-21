@@ -383,12 +383,12 @@ WindowManager:
         SmoothButton:
             text: "Find"
             font_size:"17sp"  
-            on_press:root.buscar()
+            on_press:root.searching()
             
         SmoothButton:
             text: "Graph"
             font_size:"17sp"  
-            on_press:root.graficar()
+            on_press:root.graphic()
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
@@ -518,11 +518,11 @@ WindowManager:
         SmoothButton:
             text: "Search"
             font_size:"17sp"  
-            on_press:root.buscar()    
+            on_press:root.searching()    
         SmoothButton:
             text: "Graph"
             font_size:"17sp"  
-            on_press:root.graficar()
+            on_press:root.graphic()
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
@@ -652,11 +652,11 @@ WindowManager:
         SmoothButton:
             text: "Search"
             font_size:"17sp"  
-            on_press:root.buscar()
+            on_press:root.searching()
         SmoothButton:
             text: "Graph"
             font_size:"17sp"  
-            on_press:root.graficar()
+            on_press:root.graphic()
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
@@ -793,11 +793,11 @@ WindowManager:
             text: "Search"
             border: 10,10,10,10
             font_size:"17sp"
-            on_press:root.buscar()
+            on_press:root.searching()
         SmoothButton:
             text: "Graph"
             font_size:"17sp"
-            on_press:root.graficar()
+            on_press:root.graphic()
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
@@ -919,11 +919,11 @@ WindowManager:
             text: "Search"
             border: 10,10,10,10
             font_size:"17sp"
-            on_press:root.buscar()
+            on_press:root.searching()
         SmoothButton:
             text: "Graph"
             font_size:"17sp"
-            on_press:root.graficar()
+            on_press:root.graphic()
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
@@ -1053,11 +1053,11 @@ WindowManager:
         SmoothButton:
             text: "Solve"
             font_size:"17sp"  
-            on_press:root.buscar()    
+            on_press:root.searching()    
         SmoothButton:
             text: "Graph"
             font_size:"17sp"  
-            on_press:root.graficar()
+            on_press:root.graphic()
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
@@ -1179,11 +1179,11 @@ WindowManager:
             text: "Solve"
             border: 10,10,10,10
             font_size:"17sp"
-            on_press:root.buscar()
+            on_press:root.searching()
         SmoothButton:
             text: "Graph"
             font_size:"17sp"
-            on_press:root.graficar()
+            on_press:root.graphic()
         SmoothButton:
             text: "Help"
             font_size:"17sp"  
@@ -1255,7 +1255,7 @@ WindowManager:
             SmoothButton:
                 text: "Search"
                 font_size:"17sp"  
-                on_press:root.buscar()    
+                on_press:root.searching()    
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -1328,7 +1328,7 @@ WindowManager:
             SmoothButton:
                 text: "Search"
                 font_size:"17sp"  
-                on_press:root.buscar()    
+                on_press:root.searching()    
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -1400,7 +1400,7 @@ WindowManager:
             SmoothButton:
                 text: "Search"
                 font_size:"17sp"  
-                on_press:root.buscar()    
+                on_press:root.searching()    
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -1473,7 +1473,7 @@ WindowManager:
             SmoothButton:
                 text: "Search"
                 font_size:"17sp"  
-                on_press:root.buscar()    
+                on_press:root.searching()    
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -1640,7 +1640,7 @@ WindowManager:
             SmoothButton:
                 text: "Search"
                 font_size:"17sp"  
-                on_press:root.buscar()    
+                on_press:root.searching()    
             SmoothButton:
                 text: "Run B"
                 font_size:"17sp"  
@@ -1715,7 +1715,7 @@ WindowManager:
             SmoothButton:
                 text: "Search"
                 font_size:"17sp"  
-                on_press:root.buscar()    
+                on_press:root.searching()    
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -1787,7 +1787,7 @@ WindowManager:
             SmoothButton:
                 text: "Search"
                 font_size:"17sp"  
-                on_press:root.buscar()    
+                on_press:root.searching()    
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -1919,7 +1919,7 @@ WindowManager:
             SmoothButton:
                 text: "Search"
                 font_size:"17sp"  
-                on_press:root.buscar()    
+                on_press:root.searching()    
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -2040,7 +2040,7 @@ WindowManager:
             SmoothButton:
                 text: "Search"
                 font_size:"17sp"  
-                on_press:root.buscar()    
+                on_press:root.searching()    
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -2058,7 +2058,7 @@ WindowManager:
 <Interpolation_newton>
     name:"Interpolation_newton"
     functions:functions
-    tolerance:tolerance
+    numbers:numbers
     sol:sol
     GridLayout:
         size:root.width,root.height
@@ -2083,7 +2083,32 @@ WindowManager:
             TextInput:
                 id:functions
                 text:root.manager.function_global
-                multiline:False    
+                multiline:False   
+        GridLayout:
+            cols: 3
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Numbers"
+                font_size:"25sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:numbers
+                text:root.manager.interpolationValues_global
+                multiline:False   
+        GridLayout:
+            cols: 2
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Solution"
+                font_size:"20sp"
+                color: 1,1,1,1 
+                bold: True
+            TextInput:
+                id:sol
+                multiline:False
     GridLayout:
         SmoothButton:
             text: "Back"

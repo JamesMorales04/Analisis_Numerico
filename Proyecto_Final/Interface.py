@@ -40,17 +40,19 @@ function=StringProperty('')
 gfunction=StringProperty('')
 matrix=StringProperty('')
 matrixb=StringProperty('')
+interpolationValues=StringProperty('')
 
 class WindowManager(ScreenManager):
     global function
     global gfunction
     global matrix
     global matrixb
+    global interpolationValues
     function_global=function
     gfunction_global=gfunction
     matrix_global=matrix
     matrixb_global=matrixb
-
+    interpolationValues_global=interpolationValues
 class Menu_Initial(Screen):
     pass
 class Non_linear_equations(Screen):
@@ -69,7 +71,7 @@ class Non_linear_equations_search(Screen):
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
 
-    def buscar(self):
+    def searching(self):
         search=Incremental_Search()
         table=Tables()
         verify=Verify()
@@ -83,7 +85,7 @@ class Non_linear_equations_search(Screen):
         else:
             show_popWindow("Error Incremental Search",error)
 
-    def graficar(self):
+    def graphic(self):
         graph=Graph()
         verify=Verify()
         error=verify.verify_search(self.functions.text,self.initial_position.text,self.increment.text,self.iterations.text)
@@ -103,7 +105,7 @@ class Non_linear_equations_bisection(Screen):
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
 
-    def buscar(self):
+    def searching(self):
         bisection=Bisection()
         table=Tables()
         verify=Verify()
@@ -117,7 +119,7 @@ class Non_linear_equations_bisection(Screen):
         else:
             show_popWindow("Error Bisection",error)
 
-    def graficar(self):
+    def graphic(self):
         graph=Graph()
         verify=Verify()
         error=verify.verify_bisection(self.functions.text,self.xi.text,self.xs.text,self.iterations.text,self.tolerance.text)
@@ -139,7 +141,7 @@ class Non_linear_equations_regla_falsa(Screen):
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
 
-    def buscar(self):
+    def searching(self):
         regla_falsa=Regla_falsa()
         table=Tables()
         verify=Verify()
@@ -153,7 +155,7 @@ class Non_linear_equations_regla_falsa(Screen):
         else:
             show_popWindow("Error Reguli false",error)
 
-    def graficar(self):
+    def graphic(self):
         graph=Graph()
         verify=Verify()
         error=verify.verify_bisection(self.functions.text,self.xi.text,self.xs.text,self.iterations.text,self.tolerance.text)
@@ -174,7 +176,7 @@ class Non_linear_equations_fixed_point(Screen):
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
     gfunctions=ObjectProperty(None)
-    def buscar(self):
+    def searching(self):
         fixedPoint = FixedPoint()
         table=Tables()
         verify=Verify()
@@ -190,7 +192,7 @@ class Non_linear_equations_fixed_point(Screen):
         else:
             show_popWindow("Error Fixed Point",error)
 
-    def graficar(self):
+    def graphic(self):
         graph=Graph()
         verify=Verify()
         error=verify.verify_fixed_point(self.functions.text,self.gfunctions.text, self.xi.text,self.iterations.text,self.tolerance.text)
@@ -212,7 +214,7 @@ class Non_linear_equations_newton(Screen):
     tolerance=ObjectProperty(None)
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
-    def buscar(self):
+    def searching(self):
         newton = Newton()
         table=Tables()
         verify=Verify()
@@ -227,7 +229,7 @@ class Non_linear_equations_newton(Screen):
         else:
             show_popWindow("Error newton",error)
 
-    def graficar(self):
+    def graphic(self):
         graph=Graph()
         verify=Verify()
         error=verify.verify_newton(self.functions.text, self.xi.text,self.iterations.text,self.tolerance.text)
@@ -250,7 +252,7 @@ class Non_linear_equations_secants(Screen):
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
 
-    def buscar(self):
+    def searching(self):
         secant=Secant()
         table=Tables()
         verify=Verify()
@@ -264,7 +266,7 @@ class Non_linear_equations_secants(Screen):
         else:
             show_popWindow("Secant Error",error)
 
-    def graficar(self):
+    def graphic(self):
         graph=Graph()
         verify=Verify()
         error=verify.verify_secant(self.x1.text,self.x0.text,self.functions.text,self.iterations.text,self.tolerance.text)
@@ -287,7 +289,7 @@ class Non_linear_equations_raices_multiples(Screen):
     tolerance=ObjectProperty(None)
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
-    def buscar(self):
+    def searching(self):
         raices_m = Raices_Multiples()
         table=Tables()
         verify=Verify()
@@ -302,7 +304,7 @@ class Non_linear_equations_raices_multiples(Screen):
         else:
             show_popWindow("Error Multiple Roots",error)
 
-    def graficar(self):
+    def graphic(self):
         
         graph=Graph()
         verify=Verify()
@@ -324,7 +326,7 @@ class System_of_equations_gaussian_elimination(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
-    def buscar(self):
+    def searching(self):
         matrix_method=Gaussian_Elimination()
         table=Tables()
         verify=Verify()
@@ -369,7 +371,7 @@ class System_of_equations_partial_pivot(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
-    def buscar(self):
+    def searching(self):
         matrix_method=partial_Pivoting()
         table=Tables()
         verify=Verify()
@@ -408,7 +410,7 @@ class System_of_equations_total_pivot(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
-    def buscar(self):
+    def searching(self):
         matrix_method=Total_Pivoting()
         table=Tables()
         verify=Verify()
@@ -447,7 +449,7 @@ class System_of_equations_staggered_pivot(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
-    def buscar(self):
+    def searching(self):
         matrix_method=staggered_Pivoting()
         table=Tables()
         verify=Verify()
@@ -494,7 +496,7 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
     initvals=ObjectProperty(None)
     lamb=ObjectProperty(None)
     tol=ObjectProperty(None)
-    def buscar(self):
+    def searching(self):
         matrix_method=Relaxed_gs()
         table=Tables()
         verify=Verify()
@@ -542,7 +544,7 @@ class Iteratives_System_of_equations_jacobi(Screen):
     initvals=ObjectProperty(None)
     lamb=ObjectProperty(None)
     tol=ObjectProperty(None)
-    def buscar(self):
+    def searching(self):
         matrix_method=Relaxed_jacobi()
         table=Tables()
         verify=Verify()
@@ -584,6 +586,9 @@ class Iteratives_System_of_equations_jacobi(Screen):
         except:
             return []
 class Interpolation_newton(Screen):
+    tolerance=ObjectProperty(None)
+    functions=ObjectProperty(None)
+    sol=ObjectProperty(None)
     pass
 class Interpolation_lagrange(Screen):
     pass
@@ -602,7 +607,7 @@ class matrix_Factorization_direct_croult(Screen):
     matrix_method=Croult()
     rund=False
     table=Tables()
-    def buscar(self):
+    def searching(self):
         self.matrix_method=Croult()
         verify=Verify()
         #error=verify.verify_raices_mult(self.xi.text,self.functions.text,self.iterations.text,self.tolerance.text)
@@ -661,7 +666,7 @@ class matrix_Factorization_direct_doolitle(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
-    def buscar(self):
+    def searching(self):
         matrix_method=Doolittle()
         table=Tables()
         verify=Verify()
@@ -702,7 +707,7 @@ class matrix_Factorization_direct_cholesky(Screen):
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
     
-    def buscar(self):
+    def searching(self):
         matrix_method=Cholesky()
         table=Tables()
         verify=Verify()
