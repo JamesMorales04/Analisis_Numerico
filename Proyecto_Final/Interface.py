@@ -599,29 +599,46 @@ class matrix_Factorization_direct_croult(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
+    matrix_method=Croult()
+    rund=False
+    table=Tables()
     def buscar(self):
-        matrix_method=Croult()
-        table=Tables()
+        self.matrix_method=Croult()
         verify=Verify()
         #error=verify.verify_raices_mult(self.xi.text,self.functions.text,self.iterations.text,self.tolerance.text)
         error=""
         if(error==""):
-            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
-            if(len(matrix_clean)==0 or len(matrixb_clean)==0 ):
+            if(len(matrix_clean)==0):
                 error+="Wrong Matrix Input"
                 show_popWindow("Croult",error)
             else:
-                matrix_method.croult_algorithm(matrix_clean,matrixb_clean)
-                self.sol.text=matrix_method.get_results()
-                if(matrix_method.get_noerror()):
-                    columnas=matrix_method.rows
-                    table.draw(matrix_method.value_table(),columnas)
-
+                self.matrix_method.croult_algorithm(matrix_clean)  
+                self.sol.text="Matrix LU Ready"
+                self.rund=True
         else:
             show_popWindow("Croult",error)
+
+
     def aid(self):
         show_popWindow("Croult",Aids.help_gaussian_elimination(self))
+
+    def runb(self):
+        self.table=Tables()
+        matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+        if(len(matrixb_clean)==0):
+            error="Wrong Matrix Input"
+            show_popWindow("Croult",error)
+        else:
+            if(self.rund):
+                self.matrix_method.runb(matrixb_clean)
+                self.sol.text=self.matrix_method.get_results()
+                if(self.matrix_method.get_noerror()):
+                    columnas=self.matrix_method.rows
+                    self.table.draw(self.matrix_method.get_total(),columnas)
+            else:
+                self.sol.text="First create matrix LU"
+
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):
@@ -684,6 +701,7 @@ class matrix_Factorization_direct_cholesky(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
+    
     def buscar(self):
         matrix_method=Cholesky()
         table=Tables()
