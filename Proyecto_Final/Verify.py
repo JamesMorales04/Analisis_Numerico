@@ -73,7 +73,7 @@ class Verify:
         return error
 
 
-    def verify_secante(self, xi_1 , xi_2, function, iter, tol):
+    def verify_secant(self, xi_1 , xi_2, function, iter, tol):
         error = ''
         try:
             if(self.verify_function(function,float(xi_1)) or self.verify_function(function, float(xi_2))):

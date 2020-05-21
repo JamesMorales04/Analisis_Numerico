@@ -14,7 +14,7 @@ WindowManager:
     Non_linear_equations_fixed_point:
     Non_linear_equations_newton:
     Non_linear_equations_raices_multiples:
-    Non_linear_equations_secantes:
+    Non_linear_equations_secants:
     System_of_equations_gaussian_elimination:
     System_of_equations_partial_pivot:
     System_of_equations_total_pivot:
@@ -140,7 +140,7 @@ WindowManager:
             text: "Secants"
             font_size:"17sp"  
             on_press:
-                app.root.current="Non_linear_equations_secantes"
+                app.root.current="Non_linear_equations_secants"
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Multiple root"
@@ -936,8 +936,8 @@ WindowManager:
                 app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
 
-<Non_linear_equations_secantes>
-    name:"Non_linear_equations_secantes"
+<Non_linear_equations_secants>
+    name:"Non_linear_equations_secants"
     functions:functions
     x0:x0
     x1:x1

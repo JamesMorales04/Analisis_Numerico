@@ -6,7 +6,7 @@ class Regla_falsa:
         self.valores=[]
         self.raiz=""
 
-    def algoritmo_regla_falsa(self,xi,xu,Function,tolerancia,iteraciones,tipo_de_error):
+    def algorithm_regla_falsa(self,xi,xu,Function,tolerancia,iteraciones,tipo_de_error):
         print(tipo_de_error)
         if((Function.evaluar(xi))*(Function.evaluar(xu))>0 or tolerancia<0):
             self.raiz="Wrong values"

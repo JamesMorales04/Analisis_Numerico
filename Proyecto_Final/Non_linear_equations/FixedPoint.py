@@ -5,7 +5,7 @@ class FixedPoint:
         self.valores=[]
         self.raiz=""
 
-    def algoritmo_fixedPoint(self, xi, Function, GFunction, iteraciones, tolerancia, tipo_de_error):
+    def algorithm_fixedPoint(self, xi, Function, GFunction, iteraciones, tolerancia, tipo_de_error):
         print(tipo_de_error)
         if (Function.evaluar(xi) == 0):
             self.raiz=f"{xi} es una raiz"

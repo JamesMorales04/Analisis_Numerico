@@ -1,12 +1,12 @@
 from Functions import *
 import math
 
-class Secante:
+class Secant:
     def __init__(self):
         self.valores = []
         self.raiz = ''
     
-    def algoritmo_secante(self, xi_1 , xi_2, function, iter, tol, err_type):
+    def algorithm_secant(self, xi_1 , xi_2, function, iter, tol, err_type):
         Yi_1 = function.evaluar(xi_1)
         Yi_2 = function.evaluar(xi_2)
 

@@ -20,7 +20,7 @@ class Aids:
         data=open("Aids\\NonLinearEq\\NewtonMethodExplanation.txt", "r")
         return data.read()
 
-    def help_secante(self):
+    def help_secant(self):
         data=open("Aids\\NonLinearEq\\SecantMethodExplanation.txt", "r")
         return data.read()
 

@@ -7,7 +7,7 @@ class Raices_Multiples:
         self.valores = []
         self.raiz = ''
 
-    def algoritmo_raices_mult(self, xi, function,iter, tol, err_type):
+    def algorithm_raices_mult(self, xi, function,iter, tol, err_type):
 
         try:
             Yi = function.evaluar(xi)

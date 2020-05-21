@@ -20,7 +20,7 @@ from Non_linear_equations.Bisection import Bisection
 from Non_linear_equations.FixedPoint import FixedPoint
 from Non_linear_equations.Regla_falsa import Regla_falsa
 from Non_linear_equations.Newton import Newton
-from Non_linear_equations.Secante import Secante
+from Non_linear_equations.Secant import Secant
 from Non_linear_equations.Raices_Multiples import Raices_Multiples
 from Systems_of_equations.Gaussian_Elimination import Gaussian_Elimination
 from Systems_of_equations.partial_Pivoting import partial_Pivoting
@@ -110,7 +110,7 @@ class Non_linear_equations_bisection(Screen):
         error=verify.verify_bisection(self.functions.text,self.xi.text,self.xs.text,self.iterations.text,self.tolerance.text)
         if(error==""):
             Function=Functions(self.functions.text)
-            bisection.algoritmo_bisection(float(self.xi.text),float(self.xs.text),Function,float(self.tolerance.text),float(self.iterations.text),self.tipo_error)
+            bisection.algorithm_bisection(float(self.xi.text),float(self.xs.text),Function,float(self.tolerance.text),float(self.iterations.text),self.tipo_error)
             self.sol.text=bisection.get_sol()
             columnas=['Iteracion','Xi','Xu','Xm','F(xm)','Error']
             table.draw(bisection.value_table(),columnas)
@@ -146,7 +146,7 @@ class Non_linear_equations_regla_falsa(Screen):
         error=verify.verify_bisection(self.functions.text,self.xi.text,self.xs.text,self.iterations.text,self.tolerance.text)
         if(error==""):
             Function=Functions(self.functions.text)
-            regla_falsa.algoritmo_regla_falsa(float(self.xi.text),float(self.xs.text),Function,float(self.tolerance.text),float(self.iterations.text),self.tipo_error)
+            regla_falsa.algorithm_regla_falsa(float(self.xi.text),float(self.xs.text),Function,float(self.tolerance.text),float(self.iterations.text),self.tipo_error)
             self.sol.text=regla_falsa.get_sol()
             columnas=['Iteracion','Xi','Xu','Xm','F(xm)','Error']
             table.draw(regla_falsa.value_table(),columnas)
@@ -182,7 +182,7 @@ class Non_linear_equations_fixed_point(Screen):
         if(error==""):
             Function=Functions(self.functions.text)
             GFunction=Functions(self.gfunctions.text)
-            fixedPoint.algoritmo_fixedPoint(float(self.xi.text),Function,GFunction,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
+            fixedPoint.algorithm_fixedPoint(float(self.xi.text),Function,GFunction,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
             self.sol.text=fixedPoint.get_sol()
             columnas=['Iteracion','Xi','F(xm)','Error']
             table.draw(fixedPoint.value_table(),columnas)
@@ -219,7 +219,7 @@ class Non_linear_equations_newton(Screen):
         error=verify.verify_newton(self.functions.text, self.xi.text,self.iterations.text,self.tolerance.text)
         if(error==""):
             Function=Functions(self.functions.text)
-            newton.algoritmo_newton(float(self.xi.text),Function,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
+            newton.algorithm_newton(float(self.xi.text),Function,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
             self.sol.text=newton.get_sol()
             columnas=['Iteracion','Xi','F(xm)',"f'(x)",'Error']
             table.draw(newton.value_table(),columnas)
@@ -242,7 +242,7 @@ class Non_linear_equations_newton(Screen):
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
 
-class Non_linear_equations_secantes(Screen):
+class Non_linear_equations_secants(Screen):
     x0=ObjectProperty(None)
     x1=ObjectProperty(None)
     iterations=ObjectProperty(None)
@@ -251,30 +251,30 @@ class Non_linear_equations_secantes(Screen):
     functions=ObjectProperty(None)
 
     def buscar(self):
-        secante=Secante()
+        secant=Secant()
         table=Tables()
         verify=Verify()
-        error=verify.verify_secante(self.x1.text,self.x0.text,self.functions.text,self.iterations.text,self.tolerance.text)
+        error=verify.verify_secant(self.x1.text,self.x0.text,self.functions.text,self.iterations.text,self.tolerance.text)
         if(error==""):
             Function=Functions(self.functions.text)
-            secante.algoritmo_secante(float(self.x1.text)-float(self.x1.text)*0.2,float(self.x0.text),Function,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
-            self.sol.text=secante.get_sol()
+            secant.algorithm_secant(float(self.x1.text)-float(self.x1.text)*0.2,float(self.x0.text),Function,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
+            self.sol.text=secant.get_sol()
             columnas=['Iteration','Xi','F(Xi)','F(xi)-F(Xi_1)','Error']
-            table.draw(secante.value_table(),columnas)
+            table.draw(secant.value_table(),columnas)
         else:
             show_popWindow("Secant Error",error)
 
     def graficar(self):
         graph=Graph()
         verify=Verify()
-        error=verify.verify_secante(self.x1.text,self.x0.text,self.functions.text,self.iterations.text,self.tolerance.text)
+        error=verify.verify_secant(self.x1.text,self.x0.text,self.functions.text,self.iterations.text,self.tolerance.text)
         if(error==""):
             graph.draw_functionsa(self.functions.text,float(self.x0.text),math.fabs(float(self.x0.text))+(float(self.iterations.text)))
         else:
             show_popWindow("Error Graph Secant",error)
     
     def aid(self):
-        show_popWindow("Secant Aids",Aids.NonLinearEq.help_secante(self))
+        show_popWindow("Secant Aids",Aids.NonLinearEq.help_secant(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -294,7 +294,7 @@ class Non_linear_equations_raices_multiples(Screen):
         error=verify.verify_raices_mult(self.xi.text,self.functions.text,self.iterations.text,self.tolerance.text)
         if(error==""):
             Function=Functions(self.functions.text)
-            raices_m.algoritmo_raices_mult(float(self.xi.text),Function,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
+            raices_m.algorithm_raices_mult(float(self.xi.text),Function,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
             self.sol.text=raices_m.get_sol()
             columnas=['Iteracion','Xi','F(xm)',"F'(x)","F''(X)",'Error']
             table.draw(raices_m.value_table(),columnas)

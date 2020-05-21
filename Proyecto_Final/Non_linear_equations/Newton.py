@@ -5,7 +5,7 @@ class Newton:
         self.values=[]
         self.raiz=""
 
-    def algoritmo_newton(self, xi, Function,iterations, tolerance, err_type):
+    def algorithm_newton(self, xi, Function,iterations, tolerance, err_type):
         print(err_type)
         xi_1 = xi
         counter = 1
