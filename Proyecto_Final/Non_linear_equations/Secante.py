@@ -1,4 +1,4 @@
-from Funciones import *
+from Functions import *
 import math
 
 class Secante:

@@ -1,13 +1,13 @@
 import sympy as sp
 from sympy.parsing.sympy_parser import parse_expr
 
-class Funciones:
+class Functions:
     def __init__(self,entrada):
-        self.funcion=parse_expr(entrada)
-        self.derivar(self.funcion)
+        self.function=parse_expr(entrada)
+        self.derivar(self.function)
 
     def evaluar(self,valor):
-        valores=self.funcion.evalf(subs=dict(x=valor))
+        valores=self.function.evalf(subs=dict(x=valor))
         try:
             aux=float(valores)
             if(isinstance(aux, float)):
@@ -31,6 +31,6 @@ class Funciones:
     
     def derivarM(self,entrada, veces, valor):
         x = sp.Symbol('x')
-        derivada = sp.diff(self.funcion,x,int(veces))
+        derivada = sp.diff(self.function,x,int(veces))
         valores=derivada.evalf(subs=dict(x=valor))
         return valores

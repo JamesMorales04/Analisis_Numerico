@@ -1,4 +1,4 @@
-from Funciones import Funciones
+from Functions import *
 import math
 
 class Raices_Multiples:
