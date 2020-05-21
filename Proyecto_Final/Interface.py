@@ -95,7 +95,7 @@ class Non_linear_equations_search(Screen):
             show_popWindow("Error Graph Incremental Search",error)
     
     def aid(self):
-        show_popWindow("Incremental Search Aids",Aids.NonLinearEq.help_search(self))
+        show_popWindow("Incremental Search Aids",Aids.help_search(self))
 
 class Non_linear_equations_bisection(Screen):
     xi=ObjectProperty(None)
@@ -129,7 +129,7 @@ class Non_linear_equations_bisection(Screen):
             show_popWindow("Error Graph Bisection",error)
     
     def aid(self):
-        show_popWindow("Bisection Aids",Aids.NonLinearEq.help_bisection(self))
+        show_popWindow("Bisection Aids",Aids.help_bisection(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -165,7 +165,7 @@ class Non_linear_equations_regla_falsa(Screen):
             show_popWindow("Error Graph Reguli false",error)
 
     def aid(self):
-        show_popWindow("Reguli false Aids",Aids.NonLinearEq.help_regla_falsa(self))
+        show_popWindow("Reguli false Aids",Aids.help_regla_falsa(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -202,7 +202,7 @@ class Non_linear_equations_fixed_point(Screen):
             show_popWindow("Error Graph Fixed Point",error)
 
     def aid(self):
-        show_popWindow("Fixed Point Aids",Aids.NonLinearEq.help_fixed_point(self))
+        show_popWindow("Fixed Point Aids",Aids.help_fixed_point(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -239,7 +239,7 @@ class Non_linear_equations_newton(Screen):
             show_popWindow("Error Graph newton",error)
 
     def aid(self):
-        show_popWindow("Newton Aids",Aids.NonLinearEq.help_newton(self))
+        show_popWindow("Newton Aids",Aids.help_newton(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -276,7 +276,7 @@ class Non_linear_equations_secants(Screen):
             show_popWindow("Error Graph Secant",error)
     
     def aid(self):
-        show_popWindow("Secant Aids",Aids.NonLinearEq.help_secant(self))
+        show_popWindow("Secant Aids",Aids.help_secant(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -315,7 +315,7 @@ class Non_linear_equations_raices_multiples(Screen):
             show_popWindow("Error Graph Multiple Roots",error)
 
     def aid(self):
-        show_popWindow("Multiple Roots Aids",Aids.NonLinearEq.help_raices_multiples(self))
+        show_popWindow("Multiple Roots Aids",Aids.help_raices_multiples(self))
 
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
@@ -348,7 +348,7 @@ class System_of_equations_gaussian_elimination(Screen):
         else:
             show_popWindow("Gaussian Elimination",error)
     def aid(self):
-        show_popWindow("Gaussian elimination",Aids.SystemOfEq.help_gaussian_elimination(self))
+        show_popWindow("Gaussian elimination",Aids.help_gaussian_elimination(self))
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):
@@ -387,7 +387,7 @@ class System_of_equations_partial_pivot(Screen):
         else:
             show_popWindow("Partial pivot ",error)
     def aid(self):
-        show_popWindow("Partial pivoting",Aids.SystemOfEq.help_partial_pivot(self))
+        show_popWindow("Partial pivoting",Aids.help_partial_pivot(self))
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):
@@ -465,7 +465,7 @@ class System_of_equations_staggered_pivot(Screen):
         else:
             show_popWindow("Staggered pivot ",error)
     def aid(self):
-        show_popWindow("Staggered pivoting",Aids.SystemOfEq.help_partial_pivot(self))
+        show_popWindow("Staggered pivoting",Aids.help_partial_pivot(self))
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):
