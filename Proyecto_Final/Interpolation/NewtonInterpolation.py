@@ -1,58 +1,56 @@
 import math
-
 import sympy as sp
 from sympy.parsing.sympy_parser import parse_expr
+from Functions import *
 class NewtonInterpolation:
     def __init__(self):
-        self.Function=""
+        self.polinomial=""
         self.xn=""     #All the x values 
+        self.rows=[]
 
-    def algorithm_newtonInterpolation(self, xn, entry):
-
-        matrix = []
-        self.Function=parse_expr(entry)
-        self.xn= xn
-        length= len(xn)
+    def algorithm_newtonInterpolation(self, entry, xn):
+        self.matrix = []
+        self.xn= xn[0]
+        length= len(self.xn)
         for i in range (length):
-            matrix.append([0] * (length + 1))
-            matrix[i][0] = self.xn[i]
-            matrix[i][1] = self.evaluar(self.xn[i])
+            self.matrix.append([0] * (length + 1))
+            self.matrix[i][0] = self.xn[i]
+            self.matrix[i][1] = entry.evaluar(self.xn[i])
 
-        polinomial = "P(X) = "+ str(matrix[0][1])
+        self.polinomial = "P(X) = "+ str(self.matrix[0][1])
 
         for i in range(2,(length+1)): #  col and rows
             for j in range(i-1,length):
-                matrix[j][i] = (matrix[j][i-1]-matrix[j-1][i-1])/(matrix[j][0]-matrix[j-i+1][0])
+                self.matrix[j][i] = (self.matrix[j][i-1]-self.matrix[j-1][i-1])/(self.matrix[j][0]-self.matrix[j-i+1][0])
                 if (j==i-1):
-                    polinomial += " + "+ str(matrix[j][i])
+                    self.polinomial += " + "+ str(self.matrix[j][i])
                     for j in range (0,j): #j??
-                        polinomial += "(x-" + str(matrix[j][0]) + ")"
+                        self.polinomial += "(x-" + str(self.matrix[j][0]) + ")"
 
-        print(polinomial)
+        #print(polinomial)
         print("---------------------------")
-        print(matrix)
+        self.row_definition()
+        print(self.matrix)
 
 
-
-
-
-    def evaluar(self,valor):
-        valores=self.Function.evalf(subs=dict(x=valor))
-        try:
-            aux=float(valores)
-            if(isinstance(aux, float)):
-                return valores
-            else:
-                return True
-        except:
-            return "Final"
     def value_table(self):
-        return self.values
+         return self.matrix
+    
+    def row_definition(self):
+        self.rows.append("Xn")
+        self.rows.append("F(Xn)")
+        for i in range(1,len((self.matrix[0]))-1): #-1?
+            self.rows.append(i)
+        return self.rows
     def get_sol(self):
-        return str(self.raiz)
-
-
+        print(self.polinomial)
+        return self.polinomial
+"""
 n= NewtonInterpolation()
 
-#n.algorithm_newtonInterpolation([1,1.3,1.5,1.8,2.3],"exp(x)-ln(x+4)")
-n.algorithm_newtonInterpolation([2,3.1,4,5],"exp(x)-ln(x+4)")
+exp(x)-ln(x+4)
+[1,1.3,1.5,1.8,2.3]
+n.algorithm_newtonInterpolation("exp(x)-ln(x+4)",[1,1.3,1.5,1.8,2.3])
+n.algorithm_newtonInterpolation("exp(x)-ln(x+4)",[2,3.1,4,5])
+
+"""

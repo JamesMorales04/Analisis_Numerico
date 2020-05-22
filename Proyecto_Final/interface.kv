@@ -2062,8 +2062,8 @@ WindowManager:
     sol:sol
     GridLayout:
         size:root.width,root.height
-        spacing: '10dp'
-        padding:30,20
+        spacing: '5dp'
+        padding:10,20
         cols:1
         canvas.before:
             Color:
@@ -2072,7 +2072,7 @@ WindowManager:
                 pos: self.pos
                 size: self.size
         GridLayout:
-            cols: 3
+            cols: 2
             row_default_height:30
             row_force_default:True
             Label:
@@ -2098,7 +2098,7 @@ WindowManager:
                 text:root.manager.interpolationValues_global
                 multiline:False   
         GridLayout:
-            cols: 2
+            cols: 3
             row_default_height:30
             row_force_default:True
             Label:
@@ -2109,6 +2109,17 @@ WindowManager:
             TextInput:
                 id:sol
                 multiline:False
+        GridLayout:
+            cols: 1
+            spacing: '5dp'
+            SmoothButton:
+                text: "Search"
+                font_size:"17sp"  
+                on_press:root.searching()    
+            SmoothButton:
+                text: "Help"
+                font_size:"17sp"  
+                on_press:root.aid()
     GridLayout:
         SmoothButton:
             text: "Back"

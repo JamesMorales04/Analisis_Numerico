@@ -31,6 +31,7 @@ from Systems_of_equations.Cholesky import Cholesky
 from Systems_of_equations.Doolittle import Doolittle
 from Systems_of_equations.Relaxed_gs import Relaxed_gs
 from Systems_of_equations.Relaxed_jacobi import Relaxed_jacobi
+from Interpolation.NewtonInterpolation import NewtonInterpolation
 from Verify import Verify
 from Functions import Functions
 from Graph import Graph
@@ -80,8 +81,8 @@ class Non_linear_equations_search(Screen):
             Function=Functions(self.functions.text)
             search.Operacion(float(self.initial_position.text),float(self.increment.text),float(self.iterations.text),Function)
             self.sol.text=search.get_sol()
-            columnas=['Posicion','Valor']
-            table.draw(search.value_table(),columnas)
+            columns=['Posicion','Valor']
+            table.draw(search.value_table(),columns)
         else:
             show_popWindow("Error Incremental Search",error)
 
@@ -114,8 +115,8 @@ class Non_linear_equations_bisection(Screen):
             Function=Functions(self.functions.text)
             bisection.algorithm_bisection(float(self.xi.text),float(self.xs.text),Function,float(self.tolerance.text),float(self.iterations.text),self.tipo_error)
             self.sol.text=bisection.get_sol()
-            columnas=['Iteracion','Xi','Xu','Xm','F(xm)','Error']
-            table.draw(bisection.value_table(),columnas)
+            columns=['Iteration','Xi','Xu','Xm','F(xm)','Error']
+            table.draw(bisection.value_table(),columns)
         else:
             show_popWindow("Error Bisection",error)
 
@@ -150,8 +151,8 @@ class Non_linear_equations_regla_falsa(Screen):
             Function=Functions(self.functions.text)
             regla_falsa.algorithm_regla_falsa(float(self.xi.text),float(self.xs.text),Function,float(self.tolerance.text),float(self.iterations.text),self.tipo_error)
             self.sol.text=regla_falsa.get_sol()
-            columnas=['Iteracion','Xi','Xu','Xm','F(xm)','Error']
-            table.draw(regla_falsa.value_table(),columnas)
+            columns=['Iteration','Xi','Xu','Xm','F(xm)','Error']
+            table.draw(regla_falsa.value_table(),columns)
         else:
             show_popWindow("Error Reguli false",error)
 
@@ -186,8 +187,8 @@ class Non_linear_equations_fixed_point(Screen):
             GFunction=Functions(self.gfunctions.text)
             fixedPoint.algorithm_fixedPoint(float(self.xi.text),Function,GFunction,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
             self.sol.text=fixedPoint.get_sol()
-            columnas=['Iteracion','Xi','F(xm)','Error']
-            table.draw(fixedPoint.value_table(),columnas)
+            columns=['Iteration','Xi','F(xm)','Error']
+            table.draw(fixedPoint.value_table(),columns)
 
         else:
             show_popWindow("Error Fixed Point",error)
@@ -223,8 +224,8 @@ class Non_linear_equations_newton(Screen):
             Function=Functions(self.functions.text)
             newton.algorithm_newton(float(self.xi.text),Function,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
             self.sol.text=newton.get_sol()
-            columnas=['Iteracion','Xi','F(xm)',"f'(x)",'Error']
-            table.draw(newton.value_table(),columnas)
+            columns=['Iteration','Xi','F(xm)',"f'(x)",'Error']
+            table.draw(newton.value_table(),columns)
 
         else:
             show_popWindow("Error newton",error)
@@ -261,8 +262,8 @@ class Non_linear_equations_secants(Screen):
             Function=Functions(self.functions.text)
             secant.algorithm_secant(float(self.x1.text)-float(self.x1.text)*0.2,float(self.x0.text),Function,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
             self.sol.text=secant.get_sol()
-            columnas=['Iteration','Xi','F(Xi)','F(xi)-F(Xi_1)','Error']
-            table.draw(secant.value_table(),columnas)
+            columns=['Iteration','Xi','F(Xi)','F(xi)-F(Xi_1)','Error']
+            table.draw(secant.value_table(),columns)
         else:
             show_popWindow("Secant Error",error)
 
@@ -298,8 +299,8 @@ class Non_linear_equations_raices_multiples(Screen):
             Function=Functions(self.functions.text)
             raices_m.algorithm_raices_mult(float(self.xi.text),Function,float(self.iterations.text),float(self.tolerance.text),self.tipo_error)
             self.sol.text=raices_m.get_sol()
-            columnas=['Iteracion','Xi','F(xm)',"F'(x)","F''(X)",'Error']
-            table.draw(raices_m.value_table(),columnas)
+            columns=['Iteration','Xi','F(xm)',"F'(x)","F''(X)",'Error']
+            table.draw(raices_m.value_table(),columns)
 
         else:
             show_popWindow("Error Multiple Roots",error)
@@ -342,8 +343,8 @@ class System_of_equations_gaussian_elimination(Screen):
                 matrix_method.gaussian_elimination_algorithm(matrix_clean,matrixb_clean)
                 self.sol.text=matrix_method.get_results()
                 if(matrix_method.get_noerror()):
-                    columnas=matrix_method.rows
-                    table.draw(matrix_method.value_table(),columnas)
+                    columns=matrix_method.rows
+                    table.draw(matrix_method.value_table(),columns)
 
         else:
             show_popWindow("Gaussian Elimination",error)
@@ -381,8 +382,8 @@ class System_of_equations_partial_pivot(Screen):
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             matrix_method.partial_pivoting_algorithm(matrix_clean,matrixb_clean)
             self.sol.text=matrix_method.get_results()
-            columnas=matrix_method.rows
-            table.draw(matrix_method.value_table(),columnas)
+            columns=matrix_method.rows
+            table.draw(matrix_method.value_table(),columns)
 
         else:
             show_popWindow("Partial pivot ",error)
@@ -420,8 +421,8 @@ class System_of_equations_total_pivot(Screen):
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             matrix_method.total_pivoting_algorithm(matrix_clean,matrixb_clean)
             self.sol.text=matrix_method.get_results()
-            columnas=matrix_method.rows
-            table.draw(matrix_method.value_table(),columnas)
+            columns=matrix_method.rows
+            table.draw(matrix_method.value_table(),columns)
 
         except Exception as e:
             show_popWindow("Total pivot ",error)
@@ -459,8 +460,8 @@ class System_of_equations_staggered_pivot(Screen):
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             matrix_method.partial_staggered_algorithm(matrix_clean,matrixb_clean)
             self.sol.text=matrix_method.get_results()
-            columnas=matrix_method.rows
-            table.draw(matrix_method.value_table(),columnas)
+            columns=matrix_method.rows
+            table.draw(matrix_method.value_table(),columns)
 
         else:
             show_popWindow("Staggered pivot ",error)
@@ -511,8 +512,8 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
                 show_popWindow("Gauss Seidel",error)
             else:
                 matrix_method.Relaxed_gs_algorithm(matrix_clean,matrixb_clean,initvals_clean,float(self.lamb.text),float(self.tol.text))
-                columnas=matrix_method.rows
-                table.draw(matrix_method.value_table(),columnas)
+                columns=matrix_method.rows
+                table.draw(matrix_method.value_table(),columns)
                 self.sol.text=matrix_method.get_sol()
 
         else:
@@ -559,8 +560,8 @@ class Iteratives_System_of_equations_jacobi(Screen):
                 show_popWindow("Jacobi",error)
             else:
                 matrix_method.Relaxed_jacobi_algorithm(matrix_clean,matrixb_clean,initvals_clean,float(self.lamb.text),float(self.tol.text))
-                columnas=matrix_method.rows
-                table.draw(matrix_method.value_table(),columnas)
+                columns=matrix_method.rows
+                table.draw(matrix_method.value_table(),columns)
                 self.sol.text=matrix_method.get_sol()
 
         else:
@@ -586,10 +587,42 @@ class Iteratives_System_of_equations_jacobi(Screen):
         except:
             return []
 class Interpolation_newton(Screen):
-    tolerance=ObjectProperty(None)
     functions=ObjectProperty(None)
+    numbers=ObjectProperty(None)
     sol=ObjectProperty(None)
-    pass
+    def searching(self):
+        matrix_method=NewtonInterpolation()
+        table=Tables()
+        verify = Verify()
+        error= ""
+        if (error==""):
+            Function=Functions(self.functions.text) #Parsed
+            Numbers=self.clean((self.numbers.text).split("\n"))
+            matrix_method.algorithm_newtonInterpolation(Function,Numbers)
+            print("Hasta acá recibe todo bien, melo")
+            columns= matrix_method.rows
+            table.draw(matrix_method.value_table(),columns)
+            self.sol.text=matrix_method.get_sol()
+    def aid(self):
+        print("Not yet")
+    def clean(self, matrix):
+        try:
+            for i in range(0,len(matrix)):
+                if(len(matrix[i])==0):
+                    matrix.pop(i)
+                else:
+                    matrix[i]=matrix[i].replace("\n","")
+                    matrix[i]=matrix[i].strip()
+                    matrix[i]=(matrix[i].split(","))
+                    for j in range(0,len(matrix[i])):
+                        if(j==0):
+                            matrix[i][j]=matrix[i][j][1:]
+                        if(j==len(matrix[i])-1):
+                            matrix[i][j]=matrix[i][j][0:-1] 
+                        matrix[i][j]=eval(matrix[i][j])
+            return matrix
+        except:
+            return []
 class Interpolation_lagrange(Screen):
     pass
 class Interpolation_splines(Screen):
@@ -639,8 +672,8 @@ class matrix_Factorization_direct_croult(Screen):
                 self.matrix_method.runb(matrixb_clean)
                 self.sol.text=self.matrix_method.get_results()
                 if(self.matrix_method.get_noerror()):
-                    columnas=self.matrix_method.rows
-                    self.table.draw(self.matrix_method.get_total(),columnas)
+                    columns=self.matrix_method.rows
+                    self.table.draw(self.matrix_method.get_total(),columns)
             else:
                 self.sol.text="First create matrix LU"
 
@@ -675,8 +708,8 @@ class matrix_Factorization_direct_doolitle(Screen):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             matrix_method.doolittle_algorithm(matrix_clean,matrixb_clean)
-            columnas=matrix_method.rows
-            table.draw(matrix_method.value_table(),columnas)
+            columns=matrix_method.rows
+            table.draw(matrix_method.value_table(),columns)
             self.sol.text=matrix_method.get_results()
 
 
@@ -716,8 +749,8 @@ class matrix_Factorization_direct_cholesky(Screen):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             matrix_method.cholesky_algorithm(matrix_clean,matrixb_clean)
-            columnas=matrix_method.rows
-            table.draw(matrix_method.value_table(),columnas)
+            columns=matrix_method.rows
+            table.draw(matrix_method.value_table(),columns)
             self.sol.text=matrix_method.get_results()
 
         else:
