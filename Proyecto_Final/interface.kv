@@ -105,7 +105,7 @@ WindowManager:
 
 
         SmoothButton:
-            text: "Incremental Search"
+            text: "Incremental Run"
             font_size:"17sp"   
             on_press:
                 app.root.current="Non_linear_equations_search"     
@@ -210,6 +210,12 @@ WindowManager:
             font_size:"17sp"  
             on_press:
                 app.root.current="System_of_equations_matrix_Factorization"
+                root.manager.transition.direction="left"
+        SmoothButton:
+            text: "Croult"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="matrix_Factorization_direct_croult"
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Gauss Seidel"
@@ -516,7 +522,7 @@ WindowManager:
                     color:  0,0,0,1 
                     on_active: root.tipo_de_error(False)
         SmoothButton:
-            text: "Search"
+            text: "Run"
             font_size:"17sp"  
             on_press:root.run()    
         SmoothButton:
@@ -650,7 +656,7 @@ WindowManager:
                     color:  0,0,0,1 
                     on_active: root.tipo_de_error(False)
         SmoothButton:
-            text: "Search"
+            text: "Run"
             font_size:"17sp"  
             on_press:root.run()
         SmoothButton:
@@ -790,7 +796,7 @@ WindowManager:
                     color:  0,0,0,1
                     on_active: root.tipo_de_error(False)
         SmoothButton:
-            text: "Search"
+            text: "Run"
             border: 10,10,10,10
             font_size:"17sp"
             on_press:root.run()
@@ -916,7 +922,7 @@ WindowManager:
                     color:  0,0,0,1
                     on_active: root.tipo_de_error(False)
         SmoothButton:
-            text: "Search"
+            text: "Run"
             border: 10,10,10,10
             font_size:"17sp"
             on_press:root.run()
@@ -1253,7 +1259,7 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Search"
+                text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
@@ -1326,7 +1332,7 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Search"
+                text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
@@ -1398,7 +1404,7 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Search"
+                text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
@@ -1471,7 +1477,7 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Search"
+                text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
@@ -1638,7 +1644,7 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Search"
+                text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
@@ -1713,7 +1719,7 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Search"
+                text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
@@ -1785,7 +1791,7 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Search"
+                text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
@@ -1864,7 +1870,7 @@ WindowManager:
                         bold: True
                     TextInput:
                         id:matrixb
-                        text:root.manager.matrix_global
+                        text:root.manager.matrixb_global
                         multiline:True
                 GridLayout:
                     rows: 1
@@ -1917,7 +1923,7 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Search"
+                text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
@@ -1985,7 +1991,7 @@ WindowManager:
                         bold: True
                     TextInput:
                         id:matrixb
-                        text:root.manager.matrix_global
+                        text:root.manager.matrixb_global
                         multiline:True
                 GridLayout:
                     rows: 1
@@ -2038,7 +2044,7 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Search"
+                text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
@@ -2113,7 +2119,7 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Search"
+                text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
