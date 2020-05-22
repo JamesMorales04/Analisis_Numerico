@@ -2063,7 +2063,7 @@ WindowManager:
     GridLayout:
         size:root.width,root.height
         spacing: '5dp'
-        padding:10,20
+        padding:50,20
         cols:1
         canvas.before:
             Color:
@@ -2073,7 +2073,7 @@ WindowManager:
                 size: self.size
         GridLayout:
             cols: 2
-            row_default_height:30
+            row_default_height:50
             row_force_default:True
             Label:
                 text: "Function f(x)"
@@ -2085,8 +2085,8 @@ WindowManager:
                 text:root.manager.function_global
                 multiline:False   
         GridLayout:
-            cols: 3
-            row_default_height:30
+            cols: 2
+            row_default_height:50
             row_force_default:True
             Label:
                 text: "Numbers"
@@ -2099,11 +2099,11 @@ WindowManager:
                 multiline:False   
         GridLayout:
             cols: 3
-            row_default_height:30
+            row_default_height:70
             row_force_default:True
             Label:
                 text: "Solution"
-                font_size:"20sp"
+                font_size:"25sp"
                 color: 1,1,1,1 
                 bold: True
             TextInput:
@@ -2111,7 +2111,7 @@ WindowManager:
                 multiline:False
         GridLayout:
             cols: 1
-            spacing: '5dp'
+            spacing: '10dp'
             SmoothButton:
                 text: "Search"
                 font_size:"17sp"  
@@ -2120,13 +2120,12 @@ WindowManager:
                 text: "Help"
                 font_size:"17sp"  
                 on_press:root.aid()
-    GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="Menu_Initial"  
-                root.manager.transition.direction="right"
+            SmoothButton:
+                text: "Back"
+                font_size:"17sp"  
+                on_press:
+                    app.root.current="Menu_Initial"  
+                    root.manager.transition.direction="right"
 
 
 <Interpolation_lagrange>

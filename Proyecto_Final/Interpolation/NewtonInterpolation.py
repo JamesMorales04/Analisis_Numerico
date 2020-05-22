@@ -43,7 +43,6 @@ class NewtonInterpolation:
             self.rows.append(i)
         return self.rows
     def get_sol(self):
-        print(self.polinomial)
         return self.polinomial
 """
 n= NewtonInterpolation()
