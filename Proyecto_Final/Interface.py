@@ -72,7 +72,7 @@ class Non_linear_equations_search(Screen):
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
 
-    def searching(self):
+    def run(self):
         search=Incremental_Search()
         table=Tables()
         verify=Verify()
@@ -106,7 +106,7 @@ class Non_linear_equations_bisection(Screen):
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
 
-    def searching(self):
+    def run(self):
         bisection=Bisection()
         table=Tables()
         verify=Verify()
@@ -142,7 +142,7 @@ class Non_linear_equations_regla_falsa(Screen):
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
 
-    def searching(self):
+    def run(self):
         regla_falsa=Regla_falsa()
         table=Tables()
         verify=Verify()
@@ -177,7 +177,7 @@ class Non_linear_equations_fixed_point(Screen):
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
     gfunctions=ObjectProperty(None)
-    def searching(self):
+    def run(self):
         fixedPoint = FixedPoint()
         table=Tables()
         verify=Verify()
@@ -215,7 +215,7 @@ class Non_linear_equations_newton(Screen):
     tolerance=ObjectProperty(None)
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
-    def searching(self):
+    def run(self):
         newton = Newton()
         table=Tables()
         verify=Verify()
@@ -253,7 +253,7 @@ class Non_linear_equations_secants(Screen):
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
 
-    def searching(self):
+    def run(self):
         secant=Secant()
         table=Tables()
         verify=Verify()
@@ -290,7 +290,7 @@ class Non_linear_equations_raices_multiples(Screen):
     tolerance=ObjectProperty(None)
     sol=ObjectProperty(None)
     functions=ObjectProperty(None)
-    def searching(self):
+    def run(self):
         raices_m = Raices_Multiples()
         table=Tables()
         verify=Verify()
@@ -327,7 +327,7 @@ class System_of_equations_gaussian_elimination(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
-    def searching(self):
+    def run(self):
         matrix_method=Gaussian_Elimination()
         table=Tables()
         verify=Verify()
@@ -372,7 +372,7 @@ class System_of_equations_partial_pivot(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
-    def searching(self):
+    def run(self):
         matrix_method=partial_Pivoting()
         table=Tables()
         verify=Verify()
@@ -411,7 +411,7 @@ class System_of_equations_total_pivot(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
-    def searching(self):
+    def run(self):
         matrix_method=Total_Pivoting()
         table=Tables()
         verify=Verify()
@@ -450,7 +450,7 @@ class System_of_equations_staggered_pivot(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
-    def searching(self):
+    def run(self):
         matrix_method=staggered_Pivoting()
         table=Tables()
         verify=Verify()
@@ -497,7 +497,7 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
     initvals=ObjectProperty(None)
     lamb=ObjectProperty(None)
     tol=ObjectProperty(None)
-    def searching(self):
+    def run(self):
         matrix_method=Relaxed_gs()
         table=Tables()
         verify=Verify()
@@ -545,7 +545,7 @@ class Iteratives_System_of_equations_jacobi(Screen):
     initvals=ObjectProperty(None)
     lamb=ObjectProperty(None)
     tol=ObjectProperty(None)
-    def searching(self):
+    def run(self):
         matrix_method=Relaxed_jacobi()
         table=Tables()
         verify=Verify()
@@ -590,7 +590,7 @@ class Interpolation_newton(Screen):
     functions=ObjectProperty(None)
     numbers=ObjectProperty(None)
     sol=ObjectProperty(None)
-    def searching(self):
+    def run(self):
         matrix_method=NewtonInterpolation()
         table=Tables()
         verify = Verify()
@@ -640,7 +640,7 @@ class matrix_Factorization_direct_croult(Screen):
     matrix_method=Croult()
     rund=False
     table=Tables()
-    def searching(self):
+    def run(self):
         self.matrix_method=Croult()
         verify=Verify()
         #error=verify.verify_raices_mult(self.xi.text,self.functions.text,self.iterations.text,self.tolerance.text)
@@ -699,7 +699,7 @@ class matrix_Factorization_direct_doolitle(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
-    def searching(self):
+    def run(self):
         matrix_method=Doolittle()
         table=Tables()
         verify=Verify()
@@ -740,7 +740,7 @@ class matrix_Factorization_direct_cholesky(Screen):
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
     
-    def searching(self):
+    def run(self):
         matrix_method=Cholesky()
         table=Tables()
         verify=Verify()
