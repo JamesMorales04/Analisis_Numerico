@@ -26,8 +26,7 @@ class NewtonInterpolation:
                     self.polinomial += " + "+ str(self.matrix[j][i])
                     for j in range (0,j): #j??
                         self.polinomial += "(x-" + str(self.matrix[j][0]) + ")"
-
-        #print(polinomial)
+        self.polinomial= self.polinomial.replace("+ -", "-").replace(" + -","-") 
         print("---------------------------")
         self.row_definition()
         print(self.matrix)

@@ -39,11 +39,22 @@ class Doolittle:
             self.l[i][i] = 1        
         
         lsolution=self.progresiveL(matrixb)
+        print("------------------------------------------")        
+        print("Matriz u")
+        for i in self.u:
+            print(i)
+        print("------------------------------------------")
+
         self.new = self.merge(self.u,lsolution) #Hacemos merge de la u con la solución que creé yo para mandarlo al método de James que lo resuelve 
         self.variable_resolution()
         self.row_definition()            
 
     def progresiveL(self,matrixb):
+        print("------------------------------------------")
+        print("matriz L ")
+        for i in self.l:
+            print(i)
+        print("------------------------------------------")
         answerZ=[] #Progresivo simple con matriz superior (ceros arriba)
         answerZ.append(matrixb[0][0])
         for i in range (1,len(matrixb[0])):
