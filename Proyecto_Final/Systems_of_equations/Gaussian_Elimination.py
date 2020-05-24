@@ -9,6 +9,8 @@ class Gaussian_Elimination:
         self.result=[]
         self.rows=[]
         self.no_error=True
+        self.steps=[]
+        self.steps_row=[]
         getcontext().prec = 25
 
     def gaussian_elimination_algorithm(self,matrix,matrixb):
@@ -17,6 +19,7 @@ class Gaussian_Elimination:
         column=0
         i=1
         while i <= len(matrix) and self.no_error:
+            self.steps.append(copy.deepcopy(matrix))
             for j in range(i,len(matrix)):
                 if(matrix[i-1][column]!=0):
                     multiplier=matrix[j][column]/matrix[i-1][column]
@@ -28,6 +31,11 @@ class Gaussian_Elimination:
             column+=1
             i+=1 
         self.new=matrix
+        self.get_steps()
+        for i in self.steps:
+            print(i)
+        for i in self.steps_row:
+            print(i)
 
         if(self.check_diagonal() and self.no_error):
             self.variable_resolution()
@@ -101,7 +109,20 @@ class Gaussian_Elimination:
         else:
             return self.result
         return results
-    
+
+    def get_steps(self):
+        aux=[]
+        for i in self.steps:
+            for j in i:
+                aux.append(j)
+            aux.append([])
+        for i in range(1,len(self.steps[0][0])+1):
+            self.steps_row.append(f"x{i}")
+        self.steps=aux
+    def get_steps_table(self):
+        return self.steps
+    def get_steps_rows(self):
+        return self.steps_row
     def get_noerror(self):
         print(self.no_error)
         return self.no_error

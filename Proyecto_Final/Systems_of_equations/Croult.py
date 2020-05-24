@@ -16,6 +16,9 @@ class Croult:
         self.original_aux=[]
         self.new=[]
         self.no_error=True
+        self.stepsL=[]
+        self.stepsU=[]
+        self.steps_row=[]
         getcontext().prec = 25
 
     def croult_algorithm(self,matrix):
@@ -34,7 +37,9 @@ class Croult:
                 if(i!=k):
                     self.matrixU[i][k]=self.multiply_lists(self.matrixL[i],aux,matrix[i][k])
             acumU+=1
-        
+            self.stepsL.append(copy.deepcopy(self.matrixL))
+            self.stepsU.append(copy.deepcopy(self.matrixU))
+        self.get_steps()
 
     def runb(self,matrixb):
         self.result=[]
@@ -159,8 +164,8 @@ class Croult:
     def row_definition(self,tables):
         self.rows=[]
         for i in range(0,tables):
-            for i in range(1,len(self.result)+1):
-                self.rows.append(f"x{i}")
+            for j in range(1,len(self.result)+1):
+                self.rows.append(f"x{j}")
             self.rows.append("b")
             self.rows.append("///")
 
@@ -195,6 +200,28 @@ class Croult:
 
     def get_total(self):
         return self.total
+
+    def get_steps(self):
+        aux=[]
+        for i in self.stepsL:
+            print(i)
+        for i in range(0,len(self.stepsL)):
+            aux.append([f"Matrix L: Step{i}"])
+            for j in self.stepsL[i]:
+                aux.append(j)
+            aux.append([f"Matrix U: Step{i}"])
+            for j in self.stepsU[i]:
+                aux.append(j)
+
+        for i in range(1,len(self.stepsL[0][0])+1):
+            self.steps_row.append(f"x{i}")
+        self.stepsL=aux
+
+        
+    def get_steps_table(self):
+        return self.stepsL
+    def get_steps_rows(self):
+        return self.steps_row
 
 """
 [20,-1,3,4]

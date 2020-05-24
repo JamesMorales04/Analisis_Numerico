@@ -327,8 +327,10 @@ class System_of_equations_gaussian_elimination(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
+    matrix_method=Gaussian_Elimination()
+    rund=False
     def run(self):
-        matrix_method=Gaussian_Elimination()
+        self.matrix_method=Gaussian_Elimination()
         table=Tables()
         verify=Verify()
         #error=verify.verify_raices_mult(self.xi.text,self.functions.text,self.iterations.text,self.tolerance.text)
@@ -340,14 +342,20 @@ class System_of_equations_gaussian_elimination(Screen):
                 error+="Wrong Matrix Input"
                 show_popWindow("Gaussian Elimination",error)
             else:
-                matrix_method.gaussian_elimination_algorithm(matrix_clean,matrixb_clean)
-                self.sol.text=matrix_method.get_results()
-                if(matrix_method.get_noerror()):
-                    columns=matrix_method.rows
-                    table.draw(matrix_method.value_table(),columns)
+                self.matrix_method.gaussian_elimination_algorithm(matrix_clean,matrixb_clean)
+                self.sol.text=self.matrix_method.get_results()
+                if(self.matrix_method.get_noerror()):
+                    columns=self.matrix_method.rows
+                    table.draw(self.matrix_method.value_table(),columns)
+                    self.rund=True
 
         else:
             show_popWindow("Gaussian Elimination",error)
+    def steps(self):
+        if(self.rund):
+            columns=self.matrix_method.get_steps_rows()
+            table=Tables()
+            table.draw(self.matrix_method.get_steps_table(),columns)
     def aid(self):
         show_popWindow("Gaussian elimination",Aids.help_gaussian_elimination(self))
     def clean(self, matrix):
@@ -656,8 +664,12 @@ class matrix_Factorization_direct_croult(Screen):
                 self.rund=True
         else:
             show_popWindow("Croult",error)
-
-
+    
+    def steps(self):
+        if(self.rund):
+            columns=self.matrix_method.get_steps_rows()
+            table=Tables()
+            table.draw(self.matrix_method.get_steps_table(),columns)
     def aid(self):
         show_popWindow("Croult",Aids.help_gaussian_elimination(self))
 
