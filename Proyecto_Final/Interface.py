@@ -603,14 +603,17 @@ class Interpolation_newton(Screen):
         table=Tables()
         verify = Verify()
         error= ""
+        if (self.functions.text == "" or self.numbers.text == ""):
+            error= "Campo vacío"
         if (error==""):
             Function=Functions(self.functions.text) #Parsed
             Numbers=self.clean((self.numbers.text).split("\n"))
             matrix_method.algorithm_newtonInterpolation(Function,Numbers)
-            print("Hasta acá recibe todo bien, melo")
             columns= matrix_method.rows
             table.draw(matrix_method.value_table(),columns)
             self.sol.text=matrix_method.get_sol()
+        else:
+            show_popWindow("Interpolation Newton", error)
     def aid(self):
         print("Not yet")
     def clean(self, matrix):

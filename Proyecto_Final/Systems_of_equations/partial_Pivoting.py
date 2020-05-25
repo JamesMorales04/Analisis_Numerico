@@ -19,6 +19,10 @@ class partial_Pivoting:
         lenght=len(matrix)
         n=0
         while n < lenght: 
+            print("-------------------------------------------")
+            for m in matrix:
+                print(m)
+            print("-------------------------------------------")
             pos=n  
             bigger=matrix[n][n]
             for i in range (n+1,lenght):
@@ -35,6 +39,10 @@ class partial_Pivoting:
                 for j in range(n,len(matrix[i])):                      
                     matrix[i][j]=matrix[i][j]-matrix[row-1][j]*multiplier             
             n+=1
+            print("-------------------------------------------")
+            for m in matrix:
+                print (m)
+            print("-------------------------------------------")
             
         self.new= matrix
         if(self.check_diagonal()):
