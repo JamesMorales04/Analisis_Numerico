@@ -41,7 +41,7 @@ class Gaussian_Elimination:
             self.variable_resolution()
             self.row_definition()
         else:
-            self.result="No solutions or infinite solutions or Div 0"
+            self.result.append("No solutions or infinite solutions or Div 0")
 
 
     def check_diagonal(self):

@@ -12,41 +12,52 @@ class staggered_Pivoting:
         getcontext().prec = 25
 
     def partial_staggered_algorithm(self,matrix,matrixb):
-        matrix=self.merge(matrix,matrixb)
-        self.imprimirMatriz(matrix)
-        self.original=copy.deepcopy(matrix)
-        no_error=True
-        for i in range(len(matrix)):
-            self.s.append(0)
-        self.busquedaDelMayorDeCadaFila(matrix)
-        mayor = []
-        pMayor = 0
-        vMayor = 0.0
-        temp = []
-        for k in range(len(matrix)):
-            for c in range(k, len(matrix), 1):
-                mayor.append(abs(matrix[c][k] / self.s[c]))
-                if vMayor <= abs(matrix[c][k] / self.s[c]): 
-                    vMayor = abs(matrix[c][k] / self.s[c])
-                    pMayor = c
-            temp = matrix[pMayor]
-            matrix[pMayor] = matrix[k]
-            matrix[k] = temp
-            for i in range(k+1, len(matrix), 1):
-                M = matrix[i][k]/matrix[k][k]
-                for j in range(len(matrix)+1):
-                    matrix[i][j] = matrix[i][j]- M*matrix[k][j] 
-                self.imprimirMatriz(matrix)
-            vMayor = 0.0
-            pMayor = 0
-        self.imprimirMatriz(matrix)
-        self.new= matrix
-        if(self.check_diagonal()):
-            self.variable_resolution()
-            self.row_definition()
+        if len(matrixb) <= 0 or matrixb is None:
+            self.result.append("No matrix b")
+        elif len(matrix) <= 0 or matrix is None:
+            self.result.append("No matrix a")
+        elif self.check_diagonal:
+            self.result.append("No valid matrix")
         else:
-            self.result="No tiene solucion o posee infinitas soluciones"
-        self.imprimirMatriz(matrix)
+            print("len matrix b is :"+ str(len(matrixb)))
+            matrix=self.merge(matrix,matrixb)
+            self.imprimirMatriz(matrix)
+            self.original=copy.deepcopy(matrix)
+            no_error=True
+            for i in range(len(matrix)):
+                self.s.append(0)
+            self.busquedaDelMayorDeCadaFila(matrix)
+            mayor = []
+            pMayor = 0
+            vMayor = 0.0
+            temp = []
+            if(vMayor == 0):
+                self.result.append("No solutions or infinite solutions or Div 0")
+            else:
+                for k in range(len(matrix)):
+                    for c in range(k, len(matrix), 1):
+                        mayor.append(abs(matrix[c][k] / self.s[c]))
+                        if vMayor <= abs(matrix[c][k] / self.s[c]): 
+                            vMayor = abs(matrix[c][k] / self.s[c])
+                            pMayor = c
+                    temp = matrix[pMayor]
+                    matrix[pMayor] = matrix[k]
+                    matrix[k] = temp
+                    for i in range(k+1, len(matrix), 1):
+                        M = matrix[i][k]/matrix[k][k]
+                        for j in range(len(matrix)+1):
+                            matrix[i][j] = matrix[i][j]- M*matrix[k][j] 
+                        self.imprimirMatriz(matrix)
+                    vMayor = 0.0
+                    pMayor = 0
+                self.imprimirMatriz(matrix)
+                self.new= matrix
+                if(self.check_diagonal()):
+                    self.variable_resolution()
+                    self.row_definition()
+                else:
+                    self.result.append("No solutions or infinite solutions or Div 0")
+                self.imprimirMatriz(matrix)
         
     def check_diagonal(self):
         for i in range(0,len(self.new)):
