@@ -504,6 +504,7 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
     sol=ObjectProperty(None)
     initvals=ObjectProperty(None)
     lamb=ObjectProperty(None)
+    iter=ObjectProperty(None)
     tol=ObjectProperty(None)
     def run(self):
         matrix_method=Relaxed_gs()
@@ -515,11 +516,11 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             initvals_clean=self.clean((self.initvals.text).split("\n"))
-            if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(initvals_clean)==0 ):
+            if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(initvals_clean)==0 or int(self.iter.text)<1):
                 error+="Wrong Matrix Input"
                 show_popWindow("Gauss Seidel",error)
             else:
-                matrix_method.Relaxed_gs_algorithm(matrix_clean,matrixb_clean,initvals_clean,float(self.lamb.text),float(self.tol.text))
+                matrix_method.Relaxed_gs_algorithm(matrix_clean,matrixb_clean,initvals_clean,float(self.lamb.text),float(self.tol.text),int(self.iter.text))
                 columns=matrix_method.rows
                 table.draw(matrix_method.value_table(),columns)
                 self.sol.text=matrix_method.get_sol()
@@ -553,6 +554,7 @@ class Iteratives_System_of_equations_jacobi(Screen):
     initvals=ObjectProperty(None)
     lamb=ObjectProperty(None)
     tol=ObjectProperty(None)
+    iter=ObjectProperty(None)
     def run(self):
         matrix_method=Relaxed_jacobi()
         table=Tables()
@@ -563,11 +565,11 @@ class Iteratives_System_of_equations_jacobi(Screen):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             initvals_clean=self.clean((self.initvals.text).split("\n"))
-            if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(initvals_clean)==0 ):
+            if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(initvals_clean)==0 or int(self.iter.text)<1):
                 error+="Wrong Matrix Input"
                 show_popWindow("Jacobi",error)
             else:
-                matrix_method.Relaxed_jacobi_algorithm(matrix_clean,matrixb_clean,initvals_clean,float(self.lamb.text),float(self.tol.text))
+                matrix_method.Relaxed_jacobi_algorithm(matrix_clean,matrixb_clean,initvals_clean,float(self.lamb.text),float(self.tol.text),int(self.iter.text))
                 columns=matrix_method.rows
                 table.draw(matrix_method.value_table(),columns)
                 self.sol.text=matrix_method.get_sol()

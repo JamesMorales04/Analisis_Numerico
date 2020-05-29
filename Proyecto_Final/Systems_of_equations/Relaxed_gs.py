@@ -13,13 +13,13 @@ class Relaxed_gs:
         self.div=False
         getcontext().prec = 25
 
-    def Relaxed_gs_algorithm(self,matrix,matrixb,initvalues,lamb,tol):
+    def Relaxed_gs_algorithm(self,matrix,matrixb,initvalues,lamb,tol,iter):
         self.original=copy.deepcopy(matrix)
         self.result.append(initvalues[0])
         error_total=20
         t=0
         divider=1
-        while error_total>tol and divider!=0:    
+        while error_total>tol and divider!=0 and iter>=t:    
             i=0
             valores=[]
             while i<len(matrix) and divider!=0:
