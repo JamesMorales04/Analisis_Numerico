@@ -32,6 +32,7 @@ from Systems_of_equations.Doolittle import Doolittle
 from Systems_of_equations.Relaxed_gs import Relaxed_gs
 from Systems_of_equations.Relaxed_jacobi import Relaxed_jacobi
 from Interpolation.NewtonInterpolation import NewtonInterpolation
+from Interpolation.LinearSpline import LinearSpline
 from Verify import Verify
 from Functions import Functions
 from Graph import Graph
@@ -41,6 +42,8 @@ function=StringProperty('')
 gfunction=StringProperty('')
 matrix=StringProperty('')
 matrixb=StringProperty('')
+splineX=StringProperty('')
+splineY=StringProperty('')
 interpolationValues=StringProperty('')
 
 class WindowManager(ScreenManager):
@@ -48,11 +51,15 @@ class WindowManager(ScreenManager):
     global gfunction
     global matrix
     global matrixb
+    global splineX
+    global splineY
     global interpolationValues
     function_global=function
     gfunction_global=gfunction
     matrix_global=matrix
     matrixb_global=matrixb
+    splineX_global=splineX
+    splineY_global=splineY
     interpolationValues_global=interpolationValues
 class Menu_Initial(Screen):
     pass
@@ -469,6 +476,8 @@ class System_of_equations_staggered_pivot(Screen):
             matrix_method.partial_staggered_algorithm(matrix_clean,matrixb_clean)
             self.sol.text=matrix_method.get_results()
             columns=matrix_method.rows
+            print("TOTAL MARIX ROWS: "+str(columns))
+            print("TABLE: "+str(matrix_method.value_table()))
             table.draw(matrix_method.value_table(),columns)
 
         else:
@@ -750,6 +759,46 @@ class matrix_Factorization_direct_doolitle(Screen):
             return matrix
         except:
             return []
+
+class interpolation_linear_spline(Screen):
+    splineX=ObjectProperty(None)
+    splineY=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    def run(self):
+        spline_method=LinearSpline()
+        table=Tables()
+        verify=Verify()
+        error=""
+        if(error==""):
+            splineX_clean=self.clean((self.splineY.text).split("\n"))
+            splineY_clean=self.clean((self.splineX.text).split("\n"))
+            spline_method.algorithm_linearSpline(splineX_clean, splineY_clean)
+            columns=["P(x)","Interval"]
+            table.draw(spline_method.value_table(),columns)
+            self.sol.text=spline_method.get_results()
+        else:
+            show_popWindow("Linear Spline ",error)
+    def aid(self):
+        show_popWindow("Linear Spline",Aids.help_doolittle(self))
+    def clean(self, x):
+        try:
+            for i in range(0,len(x)):
+                if(len(x[i])==0):
+                    x.pop(i)
+                else:
+                    x[i]=x[i].replace("\n","")
+                    x[i]=x[i].strip()
+                    x[i]=(x[i].split(","))
+                    for j in range(0,len(x[i])):
+                        if(j==0):
+                            x[i][j]=x[i][j][1:]
+                        if(j==len(x[i])-1):
+                            x[i][j]=x[i][j][0:-1] 
+                        x[i][j]=eval(x[i][j])
+            return x
+        except:
+            return []
+
 class matrix_Factorization_direct_cholesky(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)

@@ -16,30 +16,27 @@ class staggered_Pivoting:
             self.result.append("No matrix b")
         elif len(matrix) <= 0 or matrix is None:
             self.result.append("No matrix a")
-        elif self.check_diagonal:
+        elif not self.check_diagonal(self.merge(matrix,matrixb)):
             self.result.append("No valid matrix")
         else:
-            print("len matrix b is :"+ str(len(matrixb)))
-            matrix=self.merge(matrix,matrixb)
+            #matrix=self.merge(matrix,matrixb)
             self.imprimirMatriz(matrix)
             self.original=copy.deepcopy(matrix)
             no_error=True
-            for i in range(len(matrix)):
-                self.s.append(0)
-            self.busquedaDelMayorDeCadaFila(matrix)
             mayor = []
             pMayor = 0
             vMayor = 0.0
             temp = []
-            if(vMayor == 0):
-                self.result.append("No solutions or infinite solutions or Div 0")
-            else:
-                for k in range(len(matrix)):
-                    for c in range(k, len(matrix), 1):
-                        mayor.append(abs(matrix[c][k] / self.s[c]))
-                        if vMayor <= abs(matrix[c][k] / self.s[c]): 
-                            vMayor = abs(matrix[c][k] / self.s[c])
-                            pMayor = c
+            for i in range(len(matrix)):
+                self.s.append(0)
+            self.busquedaDelMayorDeCadaFila(matrix)
+            for k in range(len(matrix)):
+                for c in range(k, len(matrix), 1):
+                    mayor.append(abs(matrix[c][k] / self.s[c]))
+                    if vMayor <= abs(matrix[c][k] / self.s[c]): 
+                        vMayor = abs(matrix[c][k] / self.s[c])
+                        pMayor = c
+                if vMayor != 0:
                     temp = matrix[pMayor]
                     matrix[pMayor] = matrix[k]
                     matrix[k] = temp
@@ -50,21 +47,26 @@ class staggered_Pivoting:
                         self.imprimirMatriz(matrix)
                     vMayor = 0.0
                     pMayor = 0
+                else:
+                    self.result.append("No valid matrix o div wth 0")
+                    break
                 self.imprimirMatriz(matrix)
-                self.new= matrix
-                if(self.check_diagonal()):
+                self.new = matrix
+                if(self.check_diagonal(self.new)):
                     self.variable_resolution()
                     self.row_definition()
                 else:
                     self.result.append("No solutions or infinite solutions or Div 0")
+
                 self.imprimirMatriz(matrix)
         
-    def check_diagonal(self):
-        for i in range(0,len(self.new)):
-            for j in range(0,len(self.new[i])):
+    def check_diagonal(self,matrix):
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
                 if(j==i):
                     self.result.append(0)
-                    if(self.new[i][j]==0):
+                    if(matrix[i][j]==0):
+                        print("falso en el valor: "+str(matrix[i][j]))
                         return False
         return True
 
@@ -96,11 +98,8 @@ class staggered_Pivoting:
         return matrix
 
     def row_definition(self):
-        for i in range(1,len(self.result)+1):
-            self.rows.append(f"x{i}")
-        self.rows.append("b")
-        self.rows.append("///")
-        for i in range(1,len(self.result)+1):
+        self.rows = []
+        for i in range(1,(len(self.new)+1)):
             self.rows.append(f"x{i}")
         self.rows.append("b")
 
@@ -115,22 +114,20 @@ class staggered_Pivoting:
                     self.s[i] = abs(A[i][j])
 
     def value_table(self):
-        for i in range(0,len(self.new)):
+        self.total = []
+        print("*** NEW ***"+str(len(self.new[0])))
+        for i in range(len(self.new)):
             self.total.append([])
-            for j in range(0,len(self.new[i])):
-                self.total[i].append(Decimal(self.original[i][j]))
-            self.total[i].append("///")
-            for j in range(0,len(self.new[i])):
+            for j in range(len(self.new[i])):
                 self.total[i].append(Decimal(self.new[i][j]))
-
-
+        print("*** TOTAL ***"+str(len(self.total)))
         return self.total
 
     def get_results(self):
         results=""
         aux=1
-        for i in self.result:
-            results+=f"X{aux}: "+(str)(i)+"\n"
+        for i in range(len(self.new)):
+            results+=f"X{aux}: "+(str)(self.result[i])+"\n"
             aux+=1
         return results
 

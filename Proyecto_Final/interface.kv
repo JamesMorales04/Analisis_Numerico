@@ -29,6 +29,7 @@ WindowManager:
     matrix_Factorization_direct_diagonal_matrix:
     Iteratives_System_of_equations_Gauss_Seidel:
     Iteratives_System_of_equations_jacobi:
+    interpolation_linear_spline:
     Interpolation_newton:
     Interpolation_lagrange:
     Interpolation_splines:
@@ -1418,7 +1419,6 @@ WindowManager:
                     app.root.current="System_of_equations"  
                     root.manager.transition.direction="right"
 
-
 <System_of_equations_total_pivot>
     name:"System_of_equations_total_pivot"
     matrix:matrix
@@ -2062,6 +2062,77 @@ WindowManager:
                     app.root.current="System_of_equations"  
                     root.manager.transition.direction="right"
 
+<interpolation_linear_spline>
+    name:"interpolation_linear_spline"
+    splineX:splineX
+    splineY:splineY
+    sol:sol
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            GridLayout:
+                cols: 2
+                row_default_height:60
+                row_force_default:True
+                spacing: '10dp'
+                Label:
+                    text: "X values:"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:splineY
+                    text:root.manager.splineX_global
+                    multiline:True
+                Label:
+                    text: "F(x) values"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:splineX
+                    text:root.manager.splineY_global
+                    multiline:True
+                Label:
+                    text: "Solution"
+                    font_size:"25sp"
+                    width: 20
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:sol
+                    width: 20
+                    multiline:True
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            SmoothButton:
+                text: "Run"
+                font_size:"17sp"  
+                on_press:root.run()    
+            SmoothButton:
+                text: "Help"
+                font_size:"17sp"  
+                on_press:root.aid()
+            SmoothButton:
+                text: "Back"
+                font_size:"17sp"  
+                on_press:
+                    root.manager.splineX_global=root.splineX.text
+                    root.manager.splineY_global=root.splineY.text
+                    app.root.current="Menu_Initial" 
+                    root.manager.transition.direction="right"
 
 <Interpolation_newton>
     name:"Interpolation_newton"
@@ -2150,6 +2221,40 @@ WindowManager:
 <Interpolation_splines>
     name:"Interpolation_splines"
     GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Methods"
+            font_size:"30sp"
+            color: 1,1,1,1
+            bold: True 
+
+        SmoothButton:
+            text: "Linear Spline"
+            font_size:"17sp"   
+            on_press:
+                app.root.current="interpolation_linear_spline"     
+                root.manager.transition.direction="left"
+        SmoothButton:
+            text: "Quadratic Spline"
+            font_size:"17sp"  
+            on_press:
+                app.root.current=""     
+                root.manager.transition.direction="left"
+        SmoothButton:
+            text: "Cubic Spline"
+            font_size:"17sp"  
+            on_press:
+                app.root.current=""  
+                root.manager.transition.direction="left"   
         SmoothButton:
             text: "Back"
             font_size:"17sp"  
@@ -2159,8 +2264,6 @@ WindowManager:
 
 
 <Numeric_differentiation_differentiation>
-
-
     name:"Numeric_differentiation_differentiation"
     GridLayout:
         SmoothButton:

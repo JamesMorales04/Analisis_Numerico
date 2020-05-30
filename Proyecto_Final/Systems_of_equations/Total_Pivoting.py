@@ -137,7 +137,6 @@ class Total_Pivoting:
         self.rows.append("b")
 
     def value_table(self):
-
         for i in range(0,len(self.matrixAB)):
             self.total.append([])
             for j in range(0,len(self.matrixAB[i])):
@@ -146,7 +145,7 @@ class Total_Pivoting:
             for j in range(0,len(self.matrixAB[i])):
                 self.total[i].append(Decimal(self.matrixAB[i][j]))
 
-
+        #print(self.total)
         return self.total
 
     def get_results(self):

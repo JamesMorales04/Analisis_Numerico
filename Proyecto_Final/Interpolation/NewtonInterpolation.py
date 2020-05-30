@@ -33,7 +33,7 @@ class NewtonInterpolation:
 
 
     def value_table(self):
-         return self.matrix
+        return self.matrix
     
     def row_definition(self):
         self.rows.append("Xn")
