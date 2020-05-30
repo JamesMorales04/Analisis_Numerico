@@ -1828,6 +1828,7 @@ WindowManager:
     initvals:initvals
     lamb:lamb
     tol:tol
+    iter:iter
 
     GridLayout:
         size:root.width,root.height
@@ -1876,12 +1877,12 @@ WindowManager:
                         multiline:True
                 GridLayout:
                     rows: 1
-                    spacing: '10dp'
+                    spacing: '8dp'
                     row_default_height:30
                     row_force_default:True
                     Label:
                         text: "Initial Values"
-                        font_size:"20sp"
+                        font_size:"16sp"
                         width: 10
                         color: 1,1,1,1
                         bold: True
@@ -1891,7 +1892,7 @@ WindowManager:
                         multiline:True
                     Label:
                         text: "Lamda"
-                        font_size:"20sp"
+                        font_size:"16sp"
                         width: 10
                         color: 1,1,1,1
                         bold: True
@@ -1900,8 +1901,18 @@ WindowManager:
                         width: 20
                         multiline:True
                     Label:
+                        text: "Iter"
+                        font_size:"16sp"
+                        width: 10
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:iter
+                        width: 20
+                        multiline:True
+                    Label:
                         text: "Tolerance"
-                        font_size:"20sp"
+                        font_size:"16sp"
                         width: 10
                         color: 1,1,1,1
                         bold: True
@@ -1949,6 +1960,7 @@ WindowManager:
     initvals:initvals
     lamb:lamb
     tol:tol
+    iter:iter
 
     GridLayout:
         size:root.width,root.height
@@ -1997,12 +2009,12 @@ WindowManager:
                         multiline:True
                 GridLayout:
                     rows: 1
-                    spacing: '10dp'
+                    spacing: '8dp'
                     row_default_height:30
                     row_force_default:True
                     Label:
                         text: "Initial Values"
-                        font_size:"20sp"
+                        font_size:"16sp"
                         width: 10
                         color: 1,1,1,1
                         bold: True
@@ -2012,7 +2024,7 @@ WindowManager:
                         multiline:True
                     Label:
                         text: "Lamda"
-                        font_size:"20sp"
+                        font_size:"16sp"
                         width: 10
                         color: 1,1,1,1
                         bold: True
@@ -2021,8 +2033,18 @@ WindowManager:
                         width: 20
                         multiline:True
                     Label:
+                        text: "Iter"
+                        font_size:"16sp"
+                        width: 10
+                        color: 1,1,1,1
+                        bold: True
+                    TextInput:
+                        id:iter
+                        width: 20
+                        multiline:True
+                    Label:
                         text: "Tolerance"
-                        font_size:"20sp"
+                        font_size:"16sp"
                         width: 10
                         color: 1,1,1,1
                         bold: True
