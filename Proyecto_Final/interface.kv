@@ -30,6 +30,8 @@ WindowManager:
     Iteratives_System_of_equations_Gauss_Seidel:
     Iteratives_System_of_equations_jacobi:
     interpolation_linear_spline:
+    interpolation_quadratic_spline:
+    interpolation_cubic_spline:
     Interpolation_newton:
     Interpolation_lagrange:
     Interpolation_splines:
@@ -2084,6 +2086,150 @@ WindowManager:
                     app.root.current="System_of_equations"  
                     root.manager.transition.direction="right"
 
+<interpolation_cubic_spline>
+    name:"interpolation_cubic_spline"
+    splineX:splineX
+    splineY:splineY
+    sol:sol
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            GridLayout:
+                cols: 2
+                row_default_height:60
+                row_force_default:True
+                spacing: '10dp'
+                Label:
+                    text: "X values:"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:splineY
+                    text:root.manager.splineX_global
+                    multiline:True
+                Label:
+                    text: "F(x) values"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:splineX
+                    text:root.manager.splineY_global
+                    multiline:True
+                Label:
+                    text: "Solution"
+                    font_size:"25sp"
+                    width: 20
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:sol
+                    width: 20
+                    multiline:True
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            SmoothButton:
+                text: "Run"
+                font_size:"17sp"  
+                on_press:root.run()    
+            SmoothButton:
+                text: "Help"
+                font_size:"17sp"  
+                on_press:root.aid()
+            SmoothButton:
+                text: "Back"
+                font_size:"17sp"  
+                on_press:
+                    root.manager.splineX_global=root.splineX.text
+                    root.manager.splineY_global=root.splineY.text
+                    app.root.current="Menu_Initial" 
+                    root.manager.transition.direction="right"
+
+<interpolation_quadratic_spline>
+    name:"interpolation_quadratic_spline"
+    splineX:splineX
+    splineY:splineY
+    sol:sol
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            GridLayout:
+                cols: 2
+                row_default_height:60
+                row_force_default:True
+                spacing: '10dp'
+                Label:
+                    text: "X values:"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:splineY
+                    text:root.manager.splineX_global
+                    multiline:True
+                Label:
+                    text: "F(x) values"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:splineX
+                    text:root.manager.splineY_global
+                    multiline:True
+                Label:
+                    text: "Solution"
+                    font_size:"25sp"
+                    width: 20
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:sol
+                    width: 20
+                    multiline:True
+        GridLayout:
+            cols: 1
+            spacing: '10dp'
+            SmoothButton:
+                text: "Run"
+                font_size:"17sp"  
+                on_press:root.run()    
+            SmoothButton:
+                text: "Help"
+                font_size:"17sp"  
+                on_press:root.aid()
+            SmoothButton:
+                text: "Back"
+                font_size:"17sp"  
+                on_press:
+                    root.manager.splineX_global=root.splineX.text
+                    root.manager.splineY_global=root.splineY.text
+                    app.root.current="Menu_Initial" 
+                    root.manager.transition.direction="right"
+
 <interpolation_linear_spline>
     name:"interpolation_linear_spline"
     splineX:splineX
@@ -2330,13 +2476,13 @@ WindowManager:
             text: "Quadratic Spline"
             font_size:"17sp"  
             on_press:
-                app.root.current=""     
+                app.root.current="interpolation_quadratic_spline"     
                 root.manager.transition.direction="left"
         SmoothButton:
             text: "Cubic Spline"
             font_size:"17sp"  
             on_press:
-                app.root.current=""  
+                app.root.current="interpolation_cubic_spline"  
                 root.manager.transition.direction="left"   
         SmoothButton:
             text: "Back"
