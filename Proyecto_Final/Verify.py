@@ -7,7 +7,7 @@ class Verify:
         else:
             try:
                 prueba_function=Functions(function)
-                if ((prueba_function.evaluar(xi))==True) or prueba_function.evaluar(xi)=="" :
+                if ((prueba_function.evaluar(xi))==True or (prueba_function.evaluar(xi))=="Final") or prueba_function.evaluar(xi)=="" :
                     return True
                 else:
                     return False

@@ -29002,8 +29002,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 3085,
-									"top": 1973,
+									"left": 3308,
+									"top": 2065,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -29023,8 +29023,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 3093,
-									"top": 1961,
+									"left": 3320,
+									"top": 2057,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -29044,8 +29044,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 3068,
-									"top": 1998,
+									"left": 3283,
+									"top": 2082,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -29066,7 +29066,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 2920,
-									"top": 1863,
+									"top": 1850,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -29086,8 +29086,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2930,
-									"top": 1854,
+									"left": 2929,
+									"top": 1839,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -29107,8 +29107,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2902,
-									"top": 1884,
+									"left": 2903,
+									"top": 1872,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -29128,8 +29128,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 3249,
-									"top": 2084,
+									"left": 3304,
+									"top": 2059,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -29148,8 +29148,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 3255,
-									"top": 2071,
+									"left": 3313,
+									"top": 2049,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -29168,8 +29168,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 3238,
-									"top": 2109,
+									"left": 3283,
+									"top": 2077,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -29214,7 +29214,7 @@
 								"$ref": "AAAAAAFyWPQ4Zqxcm0A="
 							},
 							"lineStyle": 1,
-							"points": "2891:1868;3263:2117",
+							"points": "2891:1857;3296:2080;3306:2095",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFyWPR99btxKOo="
@@ -29271,8 +29271,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 3195,
-									"top": 1975,
+									"left": 3540,
+									"top": 2066,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -29292,8 +29292,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 3202,
-									"top": 1962,
+									"left": 3553,
+									"top": 2058,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -29313,8 +29313,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 3182,
-									"top": 2002,
+									"left": 3515,
+									"top": 2081,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -29335,7 +29335,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 2920,
-									"top": 1842,
+									"top": 1830,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -29355,8 +29355,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2928,
-									"top": 1831,
+									"left": 2927,
+									"top": 1818,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -29376,8 +29376,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2905,
-									"top": 1865,
+									"left": 2906,
+									"top": 1854,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -29397,8 +29397,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 3470,
-									"top": 2109,
+									"left": 3536,
+									"top": 2059,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -29417,8 +29417,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 3473,
-									"top": 2096,
+									"left": 3546,
+									"top": 2050,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -29437,8 +29437,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 3462,
-									"top": 2135,
+									"left": 3515,
+									"top": 2076,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -29485,7 +29485,7 @@
 								"$ref": "AAAAAAFyWPQ4Zqxcm0A="
 							},
 							"lineStyle": 1,
-							"points": "2891:1851;3487:2140",
+							"points": "2891:1841;3528:2080;3537:2095",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFyWPSIzb4bVb4="
@@ -43171,7 +43171,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWGpYBBVNxy8="
 									},
-									"name": "Valor"
+									"name": "Valor",
+									"type": ""
 								}
 							]
 						},
@@ -44167,7 +44168,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWHBg6hY1Vgk="
 									},
-									"name": "function"
+									"name": "function",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -44175,7 +44177,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWHBg6hY1Vgk="
 									},
-									"name": "posicion_inicial"
+									"name": "posicion_inicial",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -44183,7 +44186,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWHBg6hY1Vgk="
 									},
-									"name": "posicion_final"
+									"name": "posicion_final",
+									"type": ""
 								}
 							]
 						},
@@ -47298,7 +47302,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJpQ7SD5HjQ="
 							},
-							"name": "function"
+							"name": "function",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -47306,7 +47311,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJpQ7SD5HjQ="
 							},
-							"name": "gfunction"
+							"name": "gfunction",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -47314,7 +47320,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJpQ7SD5HjQ="
 							},
-							"name": "matrix"
+							"name": "matrix",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -47322,7 +47329,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJpQ7SD5HjQ="
 							},
-							"name": "matrixb"
+							"name": "matrixb",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -47330,7 +47338,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJpQ7SD5HjQ="
 							},
-							"name": "interpolationValues"
+							"name": "interpolationValues",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -47338,7 +47347,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJpQ7SD5HjQ="
 							},
-							"name": "function_global"
+							"name": "function_global",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -47346,7 +47356,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJpQ7SD5HjQ="
 							},
-							"name": "gfunction_global"
+							"name": "gfunction_global",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -47354,7 +47365,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJpQ7SD5HjQ="
 							},
-							"name": "matrix_global"
+							"name": "matrix_global",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -47362,7 +47374,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJpQ7SD5HjQ="
 							},
-							"name": "matrixb_global"
+							"name": "matrixb_global",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -47370,7 +47383,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJpQ7SD5HjQ="
 							},
-							"name": "interpolationValues_global"
+							"name": "interpolationValues_global",
+							"type": ""
 						}
 					]
 				},
@@ -49026,7 +49040,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJ4liCJX2LE="
 							},
-							"name": "valores"
+							"name": "valores",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49034,7 +49049,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJ4liCJX2LE="
 							},
-							"name": "raiz"
+							"name": "raiz",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -49142,7 +49158,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJ+HAyKzPbE="
 							},
-							"name": "valores"
+							"name": "valores",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49150,7 +49167,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWJ+HAyKzPbE="
 							},
-							"name": "raiz"
+							"name": "raiz",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -49176,7 +49194,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWJ/aciLmJ4M="
 									},
-									"name": "xi"
+									"name": "xi",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49184,7 +49203,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWJ/aciLmJ4M="
 									},
-									"name": "Function"
+									"name": "Function",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49192,7 +49212,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWJ/aciLmJ4M="
 									},
-									"name": "GFunction"
+									"name": "GFunction",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49200,7 +49221,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWJ/aciLmJ4M="
 									},
-									"name": "iteraciones"
+									"name": "iteraciones",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49208,7 +49230,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWJ/aciLmJ4M="
 									},
-									"name": "tolerancia"
+									"name": "tolerancia",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49216,7 +49239,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWJ/aciLmJ4M="
 									},
-									"name": "tipo_de_error"
+									"name": "tipo_de_error",
+									"type": ""
 								}
 							]
 						},
@@ -49252,7 +49276,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKCBXiMM66E="
 							},
-							"name": "valores"
+							"name": "valores",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49260,7 +49285,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKCBXiMM66E="
 							},
-							"name": "raiz"
+							"name": "raiz",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -49286,7 +49312,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKFm3yNH35A="
 									},
-									"name": "valor_inicial"
+									"name": "valor_inicial",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49294,7 +49321,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKFm3yNH35A="
 									},
-									"name": "incremento"
+									"name": "incremento",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49302,7 +49330,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKFm3yNH35A="
 									},
-									"name": "item"
+									"name": "item",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49310,7 +49339,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKFm3yNH35A="
 									},
-									"name": "Functions"
+									"name": "Functions",
+									"type": ""
 								}
 							]
 						},
@@ -49346,7 +49376,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKHhtCNooJ8="
 							},
-							"name": "values"
+							"name": "values",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49354,7 +49385,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKHhtCNooJ8="
 							},
-							"name": "raiz"
+							"name": "raiz",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -49380,7 +49412,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKIqViOZiwo="
 									},
-									"name": "xi"
+									"name": "xi",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49388,7 +49421,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKIqViOZiwo="
 									},
-									"name": "Function"
+									"name": "Function",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49396,7 +49430,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKIqViOZiwo="
 									},
-									"name": "iterations"
+									"name": "iterations",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49404,7 +49439,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKIqViOZiwo="
 									},
-									"name": "tolerance"
+									"name": "tolerance",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49412,7 +49448,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKIqViOZiwo="
 									},
-									"name": "err_type"
+									"name": "err_type",
+									"type": ""
 								}
 							]
 						},
@@ -49448,7 +49485,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKL5gyPGIxE="
 							},
-							"name": "valores"
+							"name": "valores",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49456,7 +49494,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKL5gyPGIxE="
 							},
-							"name": "raiz"
+							"name": "raiz",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -49482,7 +49521,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKM8RiP3dJk="
 									},
-									"name": "xi"
+									"name": "xi",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49490,7 +49530,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKM8RiP3dJk="
 									},
-									"name": "function"
+									"name": "function",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49498,7 +49539,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKM8RiP3dJk="
 									},
-									"name": "iter"
+									"name": "iter",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49506,7 +49548,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKM8RiP3dJk="
 									},
-									"name": "tol"
+									"name": "tol",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49514,7 +49557,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKM8RiP3dJk="
 									},
-									"name": "err_type"
+									"name": "err_type",
+									"type": ""
 								}
 							]
 						},
@@ -49579,7 +49623,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKOxqSQa50o="
 							},
-							"name": "valores"
+							"name": "valores",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49587,7 +49632,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKOxqSQa50o="
 							},
-							"name": "raiz"
+							"name": "raiz",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -49613,7 +49659,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKP5fyRMIsY="
 									},
-									"name": "xi"
+									"name": "xi",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49621,7 +49668,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKP5fyRMIsY="
 									},
-									"name": "xu"
+									"name": "xu",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49629,7 +49677,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKP5fyRMIsY="
 									},
-									"name": "Function"
+									"name": "Function",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49637,7 +49686,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKP5fyRMIsY="
 									},
-									"name": "tolerancia"
+									"name": "tolerancia",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49645,7 +49695,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKP5fyRMIsY="
 									},
-									"name": "iteraciones"
+									"name": "iteraciones",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49653,7 +49704,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKP5fyRMIsY="
 									},
-									"name": "tipo_de_error"
+									"name": "tipo_de_error",
+									"type": ""
 								}
 							]
 						},
@@ -49689,7 +49741,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKR5uyRxN9A="
 							},
-							"name": "valores"
+							"name": "valores",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49697,7 +49750,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKR5uyRxN9A="
 							},
-							"name": "raiz"
+							"name": "raiz",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -49723,7 +49777,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKS17ySiWdU="
 									},
-									"name": "xi_1"
+									"name": "xi_1",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49731,7 +49786,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKS17ySiWdU="
 									},
-									"name": "xi_2"
+									"name": "xi_2",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49739,7 +49795,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKS17ySiWdU="
 									},
-									"name": "function"
+									"name": "function",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49747,7 +49804,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKS17ySiWdU="
 									},
-									"name": "iter"
+									"name": "iter",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49755,7 +49813,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKS17ySiWdU="
 									},
-									"name": "tol"
+									"name": "tol",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49763,7 +49822,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKS17ySiWdU="
 									},
-									"name": "err_type"
+									"name": "err_type",
+									"type": ""
 								}
 							]
 						},
@@ -49799,7 +49859,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKbleiTHjBY="
 							},
-							"name": "matrixAB"
+							"name": "matrixAB",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49807,7 +49868,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKbleiTHjBY="
 							},
-							"name": "original"
+							"name": "original",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49815,7 +49877,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKbleiTHjBY="
 							},
-							"name": "total"
+							"name": "total",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49823,7 +49886,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKbleiTHjBY="
 							},
-							"name": "matrixL"
+							"name": "matrixL",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49831,7 +49895,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKbleiTHjBY="
 							},
-							"name": "matrixU"
+							"name": "matrixU",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49839,7 +49904,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKbleiTHjBY="
 							},
-							"name": "matrixUZ"
+							"name": "matrixUZ",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49847,7 +49913,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKbleiTHjBY="
 							},
-							"name": "matrixLB"
+							"name": "matrixLB",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49855,7 +49922,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKbleiTHjBY="
 							},
-							"name": "resultX"
+							"name": "resultX",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49863,7 +49931,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKbleiTHjBY="
 							},
-							"name": "resultZ"
+							"name": "resultZ",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -49871,7 +49940,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKbleiTHjBY="
 							},
-							"name": "rows"
+							"name": "rows",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -49897,7 +49967,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFyWKenYST4bkQ="
 									},
-									"name": "matrixA"
+									"name": "matrixA",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -49906,6 +49977,7 @@
 										"$ref": "AAAAAAFyWKenYST4bkQ="
 									},
 									"name": "matrixB ",
+									"type": "",
 									"defaultValue": "[]"
 								}
 							]
@@ -50114,7 +50186,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "original"
+							"name": "original",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50122,7 +50195,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "oldb"
+							"name": "oldb",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50130,7 +50204,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "total"
+							"name": "total",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50138,7 +50213,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "result"
+							"name": "result",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50146,7 +50222,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "resultsz"
+							"name": "resultsz",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50154,7 +50231,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "rows"
+							"name": "rows",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50162,7 +50240,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "matrixL"
+							"name": "matrixL",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50170,7 +50249,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "matrixU"
+							"name": "matrixU",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50178,7 +50258,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "matrixU_aux"
+							"name": "matrixU_aux",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50186,7 +50267,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "matrixL_aux"
+							"name": "matrixL_aux",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50194,7 +50276,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "original_aux"
+							"name": "original_aux",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50202,7 +50285,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "new"
+							"name": "new",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50210,7 +50294,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "no_error"
+							"name": "no_error",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50218,7 +50303,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "stepsL"
+							"name": "stepsL",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50226,7 +50312,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "stepsU"
+							"name": "stepsU",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50234,7 +50321,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWKj9wSVX7nw="
 							},
-							"name": "steps_row"
+							"name": "steps_row",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -50694,7 +50782,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLDqlCdrOX4="
 							},
-							"name": "l"
+							"name": "l",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50702,7 +50791,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLDqlCdrOX4="
 							},
-							"name": "original"
+							"name": "original",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50710,7 +50800,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLDqlCdrOX4="
 							},
-							"name": "u"
+							"name": "u",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50718,7 +50809,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLDqlCdrOX4="
 							},
-							"name": "new"
+							"name": "new",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50726,7 +50818,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLDqlCdrOX4="
 							},
-							"name": "total"
+							"name": "total",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50734,7 +50827,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLDqlCdrOX4="
 							},
-							"name": "result"
+							"name": "result",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50742,7 +50836,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLDqlCdrOX4="
 							},
-							"name": "rows"
+							"name": "rows",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50750,7 +50845,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLDqlCdrOX4="
 							},
-							"name": "xvalues"
+							"name": "xvalues",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -50948,7 +51044,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLIhbSgWG0I="
 							},
-							"name": "original"
+							"name": "original",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50956,7 +51053,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLIhbSgWG0I="
 							},
-							"name": "new"
+							"name": "new",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50964,7 +51062,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLIhbSgWG0I="
 							},
-							"name": "total"
+							"name": "total",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50972,7 +51071,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLIhbSgWG0I="
 							},
-							"name": "result"
+							"name": "result",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50980,7 +51080,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLIhbSgWG0I="
 							},
-							"name": "rows"
+							"name": "rows",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50988,7 +51089,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLIhbSgWG0I="
 							},
-							"name": "no_error"
+							"name": "no_error",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -50996,7 +51098,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLIhbSgWG0I="
 							},
-							"name": "steps"
+							"name": "steps",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51004,7 +51107,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLIhbSgWG0I="
 							},
-							"name": "steps_row"
+							"name": "steps_row",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -51269,7 +51373,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLPeqSjjHWM="
 							},
-							"name": "original"
+							"name": "original",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51277,7 +51382,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLPeqSjjHWM="
 							},
-							"name": "new"
+							"name": "new",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51285,7 +51391,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLPeqSjjHWM="
 							},
-							"name": "total"
+							"name": "total",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51293,7 +51400,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLPeqSjjHWM="
 							},
-							"name": "result"
+							"name": "result",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51301,7 +51409,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLPeqSjjHWM="
 							},
-							"name": "rows"
+							"name": "rows",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -51490,7 +51599,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLUNrSl3nsY="
 							},
-							"name": "original"
+							"name": "original",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51498,7 +51608,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLUNrSl3nsY="
 							},
-							"name": "new"
+							"name": "new",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51506,7 +51617,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLUNrSl3nsY="
 							},
-							"name": "result"
+							"name": "result",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51514,7 +51626,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLUNrSl3nsY="
 							},
-							"name": "rows"
+							"name": "rows",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51522,7 +51635,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLUNrSl3nsY="
 							},
-							"name": "total"
+							"name": "total",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51530,7 +51644,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLUNrSl3nsY="
 							},
-							"name": "final_result"
+							"name": "final_result",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51538,7 +51653,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLUNrSl3nsY="
 							},
-							"name": "div"
+							"name": "div",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -51716,7 +51832,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLYpJioNMY8="
 							},
-							"name": "original"
+							"name": "original",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51724,7 +51841,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLYpJioNMY8="
 							},
-							"name": "new"
+							"name": "new",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51732,7 +51850,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLYpJioNMY8="
 							},
-							"name": "result"
+							"name": "result",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51740,7 +51859,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLYpJioNMY8="
 							},
-							"name": "rows"
+							"name": "rows",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51748,7 +51868,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLYpJioNMY8="
 							},
-							"name": "total"
+							"name": "total",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51756,7 +51877,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLYpJioNMY8="
 							},
-							"name": "final_result"
+							"name": "final_result",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51764,7 +51886,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLYpJioNMY8="
 							},
-							"name": "div"
+							"name": "div",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -51942,7 +52065,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLc/SSqjTZ4="
 							},
-							"name": "original"
+							"name": "original",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51950,7 +52074,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLc/SSqjTZ4="
 							},
-							"name": "new"
+							"name": "new",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51958,7 +52083,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLc/SSqjTZ4="
 							},
-							"name": "total"
+							"name": "total",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51966,7 +52092,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLc/SSqjTZ4="
 							},
-							"name": "result"
+							"name": "result",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51974,7 +52101,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLc/SSqjTZ4="
 							},
-							"name": "rows"
+							"name": "rows",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -51982,7 +52110,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLc/SSqjTZ4="
 							},
-							"name": "s"
+							"name": "s",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -52227,7 +52356,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLixICtUduo="
 							},
-							"name": "matrixAB"
+							"name": "matrixAB",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -52235,7 +52365,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLixICtUduo="
 							},
-							"name": "original"
+							"name": "original",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -52243,7 +52374,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLixICtUduo="
 							},
-							"name": "xVarsCols"
+							"name": "xVarsCols",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -52251,7 +52383,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLixICtUduo="
 							},
-							"name": "rows"
+							"name": "rows",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -52259,7 +52392,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLixICtUduo="
 							},
-							"name": "total"
+							"name": "total",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -52267,7 +52401,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLixICtUduo="
 							},
-							"name": "result"
+							"name": "result",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -52275,7 +52410,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLixICtUduo="
 							},
-							"name": "greater"
+							"name": "greater",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -52604,7 +52740,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLsKQCwjqoI="
 							},
-							"name": "xValues"
+							"name": "xValues",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -52612,7 +52749,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLsKQCwjqoI="
 							},
-							"name": "yValues"
+							"name": "yValues",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -52620,7 +52758,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLsKQCwjqoI="
 							},
-							"name": "LValues"
+							"name": "LValues",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -52628,7 +52767,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLsKQCwjqoI="
 							},
-							"name": "polynomial"
+							"name": "polynomial",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -52685,7 +52825,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLvblix/kxE="
 							},
-							"name": "polinomial"
+							"name": "polinomial",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -52693,7 +52834,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLvblix/kxE="
 							},
-							"name": "xn"
+							"name": "xn",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -52701,7 +52843,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFyWLvblix/kxE="
 							},
-							"name": "rows"
+							"name": "rows",
+							"type": ""
 						}
 					],
 					"operations": [
