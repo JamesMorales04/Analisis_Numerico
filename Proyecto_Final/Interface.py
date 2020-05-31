@@ -33,6 +33,8 @@ from Systems_of_equations.Relaxed_gs import Relaxed_gs
 from Systems_of_equations.Relaxed_jacobi import Relaxed_jacobi
 from Interpolation.NewtonInterpolation import NewtonInterpolation
 from Interpolation.LinearSpline import LinearSpline
+from Interpolation.CubicSpline import CubicSpline
+from Interpolation.QuadraticSpline import QuadraticSpline
 from Verify import Verify
 from Functions import Functions
 from Graph import Graph
@@ -759,6 +761,84 @@ class matrix_Factorization_direct_doolitle(Screen):
                             matrix[i][j]=matrix[i][j][0:-1] 
                         matrix[i][j]=eval(matrix[i][j])
             return matrix
+        except:
+            return []
+
+class interpolation_quadratic_spline(Screen):
+    splineX=ObjectProperty(None)
+    splineY=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    def run(self):
+        spline_method=QuadraticSpline()
+        table=Tables()
+        verify=Verify()
+        error=""
+        if(error==""):
+            splineX_clean=self.clean((self.splineY.text).split("\n"))
+            splineY_clean=self.clean((self.splineX.text).split("\n"))
+            spline_method.algorithm_quadratic_spline(splineX_clean, splineY_clean)
+            columns=["P(x)","Interval"]
+            #table.draw(spline_method.value_table(),columns)
+            self.sol.text=spline_method.get_results()
+        else:
+            show_popWindow("Linear Spline ",error)
+    def aid(self):
+        show_popWindow("Linear Spline",Aids.help_doolittle(self))
+    def clean(self, x):
+        try:
+            for i in range(0,len(x)):
+                if(len(x[i])==0):
+                    x.pop(i)
+                else:
+                    x[i]=x[i].replace("\n","")
+                    x[i]=x[i].strip()
+                    x[i]=(x[i].split(","))
+                    for j in range(0,len(x[i])):
+                        if(j==0):
+                            x[i][j]=x[i][j][1:]
+                        if(j==len(x[i])-1):
+                            x[i][j]=x[i][j][0:-1] 
+                        x[i][j]=eval(x[i][j])
+            return x
+        except:
+            return []
+
+class interpolation_cubic_spline(Screen):
+    splineX=ObjectProperty(None)
+    splineY=ObjectProperty(None)
+    sol=ObjectProperty(None)
+    def run(self):
+        spline_method=LinearSpline()
+        table=Tables()
+        verify=Verify()
+        error=""
+        if(error==""):
+            splineX_clean=self.clean((self.splineY.text).split("\n"))
+            splineY_clean=self.clean((self.splineX.text).split("\n"))
+            spline_method.algorithm_linearSpline(splineX_clean, splineY_clean)
+            columns=["P(x)","Interval"]
+            table.draw(spline_method.value_table(),columns)
+            self.sol.text=spline_method.get_results()
+        else:
+            show_popWindow("Linear Spline ",error)
+    def aid(self):
+        show_popWindow("Linear Spline",Aids.help_doolittle(self))
+    def clean(self, x):
+        try:
+            for i in range(0,len(x)):
+                if(len(x[i])==0):
+                    x.pop(i)
+                else:
+                    x[i]=x[i].replace("\n","")
+                    x[i]=x[i].strip()
+                    x[i]=(x[i].split(","))
+                    for j in range(0,len(x[i])):
+                        if(j==0):
+                            x[i][j]=x[i][j][1:]
+                        if(j==len(x[i])-1):
+                            x[i][j]=x[i][j][0:-1] 
+                        x[i][j]=eval(x[i][j])
+            return x
         except:
             return []
 
