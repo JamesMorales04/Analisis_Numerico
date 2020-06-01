@@ -849,15 +849,15 @@ class interpolation_cubic_spline(Screen):
     splineY=ObjectProperty(None)
     sol=ObjectProperty(None)
     def run(self):
-        spline_method=LinearSpline()
+        spline_method=CubicSpline()
         table=Tables()
         verify=Verify()
         error=""
         if(error==""):
             splineX_clean=self.clean((self.splineY.text).split("\n"))
             splineY_clean=self.clean((self.splineX.text).split("\n"))
-            spline_method.algorithm_linearSpline(splineX_clean, splineY_clean)
-            columns=["P(x)","Interval"]
+            spline_method.algorithm_cubic_spline(splineX_clean, splineY_clean)
+            columns=["functions"]
             table.draw(spline_method.value_table(),columns)
             self.sol.text=spline_method.get_results()
         else:

@@ -13,6 +13,7 @@ class QuadraticSpline:
         self.x = Symbol('x')
         self.f = Function('f')
         self.result = []
+        self.results = []
     def algorithm_quadratic_spline(self,xVal,yVal):
         constanNum = 0
         x = xVal[0]
@@ -25,7 +26,6 @@ class QuadraticSpline:
                 s = symbols(str(i)+str(j))
                 self.constants.append(s)
         for p in range(len(x)):
-            print([x[p],y[p]])
             points.append([x[p],y[p]])
         for i in range(1,len(x)):
             intervals.append([points[i-1][0],points[i][0]])
@@ -48,8 +48,10 @@ class QuadraticSpline:
             self.functionsValues.append(self.f)
         self.functionsValues.append(diff(self.functions[0],self.x,2).subs(self.x,intervals[0][0]))
         for i in range(0,len(self.functionsValues)):
-            self.result.append((str(i + 1)+") " +str(self.functionsValues[i])))
-            print(str(self.functionsValues[i]))
+            self.results.append((str(i + 1)+") " +str(self.functionsValues[i])))
+            self.result.append(self.functionsValues[i])
+            #print(str(self.functionsValues[i]))
+        """
         solucion = solve(self.functionsValues, self.constantsUseds)
         constValues = dict(solucion)
         marc = 0
@@ -65,15 +67,12 @@ class QuadraticSpline:
                 print(str(self.functions[funcActual]) + "             " + str(intervals[funcActual][0]) + " <=  X <= " + str(intervals[funcActual][1]))
                 valTree = []
                 funcActual += 1
-        print(dicPoints)
-
+        """
     def value_table(self):
         return self.result
 
     def get_results(self):
         results=""
-        aux=1
-        for i in self.result:
-            results+=f""+(str)(i[0])+"\n"
-            aux+=1
+        for i in self.results:
+            results+=f""+(str)(i)+"\n"
         return results
