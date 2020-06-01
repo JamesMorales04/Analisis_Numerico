@@ -401,7 +401,9 @@ class System_of_equations_partial_pivot(Screen):
             matrix_method.partial_pivoting_algorithm(matrix_clean,matrixb_clean)
             self.sol.text=matrix_method.get_results()
             columns=matrix_method.rows
-            table.draw(matrix_method.value_table(),columns)
+            if (not matrix_method.get_error()):
+                table.draw(matrix_method.value_table(),columns)
+                
 
         else:
             show_popWindow("Partial pivot ",error)
@@ -614,11 +616,13 @@ class Interpolation_newton(Screen):
         matrix_method=NewtonInterpolation()
         table=Tables()
         verify = Verify()
+        Function=Functions(self.functions.text)
         error= ""
         if (self.functions.text == "" or self.numbers.text == ""):
-            error= "Campo vacío"
+            error= "Campo vacío\n"
+        if (verify.verify_function(self.functions.text,100)):
+            error+= "Incorrect function"
         if (error==""):
-            Function=Functions(self.functions.text) #Parsed
             Numbers=self.clean((self.numbers.text).split("\n"))
             matrix_method.algorithm_newtonInterpolation(Function,Numbers)
             columns= matrix_method.rows

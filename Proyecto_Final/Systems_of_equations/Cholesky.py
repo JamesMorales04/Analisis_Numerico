@@ -15,59 +15,54 @@ class Cholesky:
         self.matrixLB = []
         self.resultX = []
         self.resultZ = []
+        self.errorMessage = ''
         self.rows = []
         getcontext().prec = 25
 
-    def cholesky_algorithm(self,matrixA,matrixB =[]):
+    def cholesky_algorithm(self,matrixA,matrixB=[[]]):
         
         print('MatrixA')
         print(matrixA)
         print('MatrixB')
         print(matrixB)
-        self.original = copy.deepcopy(self.__merge(matrixA,matrixB))
-        self.matrixL = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
-        self.matrixU = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
-        '''
-        print('MatrixA')
-        self.printMatrix(matrixA)
-        print('MatrixL')
-        self.printMatrix(self.matrixL)
-        print('MatrixU')
-        self.printMatrix(self.matrixU)
-        '''
+        self.errorMessage = ''
+        if(len(matrixB)!=0 and len(matrixA)==len(matrixB[0])):
+            self.original = copy.deepcopy(self.__merge(matrixA,matrixB))
+            self.matrixL = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
+            self.matrixU = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
+            error = self.__getMatrices(matrixA)
 
-
-        error = self.__getMatrices(matrixA)
-        if(error==0):
-            matrixLCopy = copy.deepcopy(self.matrixL)
-            self.matrixLB = self.__merge(matrixLCopy,matrixB)
-            #print('\nMatrixLB')
-            self.printMatrix(self.matrixLB)
-            self.__getVarsValuesZ()
-            #print('\nZ')
-            #print(self.resultZ)
-            matrixUCopy = copy.deepcopy(self.matrixU)
-            self.matrixUZ = self.__merge(matrixUCopy,self.resultZ)
-            
-            #print('\nMatrixUZ')
-            self.printMatrix(self.matrixUZ)
-            
-            self.__getVarsValuesX()
-            #print('\nX')
-            #print(self.resultX)
-            
-            #Factorization
-            #print('\nMatrixL')
-            self.printMatrix(self.matrixL)
-            #print('\nMatrixU')
-            self.printMatrix(self.matrixU)
-
-            self.row_definition()
-            #print(len(self.rows))
-
-        
+            if(error==0):
+                matrixLCopy = copy.deepcopy(self.matrixL)
+                self.matrixLB = self.__merge(matrixLCopy,matrixB)
+                #print('\nMatrixLB')
+                # self.printMatrix(self.matrixLB)
+                self.__getVarsValuesZ()
+                #print('\nZ')
+                #print(self.resultZ)
+                matrixUCopy = copy.deepcopy(self.matrixU)
+                self.matrixUZ = self.__merge(matrixUCopy,self.resultZ)
+                
+                #print('\nMatrixUZ')
+                self.printMatrix(self.matrixUZ)
+                self.__getVarsValuesX()
+                #print('\nX')
+                #print(self.resultX)
+                #Factorization
+                #print('\nMatrixL')
+                self.printMatrix(self.matrixL)
+                #print('\nMatrixU')
+                self.printMatrix(self.matrixU)
+                self.row_definition()
+                #print(len(self.rows)) 
+            elif(error==-1):
+                self.errorMessage = 'Error: Invalid input led to a division by Zero'
+            elif(error==-2):
+                self.errorMessage = 'Error: Invalid input'
+        elif (len(matrixB)==0):
+            self.errorMessage = 'Error: Invalid input in matrix B'
         else:
-            return 'Problem while factorizing the matrix'
+            self.errorMessage = 'Error: Incompatible number of rows in A and values in B due to invalid inputs or missing values'
 
     def __getMatrices(self,matrixA):
         stages = len(matrixA)
@@ -88,21 +83,16 @@ class Cholesky:
                     else:
                         self.matrixL[row][stage] = (matrixA[row][stage] - valuesSumL)/self.matrixL[stage][stage]
                         self.matrixU[stage][row] = (matrixA[stage][row] - valuesSumU)/self.matrixL[stage][stage]
-                    '''
-                    print(f"Row {row}")
-                    print('MatrixL')
-                    self.printMatrix(self.matrixL)
-                    print('MatrixU')
-                    self.printMatrix(self.matrixU)
-                    s = input('')
-                    '''
+
             return 0
 
         except DivisionByZero as zeros:
             print(zeros)
             return -1
-        except Exception as e:
+        except TypeError as e:
             print(e)
+            return -2
+        except Exception as e:
             return -2
         
     def printMatrix(self,matrix):
@@ -170,12 +160,16 @@ class Cholesky:
         return self.total
     
     def get_results(self):
-        results=""
-        aux=1
-        for i in self.resultX:
-            results+=f"X{aux}: "+(str)(i)+"\n"
-            aux+=1
-        return results
+
+        if(len(self.errorMessage)==0):
+            results=""
+            aux=1
+            for i in self.resultX:
+                results+=f"X{aux}: "+(str)(i)+"\n"
+                aux+=1
+            return results
+        else:
+            return self.errorMessage
 
 if __name__ == "__main__":
     ch = Cholesky()

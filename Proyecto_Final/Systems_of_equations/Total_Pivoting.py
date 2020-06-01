@@ -12,49 +12,42 @@ class Total_Pivoting:
         self.total = []
         self.result = []
         self.greater = 0
+        self.errorMessage = ''
     
     def total_pivoting_algorithm(self,matrixA = [],matrixB = []):
 
-        if(len(matrixA)==0 or len(matrixB[0])==0):
-            return 'The required matrixes where not passed'
-        if(len(matrixA)<len(matrixB)):
-            return 'The number of equations doesnt match the number of variables'
-        
-        self.matrixAB = self.__merge(matrixA,matrixB)
-        self.original = copy.deepcopy(self.matrixAB)
-        stages = len(matrixA)
-        error = False
+        self.errorMessage = ''
 
-        for i in range(stages):
-            self.xVarsCols.append(i)
-        
-        for stage in range(stages-1):
-            
-            row, col = self.__LocateGreatestValue(stage,stages)
-            if(self.greater != 0):
+        if(len(matrixB)!=0 and len(matrixA)!=0 and len(matrixB[0])!=0):
+
+            if(len(matrixA)==len(matrixB[0])):
+
+                self.matrixAB = self.__merge(matrixA,matrixB)
+                self.original = copy.deepcopy(self.matrixAB)
+                stages = len(matrixA)
+                error = False
                 
-                self.__SwitchRow(stage,row)
-                self.__SwitchCol(stage,stages,col)
-                self.__GaussianReduction(stage,stages)
-            
+                for i in range(stages):
+                    self.xVarsCols.append(i)
+                
+                for stage in range(stages-1):
+                    row, col = self.__LocateGreatestValue(stage,stages)
+                    if(self.greater != 0):
+                        self.__SwitchRow(stage,row)
+                        self.__SwitchCol(stage,stages,col)
+                        self.__GaussianReduction(stage,stages)
+                    else:
+                        error = True
+                        break
+                if(error):
+                    self.errorMessage = 'Error: The equation sistem has no solution or has infinite solutions'
+                else:
+                    self.__getVarsValues()
+                    self.row_definition()
             else:
-                error = True
-                break
-
-        if(error):
-            return 'The equation sistem has no solution or has infinite solutions'
+                self.errorMessage = 'Error: The number of equations doesnt match the number of variables'
         else:
-            self.__getVarsValues()
-            self.row_definition()
-            '''
-            In case they are needed for debugging purposes
-            print(self.result)
-            print(self.rows)
-            print(self.get_results())
-            '''
-            print(self.result)
-            print(self.rows)
-            print(self.get_results())
+            self.errorMessage = 'Error: The required matrixes where not passed'
     
     def __getVarsValues(self):
 
@@ -150,12 +143,15 @@ class Total_Pivoting:
 
     def get_results(self):
 
-        results=""
-        aux=1
-        for i in self.result:
-            results+=f"X{aux}: "+(str)(i)+"\n"
-            aux+=1
-        return results
+        if(len(self.errorMessage) == 0):
+            results=""
+            aux=1
+            for i in self.result:
+                results+=f"X{aux}: "+(str)(i)+"\n"
+                aux+=1
+            return results
+        else:
+            return self.errorMessage
 
 if __name__ == "__main__":
     tp = Total_Pivoting()
