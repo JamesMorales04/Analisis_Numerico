@@ -343,7 +343,6 @@ class System_of_equations_gaussian_elimination(Screen):
         self.matrix_method=Gaussian_Elimination()
         table=Tables()
         verify=Verify()
-        #error=verify.verify_raices_mult(self.xi.text,self.functions.text,self.iterations.text,self.tolerance.text)
         error=""
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
@@ -391,20 +390,26 @@ class System_of_equations_partial_pivot(Screen):
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
     def run(self):
-        matrix_method=partial_Pivoting()
+        self.matrix_method=partial_Pivoting()
         table=Tables()
         verify=Verify()
         error=""
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
-            matrix_method.partial_pivoting_algorithm(matrix_clean,matrixb_clean)
-            self.sol.text=matrix_method.get_results()
-            columns=matrix_method.rows
-            table.draw(matrix_method.value_table(),columns)
-
+            self.matrix_method.partial_pivoting_algorithm(matrix_clean,matrixb_clean)
+            self.sol.text=self.matrix_method.get_results()
+            columns=self.matrix_method.rows
+            if (not self.matrix_method.get_error()):
+                table.draw(self.matrix_method.value_table(),columns)
+                self.rund=True
         else:
             show_popWindow("Partial pivot ",error)
+    def steps(self):
+        if(self.rund):
+            columns=self.matrix_method.get_steps_rows()
+            table=Tables()
+            table.draw(self.matrix_method.get_steps_table(),columns)
     def aid(self):
         show_popWindow("Partial pivoting",Aids.help_partial_pivot(self))
     def clean(self, matrix):
@@ -524,7 +529,6 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
         matrix_method=Relaxed_gs()
         table=Tables()
         verify=Verify()
-        #error=verify.verify_raices_mult(self.xi.text,self.functions.text,self.iterations.text,self.tolerance.text)
         error=""
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
@@ -573,7 +577,6 @@ class Iteratives_System_of_equations_jacobi(Screen):
         matrix_method=Relaxed_jacobi()
         table=Tables()
         verify=Verify()
-        #error=verify.verify_raices_mult(self.xi.text,self.functions.text,self.iterations.text,self.tolerance.text)
         error=""
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
