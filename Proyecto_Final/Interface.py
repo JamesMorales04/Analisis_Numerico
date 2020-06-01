@@ -818,8 +818,8 @@ class interpolation_quadratic_spline(Screen):
             splineX_clean=self.clean((self.splineY.text).split("\n"))
             splineY_clean=self.clean((self.splineX.text).split("\n"))
             spline_method.algorithm_quadratic_spline(splineX_clean, splineY_clean)
-            columns=["P(x)","Interval"]
-            #table.draw(spline_method.value_table(),columns)
+            columns=["Functions"]
+            table.draw(spline_method.value_table(),columns)
             self.sol.text=spline_method.get_results()
         else:
             show_popWindow("Linear Spline ",error)

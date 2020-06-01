@@ -48,7 +48,8 @@ class QuadraticSpline:
             self.functionsValues.append(self.f)
         self.functionsValues.append(diff(self.functions[0],self.x,2).subs(self.x,intervals[0][0]))
         for i in range(0,len(self.functionsValues)):
-            print(str(i + 1)+") " +str(self.functionsValues[i]))
+            self.result.append((str(i + 1)+") " +str(self.functionsValues[i])))
+            print(str(self.functionsValues[i]))
         solucion = solve(self.functionsValues, self.constantsUseds)
         constValues = dict(solucion)
         marc = 0
