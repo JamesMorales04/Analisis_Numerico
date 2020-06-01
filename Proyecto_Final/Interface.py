@@ -401,7 +401,9 @@ class System_of_equations_partial_pivot(Screen):
             matrix_method.partial_pivoting_algorithm(matrix_clean,matrixb_clean)
             self.sol.text=matrix_method.get_results()
             columns=matrix_method.rows
-            table.draw(matrix_method.value_table(),columns)
+            if (not matrix_method.get_error()):
+                table.draw(matrix_method.value_table(),columns)
+                
 
         else:
             show_popWindow("Partial pivot ",error)
