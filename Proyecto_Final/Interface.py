@@ -616,11 +616,13 @@ class Interpolation_newton(Screen):
         matrix_method=NewtonInterpolation()
         table=Tables()
         verify = Verify()
+        Function=Functions(self.functions.text)
         error= ""
         if (self.functions.text == "" or self.numbers.text == ""):
-            error= "Campo vacío"
+            error= "Campo vacío\n"
+        if (verify.verify_function(self.functions.text,100)):
+            error+= "Incorrect function"
         if (error==""):
-            Function=Functions(self.functions.text) #Parsed
             Numbers=self.clean((self.numbers.text).split("\n"))
             matrix_method.algorithm_newtonInterpolation(Function,Numbers)
             columns= matrix_method.rows
