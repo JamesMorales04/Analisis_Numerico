@@ -4,10 +4,11 @@ class Verify:
     def verify_function(self,function,xi):
         if(function==""):
             return True
+        
         else:
             try:
                 prueba_function=Functions(function)
-                if ((prueba_function.evaluar(xi))==True) or prueba_function.evaluar(xi)=="" :
+                if ((prueba_function.evaluar(xi))==True) or prueba_function.evaluar(xi)=="" or ('x' not in function):
                     return True
                 else:
                     return False
