@@ -55,6 +55,8 @@ class Relaxed_gs:
                     aux.append(0)
                 self.new.append([0,aux,0])
                 self.div=True
+        if(len(self.new)==0):
+            self.new.append([0,matrix[0],0])
         self.row_definition()
 
     def error_calculator(self,now,previus):
@@ -89,6 +91,7 @@ class Relaxed_gs:
                 self.total[x].append(Decimal(j))
             self.total[x].append(Decimal(i[2]))
             x+=1
+        
         self.final_result=copy.deepcopy(self.total[len(self.total)-1])
         self.final_result.pop(0)
         self.final_result.pop()

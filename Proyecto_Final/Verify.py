@@ -48,7 +48,7 @@ class Verify:
     def verify_fixed_point(self,function,gfunction,xi,iteraciones,tolerancia):
         error=""
         try:
-            if(self.verify_function(function,float(xi)) and self.verify_function(gfunction,float(xi))):
+            if(self.verify_function(function,float(xi)) or self.verify_function(gfunction,float(xi))):
                 error+=self.invalidFunction()
             if(float(tolerancia)<=0):
                 error+=self.invalidTolerance()
@@ -102,6 +102,20 @@ class Verify:
             error=self.empty_field()
         return error
 
+    def verify_seidel_Jacobi(self,a,b,init,iter,tol):
+        error=""
+        try:
+            if(a==0 or b==0):
+                error+=self.invalidMatrixInput()
+            if(init==0):
+                error+=self.invalidInitVals()
+            if(tol<=0):
+                error+=self.invalidTolerance()
+            if(iter<=1):
+                error+=self.invalidIterations()
+        except:
+            error=self.empty_field()
+        return error
 
     def invalidFunction(self):
         return "The function is invalid, \nSquare: (x**n)\nRoot: sqrt(n)\neuler: exp(n)\nPi: pi()\nIdentities: sin(n),cos(n),tan(n),sec(n)\nnatural logarithm: log(n)"                
@@ -113,3 +127,7 @@ class Verify:
         return "\nThe entered increment is invalid"
     def empty_field(self):
         return "\nOne of the fields is empty"
+    def invalidMatrixInput(self):
+        return "\nInvalid Matrix Input"
+    def invalidInitVals(self):
+        return "\nInvalid Initial Values"

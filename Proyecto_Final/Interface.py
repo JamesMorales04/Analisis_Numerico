@@ -506,8 +506,6 @@ class System_of_equations_staggered_pivot(Screen):
         except:
             return []
 
-class System_of_equations_lu_Factorization(Screen):
-    pass
 class System_of_equations_matrix_Factorization(Screen):
     pass
 class Iteratives_System_of_equations_Gauss_Seidel(Screen):
@@ -528,8 +526,8 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             initvals_clean=self.clean((self.initvals.text).split("\n"))
-            if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(initvals_clean)==0 or int(self.iter.text)<1):
-                error+="Wrong Matrix Input"
+            error=verify.verify_seidel_Jacobi(len(matrix_clean),len(matrixb_clean),len(initvals_clean),float(self.iter.text),float(self.tol.text))
+            if(error!=""):
                 show_popWindow("Gauss Seidel",error)
             else:
                 matrix_method.Relaxed_gs_algorithm(matrix_clean,matrixb_clean,initvals_clean,float(self.lamb.text),float(self.tol.text),int(self.iter.text))
@@ -577,8 +575,8 @@ class Iteratives_System_of_equations_jacobi(Screen):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             initvals_clean=self.clean((self.initvals.text).split("\n"))
-            if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(initvals_clean)==0 or int(self.iter.text)<1):
-                error+="Wrong Matrix Input"
+            error=verify.verify_seidel_Jacobi(len(matrix_clean),len(matrixb_clean),len(initvals_clean),float(self.iter.text),float(self.tol.text))
+            if(error!=""):
                 show_popWindow("Jacobi",error)
             else:
                 matrix_method.Relaxed_jacobi_algorithm(matrix_clean,matrixb_clean,initvals_clean,float(self.lamb.text),float(self.tol.text),int(self.iter.text))
@@ -694,10 +692,7 @@ class Interpolation_splines(Screen):
     pass
 class Numeric_differentiation_differentiation(Screen):
     pass
-class matrix_Factorization_based_gaussian_simple(Screen):
-    pass
-class matrix_Factorization_based_gaussian_pivoting(Screen):
-    pass
+
 class matrix_Factorization_direct_croult(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
@@ -962,9 +957,6 @@ class matrix_Factorization_direct_cholesky(Screen):
             return matrix
         except:
             return []
-
-class matrix_Factorization_direct_diagonal_matrix(Screen):
-    pass
 
 class PopWindow(FloatLayout):
     contained=ObjectProperty(None)

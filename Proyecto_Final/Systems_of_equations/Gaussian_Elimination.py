@@ -32,16 +32,13 @@ class Gaussian_Elimination:
             i+=1 
         self.new=matrix
         self.get_steps()
-        for i in self.steps:
-            print(i)
-        for i in self.steps_row:
-            print(i)
-
         if(self.check_diagonal() and self.no_error):
+            
             self.variable_resolution()
             self.row_definition()
+            
         else:
-            self.result.append("No solutions or infinite solutions or Div 0")
+            self.result="No solutions or infinite solutions or Div 0"
 
 
     def check_diagonal(self):

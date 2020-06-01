@@ -18,15 +18,11 @@ WindowManager:
     System_of_equations_gaussian_elimination:
     System_of_equations_partial_pivot:
     System_of_equations_total_pivot:
-    System_of_equations_lu_Factorization:
     System_of_equations_staggered_pivot:
     System_of_equations_matrix_Factorization:
-    matrix_Factorization_based_gaussian_simple:
-    matrix_Factorization_based_gaussian_pivoting:
     matrix_Factorization_direct_croult:
     matrix_Factorization_direct_doolitle:
     matrix_Factorization_direct_cholesky:
-    matrix_Factorization_direct_diagonal_matrix:
     Iteratives_System_of_equations_Gauss_Seidel:
     Iteratives_System_of_equations_jacobi:
     interpolation_linear_spline:
@@ -108,7 +104,7 @@ WindowManager:
 
 
         SmoothButton:
-            text: "Incremental Run"
+            text: "Incremental Search"
             font_size:"17sp"   
             on_press:
                 app.root.current="Non_linear_equations_search"     
@@ -178,7 +174,7 @@ WindowManager:
             color: 1,1,1,1 
             bold: True
         SmoothButton:
-            text: "Simple gausianna's elimination"
+            text: "Simple gaussian elimination"
             font_size:"17sp"   
             on_press:
                 app.root.current="System_of_equations_gaussian_elimination"     
@@ -200,12 +196,6 @@ WindowManager:
             font_size:"17sp"  
             on_press:
                 app.root.current="System_of_equations_staggered_pivot"     
-                root.manager.transition.direction="left"
-        SmoothButton:
-            text: "Lu's factorization"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="System_of_equations_lu_Factorization"     
                 root.manager.transition.direction="left"
 
         SmoothButton:
@@ -1493,18 +1483,6 @@ WindowManager:
                     app.root.current="System_of_equations"  
                     root.manager.transition.direction="right"
 
-
-<System_of_equations_lu_Factorization>
-    name:"System_of_equations_lu_Factorization"
-    GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="Menu_Initial"  
-                root.manager.transition.direction="right"
-
-
 <System_of_equations_matrix_Factorization>
     name:"System_of_equations_matrix_Factorization"
     GridLayout:
@@ -1523,20 +1501,6 @@ WindowManager:
             font_size:"30sp"
             color: 1,1,1,1
             bold: True 
-
-
-        SmoothButton:
-            text: "Gaussian simple"
-            font_size:"17sp"   
-            on_press:
-                app.root.current="matrix_Factorization_based_gaussian_simple"     
-                root.manager.transition.direction="left"
-        SmoothButton:
-            text: "Gaussian pivoting"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="matrix_Factorization_based_gaussian_pivoting"     
-                root.manager.transition.direction="left"
 
         SmoothButton:
             text: "Croult"
@@ -1558,35 +1522,10 @@ WindowManager:
                 app.root.current="matrix_Factorization_direct_cholesky"
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Diagonal matrix"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="matrix_Factorization_direct_diagonal_matrix"
-                root.manager.transition.direction="left"
-        SmoothButton:
             text: "Back"
             font_size:"17sp"  
             on_press:
                 app.root.current="System_of_equations"  
-                root.manager.transition.direction="right"
-
-<matrix_Factorization_based_gaussian_simple>
-    name:"matrix_Factorization_based_gaussian_simple"
-    GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="System_of_equations_matrix_Factorization"  
-                root.manager.transition.direction="right"
-<matrix_Factorization_based_gaussian_pivoting>
-    name:"matrix_Factorization_based_gaussian_pivoting"
-    GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="System_of_equations_matrix_Factorization"  
                 root.manager.transition.direction="right"
 <matrix_Factorization_direct_croult>
     name:"matrix_Factorization_direct_croult"
@@ -1665,7 +1604,7 @@ WindowManager:
                 on_press:
                     root.manager.matrix_global=root.matrix.text
                     root.manager.matrixb_global=root.matrixb.text
-                    app.root.current="System_of_equations"  
+                    app.root.current="System_of_equations_matrix_Factorization"  
                     root.manager.transition.direction="right"
 <matrix_Factorization_direct_doolitle>
     name:"matrix_Factorization_direct_doolitle"
@@ -1810,17 +1749,6 @@ WindowManager:
                     root.manager.matrixb_global=root.matrixb.text
                     app.root.current="System_of_equations_matrix_Factorization"  
                     root.manager.transition.direction="right"
-
-<matrix_Factorization_direct_diagonal_matrix>
-    name:"matrix_Factorization_direct_diagonal_matrix"
-    GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="System_of_equations_matrix_Factorization"  
-                root.manager.transition.direction="right"
-
 
 <Iteratives_System_of_equations_Gauss_Seidel>
     name:"Iteratives_System_of_equations_Gauss_Seidel"
@@ -2155,7 +2083,7 @@ WindowManager:
                 on_press:
                     root.manager.splineX_global=root.splineX.text
                     root.manager.splineY_global=root.splineY.text
-                    app.root.current="Menu_Initial" 
+                    app.root.current="Interpolation_splines" 
                     root.manager.transition.direction="right"
 
 <interpolation_quadratic_spline>
@@ -2227,7 +2155,7 @@ WindowManager:
                 on_press:
                     root.manager.splineX_global=root.splineX.text
                     root.manager.splineY_global=root.splineY.text
-                    app.root.current="Menu_Initial" 
+                    app.root.current="Interpolation_splines" 
                     root.manager.transition.direction="right"
 
 <interpolation_linear_spline>
@@ -2371,7 +2299,7 @@ WindowManager:
                 text: "Back"
                 font_size:"17sp"  
                 on_press:
-                    app.root.current="Menu_Initial"  
+                    app.root.current="Interpolation"  
                     root.manager.transition.direction="right"
 
 
@@ -2488,7 +2416,7 @@ WindowManager:
             text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Initial"  
+                app.root.current="Interpolation"  
                 root.manager.transition.direction="right"
 
 

@@ -53,6 +53,8 @@ class Relaxed_jacobi:
                     aux.append(0)
                 self.new.append([0,aux,0])
                 self.div=True
+        if(len(self.new)==0):
+            self.new.append([0,matrix[0],0])
         self.row_definition()
 
 
