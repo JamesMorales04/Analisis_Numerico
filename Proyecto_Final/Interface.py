@@ -828,7 +828,7 @@ class interpolation_quadratic_spline(Screen):
         else:
             show_popWindow("Quadratic Spline ","No valid values, please check it")
     def aid(self):
-        show_popWindow("Quadratic Spline",Aids.help_doolittle(self))
+        show_popWindow("Quadratic Spline",Aids.help_quadratic_spline(self))
     def clean(self, x):
         try:
             for i in range(0,len(x)):
@@ -869,7 +869,7 @@ class interpolation_cubic_spline(Screen):
         else:
             show_popWindow("Cubic Spline ","No valid values, please check it")
     def aid(self):
-        show_popWindow("Cubic Spline",Aids.help_doolittle(self))
+        show_popWindow("Cubic Spline",Aids.help_cubic_spline(self))
     def clean(self, x):
         try:
             for i in range(0,len(x)):
@@ -908,7 +908,7 @@ class interpolation_linear_spline(Screen):
         else:
             show_popWindow("Linear Spline ","No valid values, please check it")
     def aid(self):
-        show_popWindow("Linear Spline",Aids.help_doolittle(self))
+        show_popWindow("Linear Spline",Aids.help_lineal_spline(self))
     def clean(self, x):
         try:
             for i in range(0,len(x)):
