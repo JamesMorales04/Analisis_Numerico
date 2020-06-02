@@ -394,7 +394,7 @@ class System_of_equations_gaussian_elimination(Screen):
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
-            if(len(matrix_clean)==0 or len(matrixb_clean)==0 ):
+            if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(matrixb_clean[0])!=len(matrix_clean) or verify.verify_length(matrix_clean) or len(matrixb_clean[0])!=len(matrix_clean[0])):
                 error+="Wrong Matrix Input"
                 show_popWindow("Gaussian Elimination",error)
             else:
@@ -579,7 +579,7 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             initvals_clean=self.clean((self.initvals.text).split("\n"))
-            error=verify.verify_seidel_Jacobi(len(matrix_clean),len(matrixb_clean),len(initvals_clean),float(self.iter.text),float(self.tol.text))
+            error=verify.verify_seidel_Jacobi(matrix_clean,matrixb_clean,initvals_clean,self.iter.text,self.tol.text,self.lamb.text)
             if(error!=""):
                 show_popWindow("Gauss Seidel",error)
             else:
@@ -627,7 +627,7 @@ class Iteratives_System_of_equations_jacobi(Screen):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
             initvals_clean=self.clean((self.initvals.text).split("\n"))
-            error=verify.verify_seidel_Jacobi(len(matrix_clean),len(matrixb_clean),len(initvals_clean),float(self.iter.text),float(self.tol.text))
+            error=verify.verify_seidel_Jacobi(matrix_clean,matrixb_clean,initvals_clean,self.iter.text,self.tol.text,self.lamb.text)
             if(error!=""):
                 show_popWindow("Jacobi",error)
             else:
@@ -760,7 +760,7 @@ class matrix_Factorization_direct_croult(Screen):
         error=""
         if(error==""):
             matrix_clean=self.clean((self.matrix.text).split("\n"))
-            if(len(matrix_clean)==0):
+            if(len(matrix_clean)==0 or verify.verify_length(matrix_clean) or len(matrix_clean)!=len(matrix_clean[0])):
                 error+="Wrong Matrix Input"
                 show_popWindow("Croult",error)
             else:
@@ -780,8 +780,10 @@ class matrix_Factorization_direct_croult(Screen):
 
     def runb(self):
         self.table=Tables()
+        verify=Verify()
+        matrix_clean=self.clean((self.matrix.text).split("\n"))
         matrixb_clean=self.clean((self.matrixb.text).split("\n"))
-        if(len(matrixb_clean)==0):
+        if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(matrixb_clean[0])!=len(matrix_clean) or verify.verify_length(matrix_clean) or len(matrixb_clean[0])!=len(matrix_clean[0])):
             error="Wrong Matrix Input"
             show_popWindow("Croult",error)
         else:

@@ -102,12 +102,30 @@ class Verify:
             error=self.empty_field()
         return error
 
-    def verify_seidel_Jacobi(self,a,b,init,iter,tol):
+    def verify_length(self,Matrix):
+        aux=[]
+        for i in Matrix:
+            aux.append(len(i))
+        print(aux)
+        for i in aux:
+            for j in aux:
+                if(j!=i):
+                    return True
+        return False 
+        
+    def verify_seidel_Jacobi(self,a,b,init,iter,tol,lamb):
         error=""
         try:
-            if(a==0 or b==0):
+            lamb=float(lamb)
+            iter=int(iter)
+            tol=float(tol)
+            if(self.verify_length(a)):
                 error+=self.invalidMatrixInput()
-            if(init==0):
+            if(len(a)==0 or len(b[0])==0):
+                error+=self.invalidMatrixInput()
+            if(len(a)!=len(b[0]) or len(a)!=len(init[0]) or len(a[0])!=len(b[0]) ):
+                error+=self.invalidMatrixInput()
+            if(len(init[0])==0):
                 error+=self.invalidInitVals()
             if(tol<=0):
                 error+=self.invalidTolerance()
