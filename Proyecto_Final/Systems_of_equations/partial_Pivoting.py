@@ -22,10 +22,6 @@ class partial_Pivoting:
         n=0
         while n < lenght and not self.error: 
             self.steps.append(copy.deepcopy(matrix))
-            print("-------------------------------------------")
-            for m in matrix:
-                print(m)
-            print("-------------------------------------------")
             pos=n  
             bigger=matrix[n][n]
             for i in range (n+1,lenght):
@@ -46,10 +42,6 @@ class partial_Pivoting:
                 for j in range(n,len(matrix[i])):                      
                     matrix[i][j]=matrix[i][j]-matrix[row-1][j]*multiplier             
             n+=1
-            """print("-------------------------------------------")
-            for m in matrix:
-                print (m)
-            print("-------------------------------------------")"""
             self.steps.append(copy.deepcopy(matrix))
             
         self.new= matrix

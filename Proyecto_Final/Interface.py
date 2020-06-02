@@ -36,6 +36,8 @@ from Interpolation.Lagrange import Lagrange
 from Interpolation.LinearSpline import LinearSpline
 from Interpolation.CubicSpline import CubicSpline
 from Interpolation.QuadraticSpline import QuadraticSpline
+from NumericDiff.trapezium import trapezium
+from NumericDiff.gentrapezium import GenTrapezium
 from Verify import Verify
 from Functions import Functions
 from Graph import Graph
@@ -73,7 +75,47 @@ class System_of_equations(Screen):
 class Interpolation(Screen):
     pass
 class Numeric_differentiation(Screen):
-    pass
+    functions= ObjectProperty(None)
+    xi= ObjectProperty(None)
+    xs= ObjectProperty(None)
+    iterations= ObjectProperty(None)
+    sol= ObjectProperty(None)
+    iterations= ObjectProperty(None)
+    def run(self):
+        Function=Functions(self.functions.text)
+        if (self.method == ""):
+            print("Nothing")
+        elif (self.method == "Trapezium"):
+            print("Trap")
+            SimpleTrapezium= trapezium()
+            self.sol.text= SimpleTrapezium.algorithm_trapezium(Function,self.xi.text,self.xs.text)
+        elif (self.method == "Generalized Trapezium"):
+            print("Trap")
+            genTrapezium = GenTrapezium()
+            #genTrapezium.general_trapezium_algorithm(Function,self)           
+        elif (self.method == "Simpson8"):
+            print("Trap")
+            #self.sol.text= SimpleTrapezium.algorithm_trapezium()
+        elif (self.method == "Generalized Simpson8"):
+            print("Trap")
+            #self.sol.text= SimpleTrapezium.algorithm_trapezium()
+        elif (self.method == "Generalized Simpson3"):
+            print("Trap")
+            #self.sol.text= SimpleTrapezium.algorithm_trapezium()    
+
+    def Trapezium(self):
+        self.method= "Trapezium"
+    def GeneralizedTrapezium(self):
+        self.method= "Generalized Trapezium"
+    def Simpson8(self):
+        self.method="Simpson8"
+    def GeneralizedSimpson8(self):
+        self.method="Generalized Simpson8"
+    def Simpson3(self):      
+        self.method="Simpson3"
+    def GeneralizedSimpson3(self):
+        self.method="Generalized Simpson3"
+        
 class Non_linear_equations_search(Screen):
     initial_position=ObjectProperty(None)
     increment=ObjectProperty(None)
@@ -622,7 +664,7 @@ class Interpolation_newton(Screen):
         Function=Functions(self.functions.text)
         error= ""
         if (self.functions.text == "" or self.numbers.text == ""):
-            error= "Campo vacío\n"
+            error= "Empty field\n"
         if (verify.verify_function(self.functions.text,100)):
             error+= "Incorrect function"
         if (error==""):
@@ -710,7 +752,6 @@ class matrix_Factorization_direct_croult(Screen):
     def run(self):
         self.matrix_method=Croult()
         verify=Verify()
-        #error=verify.verify_raices_mult(self.xi.text,self.functions.text,self.iterations.text,self.tolerance.text)
         error=""
         if(error==""):
             matrix_clean=self.clean((self.matrix.text).split("\n"))
@@ -770,22 +811,40 @@ class matrix_Factorization_direct_doolitle(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
+    rund=False
+    table=Tables()
     def run(self):
-        matrix_method=Doolittle()
-        table=Tables()
+        self.matrix_method=Doolittle()
         verify=Verify()
         error=""
         if(error==""):
-            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
-            matrix_method.doolittle_algorithm(matrix_clean,matrixb_clean)
-            columns=matrix_method.rows
-            table.draw(matrix_method.value_table(),columns)
-            self.sol.text=matrix_method.get_results()
-
-
+            self.matrix_method.doolittle_algorithm(matrix_clean)
+            self.sol.text= "Matrix LU ready"
+            self.rund=True
         else:
             show_popWindow("Doolittle ",error)
+    def steps(self):
+        if(self.rund):
+            columns=self.matrix_method.get_steps_rows()
+            table = Tables()
+            table.draw(self.matrix_method.value_table(),columns)
+          
+    def runb(self):     
+        self.table=Tables()
+        matrixb_clean=self.clean((self.matrixb.text).split("\n")) 
+        if(len(matrixb_clean)==0):
+            error="Wrong Matrix Input"
+            show_popWindow("Doolittle",error)
+        else:
+            if(self.rund):
+                self.matrix_method.runb(matrixb_clean)
+                self.sol.text=self.matrix_method.get_results()
+                if(self.matrix_method.get_noerror): #here...
+                    columns=self.matrix_method.rows
+                    self.table.draw(self.matrix_method.value_table(),columns)
+            else:
+                self.sol.text="First create matrix LU"
     def aid(self):
         show_popWindow("Doolittle",Aids.help_doolittle(self))
     def clean(self, matrix):
@@ -932,19 +991,22 @@ class matrix_Factorization_direct_cholesky(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
+    matrix_method = Cholesky()
     
-    def run(self):
-        matrix_method=Cholesky()
+    def runb(self):
         table=Tables()
         verify=Verify()
         error=""
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
-            matrix_clean=self.clean((self.matrix.text).split("\n"))
-            matrix_method.cholesky_algorithm(matrix_clean,matrixb_clean)
-            columns=matrix_method.rows
-            table.draw(matrix_method.value_table(),columns)
-            self.sol.text=matrix_method.get_results()
+            if(len(matrixb_clean)!=0):
+                self.matrix_method.cholesky_algorithm(matrixb_clean)
+                columns=self.matrix_method.rows
+                print(columns)
+                table.draw(self.matrix_method.value_table(),columns)
+                self.sol.text=self.matrix_method.get_results()
+            else:
+                self.sol.text = 'Error: No B matrix was entered'
 
         else:
             show_popWindow("Cholesky ",error)
@@ -968,6 +1030,16 @@ class matrix_Factorization_direct_cholesky(Screen):
             return matrix
         except:
             return []
+    def run(self):
+        error=""
+        if(error==""):
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            self.matrix_method.getMatrices(matrix_clean)
+            print(self.matrix_method.LUOutput)
+            self.sol.text=self.matrix_method.LUOutput
+
+        else:
+            show_popWindow("Cholesky ",error)
 
 class PopWindow(FloatLayout):
     contained=ObjectProperty(None)

@@ -31,7 +31,6 @@ WindowManager:
     Interpolation_newton:
     Interpolation_lagrange:
     Interpolation_splines:
-    Numeric_differentiation_differentiation:
 
 #:set color_background "#248091"
 #:set color_button "#8ac6d1"
@@ -270,6 +269,11 @@ WindowManager:
 
 <Numeric_differentiation>
     name:"Numeric_differentiation"
+    functions:functions
+    xi:xi
+    xs:xs
+    iterations:iterations
+    sol:sol
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -281,23 +285,145 @@ WindowManager:
             Rectangle:
                 pos: self.pos
                 size: self.size
-        Label:
-            text: "Methods"
-            font_size:"30sp"
-            color: 1,1,1,1 
-            bold: True
+        GridLayout:
+            cols: 3
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Function f(x)"
+                font_size:"25sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:functions
+                text:root.manager.function_global
+                multiline:False
+            
+                    
+        GridLayout:
+            cols: 8
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Xi"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:xi
+                multiline:False
+            Label:
+                text: "Xs"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:xs
+                multiline:False
+            Label:
+                text: "n"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:iterations
+                multiline:False
+
+        GridLayout:
+            spacing: '3dp'
+            cols: 3
+            row_default_height:30
+            row_force_default:True
+            Label:
+                size_hint_x:0.4
+                text: "Solution"
+                width:30
+                font_size:"20sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                size_hint_x:1
+                id:sol
+                multiline:False
+            Label:
+                size_hint_x:0.2
+                text: ""
+                bold: True
+        
+        GridLayout:
+            spacing: '10dp'
+            padding:30,0
+            cols: 4
+            row_default_height:20
+            row_force_default:True
+            Label:
+                size_hint_x:0.3
+                text: "Simple trapezium ."
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                active:True
+                on_active: root.Trapezium()
+            Label:
+                size_hint_x:0.3
+                text: "Generalized trapezium   "
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                on_active: root.GeneralizedTrapezium()
+            Label:
+                size_hint_x:0.3
+                text: "Simple simpson 1/3"
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                on_active: root.Simpson3()
+            Label:
+                size_hint_x:0.3
+                text: "Generalized simpson 1/3"
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                on_active: root.GeneralizedSimpson3()
+            Label:
+                size_hint_x:0.3
+                text: "Simple simpson 3/8"
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                on_active: root.Simpson8()
+            Label:
+                size_hint_x:0.3
+                text: "Generalized simpson 3/8"
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                on_active: root.GeneralizedSimpson8()
         SmoothButton:
-            text: "Numeric differentiation"
-            font_size:"17sp"   
-            on_press:
-                app.root.current="Numeric_differentiation_differentiation"     
-                root.manager.transition.direction="left"
+            text: "Run"
+            font_size:"15sp"  
+            on_press:root.run()    
+
         SmoothButton:
             text: "Back"
-            font_size:"17sp"  
+            font_size:"15sp"  
             on_press:
+                root.manager.function_global=root.functions.text
                 app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
+
 
 
 
@@ -1329,7 +1455,7 @@ WindowManager:
             SmoothButton:
                 text: "Steps"
                 font_size:"17sp"  
-                on_press:root.steps() 
+                on_press:root.steps()   
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -1531,6 +1657,8 @@ WindowManager:
             on_press:
                 app.root.current="System_of_equations"  
                 root.manager.transition.direction="right"
+
+
 <matrix_Factorization_direct_croult>
     name:"matrix_Factorization_direct_croult"
     matrix:matrix
@@ -1670,6 +1798,10 @@ WindowManager:
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
+                text: "Run B"
+                font_size:"17sp"  
+                on_press:root.runb()
+            SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
                 on_press:root.aid()
@@ -1741,6 +1873,10 @@ WindowManager:
                 text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
+            SmoothButton:
+                text: "Run B"
+                font_size:"17sp"  
+                on_press:root.runb()
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -2085,8 +2221,8 @@ WindowManager:
                 text: "Back"
                 font_size:"17sp"  
                 on_press:
-                    root.manager.splineX_global=root.splineX.text
-                    root.manager.splineY_global=root.splineY.text
+                    root.manager.splineX_global=root.splineY.text
+                    root.manager.splineY_global=root.splineX.text
                     app.root.current="Interpolation_splines" 
                     root.manager.transition.direction="right"
 
@@ -2157,8 +2293,8 @@ WindowManager:
                 text: "Back"
                 font_size:"17sp"  
                 on_press:
-                    root.manager.splineX_global=root.splineX.text
-                    root.manager.splineY_global=root.splineY.text
+                    root.manager.splineX_global=root.splineY.text
+                    root.manager.splineY_global=root.splineX.text
                     app.root.current="Interpolation_splines" 
                     root.manager.transition.direction="right"
 
@@ -2229,8 +2365,8 @@ WindowManager:
                 text: "Back"
                 font_size:"17sp"  
                 on_press:
-                    root.manager.splineX_global=root.splineX.text
-                    root.manager.splineY_global=root.splineY.text
+                    root.manager.splineX_global=root.splineY.text
+                    root.manager.splineY_global=root.splineX.text
                     app.root.current="Interpolation_splines" 
                     root.manager.transition.direction="right"
 
@@ -2423,16 +2559,6 @@ WindowManager:
                 app.root.current="Interpolation"  
                 root.manager.transition.direction="right"
 
-
-<Numeric_differentiation_differentiation>
-    name:"Numeric_differentiation_differentiation"
-    GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="Menu_Initial"  
-                root.manager.transition.direction="right"
 
 <PopWindow>
     contained:contained

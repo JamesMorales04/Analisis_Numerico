@@ -6,98 +6,119 @@ from decimal import *
 class Cholesky:
 
     def __init__(self):
+        self.matrixA = []
         self.matrixAB = []
         self.original = []
         self.total = []
+        self.totalStepsL = []
+        self.totalStepsU = []
+        self.stepsL = []
+        self.stepsU = []
         self.matrixL = []
         self.matrixU = []
         self.matrixUZ = []
         self.matrixLB = []
         self.resultX = []
         self.resultZ = []
+        self.stateLU = 0
+        self.LUOutput = ''
         self.errorMessage = ''
         self.rows = []
         getcontext().prec = 25
 
-    def cholesky_algorithm(self,matrixA,matrixB=[[]]):
+    def cholesky_algorithm(self,matrixB=[[]]):
         
-        print('MatrixA')
-        print(matrixA)
-        print('MatrixB')
-        print(matrixB)
         self.errorMessage = ''
-        if(len(matrixB)!=0 and len(matrixA)==len(matrixB[0])):
-            self.original = copy.deepcopy(self.__merge(matrixA,matrixB))
-            self.matrixL = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
-            self.matrixU = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
-            error = self.__getMatrices(matrixA)
-
-            if(error==0):
+        if(len(matrixB)!=0 and len(self.matrixA)==len(matrixB[0])):
+            copyMatrixA = copy.deepcopy(self.matrixA)
+            self.original = copy.deepcopy(self.__merge(copyMatrixA,matrixB))
+            
+            if(self.stateLU==0):
                 matrixLCopy = copy.deepcopy(self.matrixL)
                 self.matrixLB = self.__merge(matrixLCopy,matrixB)
-                #print('\nMatrixLB')
-                # self.printMatrix(self.matrixLB)
+
                 self.__getVarsValuesZ()
-                #print('\nZ')
-                #print(self.resultZ)
+
                 matrixUCopy = copy.deepcopy(self.matrixU)
                 self.matrixUZ = self.__merge(matrixUCopy,self.resultZ)
                 
-                #print('\nMatrixUZ')
-                self.printMatrix(self.matrixUZ)
                 self.__getVarsValuesX()
-                #print('\nX')
-                #print(self.resultX)
-                #Factorization
-                #print('\nMatrixL')
-                self.printMatrix(self.matrixL)
-                #print('\nMatrixU')
-                self.printMatrix(self.matrixU)
                 self.row_definition()
-                #print(len(self.rows)) 
-            elif(error==-1):
+            elif(self.stateLU==-1):
                 self.errorMessage = 'Error: Invalid input led to a division by Zero'
-            elif(error==-2):
+            elif(self.stateLU==-2):
                 self.errorMessage = 'Error: Invalid input'
         elif (len(matrixB)==0):
             self.errorMessage = 'Error: Invalid input in matrix B'
         else:
             self.errorMessage = 'Error: Incompatible number of rows in A and values in B due to invalid inputs or missing values'
 
-    def __getMatrices(self,matrixA):
+    def getMatrices(self,matrixA):
         stages = len(matrixA)
+        if(stages==0):
+            self.stateLU = -2
+            self.LUOutput = 'Error: No matrix A was entered'
+            return -2
+        
+        self.matrixA = copy.deepcopy(matrixA)
+        self.matrixL = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
+        self.matrixU = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
+        #self.stepsL = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
+        #self.stepsU = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
+        #self.totalStepsL = [['' for x in range(len(matrixA)+1)] for y in range(len(matrixA))]
+        #self.totalStepsU = [['' for x in range(len(matrixA)+1)] for y in range(len(matrixA))]
+        #self.fillStepsLU()
 
         try:
             for stage in range(stages):
                 for row in range(stage,stages):
                     valuesSumU = 0
                     valuesSumL = 0
+                    #auxL = copy.deepcopy(self.stepsL)
+                    #auxU = copy.deepcopy(self.stepsU)
                     for col in range(0,stage+1):
                         valuesSumU+=self.matrixL[stage][col]*self.matrixU[col][row]
                         valuesSumL+=self.matrixL[row][col]*self.matrixU[col][stage]
 
+
                     if(row==stage):
                         val =matrixA[stage][stage]-valuesSumL
                         self.matrixL[stage][stage] = math.sqrt(val)
+                        #self.stepsL[stage][stage] = self.matrixL[stage][stage]
                         self.matrixU[stage][stage] = self.matrixL[stage][stage]
+                        #self.stepsU[stage][stage] = self.matrixU[stage][stage]
                     else:
                         self.matrixL[row][stage] = (matrixA[row][stage] - valuesSumL)/self.matrixL[stage][stage]
+                        #self.auxL[row][stage] = self.matrixL[row][stage]
                         self.matrixU[stage][row] = (matrixA[stage][row] - valuesSumU)/self.matrixL[stage][stage]
-
-            return 0
+                        #auxU[stage][row] = self.matrixU[stage][row]
+            
+            self.LUOutput = 'No error while generating matrices L and U'
+            self.stateLU= 0
 
         except DivisionByZero as zeros:
-            print(zeros)
-            return -1
+            self.stateLU= -1
+            self.LUOutput = 'Error: Invalid A Matrix'
         except TypeError as e:
-            print(e)
-            return -2
+            self.stateLU=-2
+            self.LUOutput = 'Error: Invalid A Matrix'
         except Exception as e:
-            return -2
+            self.stateLU=-2
+            self.LUOutput = 'Error Invalid A Matrix'
         
     def printMatrix(self,matrix):
         for i in matrix:
             print(i)
+            
+    def fillStepsLU(self):
+        for i in range(len(self.matrixL)):
+            self.stepsL[i][i] = f"L{i+1}{i+1}"
+            for j in range(i):
+                self.stepsL[i][j] =f"L{i+1}{j+1}"
+
+        for i in range(len(self.matrixU)):
+            for j in range(i,len(self.matrixU)):
+                self.stepsU[i][j] = f"U{i+1}{j+1}"
 
     def __getVarsValuesZ(self):
 
@@ -131,6 +152,7 @@ class Cholesky:
         return matrixA
         
     def row_definition(self):
+
         numRows = len(self.resultX)
         for i in range(1,numRows+1):
             self.rows.append(f"A{i}")
@@ -145,19 +167,22 @@ class Cholesky:
         self.rows.append("X")
 
     def value_table(self):
-        for i in range(0,len(self.original)):
-            self.total.append([])
-            for j in range(0,len(self.original[i])):
-                self.total[i].append(Decimal(self.original[i][j]))
-            self.total[i].append("///")
-            for j in range(0,len(self.matrixL)):
-                self.total[i].append(Decimal(self.matrixL[i][j]))
-            self.total[i].append(Decimal(self.resultZ[0][i]))
-            self.total[i].append("///")    
-            for j in range(0,len(self.matrixU)):
-                self.total[i].append(Decimal(self.matrixU[i][j]))
-            self.total[i].append(Decimal(self.resultX[i]))
-        return self.total
+        if(self.errorMessage==''):
+            for i in range(0,len(self.original)):
+                self.total.append([])
+                for j in range(0,len(self.original[i])):
+                    self.total[i].append(Decimal(self.original[i][j]))
+                self.total[i].append("///")
+                for j in range(0,len(self.matrixL)):
+                    self.total[i].append(Decimal(self.matrixL[i][j]))
+                self.total[i].append(Decimal(self.resultZ[0][i]))
+                self.total[i].append("///")    
+                for j in range(0,len(self.matrixU)):
+                    self.total[i].append(Decimal(self.matrixU[i][j]))
+                self.total[i].append(Decimal(self.resultX[i]))
+            return self.total
+        else:
+            return []
     
     def get_results(self):
 
@@ -175,7 +200,13 @@ if __name__ == "__main__":
     ch = Cholesky()
     a =[[8,2,2,5],[4,5,7,-8],[-4,7,12,11],[8,-3,-11,28]]
     b = [[-12,13,31,-32]]
-    ch.cholesky_algorithm(a,b)
+    #a = [[2,-3,4,1],[-4,2,1,-2],[1,3,-5,3],[-3,-1,1,-1]]
+    ch.getMatrices(a)
+    ch.printMatrix(ch.stepsU)
+    ch.printMatrix(ch.stepsL)
+    #b = [[10,-10,32,-21]]
+    ch.cholesky_algorithm(b)
+    print(ch.resultX)
 
 
 
