@@ -54,16 +54,22 @@ class Total_Pivoting:
         numRows = len(self.matrixAB)-1
         self.result = [0]*len(self.xVarsCols)
         indx = self.xVarsCols[-1]
-        self.result[indx] = self.matrixAB[-1][-1]/self.matrixAB[-1][-2]
 
-        for row in range(numRows-1,-1,-1):
-            totalSum = 0
-            for col in range(numRows,row,-1):
-                indx = self.xVarsCols[col]
-                totalSum+= self.result[indx]*self.matrixAB[row][col]
-            indx = self.xVarsCols[row]
-            self.result[indx] = (self.matrixAB[row][-1]-totalSum)/self.matrixAB[row][row]
-            
+        if(self.matrixAB[-1][-2]!=0):
+            self.result[indx] = self.matrixAB[-1][-1]/self.matrixAB[-1][-2]
+            for row in range(numRows-1,-1,-1):
+                if(self.matrixAB[row][row]!=0):
+                    totalSum = 0
+                    for col in range(numRows,row,-1):
+                        indx = self.xVarsCols[col]
+                        totalSum+= self.result[indx]*self.matrixAB[row][col]
+                    indx = self.xVarsCols[row]
+                    self.result[indx] = (self.matrixAB[row][-1]-totalSum)/self.matrixAB[row][row]
+                else:
+                    self.errorMessage = 'Error. The given sistem has infinite solutions'
+                    break
+        else:
+            self.errorMessage = 'Error. The given sistem has infinite solutions'
     
     def __GaussianReduction(self,stage,stages):
         

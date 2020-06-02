@@ -8,17 +8,20 @@ class partial_Pivoting:
         self.total= []
         self.result=[]
         self.rows = []
+        self.error=False
+        self.steps= []
+        self.steps_row= []
         getcontext().prec = 25
 
     def partial_pivoting_algorithm(self,matrix,matrixb):
         matrix=self.merge(matrix,matrixb)
         self.original=copy.deepcopy(matrix)
         column=0
-        no_error=True
         i=1
         lenght=len(matrix)
         n=0
-        while n < lenght: 
+        while n < lenght and not self.error: 
+            self.steps.append(copy.deepcopy(matrix))
             print("-------------------------------------------")
             for m in matrix:
                 print(m)
@@ -34,20 +37,28 @@ class partial_Pivoting:
             matrix[n]=big
             matrix[pos]=temp #SWAP
             row=n+1
+            if matrix[n][n] == 0:
+                self.error=True 
             for i in range (row,lenght):
-                multiplier=matrix[i][n]/matrix[row-1][n] 
+                multiplier=matrix[i][n]/matrix[row-1][n]
+                if matrix[n][n] == 0:
+                    self.error=True 
                 for j in range(n,len(matrix[i])):                      
                     matrix[i][j]=matrix[i][j]-matrix[row-1][j]*multiplier             
             n+=1
-            print("-------------------------------------------")
+            """print("-------------------------------------------")
             for m in matrix:
                 print (m)
-            print("-------------------------------------------")
+            print("-------------------------------------------")"""
+            self.steps.append(copy.deepcopy(matrix))
             
         self.new= matrix
-        if(self.check_diagonal()):
-            self.variable_resolution()
-            self.row_definition()
+        self.get_steps()
+
+        if(not self.error):
+            if (self.check_diagonal()):
+                self.variable_resolution()
+                self.row_definition()
         else:
             self.result="No solutions or infinite solutions"
         
@@ -105,10 +116,32 @@ class partial_Pivoting:
     def get_results(self):
         results=""
         aux=1
+        if (self.error):
+            results="No solutions or infinite solutions"
+            return results
         for i in self.result:
             results+=f"X{aux}: "+(str)(i)+"\n"
             aux+=1
+
         return results
+    def get_steps(self):
+        aux=[]
+        for i in self.steps:
+            for j in i:
+                aux.append(j)
+            aux.append([])
+        for i in range(1,len(self.steps[0][0])+1):
+            self.steps_row.append(f"x{i}")
+        self.steps=aux
+
+    def get_steps_table(self):
+        return self.steps
+
+    def get_steps_rows(self):
+        return self.steps_row
+
+    def get_error(self):
+        return self.error
 """
 [2,1,1]
 [4,-6,0]
