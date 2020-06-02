@@ -10,6 +10,7 @@ class gensimpson3:
     def algorithm_gensimpson3(self, entry, xi,xs,h):
         xi = float(xi)
         xs = float(xs)
+        h = float(h)
         initY = entry.evaluar(xi)
         finalY = entry.evaluar(xs)
         total = initY+finalY

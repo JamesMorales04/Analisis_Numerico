@@ -94,16 +94,19 @@ class Numeric_differentiation(Screen):
             self.sol.text= SimpleTrapezium.algorithm_trapezium(Function,self.xi.text,self.xs.text)
         elif (self.method == "Generalized Trapezium"):
             genTrapezium = GenTrapezium()
-            self.sol.text= genTrapezium.general_trapezium_algorithm(Function,self)           
+            self.sol.text= genTrapezium.general_trapezium_algorithm(Function,self.xi.text,self.xs.text)           
         elif (self.method == "Simpson8"):
             simpson8= Simpson38()
-            self.sol.text= simpson8.simpson_38_algorithm()
+            self.sol.text= simpson8.simpson_38_algorithm(Function,self.xi.text,self.xs.text)
+        elif (self.method == "Simpson3"):
+            simpson3= Simpson13()
+            self.sol.text= simpson3.simpson_13_algorithm(Function,self.xi.text,self.xs.text,self.iterations.text)            
         elif (self.method == "Generalized Simpson8"):
             genSimpson8= GenSimpson38()
-            self.sol.text= genSimpson8.general_simpson38_algorithm()
+            self.sol.text= genSimpson8.general_simpson38_algorithm(Function,self.xi.text,self.xs.text,self.iterations.text)
         elif (self.method == "Generalized Simpson3"):
-            genSimpson3 = GenSimpson38()
-            self.sol.text= genSimpson3.general_simpson38_algorithm()   
+            genSimpson3 = gensimpson3()
+            self.sol.text= genSimpson3.algorithm_gensimpson3(Function,self.xi.text,self.xs.text,self.iterations.text)   
 
     def Trapezium(self):
         self.method= "Trapezium"
