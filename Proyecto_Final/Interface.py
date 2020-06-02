@@ -780,29 +780,30 @@ class matrix_Factorization_direct_doolitle(Screen):
         error=""
         if(error==""):
             matrix_clean=self.clean((self.matrix.text).split("\n"))
-            self.matrix_method.doolittle_algorithm(matrix_clean,matrixb_clean)
-            columns=self.matrix_method.rows
-            table.draw(self.matrix_method.value_table(),columns)
-            self.sol.text=self.matrix_method.get_results()
-
-
+            self.matrix_method.doolittle_algorithm(matrix_clean)
+            self.sol.text= "Matrix LU ready"
+            self.rund=True
         else:
             show_popWindow("Doolittle ",error)
     def steps(self):
-        matrixb_clean=self.clean((self.matrixb.text).split("\n"))   
+        if(self.rund):
+            columns=self.matrix_method.get_steps_rows()
+            table = Tables()
+            table.draw(self.matrix_method.value_table(),columns)
+          
     def runb(self):     
         self.table=Tables()
-        matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+        matrixb_clean=self.clean((self.matrixb.text).split("\n")) 
         if(len(matrixb_clean)==0):
             error="Wrong Matrix Input"
-            show_popWindow("Croult",error)
+            show_popWindow("Doolittle",error)
         else:
             if(self.rund):
                 self.matrix_method.runb(matrixb_clean)
                 self.sol.text=self.matrix_method.get_results()
-                if(self.matrix_method.get_noerror()):
+                if(self.matrix_method.get_noerror): #here...
                     columns=self.matrix_method.rows
-                    self.table.draw(self.matrix_method.get_total(),columns)
+                    self.table.draw(self.matrix_method.value_table(),columns)
             else:
                 self.sol.text="First create matrix LU"
     def aid(self):
