@@ -715,7 +715,6 @@ class matrix_Factorization_direct_croult(Screen):
     def run(self):
         self.matrix_method=Croult()
         verify=Verify()
-        #error=verify.verify_raices_mult(self.xi.text,self.functions.text,self.iterations.text,self.tolerance.text)
         error=""
         if(error==""):
             matrix_clean=self.clean((self.matrix.text).split("\n"))
@@ -775,22 +774,40 @@ class matrix_Factorization_direct_doolitle(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
+    rund=False
+    table=Tables()
     def run(self):
-        matrix_method=Doolittle()
-        table=Tables()
+        self.matrix_method=Doolittle()
         verify=Verify()
         error=""
         if(error==""):
-            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
-            matrix_method.doolittle_algorithm(matrix_clean,matrixb_clean)
-            columns=matrix_method.rows
-            table.draw(matrix_method.value_table(),columns)
-            self.sol.text=matrix_method.get_results()
-
-
+            self.matrix_method.doolittle_algorithm(matrix_clean)
+            self.sol.text= "Matrix LU ready"
+            self.rund=True
         else:
             show_popWindow("Doolittle ",error)
+    def steps(self):
+        if(self.rund):
+            columns=self.matrix_method.get_steps_rows()
+            table = Tables()
+            table.draw(self.matrix_method.value_table(),columns)
+          
+    def runb(self):     
+        self.table=Tables()
+        matrixb_clean=self.clean((self.matrixb.text).split("\n")) 
+        if(len(matrixb_clean)==0):
+            error="Wrong Matrix Input"
+            show_popWindow("Doolittle",error)
+        else:
+            if(self.rund):
+                self.matrix_method.runb(matrixb_clean)
+                self.sol.text=self.matrix_method.get_results()
+                if(self.matrix_method.get_noerror): #here...
+                    columns=self.matrix_method.rows
+                    self.table.draw(self.matrix_method.value_table(),columns)
+            else:
+                self.sol.text="First create matrix LU"
     def aid(self):
         show_popWindow("Doolittle",Aids.help_doolittle(self))
     def clean(self, matrix):
@@ -937,19 +954,22 @@ class matrix_Factorization_direct_cholesky(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
+    matrix_method = Cholesky()
     
-    def run(self):
-        matrix_method=Cholesky()
+    def runb(self):
         table=Tables()
         verify=Verify()
         error=""
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
-            matrix_clean=self.clean((self.matrix.text).split("\n"))
-            matrix_method.cholesky_algorithm(matrix_clean,matrixb_clean)
-            columns=matrix_method.rows
-            table.draw(matrix_method.value_table(),columns)
-            self.sol.text=matrix_method.get_results()
+            if(len(matrixb_clean)!=0):
+                self.matrix_method.cholesky_algorithm(matrixb_clean)
+                columns=self.matrix_method.rows
+                print(columns)
+                table.draw(self.matrix_method.value_table(),columns)
+                self.sol.text=self.matrix_method.get_results()
+            else:
+                self.sol.text = 'Error: No B matrix was entered'
 
         else:
             show_popWindow("Cholesky ",error)
@@ -973,6 +993,16 @@ class matrix_Factorization_direct_cholesky(Screen):
             return matrix
         except:
             return []
+    def run(self):
+        error=""
+        if(error==""):
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            self.matrix_method.getMatrices(matrix_clean)
+            print(self.matrix_method.LUOutput)
+            self.sol.text=self.matrix_method.LUOutput
+
+        else:
+            show_popWindow("Cholesky ",error)
 
 class matrix_Factorization_direct_diagonal_matrix(Screen):
     pass
