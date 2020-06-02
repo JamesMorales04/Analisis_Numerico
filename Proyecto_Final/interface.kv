@@ -1894,6 +1894,10 @@ WindowManager:
                 font_size:"17sp"  
                 on_press:root.run()    
             SmoothButton:
+                text: "Run B"
+                font_size:"17sp"  
+                on_press:root.runb()
+            SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
                 on_press:root.aid()
@@ -1905,7 +1909,6 @@ WindowManager:
                     root.manager.matrixb_global=root.matrixb.text
                     app.root.current="System_of_equations_matrix_Factorization"  
                     root.manager.transition.direction="right"
-
 
 <Iteratives_System_of_equations_Gauss_Seidel>
     name:"Iteratives_System_of_equations_Gauss_Seidel"

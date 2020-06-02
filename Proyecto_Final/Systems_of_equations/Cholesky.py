@@ -63,19 +63,19 @@ class Cholesky:
         self.matrixA = copy.deepcopy(matrixA)
         self.matrixL = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
         self.matrixU = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
-        self.stepsL = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
-        self.stepsU = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
-        self.totalStepsL = [['' for x in range(len(matrixA)+1)] for y in range(len(matrixA))]
-        self.totalStepsU = [['' for x in range(len(matrixA)+1)] for y in range(len(matrixA))]
-        self.fillStepsLU()
+        #self.stepsL = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
+        #self.stepsU = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
+        #self.totalStepsL = [['' for x in range(len(matrixA)+1)] for y in range(len(matrixA))]
+        #self.totalStepsU = [['' for x in range(len(matrixA)+1)] for y in range(len(matrixA))]
+        #self.fillStepsLU()
 
         try:
             for stage in range(stages):
                 for row in range(stage,stages):
                     valuesSumU = 0
                     valuesSumL = 0
-                    auxL = copy.deepcopy(self.stepsL)
-                    auxU = copy.deepcopy(self.stepsU)
+                    #auxL = copy.deepcopy(self.stepsL)
+                    #auxU = copy.deepcopy(self.stepsU)
                     for col in range(0,stage+1):
                         valuesSumU+=self.matrixL[stage][col]*self.matrixU[col][row]
                         valuesSumL+=self.matrixL[row][col]*self.matrixU[col][stage]
@@ -84,14 +84,14 @@ class Cholesky:
                     if(row==stage):
                         val =matrixA[stage][stage]-valuesSumL
                         self.matrixL[stage][stage] = math.sqrt(val)
-                        self.stepsL[stage][stage] = self.matrixL[stage][stage]
+                        #self.stepsL[stage][stage] = self.matrixL[stage][stage]
                         self.matrixU[stage][stage] = self.matrixL[stage][stage]
-                        self.stepsU[stage][stage] = self.matrixU[stage][stage]
+                        #self.stepsU[stage][stage] = self.matrixU[stage][stage]
                     else:
                         self.matrixL[row][stage] = (matrixA[row][stage] - valuesSumL)/self.matrixL[stage][stage]
-                        self.auxL[row][stage] = self.matrixL[row][stage]
+                        #self.auxL[row][stage] = self.matrixL[row][stage]
                         self.matrixU[stage][row] = (matrixA[stage][row] - valuesSumU)/self.matrixL[stage][stage]
-                        auxU[stage][row] = self.matrixU[stage][row]
+                        #auxU[stage][row] = self.matrixU[stage][row]
             
             self.LUOutput = 'No error while generating matrices L and U'
             self.stateLU= 0
