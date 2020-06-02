@@ -73,7 +73,8 @@ class System_of_equations(Screen):
 class Interpolation(Screen):
     pass
 class Numeric_differentiation(Screen):
-    pass
+    def tipo_de_error(self,tipo):
+        self.tipo_error=tipo
 class Non_linear_equations_search(Screen):
     initial_position=ObjectProperty(None)
     increment=ObjectProperty(None)

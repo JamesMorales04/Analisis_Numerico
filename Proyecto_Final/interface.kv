@@ -21,12 +21,10 @@ WindowManager:
     System_of_equations_lu_Factorization:
     System_of_equations_staggered_pivot:
     System_of_equations_matrix_Factorization:
-    matrix_Factorization_based_gaussian_simple:
-    matrix_Factorization_based_gaussian_pivoting:
     matrix_Factorization_direct_croult:
     matrix_Factorization_direct_doolitle:
     matrix_Factorization_direct_cholesky:
-    matrix_Factorization_direct_diagonal_matrix:
+
     Iteratives_System_of_equations_Gauss_Seidel:
     Iteratives_System_of_equations_jacobi:
     interpolation_linear_spline:
@@ -280,6 +278,12 @@ WindowManager:
 
 <Numeric_differentiation>
     name:"Numeric_differentiation"
+    functions:functions
+    xi:xi
+    xs:xs
+    iterations:iterations
+    tolerance:tolerance
+    sol:sol
     GridLayout:
         size:root.width,root.height
         spacing: '10dp'
@@ -291,23 +295,159 @@ WindowManager:
             Rectangle:
                 pos: self.pos
                 size: self.size
-        Label:
-            text: "Methods"
-            font_size:"30sp"
-            color: 1,1,1,1 
-            bold: True
+        GridLayout:
+            cols: 3
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Function f(x)"
+                font_size:"25sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:functions
+                text:root.manager.function_global
+                multiline:False
+            
+                    
+        GridLayout:
+            cols: 8
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Xi"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:xi
+                multiline:False
+            Label:
+                text: "Xs"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:xs
+                multiline:False
+            Label:
+                text: "iterations"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:iterations
+                multiline:False
+            Label:
+                text: "tolerance"
+                font_size:"15sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                id:tolerance
+                multiline:False
+        GridLayout:
+            spacing: '10dp'
+            cols: 4
+            row_default_height:30
+            row_force_default:True
+            Label:
+                size_hint_x:0.4
+                text: "Solution"
+                width:10
+                font_size:"20sp"
+                color: 1,1,1,1
+                bold: True
+            TextInput:
+                size_hint_x:1
+                id:sol
+                multiline:False
+            Label:
+                size_hint_x:0.2
+                text: ""
+                bold: True
+            GridLayout:
+                spacing: '2dp'
+                cols: 2
+                row_default_height:30
+                row_force_default:True
+                Label:
+                    size_hint_x:0.9
+                    text: "Absolute Error"
+                    color: 1,1,1,1
+                    bold: True
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    active:True
+                    on_active: root.tipo_de_error(True)
+                Label:
+                    size_hint_x:0.8
+                    text: "Relative Error"
+                    color: 1,1,1,1
+                    bold: True
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    on_active: root.tipo_de_error(False)
+                Label:
+                    size_hint_x:0.8
+                    text: "Relative Error"
+                    color: 1,1,1,1
+                    bold: True
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    on_active: root.tipo_de_error(False)
+                Label:
+                    size_hint_x:0.8
+                    text: "Relative Error"
+                    color: 1,1,1,1
+                    bold: True
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    on_active: root.tipo_de_error(False)
+                Label:
+                    size_hint_x:0.8
+                    text: "Relative Error"
+                    color: 1,1,1,1
+                    bold: True
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    on_active: root.tipo_de_error(False)
+                Label:
+                    size_hint_x:0.8
+                    text: "Relative Error"
+                    color: 1,1,1,1
+                    bold: True
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    on_active: root.tipo_de_error(False)
+                Label:
+                    size_hint_x:0.8
+                    text: "Relative Error"
+                    color: 1,1,1,1
+                    bold: True
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    on_active: root.tipo_de_error(False)
         SmoothButton:
-            text: "Numeric differentiation"
-            font_size:"17sp"   
-            on_press:
-                app.root.current="Numeric_differentiation_differentiation"     
-                root.manager.transition.direction="left"
+            text: "Run"
+            font_size:"17sp"  
+            on_press:root.run()    
+
         SmoothButton:
             text: "Back"
             font_size:"17sp"  
             on_press:
-                app.root.current="Menu_Initial"  
+                root.manager.function_global=root.functions.text
+                app.root.current="Non_linear_equations"  
                 root.manager.transition.direction="right"
+
 
 
 
@@ -1339,7 +1479,7 @@ WindowManager:
             SmoothButton:
                 text: "Steps"
                 font_size:"17sp"  
-                on_press:root.steps() 
+                on_press:root.steps()   
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -1528,20 +1668,6 @@ WindowManager:
             color: 1,1,1,1
             bold: True 
 
-
-        SmoothButton:
-            text: "Gaussian simple"
-            font_size:"17sp"   
-            on_press:
-                app.root.current="matrix_Factorization_based_gaussian_simple"     
-                root.manager.transition.direction="left"
-        SmoothButton:
-            text: "Gaussian pivoting"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="matrix_Factorization_based_gaussian_pivoting"     
-                root.manager.transition.direction="left"
-
         SmoothButton:
             text: "Croult"
             font_size:"17sp"  
@@ -1562,36 +1688,13 @@ WindowManager:
                 app.root.current="matrix_Factorization_direct_cholesky"
                 root.manager.transition.direction="left"
         SmoothButton:
-            text: "Diagonal matrix"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="matrix_Factorization_direct_diagonal_matrix"
-                root.manager.transition.direction="left"
-        SmoothButton:
             text: "Back"
             font_size:"17sp"  
             on_press:
                 app.root.current="System_of_equations"  
                 root.manager.transition.direction="right"
 
-<matrix_Factorization_based_gaussian_simple>
-    name:"matrix_Factorization_based_gaussian_simple"
-    GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="System_of_equations_matrix_Factorization"  
-                root.manager.transition.direction="right"
-<matrix_Factorization_based_gaussian_pivoting>
-    name:"matrix_Factorization_based_gaussian_pivoting"
-    GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="System_of_equations_matrix_Factorization"  
-                root.manager.transition.direction="right"
+
 <matrix_Factorization_direct_croult>
     name:"matrix_Factorization_direct_croult"
     matrix:matrix
@@ -1669,7 +1772,7 @@ WindowManager:
                 on_press:
                     root.manager.matrix_global=root.matrix.text
                     root.manager.matrixb_global=root.matrixb.text
-                    app.root.current="System_of_equations"  
+                    app.root.current="System_of_equations_matrix_Factorization"  
                     root.manager.transition.direction="right"
 <matrix_Factorization_direct_doolitle>
     name:"matrix_Factorization_direct_doolitle"
@@ -1734,10 +1837,6 @@ WindowManager:
                 text: "Run B"
                 font_size:"17sp"  
                 on_press:root.runb()
-            SmoothButton:
-                text: "Steps"
-                font_size:"17sp"  
-                on_press:root.steps() 
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -1807,13 +1906,9 @@ WindowManager:
             cols: 1
             spacing: '10dp'
             SmoothButton:
-                text: "Enter A"
+                text: "Run"
                 font_size:"17sp"  
                 on_press:root.run()    
-            SmoothButton:
-                text: "Enter B"
-                font_size:"17sp"  
-                on_press:root.runb()
             SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
@@ -1826,16 +1921,6 @@ WindowManager:
                     root.manager.matrixb_global=root.matrixb.text
                     app.root.current="System_of_equations_matrix_Factorization"  
                     root.manager.transition.direction="right"
-
-<matrix_Factorization_direct_diagonal_matrix>
-    name:"matrix_Factorization_direct_diagonal_matrix"
-    GridLayout:
-        SmoothButton:
-            text: "Back"
-            font_size:"17sp"  
-            on_press:
-                app.root.current="System_of_equations_matrix_Factorization"  
-                root.manager.transition.direction="right"
 
 
 <Iteratives_System_of_equations_Gauss_Seidel>
