@@ -40,3 +40,17 @@ class LinearSpline:
             results+=f""+(str)(i[0])+"\n"
             aux+=1
         return results
+
+    def check_values(self, ar, br):
+        if not ar or not br:
+            return False
+        arr = ar[0]
+        arr.sort()
+        iter = 1
+        for i in arr:
+            if i != arr[iter] and iter != len(arr) and i != 0:
+                iter += 1
+            elif iter == len(arr):
+                return True
+            else:
+                return False
