@@ -816,7 +816,9 @@ class interpolation_quadratic_spline(Screen):
         table=Tables()
         verify=Verify()
         error=""
-        if(error==""):
+        splineX_clean=self.clean((self.splineY.text).split("\n"))
+        splineY_clean=self.clean((self.splineX.text).split("\n"))
+        if(spline_method.check_values(splineX_clean,splineY_clean)):
             splineX_clean=self.clean((self.splineY.text).split("\n"))
             splineY_clean=self.clean((self.splineX.text).split("\n"))
             spline_method.algorithm_quadratic_spline(splineX_clean, splineY_clean)
@@ -824,9 +826,9 @@ class interpolation_quadratic_spline(Screen):
             table.draw(spline_method.value_table(),columns)
             self.sol.text=spline_method.get_results()
         else:
-            show_popWindow("Linear Spline ",error)
+            show_popWindow("Quadratic Spline ","No valid values, please check it")
     def aid(self):
-        show_popWindow("Linear Spline",Aids.help_doolittle(self))
+        show_popWindow("Quadratic Spline",Aids.help_doolittle(self))
     def clean(self, x):
         try:
             for i in range(0,len(x)):
@@ -855,7 +857,9 @@ class interpolation_cubic_spline(Screen):
         table=Tables()
         verify=Verify()
         error=""
-        if(error==""):
+        splineX_clean=self.clean((self.splineY.text).split("\n"))
+        splineY_clean=self.clean((self.splineX.text).split("\n"))
+        if(spline_method.check_values(splineX_clean,splineY_clean)):
             splineX_clean=self.clean((self.splineY.text).split("\n"))
             splineY_clean=self.clean((self.splineX.text).split("\n"))
             spline_method.algorithm_cubic_spline(splineX_clean, splineY_clean)
@@ -863,9 +867,9 @@ class interpolation_cubic_spline(Screen):
             table.draw(spline_method.value_table(),columns)
             self.sol.text=spline_method.get_results()
         else:
-            show_popWindow("Linear Spline ",error)
+            show_popWindow("Cubic Spline ","No valid values, please check it")
     def aid(self):
-        show_popWindow("Linear Spline",Aids.help_doolittle(self))
+        show_popWindow("Cubic Spline",Aids.help_doolittle(self))
     def clean(self, x):
         try:
             for i in range(0,len(x)):
@@ -894,15 +898,15 @@ class interpolation_linear_spline(Screen):
         table=Tables()
         verify=Verify()
         error=""
-        if(error==""):
-            splineX_clean=self.clean((self.splineY.text).split("\n"))
-            splineY_clean=self.clean((self.splineX.text).split("\n"))
+        splineX_clean=self.clean((self.splineY.text).split("\n"))
+        splineY_clean=self.clean((self.splineX.text).split("\n"))
+        if(spline_method.check_values(splineX_clean,splineY_clean)):
             spline_method.algorithm_linearSpline(splineX_clean, splineY_clean)
             columns=["P(x)","Interval"]
             table.draw(spline_method.value_table(),columns)
             self.sol.text=spline_method.get_results()
         else:
-            show_popWindow("Linear Spline ",error)
+            show_popWindow("Linear Spline ","No valid values, please check it")
     def aid(self):
         show_popWindow("Linear Spline",Aids.help_doolittle(self))
     def clean(self, x):
