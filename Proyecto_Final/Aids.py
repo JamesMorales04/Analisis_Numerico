@@ -1,9 +1,8 @@
 class Aids:
-
     def help_search(self):
         data=open("Aids\\NonLinearEq\\Requisites_is.txt", "r")
         return data.read()
-        
+
     def help_bisection(self):
         data=open("Aids\\NonLinearEq\\Requisites_bisection.txt", "r")
         return data.read()

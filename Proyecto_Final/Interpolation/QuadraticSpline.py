@@ -77,15 +77,15 @@ class QuadraticSpline:
             results+=f""+(str)(i)+"\n"
         return results
     def check_values(self, ar,br):
-        if not ar or not br:
+        if not ar[0] or not br[0]:
             return False
         arr = ar[0]
         arr.sort()
         iter = 1
         for i in arr:
-            if i != arr[iter] and iter != len(arr) and i != 0:
+            if i != arr[iter] and i != 0 and iter != (len(arr)-1):
                 iter += 1
-            elif iter == len(arr):
+            elif iter != (len(arr)-1):
                 return True
             else:
-                return False
+                return True
