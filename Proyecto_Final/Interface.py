@@ -937,19 +937,22 @@ class matrix_Factorization_direct_cholesky(Screen):
     matrix=ObjectProperty(None)
     matrixb=ObjectProperty(None)
     sol=ObjectProperty(None)
+    matrix_method = Cholesky()
     
-    def run(self):
-        matrix_method=Cholesky()
+    def runb(self):
         table=Tables()
         verify=Verify()
         error=""
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
-            matrix_clean=self.clean((self.matrix.text).split("\n"))
-            matrix_method.cholesky_algorithm(matrix_clean,matrixb_clean)
-            columns=matrix_method.rows
-            table.draw(matrix_method.value_table(),columns)
-            self.sol.text=matrix_method.get_results()
+            if(len(matrixb_clean)!=0):
+                self.matrix_method.cholesky_algorithm(matrixb_clean)
+                columns=self.matrix_method.rows
+                print(columns)
+                table.draw(self.matrix_method.value_table(),columns)
+                self.sol.text=self.matrix_method.get_results()
+            else:
+                self.sol.text = 'Error: No B matrix was entered'
 
         else:
             show_popWindow("Cholesky ",error)
@@ -973,6 +976,16 @@ class matrix_Factorization_direct_cholesky(Screen):
             return matrix
         except:
             return []
+    def run(self):
+        error=""
+        if(error==""):
+            matrix_clean=self.clean((self.matrix.text).split("\n"))
+            self.matrix_method.getMatrices(matrix_clean)
+            print(self.matrix_method.LUOutput)
+            self.sol.text=self.matrix_method.LUOutput
+
+        else:
+            show_popWindow("Cholesky ",error)
 
 class matrix_Factorization_direct_diagonal_matrix(Screen):
     pass
