@@ -24,5 +24,7 @@ class GenTrapezium:
         except Exception as e:
             print(e)
             self.result = 'Error: Invalid entries'
+        return str(self.result)
+
     def get_Result(self):
         return self.result

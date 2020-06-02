@@ -38,6 +38,10 @@ from Interpolation.CubicSpline import CubicSpline
 from Interpolation.QuadraticSpline import QuadraticSpline
 from NumericDiff.trapezium import trapezium
 from NumericDiff.gentrapezium import GenTrapezium
+from NumericDiff.gensimpson3 import gensimpson3
+from NumericDiff.gensimpson8 import GenSimpson38
+from NumericDiff.simpson3 import Simpson13
+from NumericDiff.simpson8 import Simpson38
 from Verify import Verify
 from Functions import Functions
 from Graph import Graph
@@ -86,22 +90,20 @@ class Numeric_differentiation(Screen):
         if (self.method == ""):
             print("Nothing")
         elif (self.method == "Trapezium"):
-            print("Trap")
             SimpleTrapezium= trapezium()
             self.sol.text= SimpleTrapezium.algorithm_trapezium(Function,self.xi.text,self.xs.text)
         elif (self.method == "Generalized Trapezium"):
-            print("Trap")
             genTrapezium = GenTrapezium()
-            #genTrapezium.general_trapezium_algorithm(Function,self)           
+            self.sol.text= genTrapezium.general_trapezium_algorithm(Function,self)           
         elif (self.method == "Simpson8"):
-            print("Trap")
-            #self.sol.text= SimpleTrapezium.algorithm_trapezium()
+            simpson8= Simpson38()
+            self.sol.text= simpson8.simpson_38_algorithm()
         elif (self.method == "Generalized Simpson8"):
-            print("Trap")
-            #self.sol.text= SimpleTrapezium.algorithm_trapezium()
+            genSimpson8= GenSimpson38()
+            self.sol.text= genSimpson8.general_simpson38_algorithm()
         elif (self.method == "Generalized Simpson3"):
-            print("Trap")
-            #self.sol.text= SimpleTrapezium.algorithm_trapezium()    
+            genSimpson3 = GenSimpson38()
+            self.sol.text= genSimpson3.general_simpson38_algorithm()   
 
     def Trapezium(self):
         self.method= "Trapezium"

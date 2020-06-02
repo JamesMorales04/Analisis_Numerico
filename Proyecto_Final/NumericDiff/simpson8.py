@@ -19,6 +19,7 @@ class Simpson38:
         sumYs = initY+finalY+3*function.evaluar(xi+h)+3*function.evaluar(xi+2*h)
 
         self.result = str(h*3/8*sumYs)
+        return str(self.result)
     
     def get_Result(self):
         return self.result

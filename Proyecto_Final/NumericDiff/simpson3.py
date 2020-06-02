@@ -13,6 +13,7 @@ class Simpson13:
         finalY = entry.evaluar(float(xs))
         middleY = entry.evaluar(float(xi)+float(h))
         self.result = str(h/3*(initY+4*middleY+finalY))
+        return str(self.result)
 
     def get_Result(self):
         return self.result

@@ -2,12 +2,12 @@ import math
 import sympy as sp
 from sympy.parsing.sympy_parser import parse_expr
 from Functions import *
-class NewtonInterpolation:
+class gensimpson3:
     def __init__(self):
         self.xn=""     #All the x values 
         self.result = ''
 
-    def algorithm_newtonInterpolation(self, entry, xi,xs,h):
+    def algorithm_gensimpson3(self, entry, xi,xs,h):
         xi = float(xi)
         xs = float(xs)
         initY = entry.evaluar(xi)
@@ -25,7 +25,7 @@ class NewtonInterpolation:
             else:
                 sumImpar+=valY
         self.result=str(h/3*(total+4*sumPar+2*sumImpar))
-    
+        return str(self.result)
     def get_Result(self):
         return self.result
 """
