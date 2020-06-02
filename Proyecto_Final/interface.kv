@@ -2157,9 +2157,9 @@ WindowManager:
                 text: "Back"
                 font_size:"17sp"  
                 on_press:
-                    root.manager.splineX_global=root.splineX.text
-                    root.manager.splineY_global=root.splineY.text
-                    app.root.current="Menu_Initial" 
+                    root.manager.splineX_global=root.splineY.text
+                    root.manager.splineY_global=root.splineX.text
+                    app.root.current="Interpolation_splines" 
                     root.manager.transition.direction="right"
 
 <interpolation_quadratic_spline>
@@ -2229,9 +2229,9 @@ WindowManager:
                 text: "Back"
                 font_size:"17sp"  
                 on_press:
-                    root.manager.splineX_global=root.splineX.text
-                    root.manager.splineY_global=root.splineY.text
-                    app.root.current="Menu_Initial" 
+                    root.manager.splineX_global=root.splineY.text
+                    root.manager.splineY_global=root.splineX.text
+                    app.root.current="Interpolation_splines" 
                     root.manager.transition.direction="right"
 
 <interpolation_linear_spline>
@@ -2301,8 +2301,8 @@ WindowManager:
                 text: "Back"
                 font_size:"17sp"  
                 on_press:
-                    root.manager.splineX_global=root.splineX.text
-                    root.manager.splineY_global=root.splineY.text
+                    root.manager.splineX_global=root.splineY.text
+                    root.manager.splineY_global=root.splineX.text
                     app.root.current="Interpolation_splines" 
                     root.manager.transition.direction="right"
 
