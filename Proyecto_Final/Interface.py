@@ -36,6 +36,7 @@ from Interpolation.Lagrange import Lagrange
 from Interpolation.LinearSpline import LinearSpline
 from Interpolation.CubicSpline import CubicSpline
 from Interpolation.QuadraticSpline import QuadraticSpline
+from NumericDiff.trapezium import trapezium
 from Verify import Verify
 from Functions import Functions
 from Graph import Graph
@@ -73,8 +74,46 @@ class System_of_equations(Screen):
 class Interpolation(Screen):
     pass
 class Numeric_differentiation(Screen):
-    def tipo_de_error(self,tipo):
-        self.tipo_error=tipo
+    functions= ObjectProperty(None)
+    xi= ObjectProperty(None)
+    xs= ObjectProperty(None)
+    iterations= ObjectProperty(None)
+    sol= ObjectProperty(None)
+    iterations= ObjectProperty(None)
+    def run(self):
+        Function=Functions(self.functions.text)
+        if (self.method == ""):
+            print("Nothing")
+        elif (self.method == "Trapezium"):
+            print("Trap")
+            SimpleTrapezium= trapezium()
+            self.sol.text= SimpleTrapezium.algorithm_trapezium(Function,self.xi.text,self.xs.text)
+        elif (self.method == "Generalized Trapezium"):
+            print("Trap")
+            #self.sol.text= SimpleTrapezium.algorithm_trapezium()            
+        elif (self.method == "Simpson8"):
+            print("Trap")
+            #self.sol.text= SimpleTrapezium.algorithm_trapezium()
+        elif (self.method == "Generalized Simpson8"):
+            print("Trap")
+            #self.sol.text= SimpleTrapezium.algorithm_trapezium()
+        elif (self.method == "Generalized Simpson3"):
+            print("Trap")
+            #self.sol.text= SimpleTrapezium.algorithm_trapezium()    
+
+    def Trapezium(self):
+        self.method= "Trapezium"
+    def GeneralizedTrapezium(self):
+        self.method= "Generalized Trapezium"
+    def Simpson8(self):
+        self.method="Simpson8"
+    def GeneralizedSimpson8(self):
+        self.method="Generalized Simpson8"
+    def Simpson3(self):      
+        self.method="Simpson3"
+    def GeneralizedSimpson3(self):
+        self.method="Generalized Simpson3"
+        
 class Non_linear_equations_search(Screen):
     initial_position=ObjectProperty(None)
     increment=ObjectProperty(None)
@@ -625,7 +664,7 @@ class Interpolation_newton(Screen):
         Function=Functions(self.functions.text)
         error= ""
         if (self.functions.text == "" or self.numbers.text == ""):
-            error= "Campo vacío\n"
+            error= "Empty field\n"
         if (verify.verify_function(self.functions.text,100)):
             error+= "Incorrect function"
         if (error==""):
@@ -699,8 +738,6 @@ class Interpolation_lagrange(Screen):
             return []
 
 class Interpolation_splines(Screen):
-    pass
-class Numeric_differentiation_differentiation(Screen):
     pass
 class matrix_Factorization_based_gaussian_simple(Screen):
     pass

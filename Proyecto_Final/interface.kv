@@ -281,7 +281,6 @@ WindowManager:
     xi:xi
     xs:xs
     iterations:iterations
-    tolerance:tolerance
     sol:sol
     GridLayout:
         size:root.width,root.height
@@ -330,30 +329,23 @@ WindowManager:
                 id:xs
                 multiline:False
             Label:
-                text: "iterations"
+                text: "n"
                 font_size:"15sp"
                 color: 1,1,1,1
                 bold: True
             TextInput:
                 id:iterations
                 multiline:False
-            Label:
-                text: "tolerance"
-                font_size:"15sp"
-                color: 1,1,1,1
-                bold: True
-            TextInput:
-                id:tolerance
-                multiline:False
+
         GridLayout:
-            spacing: '10dp'
-            cols: 4
+            spacing: '3dp'
+            cols: 3
             row_default_height:30
             row_force_default:True
             Label:
                 size_hint_x:0.4
                 text: "Solution"
-                width:10
+                width:30
                 font_size:"20sp"
                 color: 1,1,1,1
                 bold: True
@@ -365,86 +357,79 @@ WindowManager:
                 size_hint_x:0.2
                 text: ""
                 bold: True
-            GridLayout:
-                spacing: '2dp'
-                cols: 2
-                row_default_height:30
-                row_force_default:True
-                Label:
-                    size_hint_x:0.9
-                    text: "Absolute Error"
-                    color: 1,1,1,1
-                    bold: True
-                CheckBox:
-                    group: "tipo_de_error"
-                    color:  0,0,0,1 
-                    active:True
-                    on_active: root.tipo_de_error(True)
-                Label:
-                    size_hint_x:0.8
-                    text: "Relative Error"
-                    color: 1,1,1,1
-                    bold: True
-                CheckBox:
-                    group: "tipo_de_error"
-                    color:  0,0,0,1 
-                    on_active: root.tipo_de_error(False)
-                Label:
-                    size_hint_x:0.8
-                    text: "Relative Error"
-                    color: 1,1,1,1
-                    bold: True
-                CheckBox:
-                    group: "tipo_de_error"
-                    color:  0,0,0,1 
-                    on_active: root.tipo_de_error(False)
-                Label:
-                    size_hint_x:0.8
-                    text: "Relative Error"
-                    color: 1,1,1,1
-                    bold: True
-                CheckBox:
-                    group: "tipo_de_error"
-                    color:  0,0,0,1 
-                    on_active: root.tipo_de_error(False)
-                Label:
-                    size_hint_x:0.8
-                    text: "Relative Error"
-                    color: 1,1,1,1
-                    bold: True
-                CheckBox:
-                    group: "tipo_de_error"
-                    color:  0,0,0,1 
-                    on_active: root.tipo_de_error(False)
-                Label:
-                    size_hint_x:0.8
-                    text: "Relative Error"
-                    color: 1,1,1,1
-                    bold: True
-                CheckBox:
-                    group: "tipo_de_error"
-                    color:  0,0,0,1 
-                    on_active: root.tipo_de_error(False)
-                Label:
-                    size_hint_x:0.8
-                    text: "Relative Error"
-                    color: 1,1,1,1
-                    bold: True
-                CheckBox:
-                    group: "tipo_de_error"
-                    color:  0,0,0,1 
-                    on_active: root.tipo_de_error(False)
+        
+        GridLayout:
+            spacing: '10dp'
+            padding:30,0
+            cols: 4
+            row_default_height:20
+            row_force_default:True
+            Label:
+                size_hint_x:0.3
+                text: "Simple trapezium ."
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                active:True
+                on_active: root.Trapezium()
+            Label:
+                size_hint_x:0.3
+                text: "Generalized trapezium   "
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                on_active: root.GeneralizedTrapezium()
+            Label:
+                size_hint_x:0.3
+                text: "Simple simpson 1/3"
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                on_active: root.Simpson3()
+            Label:
+                size_hint_x:0.3
+                text: "Generalized simpson 1/3"
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                on_active: root.GeneralizedSimpson3()
+            Label:
+                size_hint_x:0.3
+                text: "Simple simpson 3/8"
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                on_active: root.Simpson8()
+            Label:
+                size_hint_x:0.3
+                text: "Generalized simpson 3/8"
+                color: 1,1,1,1
+                bold: True
+            CheckBox:
+                group: "type"
+                color:  0,0,0,1 
+                on_active: root.GeneralizedSimpson8()
         SmoothButton:
             text: "Run"
-            font_size:"17sp"  
+            font_size:"15sp"  
             on_press:root.run()    
 
         SmoothButton:
             text: "Back"
-            font_size:"17sp"  
+            font_size:"15sp"  
             on_press:
                 root.manager.function_global=root.functions.text
-                app.root.current="Non_linear_equations"  
+                app.root.current="Menu_Initial"  
                 root.manager.transition.direction="right"
 
 
