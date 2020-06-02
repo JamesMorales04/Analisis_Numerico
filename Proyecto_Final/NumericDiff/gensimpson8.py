@@ -27,7 +27,7 @@ class GenSimpson38:
                 sumNotMultThree+=valY
         
         self.result=str(3/8*h*(sumTotal+2*sumMultThree+3*sumNotMultThree))
-        return self.result
+        return str(self.result)
 
     def get_Result(self):
         return self.result
