@@ -10,6 +10,10 @@ class Cholesky:
         self.matrixAB = []
         self.original = []
         self.total = []
+        self.totalStepsL = []
+        self.totalStepsU = []
+        self.stepsL = []
+        self.stepsU = []
         self.matrixL = []
         self.matrixU = []
         self.matrixUZ = []
@@ -59,23 +63,35 @@ class Cholesky:
         self.matrixA = copy.deepcopy(matrixA)
         self.matrixL = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
         self.matrixU = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
+        self.stepsL = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
+        self.stepsU = [[0 for x in range(len(matrixA))] for y in range(len(matrixA))]
+        self.totalStepsL = [['' for x in range(len(matrixA)+1)] for y in range(len(matrixA))]
+        self.totalStepsU = [['' for x in range(len(matrixA)+1)] for y in range(len(matrixA))]
+        self.fillStepsLU()
 
         try:
             for stage in range(stages):
                 for row in range(stage,stages):
                     valuesSumU = 0
                     valuesSumL = 0
+                    auxL = copy.deepcopy(self.stepsL)
+                    auxU = copy.deepcopy(self.stepsU)
                     for col in range(0,stage+1):
                         valuesSumU+=self.matrixL[stage][col]*self.matrixU[col][row]
                         valuesSumL+=self.matrixL[row][col]*self.matrixU[col][stage]
 
+
                     if(row==stage):
                         val =matrixA[stage][stage]-valuesSumL
                         self.matrixL[stage][stage] = math.sqrt(val)
+                        self.stepsL[stage][stage] = self.matrixL[stage][stage]
                         self.matrixU[stage][stage] = self.matrixL[stage][stage]
+                        self.stepsU[stage][stage] = self.matrixU[stage][stage]
                     else:
                         self.matrixL[row][stage] = (matrixA[row][stage] - valuesSumL)/self.matrixL[stage][stage]
+                        self.auxL[row][stage] = self.matrixL[row][stage]
                         self.matrixU[stage][row] = (matrixA[stage][row] - valuesSumU)/self.matrixL[stage][stage]
+                        auxU[stage][row] = self.matrixU[stage][row]
             
             self.LUOutput = 'No error while generating matrices L and U'
             self.stateLU= 0
@@ -93,6 +109,16 @@ class Cholesky:
     def printMatrix(self,matrix):
         for i in matrix:
             print(i)
+            
+    def fillStepsLU(self):
+        for i in range(len(self.matrixL)):
+            self.stepsL[i][i] = f"L{i+1}{i+1}"
+            for j in range(i):
+                self.stepsL[i][j] =f"L{i+1}{j+1}"
+
+        for i in range(len(self.matrixU)):
+            for j in range(i,len(self.matrixU)):
+                self.stepsU[i][j] = f"U{i+1}{j+1}"
 
     def __getVarsValuesZ(self):
 
@@ -176,8 +202,8 @@ if __name__ == "__main__":
     b = [[-12,13,31,-32]]
     #a = [[2,-3,4,1],[-4,2,1,-2],[1,3,-5,3],[-3,-1,1,-1]]
     ch.getMatrices(a)
-    print('State LU .'+ch.LUOutput)
-    print(ch.stateLU)
+    ch.printMatrix(ch.stepsU)
+    ch.printMatrix(ch.stepsL)
     #b = [[10,-10,32,-21]]
     ch.cholesky_algorithm(b)
     print(ch.resultX)

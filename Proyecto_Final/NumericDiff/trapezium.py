@@ -5,6 +5,7 @@ from Functions import *
 class trapezium:
     def __init__(self):
         self.value= "null"
+        self.result = 0
 
     def algorithm_trapezium(self, entry, xi,xs):
         initial= entry.evaluar(xi)

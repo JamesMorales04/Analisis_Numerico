@@ -37,6 +37,7 @@ from Interpolation.LinearSpline import LinearSpline
 from Interpolation.CubicSpline import CubicSpline
 from Interpolation.QuadraticSpline import QuadraticSpline
 from NumericDiff.trapezium import trapezium
+from NumericDiff.gentrapezium import GenTrapezium
 from Verify import Verify
 from Functions import Functions
 from Graph import Graph
@@ -90,7 +91,8 @@ class Numeric_differentiation(Screen):
             self.sol.text= SimpleTrapezium.algorithm_trapezium(Function,self.xi.text,self.xs.text)
         elif (self.method == "Generalized Trapezium"):
             print("Trap")
-            #self.sol.text= SimpleTrapezium.algorithm_trapezium()            
+            GenTrapezium genTrapezium = GenTrapezium()
+            #genTrapezium.general_trapezium_algorithm(Function,self)           
         elif (self.method == "Simpson8"):
             print("Trap")
             #self.sol.text= SimpleTrapezium.algorithm_trapezium()

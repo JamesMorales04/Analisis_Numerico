@@ -4,45 +4,30 @@ from sympy.parsing.sympy_parser import parse_expr
 from Functions import *
 class NewtonInterpolation:
     def __init__(self):
-        self.polinomial=""
         self.xn=""     #All the x values 
-        self.rows=[]
+        self.result = ''
 
-    def algorithm_newtonInterpolation(self, entry, xn):
-        self.matrix = []
-        self.xn= xn[0]
-        length= len(self.xn)
-        for i in range (length):
-            self.matrix.append([0] * (length + 1))
-            self.matrix[i][0] = self.xn[i]
-            self.matrix[i][1] = entry.evaluar(self.xn[i])
-
-        self.polinomial = "P(X) = "+ str(self.matrix[0][1])
-
-        for i in range(2,(length+1)): #  col and rows
-            for j in range(i-1,length):
-                self.matrix[j][i] = (self.matrix[j][i-1]-self.matrix[j-1][i-1])/(self.matrix[j][0]-self.matrix[j-i+1][0])
-                if (j==i-1):
-                    self.polinomial += " + "+ str(self.matrix[j][i])
-                    for j in range (0,j): #j??
-                        self.polinomial += "(x-" + str(self.matrix[j][0]) + ")"
-        self.polinomial= self.polinomial.replace("+ -", "-").replace(" + -","-") 
-        print("---------------------------")
-        self.row_definition()
-        print(self.matrix)
-
-
-    def value_table(self):
-        return self.matrix
+    def algorithm_newtonInterpolation(self, entry, xi,xs,h):
+        xi = float(xi)
+        xs = float(xs)
+        initY = entry.evaluar(xi)
+        finalY = entry.evaluar(xs)
+        total = initY+finalY
+        lastX = xi
+        sumPar = 0
+        sumImpar = 0
+        count = 1
+        for i in range(xi+h,xs,h):
+            count+=1
+            valY = entry.evaluar(i)
+            if(count%2==0):
+                sumPar+=valY
+            else:
+                sumImpar+=valY
+        self.result=str(h/3*(total+4*sumPar+2*sumImpar))
     
-    def row_definition(self):
-        self.rows.append("Xn")
-        self.rows.append("F(Xn)")
-        for i in range(1,len((self.matrix[0]))-1): #-1?
-            self.rows.append(i)
-        return self.rows
-    def get_sol(self):
-        return self.polinomial
+    def get_Result(self):
+        return self.result
 """
 n= NewtonInterpolation()
 
