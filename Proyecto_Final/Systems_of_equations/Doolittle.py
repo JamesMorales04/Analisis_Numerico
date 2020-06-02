@@ -11,6 +11,9 @@ class Doolittle:
         self.result=[]
         self.rows = []
         self.xvalues=[]
+        self.stepsL=[]
+        self.stepsU=[]
+        self.steps_row= []
         getcontext().prec = 25
 
     def doolittle_algorithm(self,matrr,matrixb):
@@ -35,6 +38,9 @@ class Doolittle:
                 for p in range(k):
                     sum += self.l[i][p]*self.u[p][k]
                 self.l[i][k] = (self.original[i][k] - sum)/self.u[k][k]
+            self.stepsL.append(copy.deepcopy(self.L))
+            self.stepsU.append(copy.deepcopy(self.U))
+        self.get_steps()
         for i in range (0,length):
             self.l[i][i] = 1        
         
@@ -119,7 +125,24 @@ class Doolittle:
             for j in range(len(self.xvalues[0])):
                 self.total[i].append(Decimal(self.xvalues[i][j]))
         return self.total
+    def get_steps(self):
+        aux=[]
+        for i in range(0,len(self.L)):
+            aux.append([f"Matrix L: Step{i}"])
+            for j in self.L[i]:
+                aux.append(j)
+            aux.append([f"Matrix U: Step{i}"])
+            for j in self.stepsU[i]:
+                aux.append(j)
 
+        for i in range(1,len(self.L[0][0])+1):
+            self.steps_row.append(f"x{i}")
+        self.stepsL=aux
+    def get_steps_table(self):
+        return self.L
+
+    def get_steps_rows(self):
+        return self.steps_row
     def get_results(self):
         results=""
         aux=1
