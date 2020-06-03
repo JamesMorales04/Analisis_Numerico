@@ -1,0 +1,24 @@
+Newtons Method Explanation
+
+Paramenters:
+-X0: starting value given by the user. Should be in the functions domain.
+-tol: threshold for the maximum acceptable error. Might be greater or equal to cero (tol>=0).
+-iter: threshold for the maximum number of iterations. Can't be less tha one (iter>=1).
+
+This method is a variance of the fixed point method, which uses the given function and its first derivative
+to calcute the next value and by doing so, aproximate or get the solution value (root value).
+
+When aplying this method, we first check whether X0 is the root by calculating Y0=F(X0), check that
+the tolerance (tol) is greater or equal to cero (tol>=0), check that the iterations number is greater or
+equal to one (iter>=1) and if the first derivative of the function is equal to cero (F'(X)=0), in which
+case, we will end the process.Next, we proceed to calculte the next x axis value with the function:
+
+Xi+1 = X0 - F(X0)/F'(X0)
+
+The error with the following equation:
+
+error = abs((Xi+1-X0)/Xi+1)  Note: abs stands for absolute value.
+
+Then, we increment the iteration counter (counter+=1) and repeat this process until one of counter>iter,
+error<=tol, F'(Xi+1)=0 or F(Xi+1)=0 is met. Finally, we check which of the later conditions was met and return
+it to the user.

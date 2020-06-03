@@ -1,0 +1,28 @@
+Secant Method Explanation
+
+This method is a variance of the fixed point method, which uses the given function and that unlike 
+newton there is no need to use the derivative to calculate the following value
+and by doing so, aproximate or get the solution value (root value).
+
+A principal difference between fixed point and newton is that you need 2 inicial values.
+
+Paramenters:
+-Xn and Xn-1: starting values given by the user. (the chosen point in the interval can affect 
+the number of iterations or the convergence of the method)
+-Tolerance: threshold for the maximum acceptable error. Might be greater or equal to cero (tol>=0).
+-Iterations: threshold for the maximum number of iterations. Can't be less that one (iter>=1).
+
+
+When aplying this method, we first check whether [xn,xn-1] are equal to cero by calculating f(xi) and f(xu), 
+check thatthe tolerance is greater or equal to cero, check that the iterations number is greater or
+equal to one, in which case, we will end the process. Next we proceed to calculte the next xm:
+
+X1 = Xu -((F(xu)*(xu-xi))/(f(xu)-f(xi)))
+
+The error with the following equation:
+
+error = abs((X1-Xu)/X1)  Note: abs stands for absolute value.
+
+Then, we increment the iteration counter and repeat this process until one of counter>iter,
+error<=tol, F(Xi)=0 or F(Xu)=0 is met. Finally, we check which of the later conditions was met and return
+it to the user.

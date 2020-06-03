@@ -1,0 +1,11 @@
+Please check every X value is diferen with other values and any X is not 0
+
+How Cubic Splines Words?
+
+In this case, each polynomial P (x) through which we build the Splines have degree 3.
+This means that it will have the form P (x) = ax ^ 3 + bx ^ 2 + cx + d
+In this case we will have four unknowns for each interval (a, b, c, d), and a new condition for each point common to two intervals, with respect to the second derivative:
+
+Let the parts of the piecewise function P (x) pass through that point. That is, the two P_ {n} (x) that surround the f (x) that we want to approximate, are equal to f (x) at each of these points.
+That the derivative at one point always coincides for both "sides" of the piecewise defined function that passes through such common point.
+That the second derivative at one point always coincides for both "sides" of the piecewise defined function that passes through such common point.

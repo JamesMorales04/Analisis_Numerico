@@ -1,0 +1,15 @@
+Please check every X value is diferen with other values and any X is not 0
+
+How Quadratic Splines Words?
+
+In this case, the polynomials P (x) through which we build the Spline have degree 2. This means that it will have the form P (x) = ax 2 + bx + c
+As in linear segmental interpolation, we will have n-1 equations where n are the number of points on which the function is defined.
+The quadratic interpolation will assure us that the function that we generate in pieces with the different P (x) will be continuous, since to calculate the coefficients that fit the polynomials to the points, we will determine as conditions:
+
+Let the parts of the piecewise function P (x) pass through those points. That is, the two P_ {n} (x) that surround f (x) that we want to approximate, are equal to f (x) at each of these points.
+That the derivative at one point always coincides for both "sides" of the piecewise defined function that passes through such common point.
+This however is not enough, and we need one more condition. Why?. We have 3 unknowns for each P (x).
+In a simple case with f (x) defined at three points and two equations P (x) to approximate it, we will have six unknowns in total. To solve this we would need six equations, but we will have only five:
+four that equate P (x) with the value of f (x) at each point (two for each interval), and the fifth by equating the derivative at the point common to the two P (x).
+
+A sixth equation is needed, where is it drawn from? This is usually done with the value of the derivative at some point, to which one of the P (x) is forced.
