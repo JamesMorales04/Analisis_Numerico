@@ -1037,7 +1037,7 @@ class matrix_Factorization_direct_cholesky(Screen):
         else:
             show_popWindow("Cholesky ",error)
     def aid(self):
-        show_popWindow("Cholesky",Aids.help_doolittle(self))
+        show_popWindow("Cholesky",Aids.help_cholesky(self))
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):

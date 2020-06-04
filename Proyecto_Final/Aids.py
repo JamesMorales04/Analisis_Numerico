@@ -43,6 +43,10 @@ class Aids:
         data=open("Aids\\SystemOfEq\\DoolittleExplanation.txt", "r")
         return data.read()
 
+    def help_cholesky(self):
+        data=open("Aids\\SystemOfEq\\CholeskyExplanation.txt", "r")
+        return data.read()
+
     def help_croult(self):
         data=open("Aids\\SystemOfEq\\CroultExplanation.txt", "r")
         return data.read()
