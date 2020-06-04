@@ -142,19 +142,20 @@ class Doolittle:
         aux=[]
         for i in range(0,len(self.stepsL)):
             aux.append([f"Matrix L: Step{i}"])
-            for j in self.l[i]:
+            for j in self.stepsL[i]:
                 aux.append(j)
             aux.append([f"Matrix U: Step{i}"])
             for j in self.stepsU[i]:
                 aux.append(j)
 
-        for i in range(1,len(self.l[0])+1):
+        for i in range(1,len(self.stepsL[0][0])+1):
             self.steps_row.append(f"x{i}")
         self.stepsL=aux
     def get_steps_table(self):
         return self.stepsL
 
     def get_steps_rows(self):
+        print("Or here?")
         return self.steps_row
 
     def get_results(self):
