@@ -1,0 +1,15 @@
+SCALED PIVOTING
+
+Also called staggered is the one in which in each step of the Gaussian elimination the
+best pivot is selected among the candidates (those in the column), the one that is May
+proportionally speaking with respect to the elements in its own row.
+The largest number is found proportionally because it is known that all the equations are
+not with the same units so they cannot be directly compared.
+Steps to follow:
+ The system of equations is written in a matrix form.
+ The number of the column that is being evaluated is taken and divided by the
+greater number of the same row.
+ The largest number in absolute value of the column is selected according to the
+proportion already made.
+ The Gaussian elimination process is carried out.
+ The process is repeated for the following columns until the system is finished.

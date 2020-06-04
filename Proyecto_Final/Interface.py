@@ -548,7 +548,7 @@ class System_of_equations_staggered_pivot(Screen):
         else:
             show_popWindow("Staggered pivot ",error)
     def aid(self):
-        show_popWindow("Staggered pivoting",Aids.help_partial_pivot(self))
+        show_popWindow("Staggered pivoting",Aids.help_staggeredPivoting(self))
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):
@@ -599,7 +599,7 @@ class Iteratives_System_of_equations_Gauss_Seidel(Screen):
         else:
             show_popWindow("Gauss Seidel",error)
     def aid(self):
-        show_popWindow("Gauss Seidel",Aids.help_gaussian_elimination(self))
+        show_popWindow("Gauss Seidel",Aids.help_GaussSeidel(self))
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):
@@ -647,7 +647,7 @@ class Iteratives_System_of_equations_jacobi(Screen):
         else:
             show_popWindow("Jacobi",error)
     def aid(self):
-        show_popWindow("Jacobi",Aids.help_gaussian_elimination(self))
+        show_popWindow("Jacobi",Aids.help_jacobi(self))
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):
@@ -685,7 +685,7 @@ class Interpolation_newton(Screen):
         else:
             show_popWindow("Interpolation Newton", error)
     def aid(self):
-        print("Not yet")
+        show_popWindow("Newton Interpolation", Aids.help_newton_interpolation(self))
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):
@@ -724,7 +724,7 @@ class Interpolation_lagrange(Screen):
         else:
             show_popWindow("Lagrange ","Invalid fields")
     def aid(self):
-        show_popWindow("Lagrange",Aids.help_doolittle(self))
+        show_popWindow("Lagrange",Aids.help_lagrange(self))
     def clean(self, matrix):
         try:
             for i in range(0,len(matrix)):
@@ -776,7 +776,7 @@ class matrix_Factorization_direct_croult(Screen):
             table=Tables()
             table.draw(self.matrix_method.get_steps_table(),columns)
     def aid(self):
-        show_popWindow("Croult",Aids.help_gaussian_elimination(self))
+        show_popWindow("Croult",Aids.help_croult(self))
 
     def runb(self):
         self.table=Tables()
