@@ -4,17 +4,17 @@ from sympy.parsing.sympy_parser import parse_expr
 from Functions import *
 class trapezium:
     def __init__(self):
-        self.value= "null"
-        self.result = 0
+        self.result= "null"
 
     def algorithm_trapezium(self, entry, xi,xs):
         initial= entry.evaluar(xi)
-        print(initial)
         final  = entry.evaluar(xs)
-        print(final)
         h=float(xs)-float(xi)
-        self.value = (h/2)*(initial+final)
-        return str(self.value)
+        self.result = (h/2)*(initial+final)
+        return str(self.result)
+        
+    def get_Result(self):
+        return str(self.result)
 """
 exp(x)-ln(x+4)
 [1,1.3,1.5,1.8,2.3]

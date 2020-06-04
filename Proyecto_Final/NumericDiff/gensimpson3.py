@@ -11,6 +11,9 @@ class gensimpson3:
         xi = float(xi)
         xs = float(xs)
         h = float(h)
+        #...
+        h= (xs-xi)/h #Distance between points
+        #
         initY = entry.evaluar(xi)
         finalY = entry.evaluar(xs)
         total = initY+finalY

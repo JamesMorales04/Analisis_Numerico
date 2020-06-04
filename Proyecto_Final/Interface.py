@@ -94,7 +94,7 @@ class Numeric_differentiation(Screen):
             self.sol.text= SimpleTrapezium.algorithm_trapezium(Function,self.xi.text,self.xs.text)
         elif (self.method == "Generalized Trapezium"):
             genTrapezium = GenTrapezium()
-            self.sol.text= genTrapezium.general_trapezium_algorithm(Function,self.xi.text,self.xs.text)           
+            self.sol.text= genTrapezium.general_trapezium_algorithm(Function,self.xi.text,self.xs.text,self.iterations.text)           
         elif (self.method == "Simpson8"):
             simpson8= Simpson38()
             self.sol.text= simpson8.simpson_38_algorithm(Function,self.xi.text,self.xs.text)

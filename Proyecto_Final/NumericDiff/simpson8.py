@@ -14,7 +14,8 @@ class Simpson38:
         xs = float(xs)
         initY = function.evaluar(xi)
         finalY = function.evaluar(xs)
-        h = (xs-xi)/4
+        h = (xs-xi)/3
+        print(str(h))
 
         sumYs = initY+finalY+3*function.evaluar(xi+h)+3*function.evaluar(xi+2*h)
 
