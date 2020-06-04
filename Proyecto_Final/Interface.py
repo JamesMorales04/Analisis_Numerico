@@ -86,27 +86,30 @@ class Numeric_differentiation(Screen):
     sol= ObjectProperty(None)
     iterations= ObjectProperty(None)
     def run(self):
-        Function=Functions(self.functions.text)
-        if (self.method == ""):
-            print("Nothing")
-        elif (self.method == "Trapezium"):
-            SimpleTrapezium= trapezium()
-            self.sol.text= SimpleTrapezium.algorithm_trapezium(Function,self.xi.text,self.xs.text)
-        elif (self.method == "Generalized Trapezium"):
-            genTrapezium = GenTrapezium()
-            self.sol.text= genTrapezium.general_trapezium_algorithm(Function,self.xi.text,self.xs.text,self.iterations.text)           
-        elif (self.method == "Simpson8"):
-            simpson8= Simpson38()
-            self.sol.text= simpson8.simpson_38_algorithm(Function,self.xi.text,self.xs.text)
-        elif (self.method == "Simpson3"):
-            simpson3= Simpson13()
-            self.sol.text= simpson3.simpson_13_algorithm(Function,self.xi.text,self.xs.text,self.iterations.text)            
-        elif (self.method == "Generalized Simpson8"):
-            genSimpson8= GenSimpson38()
-            self.sol.text= genSimpson8.general_simpson38_algorithm(Function,self.xi.text,self.xs.text,self.iterations.text)
-        elif (self.method == "Generalized Simpson3"):
-            genSimpson3 = gensimpson3()
-            self.sol.text= genSimpson3.algorithm_gensimpson3(Function,self.xi.text,self.xs.text,self.iterations.text)   
+        verify= Verify()
+        error=verify.verify_newton_interpolation(self.functions.text,self.iterations.text)
+        if (error==""):
+            Function=Functions(self.functions.text)
+            if (self.method == "Trapezium"):
+                SimpleTrapezium= trapezium()
+                self.sol.text= SimpleTrapezium.algorithm_trapezium(Function,self.xi.text,self.xs.text)
+            elif (self.method == "Generalized Trapezium"):
+                genTrapezium = GenTrapezium()
+                self.sol.text= genTrapezium.general_trapezium_algorithm(Function,self.xi.text,self.xs.text,self.iterations.text)           
+            elif (self.method == "Simpson8"):
+                simpson8= Simpson38()
+                self.sol.text= simpson8.simpson_38_algorithm(Function,self.xi.text,self.xs.text)
+            elif (self.method == "Simpson3"):
+                simpson3= Simpson13()
+                self.sol.text= simpson3.simpson_13_algorithm(Function,self.xi.text,self.xs.text,self.iterations.text)            
+            elif (self.method == "Generalized Simpson8"):
+                genSimpson8= GenSimpson38()
+                self.sol.text= genSimpson8.general_simpson38_algorithm(Function,self.xi.text,self.xs.text,self.iterations.text)
+            elif (self.method == "Generalized Simpson3"):
+                genSimpson3 = gensimpson3()
+                self.sol.text= genSimpson3.algorithm_gensimpson3(Function,self.xi.text,self.xs.text,self.iterations.text)
+        else:
+            show_popWindow("Numeric differentiation",error)   
 
     def Trapezium(self):
         self.method= "Trapezium"
@@ -444,12 +447,16 @@ class System_of_equations_partial_pivot(Screen):
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
-            self.matrix_method.partial_pivoting_algorithm(matrix_clean,matrixb_clean)
-            self.sol.text=self.matrix_method.get_results()
-            columns=self.matrix_method.rows
-            if (not self.matrix_method.get_error()):
-                table.draw(self.matrix_method.value_table(),columns)
-                self.rund=True
+            if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(matrixb_clean[0])!=len(matrix_clean) or verify.verify_length(matrix_clean) or len(matrixb_clean[0])!=len(matrix_clean[0])):
+                error+="Wrong Matrix Input"
+                show_popWindow("Gaussian Elimination",error)
+            else:
+                self.matrix_method.partial_pivoting_algorithm(matrix_clean,matrixb_clean)
+                self.sol.text=self.matrix_method.get_results()
+                columns=self.matrix_method.rows
+                if (not self.matrix_method.get_error()):
+                    table.draw(self.matrix_method.value_table(),columns)
+                    self.rund=True
         else:
             show_popWindow("Partial pivot ",error)
     def steps(self):
@@ -530,12 +537,14 @@ class System_of_equations_staggered_pivot(Screen):
         if(error==""):
             matrixb_clean=self.clean((self.matrixb.text).split("\n"))
             matrix_clean=self.clean((self.matrix.text).split("\n"))
-            matrix_method.partial_staggered_algorithm(matrix_clean,matrixb_clean)
-            self.sol.text=matrix_method.get_results()
-            columns=matrix_method.rows
-            print("TOTAL MARIX ROWS: "+str(columns))
-            print("TABLE: "+str(matrix_method.value_table()))
-            table.draw(matrix_method.value_table(),columns)
+            if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(matrixb_clean[0])!=len(matrix_clean) or verify.verify_length(matrix_clean) or len(matrixb_clean[0])!=len(matrix_clean[0])):
+                error+="Wrong Matrix Input"
+                show_popWindow("Gaussian Elimination",error)
+            else:
+                matrix_method.partial_staggered_algorithm(matrix_clean,matrixb_clean)
+                self.sol.text=matrix_method.get_results()
+                columns=matrix_method.rows
+                table.draw(matrix_method.value_table(),columns)
 
         else:
             show_popWindow("Staggered pivot ",error)
@@ -666,13 +675,9 @@ class Interpolation_newton(Screen):
         matrix_method=NewtonInterpolation()
         table=Tables()
         verify = Verify()
-        Function=Functions(self.functions.text)
-        error= ""
-        if (self.functions.text == "" or self.numbers.text == ""):
-            error= "Empty field\n"
-        if (verify.verify_function(self.functions.text,100)):
-            error+= "Incorrect function"
+        error=verify.verify_newton_interpolation(self.functions.text,self.numbers.text)
         if (error==""):
+            Function=Functions(self.functions.text)
             Numbers=self.clean((self.numbers.text).split("\n"))
             matrix_method.algorithm_newtonInterpolation(Function,Numbers)
             columns= matrix_method.rows
@@ -706,21 +711,19 @@ class Interpolation_lagrange(Screen):
     sol=ObjectProperty(None)
     
     def run(self):
-        method=Lagrange()
         verify=Verify()
-        error=""
-        if(error==""):
-            matrixb_clean=self.clean((self.matrixb.text).split("\n"))
-            matrix_clean=self.clean((self.matrix.text).split("\n"))
-            print(matrix_clean)
-            print('---------')
-            print(matrixb_clean)
+        error=True
+        matrixb_clean=self.clean((self.matrixb.text).split("\n"))
+        matrix_clean=self.clean((self.matrix.text).split("\n"))        
+        error=verify.verify_length(matrix_clean)
+        error=verify.verify_length(matrixb_clean)
+        if(error):
+            method=Lagrange()
             method.lagrange_interpol_algorithm(matrix_clean[0],matrixb_clean[0])
             response = method.getPolynomial()
             self.sol.text= response
-
         else:
-            show_popWindow("Lagrange ",error)
+            show_popWindow("Lagrange ","Invalid fields")
     def aid(self):
         show_popWindow("Lagrange",Aids.help_doolittle(self))
     def clean(self, matrix):
@@ -743,8 +746,6 @@ class Interpolation_lagrange(Screen):
             return []
 
 class Interpolation_splines(Screen):
-    pass
-class Numeric_differentiation_differentiation(Screen):
     pass
 
 class matrix_Factorization_direct_croult(Screen):
@@ -881,18 +882,23 @@ class interpolation_quadratic_spline(Screen):
         spline_method=QuadraticSpline()
         table=Tables()
         verify=Verify()
-        error=""
         splineX_clean=self.clean((self.splineY.text).split("\n"))
         splineY_clean=self.clean((self.splineX.text).split("\n"))
-        if(spline_method.check_values(splineX_clean,splineY_clean)):
-            splineX_clean=self.clean((self.splineY.text).split("\n"))
-            splineY_clean=self.clean((self.splineX.text).split("\n"))
-            spline_method.algorithm_quadratic_spline(splineX_clean, splineY_clean)
-            columns=["Functions"]
-            table.draw(spline_method.value_table(),columns)
-            self.sol.text=spline_method.get_results()
+        error=True
+        error=verify.verify_length(splineX_clean)
+        error=verify.verify_length(splineY_clean)   
+        if (error):     
+            if(spline_method.check_values(splineX_clean,splineY_clean)):
+                splineX_clean=self.clean((self.splineY.text).split("\n"))
+                splineY_clean=self.clean((self.splineX.text).split("\n"))
+                spline_method.algorithm_quadratic_spline(splineX_clean, splineY_clean)
+                columns=["Functions"]
+                table.draw(spline_method.value_table(),columns)
+                self.sol.text=spline_method.get_results()
+            else:
+                show_popWindow("Quadratic Spline ","No valid values, please check it")
         else:
-            show_popWindow("Quadratic Spline ","No valid values, please check it")
+            show_popWindow("Quadratic spline", "Invalid values")
     def aid(self):
         show_popWindow("Quadratic Spline",Aids.help_quadratic_spline(self))
     def clean(self, x):
@@ -922,18 +928,24 @@ class interpolation_cubic_spline(Screen):
         spline_method=CubicSpline()
         table=Tables()
         verify=Verify()
-        error=""
         splineX_clean=self.clean((self.splineY.text).split("\n"))
         splineY_clean=self.clean((self.splineX.text).split("\n"))
-        if(spline_method.check_values(splineX_clean,splineY_clean)):
-            splineX_clean=self.clean((self.splineY.text).split("\n"))
-            splineY_clean=self.clean((self.splineX.text).split("\n"))
-            spline_method.algorithm_cubic_spline(splineX_clean, splineY_clean)
-            columns=["functions"]
-            table.draw(spline_method.value_table(),columns)
-            self.sol.text=spline_method.get_results()
+        error=True
+        error=verify.verify_length(splineX_clean)
+        error=verify.verify_length(splineY_clean)
+        if(error):        
+            if(spline_method.check_values(splineX_clean,splineY_clean)):
+                splineX_clean=self.clean((self.splineY.text).split("\n"))
+                splineY_clean=self.clean((self.splineX.text).split("\n"))
+                spline_method.algorithm_cubic_spline(splineX_clean, splineY_clean)
+                columns=["functions"]
+                table.draw(spline_method.value_table(),columns)
+                self.sol.text=spline_method.get_results()
+            else:
+                show_popWindow("Cubic Spline ","No valid values, please check it")
         else:
-            show_popWindow("Cubic Spline ","No valid values, please check it")
+            show_popWindow("Cubic spline", "Invalid function")
+
     def aid(self):
         show_popWindow("Cubic Spline",Aids.help_cubic_spline(self))
     def clean(self, x):
@@ -963,16 +975,21 @@ class interpolation_linear_spline(Screen):
         spline_method=LinearSpline()
         table=Tables()
         verify=Verify()
-        error=""
         splineX_clean=self.clean((self.splineY.text).split("\n"))
         splineY_clean=self.clean((self.splineX.text).split("\n"))
-        if(spline_method.check_values(splineX_clean,splineY_clean)):
-            spline_method.algorithm_linearSpline(splineX_clean, splineY_clean)
-            columns=["P(x)","Interval"]
-            table.draw(spline_method.value_table(),columns)
-            self.sol.text=spline_method.get_results()
+        error=True
+        error=verify.verify_length(splineX_clean)
+        error=verify.verify_length(splineY_clean)
+        if (error):
+            if(spline_method.check_values(splineX_clean,splineY_clean)):
+                spline_method.algorithm_linearSpline(splineX_clean, splineY_clean)
+                columns=["P(x)","Interval"]
+                table.draw(spline_method.value_table(),columns)
+                self.sol.text=spline_method.get_results()
+            else:
+                show_popWindow("Linear Spline ","No valid values, please check them")
         else:
-            show_popWindow("Linear Spline ","No valid values, please check it")
+            show_popWindow("Splines", "Invalid fields")
     def aid(self):
         show_popWindow("Linear Spline",Aids.help_lineal_spline(self))
     def clean(self, x):

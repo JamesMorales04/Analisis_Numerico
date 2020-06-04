@@ -7,6 +7,9 @@ class GenTrapezium:
         self.result = ''
 
     def general_trapezium_algorithm(self, entry, xi,xs,n):        
+        if (int(n)==0):
+            self.result= "No valid number"
+            return self.result
         aux = float(xi)
         initY = entry.evaluar(xi)
         finalY = entry.evaluar(xs)
