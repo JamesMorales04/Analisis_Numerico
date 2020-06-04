@@ -8,6 +8,9 @@ class gensimpson3:
         self.result = ''
 
     def algorithm_gensimpson3(self, entry, xi,xs,h):
+        if (int(h)==0):
+            self.result= "Not a valid number"
+            return self.result        
         xi = float(xi)
         xs = float(xs)
         h = float(h)

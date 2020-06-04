@@ -782,7 +782,7 @@ class matrix_Factorization_direct_croult(Screen):
     def runb(self):
         self.table=Tables()
         verify=Verify()
-        matrix_clean=self.clean((self.matrix.text).split("\n"))
+        matrix_clean=self.clean((self.matrix.text).split("\n")) #Not neccesary I think
         matrixb_clean=self.clean((self.matrixb.text).split("\n"))
         if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(matrixb_clean[0])!=len(matrix_clean) or verify.verify_length(matrix_clean) or len(matrixb_clean[0])!=len(matrix_clean[0])):
             error="Wrong Matrix Input"
@@ -827,16 +827,20 @@ class matrix_Factorization_direct_doolitle(Screen):
         error=""
         if(error==""):
             matrix_clean=self.clean((self.matrix.text).split("\n"))
-            self.matrix_method.doolittle_algorithm(matrix_clean)
-            self.sol.text= "Matrix LU ready"
-            self.rund=True
+            if(len(matrix_clean)==0 or verify.verify_length(matrix_clean) or len(matrix_clean)!=len(matrix_clean[0])):
+                error+="Wrong Matrix Input"
+                show_popWindow("Doolittle", error)
+            else:
+                self.matrix_method.doolittle_algorithm(matrix_clean)
+                self.sol.text= "Matrix LU ready"
+                self.rund=True
         else:
             show_popWindow("Doolittle ",error)
     def steps(self):
         if(self.rund):
             columns=self.matrix_method.get_steps_rows()
             table = Tables()
-            table.draw(self.matrix_method.value_table(),columns)
+            table.draw(self.matrix_method.get_steps_table(),columns)
           
     def runb(self):     
         self.table=Tables()
@@ -848,7 +852,7 @@ class matrix_Factorization_direct_doolitle(Screen):
             if(self.rund):
                 self.matrix_method.runb(matrixb_clean)
                 self.sol.text=self.matrix_method.get_results()
-                if(self.matrix_method.get_noerror): #here...
+                if(self.matrix_method.get_noerror):
                     columns=self.matrix_method.rows
                     self.table.draw(self.matrix_method.value_table(),columns)
             else:
