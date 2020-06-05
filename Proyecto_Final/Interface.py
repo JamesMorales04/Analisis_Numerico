@@ -1029,7 +1029,7 @@ class matrix_Factorization_direct_cholesky(Screen):
             if(len(matrixb_clean)!=0):
                 self.matrix_method.cholesky_algorithm(matrixb_clean)
                 columns=self.matrix_method.rows
-                table.draw(self.matrix_method.value_table(),columns)
+                table.draw(self.matrix_method.getSteps(),columns)
                 self.sol.text=self.matrix_method.get_results()
             else:
                 self.sol.text = 'Error: No B matrix was entered'
