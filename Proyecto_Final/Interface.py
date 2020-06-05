@@ -666,6 +666,9 @@ class Iteratives_System_of_equations_jacobi(Screen):
             return matrix
         except:
             return []
+class Interpolation_splines(Screen):
+    pass
+
 class Interpolation_newton(Screen):
     functions=ObjectProperty(None)
     numbers=ObjectProperty(None)
