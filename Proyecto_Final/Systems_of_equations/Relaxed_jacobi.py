@@ -1,50 +1,55 @@
 import copy
 import math
 from decimal import *
+import threading
 
 class Relaxed_jacobi:
     def __init__(self):
         self.original=[]
+        self.matrixB = []
+        self.matrixA = []
+        self.phaseValues = []
         self.new=[]
         self.result=[]
         self.rows=[]
         self.total=[]
         self.final_result=[]
         self.div=False
+        self.dividerIsZero = False
         getcontext().prec = 25
 
     def Relaxed_jacobi_algorithm(self,matrix,matrixb,initvalues,lamb,tol,iter):
         self.original=copy.deepcopy(matrix)
         self.result.append(initvalues[0])
+        self.matrixA = matrix
+        self.phaseValues = [0 for _ in range(len(matrix))]
+        self.matrixB = matrixb
+        self.dividerIsZero = False
         error_total=20
         t=0
-        print(iter>=t)
         divider=1
-        while error_total>tol and divider!=0 and iter>=t:
+        while error_total>tol and not self.dividerIsZero and iter>=t:
             i=0
             valores=[]
-            while i<len(matrix) and divider!=0:
-                j=0
-                total=matrixb[0][i]
-                op=""
-                while j<len(matrix[i]) and divider!=0:
-                    if(i!=j):
-                            total=total-(matrix[i][j]*self.result[t][j])
-                    else:
-                        divider=matrix[i][j]
-                    j+=1
-                if divider!=0:
-                    valores.append(lamb*(total/divider)+(1-lamb)*self.result[t][i])
-                    i+=1
-            if divider!=0:
-                self.result.append(valores)
+            threads = []
+            for x in range(len(matrix)):
+
+                thread = threading.Thread(target=self._varCalculator,args=(x,lamb,t))
+                threads.append(thread)
+                thread.start()
+            
+            for thread in threads:
+                thread.join()
+                
+            if (not self.dividerIsZero):
+                self.result.append(copy.deepcopy(self.phaseValues))
                 if(t==0):
                     self.new.append([t,self.result[t],t])
                 else:
                     error_total=self.error_calculator(self.result[t],self.result[t-1])
                     if error_total==0:
                         self.div=True
-                        divider=0
+                        self.dividerIsZeror=True
                     self.new.append([t,self.result[t],error_total])
                 t+=1
             else:
@@ -58,6 +63,23 @@ class Relaxed_jacobi:
         self.row_definition()
 
 
+    def _varCalculator(self,varNum,lamb,t):
+        j=0
+        divider = 1
+        valores = []
+        total=self.matrixB[0][varNum]
+        op=""
+        while j<len(self.matrixA[varNum]) and divider!=0:
+            if(j!=varNum):
+                total=total-(self.matrixA[varNum][j]*self.result[t][j])
+            else:
+                divider=self.matrixA[varNum][j]
+            j+=1
+        if divider!=0:
+            self.phaseValues[varNum] = (lamb*(total/divider)+(1-lamb)*self.result[t][varNum])
+        else:
+            self.dividerIsZero = True
+            
     def error_calculator(self,now,previus):
         resultop=0.0
         resultdown=0.0
@@ -95,6 +117,10 @@ class Relaxed_jacobi:
         self.final_result.pop()
         return self.total
 
+    def printMatrix(self,matrix):
+        for i in matrix:
+            print(i)
+
     def get_sol(self):
         results=""
         if self.div:
@@ -105,6 +131,18 @@ class Relaxed_jacobi:
                 results+=f"X{aux}: "+(str)('%E'%i)+"\n"
                 aux+=1
         return results
+
+if __name__ == "__main__":
+
+    a = [[13,-4,-5],[3,-7,2],[-4,5,-16]]
+    b = [[-23,5,34]]
+    initVal = [[0,0,0]]
+    rj = Relaxed_jacobi()
+    rj.Relaxed_jacobi_algorithm(a,b,initVal,1,0.00005,100)
+    rj.printMatrix(rj.result)
+    print('Solutions')
+    print(rj.get_sol())
+    
 """
 [13,-4,-5]
 [3,-7,2]
