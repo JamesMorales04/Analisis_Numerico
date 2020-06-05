@@ -7,9 +7,14 @@ class trapezium:
         self.result= "null"
 
     def algorithm_trapezium(self, entry, xi,xs):
+        xi  =float(xi)
+        xs  =float(xs)      
+        if (xs<xi):
+            self.result= "Not a valid xi and xs"
+            return self.result     
         initial= entry.evaluar(xi)
         final  = entry.evaluar(xs)
-        h=float(xs)-float(xi)
+        h=xs-xi
         self.result = (h/2)*(initial+final)
         return str(self.result)
         

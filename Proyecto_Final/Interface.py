@@ -88,6 +88,7 @@ class Numeric_differentiation(Screen):
     def run(self):
         verify= Verify()
         error=verify.verify_newton_interpolation(self.functions.text,self.iterations.text)
+        error+= verify.verify_numeric_differentiation(self.xi.text,self.xs.text)
         if (error==""):
             Function=Functions(self.functions.text)
             if (self.method == "Trapezium"):
@@ -666,6 +667,9 @@ class Iteratives_System_of_equations_jacobi(Screen):
             return matrix
         except:
             return []
+class Interpolation_splines(Screen):
+    pass
+
 class Interpolation_newton(Screen):
     functions=ObjectProperty(None)
     numbers=ObjectProperty(None)
@@ -674,7 +678,12 @@ class Interpolation_newton(Screen):
         matrix_method=NewtonInterpolation()
         table=Tables()
         verify = Verify()
-        error=verify.verify_newton_interpolation(self.functions.text,self.numbers.text)
+        x = self.clean((self.numbers.text).split("\n"))
+        print("**"+str(x))
+        if x:
+            error=verify.verify_newton_interpolation(self.functions.text,self.numbers.text)
+        elif not x:
+            error = "otro mk error"
         if (error==""):
             Function=Functions(self.functions.text)
             Numbers=self.clean((self.numbers.text).split("\n"))
@@ -683,6 +692,7 @@ class Interpolation_newton(Screen):
             table.draw(matrix_method.value_table(),columns)
             self.sol.text=matrix_method.get_sol()
         else:
+            error = "Please check your values"
             show_popWindow("Interpolation Newton", error)
     def aid(self):
         show_popWindow("Newton Interpolation", Aids.help_newton_interpolation(self))
@@ -716,7 +726,7 @@ class Interpolation_lagrange(Screen):
         matrix_clean=self.clean((self.matrix.text).split("\n"))        
         #error=verify.verify_length(matrix_clean)
         #error=verify.verify_length(matrixb_clean)
-        if(error):
+        if(matrix_clean and matrixb_clean):
             method=Lagrange()
             method.lagrange_interpol_algorithm(matrix_clean[0],matrixb_clean[0])
             response = method.getPolynomial()
@@ -743,9 +753,6 @@ class Interpolation_lagrange(Screen):
             return matrix
         except:
             return []
-
-class Interpolation_splines(Screen):
-    pass
 
 class matrix_Factorization_direct_croult(Screen):
     matrix=ObjectProperty(None)
