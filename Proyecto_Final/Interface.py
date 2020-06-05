@@ -716,7 +716,7 @@ class Interpolation_lagrange(Screen):
         matrix_clean=self.clean((self.matrix.text).split("\n"))        
         #error=verify.verify_length(matrix_clean)
         #error=verify.verify_length(matrixb_clean)
-        if(error and  (not matrix_clean and not matrixb_clean)):
+        if(error):
             method=Lagrange()
             method.lagrange_interpol_algorithm(matrix_clean[0],matrixb_clean[0])
             response = method.getPolynomial()
