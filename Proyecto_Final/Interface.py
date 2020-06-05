@@ -716,7 +716,7 @@ class Interpolation_lagrange(Screen):
         matrix_clean=self.clean((self.matrix.text).split("\n"))        
         #error=verify.verify_length(matrix_clean)
         #error=verify.verify_length(matrixb_clean)
-        if(error):
+        if(error and  (not matrix_clean and not matrixb_clean)):
             method=Lagrange()
             method.lagrange_interpol_algorithm(matrix_clean[0],matrixb_clean[0])
             response = method.getPolynomial()
@@ -743,9 +743,6 @@ class Interpolation_lagrange(Screen):
             return matrix
         except:
             return []
-
-class Interpolation_splines(Screen):
-    pass
 
 class matrix_Factorization_direct_croult(Screen):
     matrix=ObjectProperty(None)
@@ -1031,7 +1028,7 @@ class matrix_Factorization_direct_cholesky(Screen):
             if(len(matrixb_clean)!=0):
                 self.matrix_method.cholesky_algorithm(matrixb_clean)
                 columns=self.matrix_method.rows
-                table.draw(self.matrix_method.value_table(),columns)
+                table.draw(self.matrix_method.getSteps(),columns)
                 self.sol.text=self.matrix_method.get_results()
             else:
                 self.sol.text = 'Error: No B matrix was entered'

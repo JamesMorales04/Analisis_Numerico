@@ -67,7 +67,7 @@ class CubicSpline:
             results+=f""+(str)(i)+"\n"
         return results
     def check_values(self, ar,br):
-        if not ar[0] or not br[0]:
+        if not ar or not br:
             return False
         arr = ar[0]
         arr.sort()
