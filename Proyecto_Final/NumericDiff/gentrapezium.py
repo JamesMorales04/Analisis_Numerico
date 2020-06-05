@@ -7,14 +7,15 @@ class GenTrapezium:
         self.result = ''
 
     def general_trapezium_algorithm(self, entry, xi,xs,n):        
-        if (int(n)<=0):
-            self.result= "No valid number"
+        xi=float(xi)
+        xs=float(xs)
+        if (int(n)<=0 or (xs<xi)):
+            self.result= "Not a valid number"
             return self.result
         aux = float(xi)
         initY = entry.evaluar(xi)
         finalY = entry.evaluar(xs)
-        xi=float(xi)
-        xs=float(xs)
+
 
         h = (xs-xi)/float(n)
         self.arr = []

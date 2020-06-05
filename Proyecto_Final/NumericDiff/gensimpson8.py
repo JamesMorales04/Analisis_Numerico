@@ -8,12 +8,13 @@ class GenSimpson38:
 
     def general_simpson38_algorithm(self, entry, xi,xs,n):
         self.arr=[]    
-        if (int(n)<=0):
+        xi  =float(xi)
+        xs  =float(xs)        
+        if (int(n)<=0 or (xs<xi)):
             self.result= "Not a valid number"
             return self.result       
         aux =float(xi)
-        xi  =float(xi)
-        xs  =float(xs)
+
         initY = entry.evaluar(xi)
         finalY = entry.evaluar(xs)
         h = (xs-xi)/float(n)
@@ -24,7 +25,6 @@ class GenSimpson38:
             aux+=h
             val=entry.evaluar(aux)
             self.arr.append(val)  
-        print(self.arr)
         for i in self.arr:
             count+=1
             if (count%3==0): 
