@@ -88,6 +88,7 @@ class Numeric_differentiation(Screen):
     def run(self):
         verify= Verify()
         error=verify.verify_newton_interpolation(self.functions.text,self.iterations.text)
+        error+= verify.verify_numeric_differentiation(self.xi.text,self.xs.text)
         if (error==""):
             Function=Functions(self.functions.text)
             if (self.method == "Trapezium"):
