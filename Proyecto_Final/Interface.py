@@ -781,7 +781,7 @@ class matrix_Factorization_direct_croult(Screen):
     def runb(self):
         self.table=Tables()
         verify=Verify()
-        matrix_clean=self.clean((self.matrix.text).split("\n")) #Not neccesary I think
+        matrix_clean=self.clean((self.matrix.text).split("\n")) 
         matrixb_clean=self.clean((self.matrixb.text).split("\n"))
         if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(matrixb_clean[0])!=len(matrix_clean) or verify.verify_length(matrix_clean) or len(matrixb_clean[0])!=len(matrix_clean[0])):
             error="Wrong Matrix Input"
@@ -843,8 +843,10 @@ class matrix_Factorization_direct_doolitle(Screen):
           
     def runb(self):     
         self.table=Tables()
+        verify=Verify()
+        matrix_clean=self.clean((self.matrix.text).split("\n"))
         matrixb_clean=self.clean((self.matrixb.text).split("\n")) 
-        if(len(matrixb_clean)==0):
+        if(len(matrix_clean)==0 or len(matrixb_clean)==0 or len(matrixb_clean[0])!=len(matrix_clean) or verify.verify_length(matrix_clean) or len(matrixb_clean[0])!=len(matrix_clean[0])):
             error="Wrong Matrix Input"
             show_popWindow("Doolittle",error)
         else:
