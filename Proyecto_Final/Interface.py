@@ -678,8 +678,13 @@ class Interpolation_newton(Screen):
         matrix_method=NewtonInterpolation()
         table=Tables()
         verify = Verify()
-        error=verify.verify_newton_interpolation(self.functions.text,self.numbers.text)
-        if (error=="" and self.clean(self.numbers)):
+        x = self.clean((self.numbers.text).split("\n"))
+        print("**"+str(x))
+        if x:
+            error=verify.verify_newton_interpolation(self.functions.text,self.numbers.text)
+        elif not x:
+            error = "otro mk error"
+        if (error==""):
             Function=Functions(self.functions.text)
             Numbers=self.clean((self.numbers.text).split("\n"))
             matrix_method.algorithm_newtonInterpolation(Function,Numbers)
