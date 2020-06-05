@@ -69,6 +69,8 @@ class CubicSpline:
     def check_values(self, ar,br):
         if not ar or not br:
             return False
+        elif len(ar[0]) != len(br[0]):
+            return False
         arr = ar[0]
         arr.sort()
         iter = 1
