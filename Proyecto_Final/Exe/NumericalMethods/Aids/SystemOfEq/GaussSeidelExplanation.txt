@@ -1,0 +1,9 @@
+The Gauss Seidel method is a variation of Jacobi's method, making it a fixed-point based iterative method.
+In Gauss Seidel, the way of how sustitution is made differs from Jacobi's.
+The criteria is to assume that when knowing a new value of one of the variables, this new value is used
+to determine the value of the missing ones.
+This is:
+To determine x´1 we use the previous values ​​of x2, x3, x4.
+To determine x´2 we use the previous values ​​of x3, x4 and the current value x´1.
+To determine x´3 we use the previous value of x4 and the current values ​​x´1 and x´2.
+To determine x´4 we use the current values ​​x´1, x´2 and x´3.

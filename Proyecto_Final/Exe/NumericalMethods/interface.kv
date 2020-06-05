@@ -1802,6 +1802,10 @@ WindowManager:
                 font_size:"17sp"  
                 on_press:root.runb()
             SmoothButton:
+                text: "Steps"
+                font_size:"17sp"  
+                on_press:root.steps()                 
+            SmoothButton:
                 text: "Help"
                 font_size:"17sp"  
                 on_press:root.aid()
@@ -2377,8 +2381,8 @@ WindowManager:
     sol:sol
     GridLayout:
         size:root.width,root.height
-        spacing: '5dp'
-        padding:50,20
+        spacing: '10dp'
+        padding:30,20
         cols:1
         canvas.before:
             Color:
@@ -2387,43 +2391,40 @@ WindowManager:
                 pos: self.pos
                 size: self.size
         GridLayout:
-            cols: 2
-            row_default_height:80
-            row_force_default:True
-            Label:
-                text: "Function f(x)"
-                font_size:"25sp"
-                color: 1,1,1,1
-                bold: True
-            TextInput:
-                id:functions
-                text:root.manager.function_global
-                multiline:False   
-        GridLayout:
-            cols: 2
-            row_default_height:80
-            row_force_default:True
-            Label:
-                text: "Numbers"
-                font_size:"25sp"
-                color: 1,1,1,1
-                bold: True
-            TextInput:
-                id:numbers
-                text:root.manager.interpolationValues_global
-                multiline:False   
-        GridLayout:
-            cols: 2
-            row_default_height:100
-            row_force_default:True
-            Label:
-                text: "Solution"
-                font_size:"25sp"
-                color: 1,1,1,1 
-                bold: True
-            TextInput:
-                id:sol
-                multiline:False
+            cols: 1
+            spacing: '10dp'
+            GridLayout:
+                cols: 2
+                row_default_height:60
+                row_force_default:True
+                spacing: '10dp'
+                Label:
+                    text: "Function f(x)"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:functions
+                    text:root.manager.function_global
+                    multiline:False
+                Label:
+                    text: "Numbers"
+                    font_size:"25sp"
+                    color: 1,1,1,1
+                    bold: True
+                TextInput:
+                    id:numbers
+                    text:root.manager.interpolationValues_global
+                    multiline:False  
+                Label:
+                    text: "Solution"
+                    font_size:"20sp"
+                    color: 1,1,1,1 
+                    bold: True
+                TextInput:
+                    id:sol
+                    width: 20
+                    multiline:False 
         GridLayout:
             cols: 1
             spacing: '10dp'

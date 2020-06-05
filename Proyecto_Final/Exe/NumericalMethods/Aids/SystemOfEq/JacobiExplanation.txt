@@ -1,0 +1,5 @@
+Jacobi's method is an iterative method based on a fixed point, so the intention is to solve the
+system of linear equations Ax = b from an initial vector x0 that serves as an approximation to the
+solution vector x. Similarly, with x0 x1 is generated, with x1 x2 is generated, and so on in the form:
+Xn + 1 = G (xn)
+Thus, the approximate vector Xn + 1 is intended to converge to the solution of the system.

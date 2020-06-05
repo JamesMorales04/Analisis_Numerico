@@ -135,6 +135,27 @@ class Verify:
             error=self.empty_field()
         return error
 
+    def verify_newton_interpolation(self,function,n):
+        error=""
+        if function== "\n":
+            error = "Invalid function"
+            return error
+        try:
+            if(self.verify_function(function,float(1))):
+                error+=self.invalidFunction()
+        except:
+            error=self.empty_field()
+        return error        
+
+    def verify_numeric_differentiation(self,xi,xs):    
+        error=""
+        try:
+            xi=float(xi)
+            xs=float(xs)
+        except:
+            error= self.invalidInitVals()
+        return error
+        
     def invalidFunction(self):
         return "The function is invalid, \nSquare: (x**n)\nRoot: sqrt(n)\neuler: exp(n)\nPi: pi()\nIdentities: sin(n),cos(n),tan(n),sec(n)\nnatural logarithm: log(n)"                
     def invalidTolerance(self):

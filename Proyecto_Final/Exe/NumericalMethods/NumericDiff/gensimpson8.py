@@ -4,29 +4,34 @@ from sympy.parsing.sympy_parser import parse_expr
 from Functions import *
 class GenSimpson38:
     def __init__(self):
-        self.xn=""     #All the x values 
         self.result = ''
 
-    def general_simpson38_algorithm(self, function, xi,xs,h):
-        xi = float(xi)
-        xs =float(xs)
-        sumMultThree = 0
-        sumNotMultThree = 0
+    def general_simpson38_algorithm(self, entry, xi,xs,n):
+        self.arr=[]    
+        xi  =float(xi)
+        xs  =float(xs)        
+        if (int(n)<=0 or (xs<xi)):
+            self.result= "Not a valid number"
+            return self.result       
+        aux =float(xi)
 
-        initY = function.evaluar(xi)
-        finalY = function.evaluar(xs)
-
-        sumTotal = initY+finalY
-        counter = 1
-        for i in range(xi+1,xs,h):
-            counter+=1
-            valY = function.evaluar(i)
-            if(counter%3==0):
-                sumMultThree+=valY
+        initY = entry.evaluar(xi)
+        finalY = entry.evaluar(xs)
+        h = (xs-xi)/float(n)
+        count=0
+        sumMultThree=0
+        sumNotMultThree=0
+        for i in range(int(n)-1):
+            aux+=h
+            val=entry.evaluar(aux)
+            self.arr.append(val)  
+        for i in self.arr:
+            count+=1
+            if (count%3==0): 
+                sumMultThree+=i
             else:
-                sumNotMultThree+=valY
-        
-        self.result=str(3/8*h*(sumTotal+2*sumMultThree+3*sumNotMultThree))
+                sumNotMultThree+=i
+        self.result= (3/8*h*(initY+finalY+2*sumMultThree+3*sumNotMultThree))
         return str(self.result)
 
     def get_Result(self):

@@ -1,0 +1,23 @@
+if A is hermitian and positive definite, then A can be decomposed as 
+A = LL*, where L is a lower triangular matrix with strictly positive diagonal inputs,
+and L * representes the transposed conjugate L. This is Cholesky decomposition.
+
+It is unique: given a defined positive Hermitian matrix A, there is
+a single lower triangular matrix L with strictly positive diagonal entries
+such that A= LL*. 
+
+The requirement that L have strictly positive diagonal inputs can be extended in the case
+of decomposition in the case of being positive semidefinite. The proposition is now
+read: A square matrix A has a Cholesky decomposition if and only if A is Hermitian
+and positive semidefinite. Cholesky factorizations for positive semi-defined matrices
+are not unique overall.
+
+In the special case that A is a symmetric defined positive matrix with real inputs, L can
+also be assumed with real inputs. A diagonal D matrix with positive entries on the
+diagonal (eigenvalues ​​of A), is factorizable as, D = root(D)*root(D) where root(D) is
+ a matrix whose diagonal consists of the square root of each element of D, 
+which we take as positive. So the factorization can be directly calculated by
+the following formula:
+Uii= aii - summatory ((from k=1 to i-1)) uik for the elements of the main diagonal.
+And
+Uik = (aij - summatory (k=1 to j-1) Uik*Ujk)/ Ujj

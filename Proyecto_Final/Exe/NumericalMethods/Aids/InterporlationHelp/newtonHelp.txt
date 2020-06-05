@@ -1,0 +1,6 @@
+Newton's polynomial interpolation
+Go to navigationGo to search
+
+It is a polynomial interpolation method. Although there is only a single polynomial that interpolates a series of points, there are different ways to calculate it. This method is useful for situations that require a low number of points to interpolate, since as the number of points increases, so does the degree of the polynomial.
+
+There are certain advantages to using this polynomial over the Lagrange interpolating polynomial. For example, if it were necessary to add some new point or node to the function, it would only be necessary to calculate this last point, given the relation of recurrence existing and demonstrated previously.

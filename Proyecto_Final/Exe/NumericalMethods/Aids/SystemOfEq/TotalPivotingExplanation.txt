@@ -1,0 +1,6 @@
+In the Gaussian Elimination method with total pivoting, in each stage K, the largest in absolute
+value of the elements of the submatrix resulting from eliminating rows F is sought. one up to F k
+and columns C one up to C k-1 . When finding the largest, the rows and columns are exchanged to
+place it in position Ab kk .
+This is done so that the value of the multipliers is as small as possible and the effect of rounding
+error is considerably reduced.

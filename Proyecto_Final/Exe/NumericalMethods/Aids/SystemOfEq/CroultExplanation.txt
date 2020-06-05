@@ -1,0 +1,7 @@
+Croult method is a direct matrix factorization method where from an 'a'
+matrix we create 2 matrixes 'L' and 'U' where L is an inferior triangular matrix
+and U is a superior triangular matrix where its diagonal consists of only '1's 
+
+The method solves the matrix by solving Lz = b and Ux = z. First we use a 
+progresive sustitution and with those results we use a regresive sustitutions 
+to solve the x of the equations.

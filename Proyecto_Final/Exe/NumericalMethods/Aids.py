@@ -36,11 +36,39 @@ class Aids:
         return data.read()
 
     def help_total_pivot(self):
-        data=open("Aids\\SystemOfEq\\PartialPivotingExplanation.txt", "r")     
+        data=open("Aids\\SystemOfEq\\TotalPivotingExplanation.txt", "r")     
         return data.read()
 
     def help_doolittle(self):
         data=open("Aids\\SystemOfEq\\DoolittleExplanation.txt", "r")
+        return data.read()
+
+    def help_cholesky(self):
+        data=open("Aids\\SystemOfEq\\CholeskyExplanation.txt", "r")
+        return data.read()
+
+    def help_croult(self):
+        data=open("Aids\\SystemOfEq\\CroultExplanation.txt", "r")
+        return data.read()
+
+    def help_GaussSeidel(self):
+        data=open("Aids\\SystemOfEq\\GaussSeidelExplanation.txt", "r")
+        return data.read()
+
+    def help_jacobi(self):
+        data=open("Aids\\SystemOfEq\\JacobiExplanation.txt", "r")
+        return data.read()
+
+    def help_staggeredPivoting(self):
+        data=open("Aids\\SystemOfEq\\StaggeredPivotingExplanation.txt", "r")
+        return data.read()
+
+    def help_lagrange(self):
+        data=open("Aids\\InterporlationHelp\\lagrangeHelp.txt", "r")
+        return data.read()       
+
+    def help_newton_interpolation(self):
+        data=open("Aids\\InterporlationHelp\\newtonHelp.txt", "r")
         return data.read()
 
     def help_lineal_spline(self):

@@ -1,0 +1,5 @@
+Lagrange multipliers
+Go to navigationGo to search
+In optimization problems, the Lagrange multiplier method, named after Joseph Louis Lagrange, is a procedure for finding the maxima and minima of functions of multiple variables subject to constraints. This method reduces the constrained problem with n variables to one without constraints of n + k variables, where k is equal to the number of constraints, and whose equations can be more easily solved. These new unknown scalar variables, one for each constraint, are called Lagrange multipliers. The method says that the points where the function has a conditioned end with k constraints are between the stationary points of a new unconstrained function constructed as a linear combination of the function and the functions involved in the constraints, whose coefficients are the multipliers.
+
+The proof uses partial derivatives and the chain rule for functions of several variables. It is about extracting an implicit function from the constraints, and finding the conditions so that the partial derivatives with respect to the independent variables of the function are equal to zero.
