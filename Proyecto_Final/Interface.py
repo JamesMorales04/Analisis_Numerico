@@ -714,8 +714,8 @@ class Interpolation_lagrange(Screen):
         error=True
         matrixb_clean=self.clean((self.matrixb.text).split("\n"))
         matrix_clean=self.clean((self.matrix.text).split("\n"))        
-        error=verify.verify_length(matrix_clean)
-        error=verify.verify_length(matrixb_clean)
+        #error=verify.verify_length(matrix_clean)
+        #error=verify.verify_length(matrixb_clean)
         if(error):
             method=Lagrange()
             method.lagrange_interpol_algorithm(matrix_clean[0],matrixb_clean[0])
@@ -890,8 +890,8 @@ class interpolation_quadratic_spline(Screen):
         splineX_clean=self.clean((self.splineY.text).split("\n"))
         splineY_clean=self.clean((self.splineX.text).split("\n"))
         error=True
-        error=verify.verify_length(splineX_clean)
-        error=verify.verify_length(splineY_clean)   
+        #error=verify.verify_length(splineX_clean)
+        #error=verify.verify_length(splineY_clean)   
         if (error):     
             if(spline_method.check_values(splineX_clean,splineY_clean)):
                 splineX_clean=self.clean((self.splineY.text).split("\n"))
@@ -936,8 +936,8 @@ class interpolation_cubic_spline(Screen):
         splineX_clean=self.clean((self.splineY.text).split("\n"))
         splineY_clean=self.clean((self.splineX.text).split("\n"))
         error=True
-        error=verify.verify_length(splineX_clean)
-        error=verify.verify_length(splineY_clean)
+        #error=verify.verify_length(splineX_clean)
+        #error=verify.verify_length(splineY_clean)
         if(error):        
             if(spline_method.check_values(splineX_clean,splineY_clean)):
                 splineX_clean=self.clean((self.splineY.text).split("\n"))
@@ -983,8 +983,8 @@ class interpolation_linear_spline(Screen):
         splineX_clean=self.clean((self.splineY.text).split("\n"))
         splineY_clean=self.clean((self.splineX.text).split("\n"))
         error=True
-        error=verify.verify_length(splineX_clean)
-        error=verify.verify_length(splineY_clean)
+        #error=verify.verify_length(splineX_clean)
+        #error=verify.verify_length(splineY_clean)
         if (error):
             if(spline_method.check_values(splineX_clean,splineY_clean)):
                 spline_method.algorithm_linearSpline(splineX_clean, splineY_clean)
