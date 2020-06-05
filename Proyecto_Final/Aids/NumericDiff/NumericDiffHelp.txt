@@ -1,0 +1,43 @@
+Simple methods:
+Using this methods we pretend to get a solution for a defined integral from a to b.
+
+Trapezium
+For accomplish the objective, we use Lagrange polinomial p1(x) = mx +b, this polinomial is defined
+by the points (a,f(a)) and (b,f(b)), so that the area down the curve is approximated
+by the line that connects the two points.
+
+
+Simpson 1/3
+We pretend to get the area down the curve using the Lagrange's quadratic polinomial.
+So we use three points as a base for the interpolation. They are related 
+with the limit of the interval and a medium point between them.
+So x0= a,x2= b and x1 = (a+b)/2. This method is based on Taylor series. 
+
+
+Simpson 3/8
+We pretend to get the area down the curve using Lagrange's cubic polinomial.
+So we choose 4 points equally distanced between as a base for the interpolation.
+They are related with the start of the integral, the end and intermedium points between them.
+The partition is defined in x0, x1,x2,x3 where x0=a, x1 = x0+(b-a)/3, x2 ) x0+2(b-a)/3 and x3=b.
+
+Generalized methods:
+They divide the interval of the integral in subintervals of equal distance between
+all the points given.
+
+Trapezium:
+Using the same concept as trapezium, we divide the interval in subintervals of
+equal distance (h) between them, so each interval contains h=(b-a)/n.
+The idea is to distribute the integral in each of them and use trapezium to 
+all of the points, so, the resultant expression should be an approximation to 
+the integral.
+
+Simpson 1/3:
+We repeatedly use Simpson 1/3 method in the subintervals created, it is mandatory that n
+is pair because it is evaluated in x0 and x2, x2 and x4 and so on...
+It means that the integral is "distributed" for each interval to use Simpson 1/3 
+for each on them and that is how we calculate the result.
+
+
+Simpson 3/8:
+We repeatedly use Simpson 3/8 method in the subintervals created, that means for each interval
+an simpson 3/8 function is evaluated in order to get the integral. 

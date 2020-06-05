@@ -8,7 +8,7 @@ class gensimpson3:
 
     def algorithm_gensimpson3(self, entry, xi,xs,n):
         self.arr=[]     #All the fxn values 
-        if (int(n)==0):
+        if (int(n)<=0):
             self.result= "Not a valid number"
             return self.result       
         aux =float(xi)

@@ -8,7 +8,7 @@ class GenSimpson38:
 
     def general_simpson38_algorithm(self, entry, xi,xs,n):
         self.arr=[]    
-        if (int(n)==0):
+        if (int(n)<=0):
             self.result= "Not a valid number"
             return self.result       
         aux =float(xi)
@@ -27,7 +27,7 @@ class GenSimpson38:
         print(self.arr)
         for i in self.arr:
             count+=1
-            if (count%3==0): #Arr starts in 1 looking at excel, I think.
+            if (count%3==0): 
                 sumMultThree+=i
             else:
                 sumNotMultThree+=i
