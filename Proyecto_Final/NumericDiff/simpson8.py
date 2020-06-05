@@ -10,16 +10,18 @@ class Simpson38:
         self.result = ''
 
     def simpson_38_algorithm(self,function,xi,xs):
-        xi = float(xi)
-        xs = float(xs)
+        xi  =float(xi)
+        xs  =float(xs)      
+        if (xs<xi):
+            self.result= "Not a xi and xs"
+            return self.result     
         initY = function.evaluar(xi)
         finalY = function.evaluar(xs)
         h = (xs-xi)/3
-        print(str(h))
 
         sumYs = initY+finalY+3*function.evaluar(xi+h)+3*function.evaluar(xi+2*h)
 
-        self.result = str(h*3/8*sumYs)
+        self.result = h*3/8*sumYs
         return str(self.result)
     
     def get_Result(self):
