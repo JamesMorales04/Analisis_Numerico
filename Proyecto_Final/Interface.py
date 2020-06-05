@@ -679,7 +679,7 @@ class Interpolation_newton(Screen):
         table=Tables()
         verify = Verify()
         error=verify.verify_newton_interpolation(self.functions.text,self.numbers.text)
-        if (error==""):
+        if (error=="" and self.clean(self.numbers)):
             Function=Functions(self.functions.text)
             Numbers=self.clean((self.numbers.text).split("\n"))
             matrix_method.algorithm_newtonInterpolation(Function,Numbers)
@@ -687,6 +687,7 @@ class Interpolation_newton(Screen):
             table.draw(matrix_method.value_table(),columns)
             self.sol.text=matrix_method.get_sol()
         else:
+            error = "Please check your values"
             show_popWindow("Interpolation Newton", error)
     def aid(self):
         show_popWindow("Newton Interpolation", Aids.help_newton_interpolation(self))
@@ -720,7 +721,7 @@ class Interpolation_lagrange(Screen):
         matrix_clean=self.clean((self.matrix.text).split("\n"))        
         #error=verify.verify_length(matrix_clean)
         #error=verify.verify_length(matrixb_clean)
-        if(error):
+        if(matrix_clean and matrixb_clean):
             method=Lagrange()
             method.lagrange_interpol_algorithm(matrix_clean[0],matrixb_clean[0])
             response = method.getPolynomial()
