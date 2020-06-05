@@ -4,8 +4,6 @@ from sympy.parsing.sympy_parser import parse_expr
 from Functions import *
 class Simpson13:
     def __init__(self):
-        self.polinomial=""
-        self.xn=""     #All the x values 
         self.result = ''
 
     def simpson_13_algorithm(self, entry, xi,xs,n):

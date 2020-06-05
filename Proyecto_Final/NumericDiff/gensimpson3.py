@@ -4,39 +4,39 @@ from sympy.parsing.sympy_parser import parse_expr
 from Functions import *
 class gensimpson3:
     def __init__(self):
-        self.xn=""     #All the x values 
         self.result = ''
 
-    def algorithm_gensimpson3(self, entry, xi,xs,h):
-        if (int(h)==0):
+    def algorithm_gensimpson3(self, entry, xi,xs,n):
+        self.arr=[]     #All the fxn values 
+        if (int(n)<=0):
             self.result= "Not a valid number"
-            return self.result        
-        xi = float(xi)
-        xs = float(xs)
-        h = float(h)
-        #...
-        h= (xs-xi)/h #Distance between points
-        #
+            return self.result       
+        aux =float(xi)
+        xi  =float(xi)
+        xs  =float(xs)
         initY = entry.evaluar(xi)
         finalY = entry.evaluar(xs)
-        total = initY+finalY
-        lastX = xi
-        sumPar = 0
-        sumImpar = 0
-        count = 1
-        for i in range(xi+h,xs,h):
-            count+=1
-            valY = entry.evaluar(i)
-            if(count%2==0):
-                sumPar+=valY
+        h = (xs-xi)/float(n)
+        count=0
+        sumEven=0
+        sumUneven=0
+        for i in range(int(n)-1):
+            aux+=h 
+            val=entry.evaluar(aux)
+            self.arr.append(val)
+        for i in self.arr:
+            if (count%2==1): #Arr starts in 1 looking at excel, I think.
+                sumEven+=i
             else:
-                sumImpar+=valY
-        self.result=str(h/3*(total+4*sumPar+2*sumImpar))
+                sumUneven+=i
+            count+=1
+        self.result= (h/3)*(initY+finalY+4*sumEven+2*sumUneven)
+
         return str(self.result)
+
     def get_Result(self):
         return self.result
 """
-n= NewtonInterpolation()
 
 exp(x)-ln(x+4)
 [1,1.3,1.5,1.8,2.3]
